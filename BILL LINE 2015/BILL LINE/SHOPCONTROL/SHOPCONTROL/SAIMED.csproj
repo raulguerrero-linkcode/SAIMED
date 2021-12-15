@@ -1,0 +1,1408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FF65FBAD-8C4B-4515-9B9C-F6A7B915D5EE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SHOPCONTROL</RootNamespace>
+    <AssemblyName>SAIMED</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>ftp://ftp.soluciones-sia.com/Descargas/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>false</MapFileExtensions>
+    <SupportUrl>ftp://ftp.soluciones-sia.com/Descargas</SupportUrl>
+    <ErrorReportUrl>http://www.soluciones-sia.com/error.aspx</ErrorReportUrl>
+    <ProductName>BILL LINE</ProductName>
+    <PublisherName>SOLUCIONES SIA</PublisherName>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>7</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>SAIMEDL.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>B33BF13A3D19A1896720E33AD9BBFCA6C5FE9EED</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>BILLLINE_ClaveTemporal.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AForge.Video">
+      <HintPath>..\..\AForge.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.DirectShow">
+      <HintPath>..\..\AForge.Video.DirectShow.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="DGMC.TimbraCFDI">
+      <HintPath>..\..\DGMC.TimbraCFDI.dll</HintPath>
+    </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="itextsharp">
+      <HintPath>..\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccesoUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccesoUsuarios.Designer.cs">
+      <DependentUpon>AccesoUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ActivacionCitas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActivacionCitas.Designer.cs">
+      <DependentUpon>ActivacionCitas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BASE DE DATOS\CBaseD.cs" />
+    <Compile Include="BASE DE DATOS\CTablas.cs" />
+    <Compile Include="BaseReportCitas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BaseReportCitas.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Bienvenidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bienvenidos.Designer.cs">
+      <DependentUpon>Bienvenidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="bin\Debug\DocGastoind.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\DocRecibo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\Factura.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\FacturaAuxiliar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\ReciboTicket.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\Reportes\ReporteAreaDiario.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CambiarDiaCita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CambiarDiaCita.Designer.cs">
+      <DependentUpon>CambiarDiaCita.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CambioaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CambioaCliente.Designer.cs">
+      <DependentUpon>CambioaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\CatBancos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogos\CatBancos.Designer.cs">
+      <DependentUpon>CatBancos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\CatFormasdepago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogos\CatFormasdepago.Designer.cs">
+      <DependentUpon>CatFormasdepago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClaseArchivos.cs" />
+    <Compile Include="Clases\EnviarCorreo.cs" />
+    <Compile Include="Clases\ImpresionPDF.cs" />
+    <Compile Include="Comprobante2.cs" />
+    <Compile Include="CPaquetes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CPaquetes.Designer.cs">
+      <DependentUpon>CPaquetes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialClinica\CamaraWeb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HistorialClinica\CamaraWeb.Designer.cs">
+      <DependentUpon>CamaraWeb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialClinica\TicketCorteRecibos.cs">
+      <DependentUpon>TicketCorteRecibos.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="RawPrinter.cs" />
+    <Compile Include="RegistroEstudios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistroEstudios.Designer.cs">
+      <DependentUpon>RegistroEstudios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteAreaDiario.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteAreaDiario.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="RequisicionMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RequisicionMaterial.Designer.cs">
+      <DependentUpon>RequisicionMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilerias\ConfiguracionBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilerias\ConfiguracionBill.Designer.cs">
+      <DependentUpon>ConfiguracionBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\CatConceptospago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogos\CatConceptospago.Designer.cs">
+      <DependentUpon>CatConceptospago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\CatVendedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogos\CatVendedores.Designer.cs">
+      <DependentUpon>CatVendedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConvertirImagen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConvertirImagen.Designer.cs">
+      <DependentUpon>ConvertirImagen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialClinica\DataSetPrenatal1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetPrenatal.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialClinica\TicketCorte.cs">
+      <DependentUpon>TicketCorte.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="HistorialClinica\DataSetCorte.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetCorte.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialClinica\DDental1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DDental.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialClinica\DEstudioColposcopico.cs">
+      <DependentUpon>DEstudioColposcopico.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialClinica\DOftalmologia.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DOftalmologia.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialClinica\DPrenatal.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DPrenatal.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="ReciboTicket.cs">
+      <DependentUpon>ReciboTicket.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="HistorialClinica\BuscarPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HistorialClinica\BuscarPaciente.Designer.cs">
+      <DependentUpon>BuscarPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialClinica\Catservicios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HistorialClinica\Catservicios.Designer.cs">
+      <DependentUpon>Catservicios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialClinica\ControlPrenatal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HistorialClinica\ControlPrenatal.Designer.cs">
+      <DependentUpon>ControlPrenatal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialClinica\CatDoctores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HistorialClinica\CatDoctores.Designer.cs">
+      <DependentUpon>CatDoctores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialClinica\DataSetDental1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetDental.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialClinica\DataSetOftalmologia.cs">
+      <DependentUpon>DataSetOftalmologia.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialClinica\DataSetOftalmologia.Designer.cs">
+      <DependentUpon>DataSetOftalmologia.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="HistorialClinica\DataSetTicket.cs">
+      <DependentUpon>DataSetTicket.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialClinica\DataSetTicket.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetTicket.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialClinica\DEColposcopico.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DEColposcopico.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialClinica\Dental.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HistorialClinica\Dental.Designer.cs">
+      <DependentUpon>Dental.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialClinica\DEstudioColposcopico.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DEstudioColposcopico.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialClinica\Editor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HistorialClinica\Editor.Designer.cs">
+      <DependentUpon>Editor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialClinica\EstudioColposcopico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HistorialClinica\EstudioColposcopico.Designer.cs">
+      <DependentUpon>EstudioColposcopico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialClinica\HCOftalmologia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HistorialClinica\HCOftalmologia.Designer.cs">
+      <DependentUpon>HCOftalmologia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialClinica\HistorialPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HistorialClinica\HistorialPaciente.designer.cs">
+      <DependentUpon>HistorialPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialClinica\ImpresoTicket.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImpresoTicket.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialClinica\NotasEvolucion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HistorialClinica\NotasEvolucion.Designer.cs">
+      <DependentUpon>NotasEvolucion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialClinica\Pacientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HistorialClinica\Pacientes.Designer.cs">
+      <DependentUpon>Pacientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialClinica\RegistroCitas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HistorialClinica\RegistroCitas.Designer.cs">
+      <DependentUpon>RegistroCitas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ReciboCarta.cs">
+      <DependentUpon>ReciboCarta.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="DocConvenio.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DocConvenio1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DocConvenio.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="DocRecibo.cs">
+      <DependentUpon>DocRecibo.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="DocGastoind.cs">
+      <DependentUpon>DocGastoind.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Utilerias\correoElectronico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilerias\correoElectronico.Designer.cs">
+      <DependentUpon>correoElectronico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recibos\CortePagosDiario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recibos\CortePagosDiario.Designer.cs">
+      <DependentUpon>CortePagosDiario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DocReciboDiaz.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DocReciboDiaz.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="FacElectronica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacElectronica.designer.cs">
+      <DependentUpon>FacElectronica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clases\formatopdf.cs" />
+    <Compile Include="Clases\Reportespdf.cs" />
+    <Compile Include="Clases\Sorter.cs" />
+    <Compile Include="Clases\valoresg.cs" />
+    <Compile Include="Clientes\BrapidaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clientes\BrapidaCliente.Designer.cs">
+      <DependentUpon>BrapidaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Consecutivos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consecutivos.Designer.cs">
+      <DependentUpon>Consecutivos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Empresa\Empresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Empresa\Empresa.Designer.cs">
+      <DependentUpon>Empresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Facturacion\CancelarFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Facturacion\CancelarFactura.Designer.cs">
+      <DependentUpon>CancelarFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Facturacion\FacturarPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Facturacion\FacturarPedido.Designer.cs">
+      <DependentUpon>FacturarPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Facturacion\ReimpresionFacturarPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Facturacion\ReimpresionFacturarPedido.designer.cs">
+      <DependentUpon>ReimpresionFacturarPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FACTURASDOC\NotificaciondePago.cs">
+      <DependentUpon>NotificaciondePago.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="FACTURASDOC\FacturaAuxiliar.cs">
+      <DependentUpon>FacturaAuxiliar.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="FACTURASDOC\Factura.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Factura.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="GastosEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GastosEmpresa.Designer.cs">
+      <DependentUpon>GastosEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImagenB.cs">
+      <DependentUpon>ImagenB.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ImagenB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImagenB.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="importarXML.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="importarXML.Designer.cs">
+      <DependentUpon>importarXML.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Licenciamiento\GeneraLicencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Licenciamiento\GeneraLicencia.Designer.cs">
+      <DependentUpon>GeneraLicencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clases\InternetDisponible.cs" />
+    <Compile Include="Licenciamiento\Licenciamiento.cs" />
+    <Compile Include="Licenciamiento\LicenciaRegistro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Licenciamiento\LicenciaRegistro.Designer.cs">
+      <DependentUpon>LicenciaRegistro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FacturarPedidoM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturarPedidoM.Designer.cs">
+      <DependentUpon>FacturarPedidoM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListadoPagos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListadoPagos.Designer.cs">
+      <DependentUpon>ListadoPagos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pagares.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pagares.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Productos\ImportarExportarPrecios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Productos\ImportarExportarPrecios.Designer.cs">
+      <DependentUpon>ImportarExportarPrecios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Productos\ImportarExportarExistencias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Productos\ImportarExportarExistencias.Designer.cs">
+      <DependentUpon>ImportarExportarExistencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Proveedores\Proveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Proveedores\Proveedores.Designer.cs">
+      <DependentUpon>Proveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pedidos\CancelaRemision.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pedidos\CancelaRemision.Designer.cs">
+      <DependentUpon>CancelaRemision.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clases\ClaseFotos.cs" />
+    <Compile Include="Clases\ListViewColumnSorter.cs" />
+    <Compile Include="Clases\Modremision.cs" />
+    <Compile Include="Clases\ReportesNKB.cs" />
+    <Compile Include="Clientes\Clientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clientes\Clientes.Designer.cs">
+      <DependentUpon>Clientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clases\conectorSql.cs" />
+    <Compile Include="combos.cs" />
+    <Compile Include="Clases\Conexion.cs" />
+    <Compile Include="Utilerias\Configurar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilerias\Configurar.designer.cs">
+      <DependentUpon>Configurar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Productos\BrapidaProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Productos\BrapidaProducto.Designer.cs">
+      <DependentUpon>BrapidaProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntradaUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EntradaUsuario.designer.cs">
+      <DependentUpon>EntradaUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clases\Numalet.cs" />
+    <Compile Include="PagosCreditos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PagosCreditos.Designer.cs">
+      <DependentUpon>PagosCreditos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pedidos\PedidosPro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pedidos\PedidosPro.Designer.cs">
+      <DependentUpon>PedidosPro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Productos\Productos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Productos\Productos.Designer.cs">
+      <DependentUpon>Productos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Clases\Registro.cs" />
+    <Compile Include="Recibos\CancelaRecibo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recibos\CancelaRecibo.designer.cs">
+      <DependentUpon>CancelaRecibo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recibos\Recibos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recibos\Recibos.designer.cs">
+      <DependentUpon>Recibos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recibos\ReporteGeneralRecibo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recibos\ReporteGeneralRecibo.Designer.cs">
+      <DependentUpon>ReporteGeneralRecibo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReciboUsuario.cs">
+      <DependentUpon>ReciboUsuario.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ReciboUsuario.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReciboUsuario.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="RegistroConvenio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistroConvenio.Designer.cs">
+      <DependentUpon>RegistroConvenio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistroPagos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistroPagos.Designer.cs">
+      <DependentUpon>RegistroPagos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteGeneral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReporteGeneral.Designer.cs">
+      <DependentUpon>ReporteGeneral.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pedidos\VistaDescripcion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pedidos\VistaDescripcion.Designer.cs">
+      <DependentUpon>VistaDescripcion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilerias\LeerArchivoExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilerias\LeerArchivoExcel.designer.cs">
+      <DependentUpon>LeerArchivoExcel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VentaRegistroCobro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VentaRegistroCobro.Designer.cs">
+      <DependentUpon>VentaRegistroCobro.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AccesoUsuarios.resx">
+      <DependentUpon>AccesoUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ActivacionCitas.resx">
+      <DependentUpon>ActivacionCitas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bienvenidos.resx">
+      <DependentUpon>Bienvenidos.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CambiarDiaCita.resx">
+      <DependentUpon>CambiarDiaCita.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CambioaCliente.resx">
+      <DependentUpon>CambioaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\CatBancos.resx">
+      <DependentUpon>CatBancos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\CatFormasdepago.resx">
+      <DependentUpon>CatFormasdepago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CPaquetes.resx">
+      <DependentUpon>CPaquetes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistorialClinica\CamaraWeb.resx">
+      <DependentUpon>CamaraWeb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistorialClinica\TicketCorteRecibos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TicketCorteRecibos.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="obj\x86\Debug\Configurar.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.AccesoUsuarios.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.ActivacionCitas.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.Bienvenidos.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.BrapidaCliente.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.BrapidaProducto.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.CambiarDiaCita.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.CambioaCliente.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.CancelaRecibo.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.CancelaRemision.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.CancelarFactura.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.CatBancos.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.CatConceptospago.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.CatFormasdepago.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.CatVendedores.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.Clientes.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.ConfiguracionBill.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.Consecutivos.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.ConvertirImagen.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.CorreoElectronico.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.CortePagosDiario.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.CPaquetes.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.Empresa.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.EntradaUsuario.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.FacElectronica.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.FacturarPedido.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.FacturarPedidoM.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.GastosEmpresa.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.GeneraLicencia.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.BuscarPaciente.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.CamaraWeb.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.CatDoctores.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.Catservicios.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.ControlPrenatal.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.Dental.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.Editor.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.EstudioColposcopico.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.HCOftalmologia.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.HistorialPaciente.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.NotasEvolucion.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.Pacientes.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.RegistroCitas.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.ImportarExportarExistencias.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.ImportarExportarPrecios.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.importarXML.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.LeerArchivoExcel.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.LicenciaRegistro.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.ListadoPagos.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.PagosCreditos.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.Pedidospro.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.Productos.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.Properties.Resources.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.Proveedores.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.Recibos.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.RegistroConvenio.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.RegistroEstudios.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.RegistroPagos.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.ReimpresionFacturarPedido.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.ReporteGeneral.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.ReporteGeneralRecibo.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.RequisicionMaterial.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.VentaRegistroCobro.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.VistaDescripcion.resources" />
+    <EmbeddedResource Include="RegistroEstudios.resx">
+      <DependentUpon>RegistroEstudios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteAreaDiario.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteAreaDiario.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RequisicionMaterial.resx">
+      <DependentUpon>RequisicionMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilerias\ConfiguracionBill.resx">
+      <DependentUpon>ConfiguracionBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\CatConceptospago.resx">
+      <DependentUpon>CatConceptospago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\CatVendedores.resx">
+      <DependentUpon>CatVendedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConvertirImagen.resx">
+      <DependentUpon>ConvertirImagen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistorialClinica\TicketCorte.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TicketCorte.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistorialClinica\DDental.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DDental1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistorialClinica\DOftalmologia.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DOftalmologia.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistorialClinica\DPrenatal.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DPrenatal.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReciboTicket.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReciboTicket.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistorialClinica\BuscarPaciente.resx">
+      <DependentUpon>BuscarPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistorialClinica\Catservicios.resx">
+      <DependentUpon>Catservicios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistorialClinica\ControlPrenatal.resx">
+      <DependentUpon>ControlPrenatal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistorialClinica\CatDoctores.resx">
+      <DependentUpon>CatDoctores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistorialClinica\DEColposcopico.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DEColposcopico.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistorialClinica\Dental.resx">
+      <DependentUpon>Dental.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistorialClinica\Editor.resx">
+      <DependentUpon>Editor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistorialClinica\EstudioColposcopico.resx">
+      <DependentUpon>EstudioColposcopico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistorialClinica\HCOftalmologia.resx">
+      <DependentUpon>HCOftalmologia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistorialClinica\HistorialPaciente.resx">
+      <DependentUpon>HistorialPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistorialClinica\ImpresoTicket.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ImpresoTicket.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistorialClinica\NotasEvolucion.resx">
+      <DependentUpon>NotasEvolucion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistorialClinica\Pacientes.resx">
+      <DependentUpon>Pacientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistorialClinica\RegistroCitas.resx">
+      <DependentUpon>RegistroCitas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReciboCarta.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReciboCarta.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocConvenio.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DocConvenio1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocRecibo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DocRecibo.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocGastoind.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DocGastoind.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilerias\correoElectronico.resx">
+      <DependentUpon>correoElectronico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recibos\CortePagosDiario.resx">
+      <DependentUpon>CortePagosDiario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocReciboDiaz.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DocReciboDiaz.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacElectronica.resx">
+      <DependentUpon>FacElectronica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\BrapidaCliente.resx">
+      <DependentUpon>BrapidaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consecutivos.resx">
+      <DependentUpon>Consecutivos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Empresa\Empresa.resx">
+      <DependentUpon>Empresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Facturacion\CancelarFactura.resx">
+      <DependentUpon>CancelarFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Facturacion\FacturarPedido.resx">
+      <DependentUpon>FacturarPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Facturacion\ReimpresionFacturarPedido.resx">
+      <DependentUpon>ReimpresionFacturarPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FACTURASDOC\NotificaciondePago.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>NotificaciondePago.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FACTURASDOC\FacturaAuxiliar.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FacturaAuxiliar.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FACTURASDOC\Factura.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Factura.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GastosEmpresa.resx">
+      <DependentUpon>GastosEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="importarXML.resx">
+      <DependentUpon>importarXML.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenciamiento\GeneraLicencia.resx">
+      <DependentUpon>GeneraLicencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenciamiento\LicenciaRegistro.resx">
+      <DependentUpon>LicenciaRegistro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturarPedidoM.resx">
+      <DependentUpon>FacturarPedidoM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListadoPagos.resx">
+      <DependentUpon>ListadoPagos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Productos\ImportarExportarPrecios.resx">
+      <DependentUpon>ImportarExportarPrecios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Productos\ImportarExportarExistencias.resx">
+      <DependentUpon>ImportarExportarExistencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Proveedores\Proveedores.resx">
+      <DependentUpon>Proveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pedidos\CancelaRemision.resx">
+      <DependentUpon>CancelaRemision.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\Clientes.resx">
+      <DependentUpon>Clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilerias\Configurar.resx">
+      <DependentUpon>Configurar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Productos\BrapidaProducto.resx">
+      <DependentUpon>BrapidaProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntradaUsuario.resx">
+      <DependentUpon>EntradaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PagosCreditos.resx">
+      <DependentUpon>PagosCreditos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pedidos\PedidosPro.resx">
+      <DependentUpon>PedidosPro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Productos\Productos.resx">
+      <DependentUpon>Productos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recibos\CancelaRecibo.resx">
+      <DependentUpon>CancelaRecibo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recibos\Recibos.resx">
+      <DependentUpon>Recibos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recibos\ReporteGeneralRecibo.resx">
+      <DependentUpon>ReporteGeneralRecibo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistroConvenio.resx">
+      <DependentUpon>RegistroConvenio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistroPagos.resx">
+      <DependentUpon>RegistroPagos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteGeneral.resx">
+      <DependentUpon>ReporteGeneral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pedidos\VistaDescripcion.resx">
+      <DependentUpon>VistaDescripcion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilerias\LeerArchivoExcel.resx">
+      <DependentUpon>LeerArchivoExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentaRegistroCobro.resx">
+      <DependentUpon>VentaRegistroCobro.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="app.manifest" />
+    <None Include="BaseReportCitas.xsc">
+      <DependentUpon>BaseReportCitas.xsd</DependentUpon>
+    </None>
+    <None Include="BaseReportCitas.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BaseReportCitas.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="BaseReportCitas.xss">
+      <DependentUpon>BaseReportCitas.xsd</DependentUpon>
+    </None>
+    <None Include="BILLLINE_ClaveTemporal.pfx" />
+    <None Include="bin\Debug\ArchivosPac\Archivotemp.pdf" />
+    <None Include="bin\Debug\arial.ttf" />
+    <None Include="bin\Debug\CEPAMM.zip" />
+    <None Include="bin\Debug\CotizacionM.pdf" />
+    <None Include="bin\Debug\DDental.rpt" />
+    <None Include="bin\Debug\DEColposcopico.rpt" />
+    <None Include="bin\Debug\DocGastoind.rpt" />
+    <None Include="bin\Debug\DocRecibo.rpt" />
+    <None Include="bin\Debug\DOftalmologia.rpt" />
+    <None Include="bin\Debug\Factura.rpt" />
+    <None Include="bin\Debug\FacturaAuxiliar.rpt" />
+    <None Include="bin\Debug\Factura_a.rpt" />
+    <None Include="bin\Debug\images\banerbill.psd" />
+    <None Include="bin\Debug\images\Thumbs.db" />
+    <None Include="bin\Debug\ImpresoTicket.rpt" />
+    <None Include="bin\Debug\PedidoM.pdf" />
+    <None Include="bin\Debug\ReciboM.pdf" />
+    <None Include="bin\Debug\ReciboTicket.rpt" />
+    <None Include="bin\Debug\Remision.rpt" />
+    <None Include="bin\Debug\Remisionhb.rpt" />
+    <None Include="bin\Debug\RemisionM.pdf" />
+    <None Include="bin\Debug\ReporteConcepto.pdf" />
+    <None Include="bin\Debug\ReporteConceptoRM.pdf" />
+    <None Include="bin\Debug\ReporteFacturacion.pdf" />
+    <None Include="bin\Debug\ReporteGastos20140810.pdf" />
+    <None Include="bin\Debug\ReportePagoDiario20140805.pdf" />
+    <None Include="bin\Debug\ReportePagos20140811.pdf" />
+    <None Include="bin\Debug\ReportePagos20140812.pdf" />
+    <None Include="bin\Debug\ReportePagos20140821.pdf" />
+    <None Include="bin\Debug\ReporteReciboDetallado.pdf" />
+    <None Include="bin\Debug\ReporteReciboDetalladoRM.pdf" />
+    <None Include="bin\Debug\ReporteRecibos20140812.pdf" />
+    <None Include="bin\Debug\ReporteRecibos20140821.pdf" />
+    <None Include="bin\Debug\Reportes\ReporteAreaDiario.rpt" />
+    <None Include="bin\Debug\Reportes\ReporteDiarioCitas.pdf" />
+    <None Include="bin\Debug\SAIMED.application" />
+    <None Include="bin\Debug\SAIMED.exe.config" />
+    <None Include="bin\Debug\SAIMED.exe.manifest" />
+    <None Include="bin\Debug\SAIMED.vshost.application" />
+    <None Include="bin\Debug\SAIMED.vshost.exe.config" />
+    <None Include="bin\Debug\SAIMED.vshost.exe.manifest" />
+    <None Include="HistorialClinica\DataSetDental.xsc">
+      <DependentUpon>DataSetDental.xsd</DependentUpon>
+    </None>
+    <None Include="HistorialClinica\DataSetDental.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetDental1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="HistorialClinica\DataSetDental.xss">
+      <DependentUpon>DataSetDental.xsd</DependentUpon>
+    </None>
+    <None Include="HistorialClinica\DataSetOftalmologia.xsc">
+      <DependentUpon>DataSetOftalmologia.xsd</DependentUpon>
+    </None>
+    <None Include="HistorialClinica\DataSetOftalmologia.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetOftalmologia.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="HistorialClinica\DataSetOftalmologia.xss">
+      <DependentUpon>DataSetOftalmologia.xsd</DependentUpon>
+    </None>
+    <None Include="HistorialClinica\DataSetPrenatal.xsc">
+      <DependentUpon>DataSetPrenatal.xsd</DependentUpon>
+    </None>
+    <None Include="HistorialClinica\DataSetPrenatal.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetPrenatal1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="HistorialClinica\DataSetPrenatal.xss">
+      <DependentUpon>DataSetPrenatal.xsd</DependentUpon>
+    </None>
+    <None Include="HistorialClinica\DataSetTicket.xsc">
+      <DependentUpon>DataSetTicket.xsd</DependentUpon>
+    </None>
+    <None Include="HistorialClinica\DataSetTicket.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetTicket.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="HistorialClinica\DataSetTicket.xss">
+      <DependentUpon>DataSetTicket.xsd</DependentUpon>
+    </None>
+    <None Include="HistorialClinica\DEstudioColposcopico.xsc">
+      <DependentUpon>DEstudioColposcopico.xsd</DependentUpon>
+    </None>
+    <None Include="HistorialClinica\DEstudioColposcopico.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DEstudioColposcopico.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="HistorialClinica\DEstudioColposcopico.xss">
+      <DependentUpon>DEstudioColposcopico.xsd</DependentUpon>
+    </None>
+    <None Include="HistorialClinica\DataSetCorte.xsc">
+      <DependentUpon>DataSetCorte.xsd</DependentUpon>
+    </None>
+    <None Include="HistorialClinica\DataSetCorte.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetCorte.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="HistorialClinica\DataSetCorte.xss">
+      <DependentUpon>DataSetCorte.xsd</DependentUpon>
+    </None>
+    <None Include="ImagenB.xsc">
+      <DependentUpon>ImagenB.xsd</DependentUpon>
+    </None>
+    <None Include="ImagenB.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ImagenB.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ImagenB.xss">
+      <DependentUpon>ImagenB.xsd</DependentUpon>
+    </None>
+    <None Include="obj\x86\Debug\BILLLINE.csproj.GenerateResource.Cache" />
+    <None Include="obj\x86\Debug\BILLLINE.csprojResolveAssemblyReference.cache" />
+    <None Include="obj\x86\Debug\build.force" />
+    <None Include="obj\x86\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\x86\Debug\SAIMED.application" />
+    <None Include="obj\x86\Debug\SAIMED.csproj.GenerateResource.Cache" />
+    <None Include="obj\x86\Debug\SAIMED.csprojResolveAssemblyReference.cache" />
+    <None Include="obj\x86\Debug\SAIMED.exe.manifest" />
+    <None Include="obj\x86\Debug\SHOPCONTROL.csproj.GenerateResource.Cache" />
+    <None Include="obj\x86\Debug\SHOPCONTROL.csprojResolveAssemblyReference.cache" />
+    <None Include="Pagares.xsc">
+      <DependentUpon>Pagares.xsd</DependentUpon>
+    </None>
+    <None Include="Pagares.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Pagares.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Pagares.xss">
+      <DependentUpon>Pagares.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="ReciboUsuario.xsc">
+      <DependentUpon>ReciboUsuario.xsd</DependentUpon>
+    </None>
+    <None Include="ReciboUsuario.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReciboUsuario.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ReciboUsuario.xss">
+      <DependentUpon>ReciboUsuario.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BillLine.ico" />
+    <Content Include="bin\Debug\AForge.Video.DirectShow.dll" />
+    <Content Include="bin\Debug\AForge.Video.dll" />
+    <Content Include="bin\Debug\DGMC.TimbraCFDI.dll" />
+    <Content Include="bin\Debug\FacturaViewerOutSrv.xml" />
+    <Content Include="bin\Debug\images\baner.jpg" />
+    <Content Include="bin\Debug\images\baner3.jpg" />
+    <Content Include="bin\Debug\images\baners.jpg" />
+    <Content Include="bin\Debug\images\logobanamex.jpg" />
+    <Content Include="bin\Debug\itextsharp.dll" />
+    <Content Include="bin\Debug\Microsoft.Office.Interop.Excel.dll" />
+    <Content Include="bin\Debug\Microsoft.Office.Interop.Excel.xml" />
+    <Content Include="bin\Debug\Microsoft.Vbe.Interop.dll" />
+    <Content Include="bin\Debug\office.dll" />
+    <Content Include="bin\Debug\office.xml" />
+    <Content Include="bin\Debug\SAIMED.exe" />
+    <Content Include="bin\Debug\SAIMED.pdb" />
+    <Content Include="bin\Debug\SAIMED.vshost.exe" />
+    <Content Include="bluewhales 005.ico" />
+    <Content Include="favicon.ico" />
+    <Content Include="medicina2 %281%29.ico" />
+    <Content Include="medicina2.ico" />
+    <None Include="Resources\save.ico" />
+    <None Include="Resources\Oxygen-Icons.org-Oxygen-Actions-document-save.ico" />
+    <None Include="Resources\Fatcow-Farm-Fresh-Bullet-back.ico" />
+    <None Include="Resources\button_navigation_back.ico" />
+    <None Include="Resources\back.ico" />
+    <None Include="Resources\file_new.ico" />
+    <None Include="Resources\control_play_blue.ico" />
+    <None Include="Resources\user.ico" />
+    <None Include="Resources\ball_green.ico" />
+    <None Include="Resources\bullet_green.ico" />
+    <None Include="Resources\stop.ico" />
+    <None Include="Resources\web_uploads.ico" />
+    <None Include="Resources\cross.png" />
+    <None Include="Resources\16 %28Db cancel%29.ico" />
+    <None Include="Resources\tile horizontally.ico" />
+    <Content Include="obj\x86\Debug\BILLLINE.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\x86\Debug\SAIMED.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\x86\Debug\SAIMED.exe" />
+    <Content Include="obj\x86\Debug\SAIMED.pdb" />
+    <Content Include="obj\x86\Debug\SAIMED.TrustInfo.xml" />
+    <Content Include="obj\x86\Debug\SHOPCONTROL.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\x86\Debug\TempPE\BaseReportCitas.Designer.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\DocConvenio1.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\DocGastoind.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\DocRecibo.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\DocReciboDiaz.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\Factura.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\FacturaAuxiliar.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\FACTURASDOC.Copia de Factura.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\FACTURASDOC.Factura.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\FACTURASDOC.FacturaAuxiliar.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\FACTURASDOC.FacturaSAPMXO1.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\FACTURASDOC.FacturaSAPMXOAuxiliar1.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\FACTURASDOC.NotificaciondePago.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DataBase.DataSetDental1.Designer.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DataBase.DataSetOftalmologia.Designer.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DataBase.DataSetPrenatal1.Designer.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DataBase.DataSetTicket.Designer.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DataBase.DEstudioColposcopico.Designer.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DataSetCorte.Designer.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DataSetDental.Designer.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DataSetDental1.Designer.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DataSetOftalmologia.Designer.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DataSetPrenatal1.Designer.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DataSetTicket.Designer.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DDental1.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DEColposcopico.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DEstudioColposcopico.Designer.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DocEstudioColposcopico.Designer.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DOftalmologia.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DPrenatal.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.ImpresoTicket.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.TicketCorte.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.TicketCorteRecibos.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\ImagenB.Designer.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\LogEmpresa.Designer.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\Pagares.Designer.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\ReciboCarta.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\Recibos.TicketRecibo.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\ReciboTicket.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\ReciboUsuario.Designer.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\Remision.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\ReporteAreaDiario.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\rtpSinExpedido.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\Service References.TestAdMovilConnection.Reference.cs.dll" />
+    <Content Include="obj\x86\Debug\TempPE\Service References.wsAdMovil.Reference.cs.dll" />
+    <Content Include="SAIMEDL.ico" />
+    <None Include="Resources\eraser.png" />
+    <None Include="Resources\texto.png" />
+    <None Include="Resources\linea.png" />
+    <None Include="Resources\cuadro.png" />
+    <None Include="Resources\circle.png" />
+    <None Include="Resources\pincel.png" />
+    <None Include="Resources\angulo.png" />
+    <None Include="Resources\cristalino.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="SAP.CrystalReports14.NET.2.0">
+      <Visible>False</Visible>
+      <ProductName>SAP Crystal Reports Runtime Engine for .NET Framework</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
+    <Folder Include="HistorialClinica\DataBase\" />
+    <Folder Include="Reportes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="CRDESIGNERLib">
+      <Guid>{C0AA5023-C763-4A4B-AFED-ADCF78D6C08B}</Guid>
+      <VersionMajor>13</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="CRREPORTSOURCEBRIDGELib">
+      <Guid>{80F19574-9245-4DFA-A0A6-8A21874282D3}</Guid>
+      <VersionMajor>13</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="CrystalAnalysisCommLayerLib">
+      <Guid>{AAA3345B-2177-4D19-8D75-21688FE36251}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="CrystalReportsCommonObjectModelLib">
+      <Guid>{FDB9B69E-BA79-4B13-9E96-8373AF162AEA}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="CrystalReportsControllersLib">
+      <Guid>{FA810FF5-70DA-4F98-A5E3-387D9577EF24}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="CrystalReportsCubeDefModelLib">
+      <Guid>{44AD71D4-4905-491D-B179-B5D91EB57374}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="CrystalReportsDataDefModelLib">
+      <Guid>{9B2F3E7B-8D45-47E8-95D3-3A9C1B22437F}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="CrystalReportsReportDefModelLib">
+      <Guid>{BF40B97D-06EA-4AB1-91DE-18CB29A2B25A}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

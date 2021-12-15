@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlmacenOnline", "AlmacenOnline\AlmacenOnline.csproj", "{045784B5-8F52-4A8A-A441-DDDF8171001F}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AlmacenOnline.Web", "AlmacenOnline.Web\", "{02773210-6C0F-4C5C-990E-CE946FD531D5}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/AlmacenOnline.Web"
+		Debug.AspNetCompiler.PhysicalPath = "AlmacenOnline.Web\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\AlmacenOnline.Web\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/AlmacenOnline.Web"
+		Release.AspNetCompiler.PhysicalPath = "AlmacenOnline.Web\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\AlmacenOnline.Web\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "10446"
+		DefaultWebSiteLanguage = "Visual C#"
+		ProjOutputReferences = "{045784B5-8F52-4A8A-A441-DDDF8171001F}|ClientBin|false;"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{045784B5-8F52-4A8A-A441-DDDF8171001F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{045784B5-8F52-4A8A-A441-DDDF8171001F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{045784B5-8F52-4A8A-A441-DDDF8171001F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{045784B5-8F52-4A8A-A441-DDDF8171001F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02773210-6C0F-4C5C-990E-CE946FD531D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02773210-6C0F-4C5C-990E-CE946FD531D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02773210-6C0F-4C5C-990E-CE946FD531D5}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{02773210-6C0F-4C5C-990E-CE946FD531D5}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
