@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Data;
-using System.Configuration;
-using System.Web;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
-using System.Linq;
-using System.Collections.Generic;
-using SHOPCONTROL.Settings;
 
 /// <summary>
 /// Descripción breve de conectorSql
