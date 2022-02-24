@@ -128,7 +128,14 @@ namespace SHOPCONTROL
             if (checkBox30.Checked == true) ENTRA30 = "SI"; //configurar correo
             if (checkBox32.Checked == true) ESDOCTOR = "SI"; //configurar correo
 
-            CVDOCTOR=comboBox2.SelectedValue.ToString();
+            if (comboBox2.SelectedValue == null)
+            {
+                CVDOCTOR = "0";
+            } else
+            {
+                CVDOCTOR = comboBox2.SelectedValue.ToString();
+            }
+            
         }
 
         private void AccesoUsuarios_Load(object sender, EventArgs e)
@@ -257,6 +264,17 @@ namespace SHOPCONTROL
 
         public void GuardarUsuario()
         {
+
+            if (USUARIO == "ADMIN")
+            {
+                MessageBox.Show("Se va a actualizar la información del ADMIN");
+                // Enviar notificación al correo registrado para notificarle de los cambios hechos
+                //MailNotifications mail = new MailNotifications();
+                //mail.SendMail("");
+            }
+
+
+
             conectorSql conecta = new conectorSql();
             string Query = "";
 
@@ -297,11 +315,10 @@ namespace SHOPCONTROL
             Query = Query + ",entra29";
             Query = Query + ",ESDOCTOR";
             Query = Query + ",CVDOCTOR";
-
             Query = Query + ",entra30)";
             Query = Query + " values(";
             Query = Query + "'" + USUARIO + "'";
-            Query = Query + ",'" + CONTRA + "'";
+            Query = Query + ",'" + SecurityUsr.Base64Encode(CONTRA) + "'";
             Query = Query + ",'" + NOMBRE + "'";
             Query = Query + ",'" + ENTRA1 + "'";
             Query = Query + ",'" + ENTRA2 + "'";
@@ -369,10 +386,11 @@ namespace SHOPCONTROL
             SqlDataReader leer = conecta.RecordInfo(Query);
             while (leer.Read())
             {
+                string Decoded_Password = SecurityUsr.Base64Decode(leer["contra"].ToString());
                 textBox1.Text = leer["cvusuario"].ToString();
                 textBox1.Enabled = false;
                 textBox3.Text = leer["nombre"].ToString();
-                textBox2.Text = leer["contra"].ToString();
+                textBox2.Text = Decoded_Password;
                 cvdoctor = leer["cvdoctor"].ToString();
 
                 ENTRA1 = leer["entra1"].ToString();

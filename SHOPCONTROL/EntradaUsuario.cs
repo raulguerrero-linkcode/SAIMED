@@ -37,20 +37,30 @@ namespace SHOPCONTROL
             valoresg.Area_Contra = "";
             valoresg.Area_Cvdoctor = "";
             valoresg.Area_usuario = "";
+
+            string Decoded_Password = SecurityUsr.Base64Encode(CONTRASEÑA);
+
             conectorSql conecta = new conectorSql();
-            string Query = "Select * from usuarios where cvusuario='" + USUARIO + "' and contra='" + CONTRASEÑA + "'";
+            string Query = "Select * from usuarios where cvusuario='" + USUARIO + "' and contra='" + Decoded_Password + "'";
             SqlDataReader leer = conecta.RecordInfo(Query);
             while (leer.Read())
             {
                 existe = true;
                 NOMBRECOMPLETO = leer["nombre"].ToString();
                 CVDOCTORAREA= leer["cvdoctor"].ToString();
-                valoresg.Area_Contra = CONTRASEÑA;
+                valoresg.Area_Contra = Decoded_Password;
                 valoresg.Area_Cvdoctor= leer["cvdoctor"].ToString();
                 valoresg.Area_usuario = USUARIO;
 
             }
             conecta.CierraConexion();
+            /*
+             * 
+             * Send Email Notification it could be used when the user tried to log with ADMIN Account
+             * 
+            */
+            // MailNotifications mail = new MailNotifications();
+            // mail.SendMail("Hello");
             return existe;
         }
 

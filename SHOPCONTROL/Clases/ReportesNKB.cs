@@ -1,20 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Excel = Microsoft.Office.Interop.Excel;
 //using Microsoft.Office.Interop.Excel;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Globalization;
-   public class ReportesNKB
+public class ReportesNKB
     {
 
     public static void ReporteRecibos(string Fecha1, string Fecha2,string categ, string numpedido, string nom, bool Todas)
     {
 
-        Excel.Application oXL;
+        Excel.Application oXL;  
         Excel._Workbook oWB;
         Excel._Worksheet oSheet;
         Excel.Range oRng;

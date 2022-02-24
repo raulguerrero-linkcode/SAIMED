@@ -99,6 +99,10 @@
       <HintPath>..\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Excel1">
+      <HintPath>..\..\..\..\Program Files (x86)\Microsoft Visual Studio\Shared\Visual Studio Tools for Office\PIA\Office14\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -212,6 +216,7 @@
     <Compile Include="JOSEFORMS\INVENTARIO.Designer.cs">
       <DependentUpon>INVENTARIO.cs</DependentUpon>
     </Compile>
+    <Compile Include="MailNotifications.cs" />
     <Compile Include="PASARTURNOINDV.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -249,7 +254,7 @@
     <Compile Include="JOSEFORMS\TIPOS.Designer.cs">
       <DependentUpon>TIPOS.cs</DependentUpon>
     </Compile>
-    <Compile Include="Settings\IniFileSettings.cs" />
+    <Compile Include="SecutiryUsr.cs" />
     <Compile Include="Utilerias\ConfiguracionBill.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1087,7 +1092,9 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="app.manifest" />
+    <None Include="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="BaseReportCitas.xsc">
       <DependentUpon>BaseReportCitas.xsd</DependentUpon>
     </None>
@@ -1139,8 +1146,6 @@
     <None Include="bin\Debug\SAIMED.vshost.application" />
     <None Include="bin\Debug\SAIMED.vshost.exe.config" />
     <None Include="bin\Debug\SAIMED.vshost.exe.manifest" />
-    <None Include="bin\Debug\config.ini" />
-    <None Include="bin\Debug\Settings.ini" />
     <None Include="HistorialClinica\DataSetDental.xsc">
       <DependentUpon>DataSetDental.xsd</DependentUpon>
     </None>
@@ -1284,6 +1289,7 @@
     <Content Include="bin\Debug\SAIMED.pdb" />
     <Content Include="bin\Debug\SAIMED.vshost.exe" />
     <Content Include="bluewhales 005.ico" />
+    <Content Include="EmailCnf.xml" />
     <Content Include="favicon.ico" />
     <Content Include="medicina2 %281%29.ico" />
     <Content Include="medicina2.ico" />

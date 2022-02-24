@@ -302,10 +302,11 @@ namespace SHOPCONTROL
             Lv.Columns.Add("Id Cliente", 0).Tag = "STRING";
             Lv.Columns.Add("Id Doctor", 0).Tag = "STRING";
             Lv.Columns.Add("Id Turno", 0).Tag = "STRING";
+            Lv.Columns.Add("Reimpreso", 0).Tag = "NUMBER";
 
             conectorSql conecta = new conectorSql();
             string Query = "Select distinct(numrecibo), recibos.nombrerecibo as Nombrecliente, recibos.cvcliente ";
-            Query = Query + ",fecha,total,iva,totalgeneral,compro,ayo,estatusrecibo,colonia,emitio,entregado,tiporecibo,iddoctor,idturno";
+            Query = Query + ",fecha,total,iva,totalgeneral,compro,ayo,estatusrecibo,colonia,emitio,entregado,tiporecibo,iddoctor,idturno,printed";
             Query = Query + " from recibos ";
             Query = Query + " inner join clientes on clientes.cvcliente=recibos.cvcliente";
             Query = Query + " where numrecibo<>''";
@@ -323,6 +324,7 @@ namespace SHOPCONTROL
             SqlDataReader leer = conecta.RecordInfo(Query);
             while (leer.Read())
             {
+
                 ListViewItem lvi = new ListViewItem(leer["numrecibo"].ToString());
                 lvi.SubItems.Add(leer["NombreCliente"].ToString());
                 lvi.SubItems.Add(leer["fecha"].ToString());
@@ -341,6 +343,10 @@ namespace SHOPCONTROL
                 lvi.SubItems.Add(leer["cvcliente"].ToString());
                 lvi.SubItems.Add(leer["iddoctor"].ToString());
                 lvi.SubItems.Add(leer["idturno"].ToString());
+
+                int printed = int.Parse(leer["printed"].ToString());
+
+                lvi.SubItems.Add(printed.ToString());
                 Lv.Items.Add(lvi);
             }
             conecta.CierraConexion();
@@ -2766,6 +2772,8 @@ namespace SHOPCONTROL
             label51.Text = ayo;
             label53.Text = estatus;
             label36.Text = Lv.Items[index].SubItems[12].Text;
+            // Label47 corresponds to IsPrinted value
+            label47.Text = Lv.Items[index].SubItems[15].Text;
             PosicionVer = index;
         }
 
@@ -2782,22 +2790,58 @@ namespace SHOPCONTROL
                 return;
             }
 
-            MessageBox.Show("Se mandara a imprimir el recibo seleccionado ", "Recibo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            string nombrearea = "";
-            conectorSql conecta2 = new conectorSql();
-            if (label45.Text != "0")
+            // Only ADMIN can reimpressed tickets
+            string user = valoresg.USUARIOSIS;
+            /*
+             *   Update the ticket status to 1 in order to avoid reimpression
+             *   Validate if the user is not ADMIN and the ticket was impressed before, then not print
+             *   If the ticket is 0 that means the ticket never be printed before, then go ahead and print
+            */
+            if (label47.Text == "0" || user == "ADMIN")
             {
-                string consulta2 = "Select  nombre from Doctores where cvdoctor='" + label45.Text.Trim() + "'";
-                SqlDataReader leer2 = conecta2.RecordInfo(consulta2);
-                while (leer2.Read())
-                {
-                    nombrearea = leer2["nombre"].ToString();
-                }
-                conecta2.CierraConexion();
-            }
+                MessageBox.Show("Se mandara a imprimir el recibo seleccionado ", "Recibo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string nombrearea = "";
 
-            MandarReporteCristal(numpedido, ayo, nombrearea, label46.Text.Trim());
+                try
+                {
+                    conectorSql conecta2 = new conectorSql();
+
+                    // Update Ticket status FIRST
+                    string update = "UPDATE Recibos SET printed = 1 WHERE numrecibo =  " + numpedido;
+                    SqlDataReader updateReader = conecta2.RecordInfo(update);
+                    
+                    // Validate if idDoctor is distinct to zero, in that case we need to get the "nombre" from doctores table 
+                    if (label45.Text != "0")
+                    {
+                        string consulta2 = "Select  nombre from Doctores where cvdoctor='" + label45.Text.Trim() + "'";
+                        SqlDataReader leer2 = conecta2.RecordInfo(consulta2);
+                        while (leer2.Read())
+                        {
+                            nombrearea = leer2["nombre"].ToString();
+                        }
+                        
+                    } else
+                    {
+                        conecta2.CierraConexion();
+                    }
+
+                    MandarReporteCristal(numpedido, ayo, nombrearea, label46.Text.Trim());
+                }
+                catch (Exception E)
+                {
+
+                    MessageBox.Show("Ocurrió un error " + E.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+
+            }
+            else
+            {
+                MessageBox.Show("El ticket sólo puede ser impreso una vez, consulte al Adminitrador para más información", "Recibo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
+
+            
         }
 
 

@@ -119,6 +119,7 @@
             this.button20 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label47 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
@@ -1316,7 +1317,7 @@
             this.button15.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button15.Image = ((System.Drawing.Image)(resources.GetObject("button15.Image")));
             this.button15.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button15.Location = new System.Drawing.Point(526, 651);
+            this.button15.Location = new System.Drawing.Point(522, 651);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(97, 46);
             this.button15.TabIndex = 170;
@@ -1328,6 +1329,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.panel3.Controls.Add(this.label47);
             this.panel3.Controls.Add(this.label46);
             this.panel3.Controls.Add(this.label45);
             this.panel3.Controls.Add(this.label36);
@@ -1363,8 +1365,21 @@
             this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel3.Location = new System.Drawing.Point(0, -2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1007, 713);
+            this.panel3.Size = new System.Drawing.Size(1007, 716);
             this.panel3.TabIndex = 1;
+            // 
+            // label47
+            // 
+            this.label47.BackColor = System.Drawing.Color.Transparent;
+            this.label47.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label47.ForeColor = System.Drawing.Color.Black;
+            this.label47.Location = new System.Drawing.Point(486, 345);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(35, 23);
+            this.label47.TabIndex = 198;
+            this.label47.Text = "0";
+            this.label47.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label47.Visible = false;
             // 
             // label46
             // 
@@ -1830,7 +1845,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.ClientSize = new System.Drawing.Size(1014, 730);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1995,5 +2010,6 @@
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label47;
     }
 }

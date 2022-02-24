@@ -27,7 +27,7 @@ public class conectorSql
     {
         con = new SqlConnection();
         
-        string vserver = File.ReadAllText(@"Z:\Settings.ini");
+        string vserver = File.ReadAllText(@"C:\tmp\Settings.ini");
 
         con.ConnectionString = @vserver;
         
