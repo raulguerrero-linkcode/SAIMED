@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 public class valoresg
 {
 
+    public static string UBICACION { get; set; }
     public static string TEXTODESCRIPCION { get; set; }
     public static string DETALLE1 { get; set; }
 

@@ -3,6 +3,8 @@ using System.Data;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
+using System.Xml.Linq;
+using System.Linq;
 
 /// <summary>
 /// Descripción breve de conectorSql
@@ -26,9 +28,9 @@ public class conectorSql
     public bool Abrirconexion()
     {
         con = new SqlConnection();
-        
-        string vserver = File.ReadAllText(@"C:\tmp\Settings.ini");
 
+        XDocument xdoc = XDocument.Load("C:\\tmp\\EmailConf.xml");
+        string vserver = xdoc.Descendants("ConnStr").First().Value;
         con.ConnectionString = @vserver;
         
         try

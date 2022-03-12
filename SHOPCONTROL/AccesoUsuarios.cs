@@ -269,8 +269,8 @@ namespace SHOPCONTROL
             {
                 MessageBox.Show("Se va a actualizar la información del ADMIN");
                 // Enviar notificación al correo registrado para notificarle de los cambios hechos
-                //MailNotifications mail = new MailNotifications();
-                //mail.SendMail("");
+                MailNotifications mail = new MailNotifications();
+                mail.SendMailChangePasswordAdmin();
             }
 
 

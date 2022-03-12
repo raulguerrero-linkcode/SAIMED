@@ -132,6 +132,12 @@
     <Compile Include="ActivacionCitas.Designer.cs">
       <DependentUpon>ActivacionCitas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Analisys\PendientesPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Analisys\PendientesPago.Designer.cs">
+      <DependentUpon>PendientesPago.cs</DependentUpon>
+    </Compile>
     <Compile Include="BASE DE DATOS\CBaseD.cs" />
     <Compile Include="BASE DE DATOS\CTablas.cs" />
     <Compile Include="BaseReportCitas.Designer.cs">
@@ -566,20 +572,7 @@
     <Compile Include="importarXML.Designer.cs">
       <DependentUpon>importarXML.cs</DependentUpon>
     </Compile>
-    <Compile Include="Licenciamiento\GeneraLicencia.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Licenciamiento\GeneraLicencia.Designer.cs">
-      <DependentUpon>GeneraLicencia.cs</DependentUpon>
-    </Compile>
     <Compile Include="Clases\InternetDisponible.cs" />
-    <Compile Include="Licenciamiento\Licenciamiento.cs" />
-    <Compile Include="Licenciamiento\LicenciaRegistro.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Licenciamiento\LicenciaRegistro.Designer.cs">
-      <DependentUpon>LicenciaRegistro.cs</DependentUpon>
-    </Compile>
     <Compile Include="FacturarPedidoM.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -748,6 +741,9 @@
     <EmbeddedResource Include="ActivacionCitas.resx">
       <DependentUpon>ActivacionCitas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Analisys\PendientesPago.resx">
+      <DependentUpon>PendientesPago.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Bienvenidos.resx">
       <DependentUpon>Bienvenidos.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -814,7 +810,6 @@
     <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.FacturarPedido.resources" />
     <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.FacturarPedidoM.resources" />
     <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.GastosEmpresa.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.GeneraLicencia.resources" />
     <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.BuscarPaciente.resources" />
     <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.CamaraWeb.resources" />
     <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.CatDoctores.resources" />
@@ -832,7 +827,6 @@
     <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.ImportarExportarPrecios.resources" />
     <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.importarXML.resources" />
     <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.LeerArchivoExcel.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.LicenciaRegistro.resources" />
     <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.ListadoPagos.resources" />
     <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.PagosCreditos.resources" />
     <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.Pedidospro.resources" />
@@ -1008,12 +1002,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="importarXML.resx">
       <DependentUpon>importarXML.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Licenciamiento\GeneraLicencia.resx">
-      <DependentUpon>GeneraLicencia.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Licenciamiento\LicenciaRegistro.resx">
-      <DependentUpon>LicenciaRegistro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FacturarPedidoM.resx">
       <DependentUpon>FacturarPedidoM.cs</DependentUpon>
@@ -1289,7 +1277,6 @@
     <Content Include="bin\Debug\SAIMED.pdb" />
     <Content Include="bin\Debug\SAIMED.vshost.exe" />
     <Content Include="bluewhales 005.ico" />
-    <Content Include="EmailCnf.xml" />
     <Content Include="favicon.ico" />
     <Content Include="medicina2 %281%29.ico" />
     <Content Include="medicina2.ico" />

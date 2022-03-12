@@ -33,6 +33,7 @@ namespace SHOPCONTROL
         public string CVDOCTORAREA= "0";
         public bool EntrarUsuarioContra()
         {
+
             bool existe = false;
             valoresg.Area_Contra = "";
             valoresg.Area_Cvdoctor = "";
@@ -59,8 +60,8 @@ namespace SHOPCONTROL
              * Send Email Notification it could be used when the user tried to log with ADMIN Account
              * 
             */
-            // MailNotifications mail = new MailNotifications();
-            // mail.SendMail("Hello");
+            MailNotifications mail = new MailNotifications();
+            mail.SendMail(valoresg.USUARIOSIS, comboBox2.Text);
             return existe;
         }
 
@@ -72,6 +73,14 @@ namespace SHOPCONTROL
         }
         private void button2_Click(object sender, EventArgs e)
         {
+
+            if (comboBox2.Text.Length==0)
+            {
+                MessageBox.Show("Se debe seleccionar una clínica", "Seleccion de clínica", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBox1.Focus();
+                return;
+            }
+
             try
             {
                 string opcionserver = Registro.ReadRegSHOPCONTROL("CON", "OPCIONSERVER");
@@ -82,6 +91,8 @@ namespace SHOPCONTROL
                 //CTablas.TablaUsuario();
             Recolecta();
             valoresg.USUARIOSIS = textBox1.Text;
+            valoresg.UBICACION = comboBox2.Text;
+
             if (EvaluaUsuario())
             {
                 if (EntrarUsuarioContra())

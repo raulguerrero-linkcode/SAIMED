@@ -108,6 +108,7 @@
             this.linkLabel5 = new System.Windows.Forms.LinkLabel();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.pendientesDePagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -240,13 +241,15 @@
             this.carteraDePagosToolStripMenuItem,
             this.accesoAUsuariosToolStripMenuItem,
             this.reimpresionDeFacturaToolStripMenuItem,
-            this.registroDeGastosToolStripMenuItem});
+            this.registroDeGastosToolStripMenuItem,
+            this.pendientesDePagoToolStripMenuItem});
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
             this.toolStripDropDownButton1.Size = new System.Drawing.Size(114, 36);
             this.toolStripDropDownButton1.Text = "Administrar";
+            this.toolStripDropDownButton1.Click += new System.EventHandler(this.toolStripDropDownButton1_Click);
             // 
             // nuevoContratoToolStripMenuItem
             // 
@@ -281,21 +284,21 @@
             // notasDeRemisionToolStripMenuItem
             // 
             this.notasDeRemisionToolStripMenuItem.Name = "notasDeRemisionToolStripMenuItem";
-            this.notasDeRemisionToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.notasDeRemisionToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.notasDeRemisionToolStripMenuItem.Text = "Facturación Electronica";
             this.notasDeRemisionToolStripMenuItem.Click += new System.EventHandler(this.notasDeRemisionToolStripMenuItem_Click);
             // 
             // reciboToolStripMenuItem
             // 
             this.reciboToolStripMenuItem.Name = "reciboToolStripMenuItem";
-            this.reciboToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.reciboToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.reciboToolStripMenuItem.Text = "Nuevo Recibo";
             this.reciboToolStripMenuItem.Click += new System.EventHandler(this.reciboToolStripMenuItem_Click);
             // 
             // pagosDePedidosToolStripMenuItem
             // 
             this.pagosDePedidosToolStripMenuItem.Name = "pagosDePedidosToolStripMenuItem";
-            this.pagosDePedidosToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.pagosDePedidosToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.pagosDePedidosToolStripMenuItem.Text = "Registro de Pagos";
             this.pagosDePedidosToolStripMenuItem.Click += new System.EventHandler(this.pagosDePedidosToolStripMenuItem_Click);
             // 
@@ -304,7 +307,7 @@
             this.carteraDePagosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.registroDePagoToolStripMenuItem});
             this.carteraDePagosToolStripMenuItem.Name = "carteraDePagosToolStripMenuItem";
-            this.carteraDePagosToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.carteraDePagosToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.carteraDePagosToolStripMenuItem.Text = "Cuentas por Cobrar";
             this.carteraDePagosToolStripMenuItem.Visible = false;
             this.carteraDePagosToolStripMenuItem.Click += new System.EventHandler(this.carteraDePagosToolStripMenuItem_Click);
@@ -319,21 +322,21 @@
             // accesoAUsuariosToolStripMenuItem
             // 
             this.accesoAUsuariosToolStripMenuItem.Name = "accesoAUsuariosToolStripMenuItem";
-            this.accesoAUsuariosToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.accesoAUsuariosToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.accesoAUsuariosToolStripMenuItem.Text = "Acceso a Usuarios";
             this.accesoAUsuariosToolStripMenuItem.Click += new System.EventHandler(this.accesoAUsuariosToolStripMenuItem_Click);
             // 
             // reimpresionDeFacturaToolStripMenuItem
             // 
             this.reimpresionDeFacturaToolStripMenuItem.Name = "reimpresionDeFacturaToolStripMenuItem";
-            this.reimpresionDeFacturaToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.reimpresionDeFacturaToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.reimpresionDeFacturaToolStripMenuItem.Text = "Reimpresion de Factura";
             this.reimpresionDeFacturaToolStripMenuItem.Click += new System.EventHandler(this.reimpresionDeFacturaToolStripMenuItem_Click);
             // 
             // registroDeGastosToolStripMenuItem
             // 
             this.registroDeGastosToolStripMenuItem.Name = "registroDeGastosToolStripMenuItem";
-            this.registroDeGastosToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.registroDeGastosToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.registroDeGastosToolStripMenuItem.Text = "Registro de Gastos ";
             this.registroDeGastosToolStripMenuItem.Click += new System.EventHandler(this.registroDeGastosToolStripMenuItem_Click);
             // 
@@ -844,6 +847,13 @@
             this.label7.TabIndex = 28;
             this.label7.Text = "...";
             // 
+            // pendientesDePagoToolStripMenuItem
+            // 
+            this.pendientesDePagoToolStripMenuItem.Name = "pendientesDePagoToolStripMenuItem";
+            this.pendientesDePagoToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.pendientesDePagoToolStripMenuItem.Text = "Pendientes de Pago";
+            this.pendientesDePagoToolStripMenuItem.Click += new System.EventHandler(this.pendientesDePagoToolStripMenuItem_Click);
+            // 
             // Bienvenidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -976,6 +986,7 @@
         private System.Windows.Forms.ToolStripMenuItem clienteBloqueadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inventarioToolStripMenuItem;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ToolStripMenuItem pendientesDePagoToolStripMenuItem;
     }
 }
 

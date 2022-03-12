@@ -1756,7 +1756,7 @@ namespace SHOPCONTROL
                     //if (reply == DialogResult.No)
                     //    return;
 
-                    MandarReporteCristal(valoresg.NUMPEDIDO, valoresg.AYOPEDIDO, label42.Text, label41.Text);
+                    MandarReporteCristal(valoresg.NUMPEDIDO, valoresg.AYOPEDIDO, label42.Text, label41.Text, "");
 
                    /// if (VENTANACOBRO == true) VentanaCobroAbrir();
                    // MessageBox.Show("Se guardo correctamente", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1804,7 +1804,7 @@ namespace SHOPCONTROL
                     Guardar();
                     GuardaPAGADO();
 
-                    MandarReporteCristal(label17.Text, valoresg.AYOPEDIDO, label42.Text.Trim(), label41.Text.Trim());
+                    MandarReporteCristal(label17.Text, valoresg.AYOPEDIDO, label42.Text.Trim(), label41.Text.Trim(), "");
 
                     Limpiar();
                     LimpiarCliente();
@@ -1827,7 +1827,7 @@ namespace SHOPCONTROL
         }
 
 
-        public void MandarReporteCristal(string numrecibo, string ayorecibo, string consultorio, string turno)
+        public void MandarReporteCristal(string numrecibo, string ayorecibo, string consultorio, string turno, string mensajeReimpresion)
         {
             string NOMBREEMPRESA = "";
             string ADICIONALINFO = "";
@@ -1848,7 +1848,7 @@ namespace SHOPCONTROL
             while (leer.Read())
             {
                 NOMBREEMPRESA = leer["nombrecomercial"].ToString();
-                ADICIONALINFO = leer["infoadicional"].ToString();
+                ADICIONALINFO = leer["infoadicional"].ToString() + " " + mensajeReimpresion;
                 REGIMEN = leer["regimen"].ToString();
                 DIRECCION = "Calle : " + leer["calle"].ToString();
                 DIRECCION = DIRECCION + " Num. " + leer["numext"].ToString();
@@ -2792,6 +2792,13 @@ namespace SHOPCONTROL
 
             // Only ADMIN can reimpressed tickets
             string user = valoresg.USUARIOSIS;
+            string msgReimpressed = "";
+            // UPDATE MESSAGE in case the ticket were reimpressed before
+            if (label47.Text == "1")
+            {
+                msgReimpressed = "COPIA DE TICKET SIN VALOR";
+            }
+
             /*
              *   Update the ticket status to 1 in order to avoid reimpression
              *   Validate if the user is not ADMIN and the ticket was impressed before, then not print
@@ -2825,7 +2832,12 @@ namespace SHOPCONTROL
                         conecta2.CierraConexion();
                     }
 
-                    MandarReporteCristal(numpedido, ayo, nombrearea, label46.Text.Trim());
+                    MailNotifications mail = new MailNotifications();
+                    if (label47.Text == "1")
+                    {
+                        mail.SendMailRePrintTickets(numpedido, ayo, nombrearea);
+                    }
+                    MandarReporteCristal(numpedido, ayo, nombrearea, label46.Text.Trim(), msgReimpressed);
                 }
                 catch (Exception E)
                 {
@@ -2837,7 +2849,7 @@ namespace SHOPCONTROL
             }
             else
             {
-                MessageBox.Show("El ticket sólo puede ser impreso una vez, consulte al Adminitrador para más información", "Recibo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("El ticket sólo puede ser impreso una vez, consulte al Administrador para más información", "Recibo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             
 

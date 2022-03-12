@@ -263,7 +263,7 @@ namespace SHOPCONTROL
             int total = totalFacturado + totalCancelado;
             label18.Text = total.ToString();
 
-            Licenciamiento licencia = new Licenciamiento();
+            // Licenciamiento licencia = new Licenciamiento();
             int totalComprado = 0;
             int totalRegistrado = 0;
             string LicenciaTotal = "";
@@ -272,8 +272,8 @@ namespace SHOPCONTROL
             while (leer.Read())
             {
                 LicenciaTotal = leer["cvllave"].ToString();
-                totalComprado = totalComprado + licencia.CuantosTimbresGeneral(LicenciaTotal);
-                totalRegistrado = totalRegistrado + licencia.SaberCuantosTimbres(LicenciaTotal);
+                totalComprado = totalComprado; // + licencia.CuantosTimbresGeneral(LicenciaTotal);
+                totalRegistrado = totalRegistrado; // + licencia.SaberCuantosTimbres(LicenciaTotal);
             }
             conecta.CierraConexion();
 
@@ -295,7 +295,7 @@ namespace SHOPCONTROL
             Lv.Columns.Add("Fecha", 120).Tag = "STRING";
             Lv.Columns.Add("Total", 0).Tag = "STRING";
 
-            Licenciamiento licencia = new Licenciamiento();
+            // Licenciamiento licencia = new Licenciamiento();
 
             int acumulador = 0;
             conectorSql conecta = new conectorSql();
@@ -309,7 +309,7 @@ namespace SHOPCONTROL
                 string fechaR = leer["fechacod"].ToString();
                 string fecha = fechaR.Substring(6, 2) + "/" + fechaR.Substring(4, 2)  + "/" + fechaR.Substring(0, 4);
                 lvi.SubItems.Add(fecha);
-                int cuantos = licencia.SaberCuantosTimbres(llave);
+                int cuantos = 10; // licencia.SaberCuantosTimbres(llave);
                 lvi.SubItems.Add(cuantos.ToString());
                 Lv.Items.Add(lvi);
                 acumulador = acumulador + cuantos;
@@ -582,11 +582,11 @@ namespace SHOPCONTROL
 
         private void textBox6_KeyDown(object sender, KeyEventArgs e)
         {
-            Licenciamiento licencia = new Licenciamiento();
+            // Licenciamiento licencia = new Licenciamiento();
             if (e.KeyCode == Keys.F2 && textBox1.Text == "MASTERSIA")
             {
-                string Producir = licencia.LicenciaFinal(int.Parse(textBox5.Text));
-                textBox6.Text = Producir;
+                // string Producir = 10; //licencia.LicenciaFinal(int.Parse(textBox5.Text));
+                textBox6.Text = "";
             }
 
             if (e.KeyCode == Keys.Enter)

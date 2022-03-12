@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Globalization;
+using SHOPCONTROL.Analisys;
+
 namespace SHOPCONTROL
 {
     public partial class Bienvenidos : Form
@@ -344,6 +346,7 @@ namespace SHOPCONTROL
 
         public void PreEntradaLimpia()
         {
+            /*
             Licenciamiento prelic = new Licenciamiento();
             string Generado=prelic.PreLicenciaBillLine();
 
@@ -369,6 +372,7 @@ namespace SHOPCONTROL
                     registro.Show();
                 }
             }
+            */
            
         }
 
@@ -1079,6 +1083,18 @@ namespace SHOPCONTROL
         {
             JOSEFORMS.INVENTARIO inv = new JOSEFORMS.INVENTARIO();
             inv.Show();
+        }
+
+        private void toolStripDropDownButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pendientesDePagoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PendientesPago pagos = new PendientesPago();
+            pagos.Show();
+
         }
     }
 }

@@ -346,8 +346,8 @@ namespace SHOPCONTROL
             textBox18.Text = nombrecomercial;
             textBox19.Text = numcopias;
             textBox20.Text = infoadiciona;
-            Licenciamiento preidfactura=new Licenciamiento();
-            if (IDSerial == "") textBox5.Text=preidfactura.PreLicenciaBillLine();
+            // Licenciamiento preidfactura=new Licenciamiento();
+            // if (IDSerial == "") textBox5.Text=preidfactura.PreLicenciaBillLine();
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -916,7 +916,7 @@ namespace SHOPCONTROL
             int total = totalFacturado + totalCancelado;
             label6.Text = total.ToString();
 
-            Licenciamiento licencia = new Licenciamiento();
+            // Licenciamiento licencia = new Licenciamiento();
             int totalComprado = 0;
             int totalRegistrado = 0;
             string LicenciaTotal = "";
@@ -925,8 +925,8 @@ namespace SHOPCONTROL
             while (leer.Read())
             {
                 LicenciaTotal = leer["cvllave"].ToString();
-                totalComprado = totalComprado + licencia.CuantosTimbresGeneral(LicenciaTotal);
-                totalRegistrado = totalRegistrado + licencia.SaberCuantosTimbres(LicenciaTotal);
+                totalComprado = totalComprado; // + licencia.CuantosTimbresGeneral(LicenciaTotal);
+                totalRegistrado = totalRegistrado; // + licencia.SaberCuantosTimbres(LicenciaTotal);
             }
             conecta.CierraConexion();
 
@@ -1509,7 +1509,7 @@ namespace SHOPCONTROL
             int total = totalFacturado + totalCancelado;
             label6.Text = total.ToString();
 
-            Licenciamiento licencia = new Licenciamiento();
+            // Licenciamiento licencia = new Licenciamiento();
             int totalComprado = 0;
             int totalRegistrado = 0;
             string LicenciaTotal = "";
@@ -1518,8 +1518,8 @@ namespace SHOPCONTROL
             while (leer.Read())
             {
                 LicenciaTotal = leer["cvllave"].ToString();
-                totalComprado = totalComprado + licencia.CuantosTimbresGeneral(LicenciaTotal);
-                totalRegistrado = totalRegistrado + licencia.SaberCuantosTimbres(LicenciaTotal);
+                totalComprado = totalComprado; // + licencia.CuantosTimbresGeneral(LicenciaTotal);
+                totalRegistrado = totalRegistrado; // + licencia.SaberCuantosTimbres(LicenciaTotal);
             }
             conecta.CierraConexion();
 
