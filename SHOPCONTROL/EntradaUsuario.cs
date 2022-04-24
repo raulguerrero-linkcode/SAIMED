@@ -42,7 +42,7 @@ namespace SHOPCONTROL
             string Decoded_Password = SecurityUsr.Base64Encode(CONTRASEÑA);
 
             conectorSql conecta = new conectorSql();
-            string Query = "Select * from usuarios where cvusuario='" + USUARIO + "' and contra='" + Decoded_Password + "'";
+            string Query = "Select * from usuarios where cvusuario='" + USUARIO + "' and contra='" + CONTRASEÑA + "'";
             SqlDataReader leer = conecta.RecordInfo(Query);
             while (leer.Read())
             {

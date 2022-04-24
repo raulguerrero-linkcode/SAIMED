@@ -179,7 +179,7 @@ namespace SHOPCONTROL
             cryRpt.SetParameterValue("tcredito", tcredito.ToString());
             cryRpt.SetParameterValue("tefectivo", tefectivo.ToString());
             string NombreArchivo = @"C:\TicketCorteRecibos.pdf";
-            //cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
+            cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
             cryRpt.PrintToPrinter(1, false, 0, 0);
             cryRpt.Close();
             cryRpt.Dispose();
@@ -262,7 +262,7 @@ namespace SHOPCONTROL
                 cryRpt.SetParameterValue("tcredito", tcredito.ToString());
                 cryRpt.SetParameterValue("tefectivo", tefectivo.ToString());
                 string NombreArchivo = @"C:\TicketCorte.pdf";
-                //cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
+                cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
                 cryRpt.PrintToPrinter(1, false, 0, 0);
                 cryRpt.Close();
                 cryRpt.Dispose();

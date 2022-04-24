@@ -13,33 +13,30 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>ftp://ftp.soluciones-sia.com/Descargas/</PublishUrl>
+    <TargetFrameworkProfile />
+    <PublishUrl>C:\Prod\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateEnabled>false</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>false</MapFileExtensions>
-    <SupportUrl>ftp://ftp.soluciones-sia.com/Descargas</SupportUrl>
-    <ErrorReportUrl>http://www.soluciones-sia.com/error.aspx</ErrorReportUrl>
     <ProductName>BILL LINE</ProductName>
-    <PublisherName>SOLUCIONES SIA</PublisherName>
-    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <PublisherName>LINKCODE SERVICES</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>7</ApplicationRevision>
+    <ApplicationRevision>10</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -66,13 +63,13 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>B33BF13A3D19A1896720E33AD9BBFCA6C5FE9EED</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>E5CE775B252F36C89C5A3D2E73F49813BB5F9D57</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>BILLLINE_ClaveTemporal.pfx</ManifestKeyFile>
+    <ManifestKeyFile>SAIMED_2_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>false</GenerateManifests>
+    <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>true</SignManifests>
@@ -80,19 +77,27 @@
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>SHOPCONTROL.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge.Video">
-      <HintPath>..\..\AForge.Video.dll</HintPath>
+      <HintPath>..\..\..\..\Users\lksgme\Desktop\bin\Debug\AForge.Video.dll</HintPath>
     </Reference>
     <Reference Include="AForge.Video.DirectShow">
-      <HintPath>..\..\AForge.Video.DirectShow.dll</HintPath>
+      <HintPath>..\..\..\..\Users\lksgme\Desktop\bin\Debug\AForge.Video.DirectShow.dll</HintPath>
     </Reference>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Data.AdoDotNetInterop, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="DGMC.TimbraCFDI">
-      <HintPath>..\..\DGMC.TimbraCFDI.dll</HintPath>
+      <HintPath>..\..\..\..\Users\lksgme\Desktop\bin\Debug\DGMC.TimbraCFDI.dll</HintPath>
     </Reference>
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="itextsharp">
@@ -101,6 +106,10 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Office.Interop.Excel1">
       <HintPath>..\..\..\..\Program Files (x86)\Microsoft Visual Studio\Shared\Visual Studio Tools for Office\PIA\Office14\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel2">
+      <HintPath>..\..\..\..\Program Files (x86)\Microsoft Visual Studio\Shared\Visual Studio Tools for Office\PIA\Office15\Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
@@ -203,6 +212,9 @@
     </Compile>
     <Compile Include="HistorialClinica\CamaraWeb.Designer.cs">
       <DependentUpon>CamaraWeb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialClinica\DataSetCorte.cs">
+      <DependentUpon>DataSetCorte.xsd</DependentUpon>
     </Compile>
     <Compile Include="HistorialClinica\TicketCorteRecibos.cs">
       <DependentUpon>TicketCorteRecibos.rpt</DependentUpon>
@@ -782,67 +794,6 @@
     <EmbeddedResource Include="JOSEFORMS\INVENTARIO.resx">
       <DependentUpon>INVENTARIO.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="obj\x86\Debug\Configurar.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.AccesoUsuarios.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.ActivacionCitas.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.Bienvenidos.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.BrapidaCliente.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.BrapidaProducto.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.CambiarDiaCita.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.CambioaCliente.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.CancelaRecibo.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.CancelaRemision.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.CancelarFactura.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.CatBancos.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.CatConceptospago.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.CatFormasdepago.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.CatVendedores.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.Clientes.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.ConfiguracionBill.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.Consecutivos.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.ConvertirImagen.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.CorreoElectronico.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.CortePagosDiario.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.CPaquetes.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.Empresa.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.EntradaUsuario.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.FacElectronica.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.FacturarPedido.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.FacturarPedidoM.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.GastosEmpresa.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.BuscarPaciente.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.CamaraWeb.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.CatDoctores.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.Catservicios.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.ControlPrenatal.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.Dental.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.Editor.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.EstudioColposcopico.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.HCOftalmologia.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.HistorialPaciente.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.NotasEvolucion.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.Pacientes.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.HistorialClinica.RegistroCitas.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.ImportarExportarExistencias.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.ImportarExportarPrecios.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.importarXML.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.LeerArchivoExcel.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.ListadoPagos.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.PagosCreditos.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.Pedidospro.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.Productos.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.Properties.Resources.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.Proveedores.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.Recibos.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.RegistroConvenio.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.RegistroEstudios.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.RegistroPagos.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.ReimpresionFacturarPedido.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.ReporteGeneral.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.ReporteGeneralRecibo.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.RequisicionMaterial.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.VentaRegistroCobro.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\SHOPCONTROL.VistaDescripcion.resources" />
     <EmbeddedResource Include="PASARTURNOINDV.resx">
       <DependentUpon>PASARTURNOINDV.cs</DependentUpon>
     </EmbeddedResource>
@@ -1095,45 +1046,6 @@
       <DependentUpon>BaseReportCitas.xsd</DependentUpon>
     </None>
     <None Include="BILLLINE_ClaveTemporal.pfx" />
-    <None Include="bin\Debug\ArchivosPac\Archivotemp.pdf" />
-    <None Include="bin\Debug\arial.ttf" />
-    <None Include="bin\Debug\DDental.rpt" />
-    <None Include="bin\Debug\DEColposcopico.rpt" />
-    <None Include="bin\Debug\DocGastoind.rpt" />
-    <None Include="bin\Debug\DocRecibo.rpt" />
-    <None Include="bin\Debug\DOftalmologia.rpt" />
-    <None Include="bin\Debug\Factura.rpt" />
-    <None Include="bin\Debug\FacturaAuxiliar.rpt" />
-    <None Include="bin\Debug\Factura_a.rpt" />
-    <None Include="bin\Debug\images\banerbill.psd" />
-    <None Include="bin\Debug\images\Thumbs.db" />
-    <None Include="bin\Debug\ImpresoTicket.rpt" />
-    <None Include="bin\Debug\PedidoM.pdf" />
-    <None Include="bin\Debug\ReciboM.pdf" />
-    <None Include="bin\Debug\ReciboTicket.rpt" />
-    <None Include="bin\Debug\Remision.rpt" />
-    <None Include="bin\Debug\Remisionhb.rpt" />
-    <None Include="bin\Debug\RemisionM.pdf" />
-    <None Include="bin\Debug\ReporteConcepto.pdf" />
-    <None Include="bin\Debug\ReporteConceptoRM.pdf" />
-    <None Include="bin\Debug\ReporteFacturacion.pdf" />
-    <None Include="bin\Debug\ReporteGastos20140810.pdf" />
-    <None Include="bin\Debug\ReportePagoDiario20140805.pdf" />
-    <None Include="bin\Debug\ReportePagos20140811.pdf" />
-    <None Include="bin\Debug\ReportePagos20140812.pdf" />
-    <None Include="bin\Debug\ReportePagos20140821.pdf" />
-    <None Include="bin\Debug\ReporteReciboDetallado.pdf" />
-    <None Include="bin\Debug\ReporteReciboDetalladoRM.pdf" />
-    <None Include="bin\Debug\ReporteRecibos20140812.pdf" />
-    <None Include="bin\Debug\ReporteRecibos20140821.pdf" />
-    <None Include="bin\Debug\Reportes\ReporteAreaDiario.rpt" />
-    <None Include="bin\Debug\Reportes\ReporteDiarioCitas.pdf" />
-    <None Include="bin\Debug\SAIMED.application" />
-    <None Include="bin\Debug\SAIMED.exe.config" />
-    <None Include="bin\Debug\SAIMED.exe.manifest" />
-    <None Include="bin\Debug\SAIMED.vshost.application" />
-    <None Include="bin\Debug\SAIMED.vshost.exe.config" />
-    <None Include="bin\Debug\SAIMED.vshost.exe.manifest" />
     <None Include="HistorialClinica\DataSetDental.xsc">
       <DependentUpon>DataSetDental.xsd</DependentUpon>
     </None>
@@ -1210,17 +1122,6 @@
     <None Include="ImagenB.xss">
       <DependentUpon>ImagenB.xsd</DependentUpon>
     </None>
-    <None Include="obj\x86\Debug\BILLLINE.csproj.GenerateResource.Cache" />
-    <None Include="obj\x86\Debug\BILLLINE.csprojResolveAssemblyReference.cache" />
-    <None Include="obj\x86\Debug\build.force" />
-    <None Include="obj\x86\Debug\DesignTimeResolveAssemblyReferences.cache" />
-    <None Include="obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="obj\x86\Debug\SAIMED.application" />
-    <None Include="obj\x86\Debug\SAIMED.csproj.GenerateResource.Cache" />
-    <None Include="obj\x86\Debug\SAIMED.csprojResolveAssemblyReference.cache" />
-    <None Include="obj\x86\Debug\SAIMED.exe.manifest" />
-    <None Include="obj\x86\Debug\SHOPCONTROL.csproj.GenerateResource.Cache" />
-    <None Include="obj\x86\Debug\SHOPCONTROL.csprojResolveAssemblyReference.cache" />
     <None Include="Pagares.xsc">
       <DependentUpon>Pagares.xsd</DependentUpon>
     </None>
@@ -1258,24 +1159,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BillLine.ico" />
-    <Content Include="bin\Debug\AForge.Video.DirectShow.dll" />
-    <Content Include="bin\Debug\AForge.Video.dll" />
-    <Content Include="bin\Debug\DGMC.TimbraCFDI.dll" />
-    <Content Include="bin\Debug\FacturaViewerOutSrv.xml" />
-    <Content Include="bin\Debug\images\baner3.jpg" />
-    <Content Include="bin\Debug\images\baners.jpg" />
-    <Content Include="bin\Debug\images\Bitmap1.bmp" />
-    <Content Include="bin\Debug\images\Cepamm.jpg" />
-    <Content Include="bin\Debug\images\logobanamex.jpg" />
-    <Content Include="bin\Debug\itextsharp.dll" />
-    <Content Include="bin\Debug\Microsoft.Office.Interop.Excel.dll" />
-    <Content Include="bin\Debug\Microsoft.Office.Interop.Excel.xml" />
-    <Content Include="bin\Debug\Microsoft.Vbe.Interop.dll" />
-    <Content Include="bin\Debug\office.dll" />
-    <Content Include="bin\Debug\office.xml" />
-    <Content Include="bin\Debug\SAIMED.exe" />
-    <Content Include="bin\Debug\SAIMED.pdb" />
-    <Content Include="bin\Debug\SAIMED.vshost.exe" />
     <Content Include="bluewhales 005.ico" />
     <Content Include="favicon.ico" />
     <Content Include="medicina2 %281%29.ico" />
@@ -1295,58 +1178,6 @@
     <None Include="Resources\cross.png" />
     <None Include="Resources\16 %28Db cancel%29.ico" />
     <None Include="Resources\tile horizontally.ico" />
-    <Content Include="obj\x86\Debug\BILLLINE.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\x86\Debug\SAIMED.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\x86\Debug\SAIMED.exe" />
-    <Content Include="obj\x86\Debug\SAIMED.pdb" />
-    <Content Include="obj\x86\Debug\SAIMED.TrustInfo.xml" />
-    <Content Include="obj\x86\Debug\SHOPCONTROL.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\x86\Debug\TempPE\BaseReportCitas.Designer.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\DocConvenio1.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\DocGastoind.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\DocRecibo.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\DocReciboDiaz.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\Factura.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\FacturaAuxiliar.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\FACTURASDOC.Copia de Factura.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\FACTURASDOC.Factura.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\FACTURASDOC.FacturaAuxiliar.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\FACTURASDOC.FacturaSAPMXO1.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\FACTURASDOC.FacturaSAPMXOAuxiliar1.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\FACTURASDOC.NotificaciondePago.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DataBase.DataSetDental1.Designer.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DataBase.DataSetOftalmologia.Designer.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DataBase.DataSetPrenatal1.Designer.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DataBase.DataSetTicket.Designer.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DataBase.DEstudioColposcopico.Designer.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DataSetCorte.Designer.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DataSetDental.Designer.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DataSetDental1.Designer.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DataSetOftalmologia.Designer.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DataSetPrenatal1.Designer.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DataSetTicket.Designer.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DDental1.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DEColposcopico.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DEstudioColposcopico.Designer.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DocEstudioColposcopico.Designer.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DOftalmologia.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.DPrenatal.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.ImpresoTicket.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.TicketCorte.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\HistorialClinica.TicketCorteRecibos.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\ImagenB.Designer.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\LogEmpresa.Designer.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\Pagares.Designer.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\ReciboCarta.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\Recibos.TicketRecibo.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\ReciboTicket.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\ReciboUsuario.Designer.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\Remision.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\ReporteAreaDiario.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\rtpSinExpedido.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\Service References.TestAdMovilConnection.Reference.cs.dll" />
-    <Content Include="obj\x86\Debug\TempPE\Service References.wsAdMovil.Reference.cs.dll" />
     <None Include="Resources\iconfinder_b-41_4229851 %281%29.png" />
     <None Include="Resources\iconfinder_new10_216291.png" />
     <None Include="Resources\iconfinder_new10_216291 %282%29.png" />
@@ -1379,7 +1210,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="bin\Release\" />
     <Folder Include="HistorialClinica\DataBase\" />
     <Folder Include="Reportes\" />
   </ItemGroup>

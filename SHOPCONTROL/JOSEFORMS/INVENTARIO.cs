@@ -44,7 +44,7 @@ namespace SHOPCONTROL.JOSEFORMS
             Query = Query + " from productos ";
             Query = Query + " inner join DetallesRecibos on DetallesRecibos.cvproducto=Productos.cvproducto ";
             Query = Query + " inner join Recibos on Recibos.numrecibo=DetallesRecibos.numrecibo ";
-            Query = Query + " inner join Cat_Categorias on Cat_Categorias.idcategoria=productos.categoria ";
+            Query = Query + " inner join Cat_Categorias on Cat_Categorias.idcategoria=cast(productos.categoria as int) ";
 
             Query = Query + " where DetallesRecibos.cvproducto <>''";
             

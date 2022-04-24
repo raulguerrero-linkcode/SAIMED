@@ -306,7 +306,8 @@ namespace SHOPCONTROL
 
             conectorSql conecta = new conectorSql();
             string Query = "Select distinct(numrecibo), recibos.nombrerecibo as Nombrecliente, recibos.cvcliente ";
-            Query = Query + ",fecha,total,iva,totalgeneral,compro,ayo,estatusrecibo,colonia,emitio,entregado,tiporecibo,iddoctor,idturno,printed";
+            // Query = Query + ",fecha,total,iva,totalgeneral,compro,ayo,estatusrecibo,colonia,emitio,entregado,tiporecibo,iddoctor,idturno,printed";
+            Query = Query + ",fecha,total,iva,totalgeneral,compro,ayo,estatusrecibo,colonia,emitio,entregado,tiporecibo,iddoctor,idturno";
             Query = Query + " from recibos ";
             Query = Query + " inner join clientes on clientes.cvcliente=recibos.cvcliente";
             Query = Query + " where numrecibo<>''";
@@ -322,6 +323,7 @@ namespace SHOPCONTROL
             Query = Query + " order by recibos.numrecibo desc";
 
             SqlDataReader leer = conecta.RecordInfo(Query);
+
             while (leer.Read())
             {
 
@@ -344,9 +346,9 @@ namespace SHOPCONTROL
                 lvi.SubItems.Add(leer["iddoctor"].ToString());
                 lvi.SubItems.Add(leer["idturno"].ToString());
 
-                int printed = int.Parse(leer["printed"].ToString());
+                //int printed = int.Parse(leer["printed"].ToString());
 
-                lvi.SubItems.Add(printed.ToString());
+                // lvi.SubItems.Add(printed.ToString());
                 Lv.Items.Add(lvi);
             }
             conecta.CierraConexion();

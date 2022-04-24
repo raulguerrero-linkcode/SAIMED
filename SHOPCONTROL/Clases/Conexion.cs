@@ -3,6 +3,8 @@ using System.Data;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.IO;
+using System.Xml.Linq;
+using System.Linq;
 /// <summary>
 /// Summary description for Conexion
 /// </summary>
@@ -51,17 +53,18 @@ public class Conexion
     public void Abrirconexion()
     {
         con = new SqlConnection();
+
+        XDocument xdoc = XDocument.Load("C:\\tmp\\EmailConf.xml");
+        string vserver = xdoc.Descendants("ConnStr").First().Value;
+        con.ConnectionString = @vserver;
+
         string miValor = Registro.ReadRegSHOPCONTROL("CON", "CCliente");
         string opcionserver = Registro.ReadRegSHOPCONTROL("CON", "OPCIONSERVER");
-        if (opcionserver == "0") miValor = Registro.ReadRegSHOPCONTROL("CONCUERNAVACA", "CCliente");
-        if (opcionserver == "1") miValor = Registro.ReadRegSHOPCONTROL("CONMOLINA", "CCliente");
-        if (opcionserver == "2") miValor = Registro.ReadRegSHOPCONTROL("CONBELLASARTES", "CCliente");
-
-        CADENACONEXION = miValor;
-        if (CADENACONEXION == "")
-            con.ConnectionString = @"Data Source=TEZOYUCA-PC\MSQLAGUA;Initial Catalog=AGUA;UID=sa;PWD=sicapez123";
-        else
-            con.ConnectionString = CADENACONEXION;
+        // if (opcionserver == "0") miValor = Registro.ReadRegSHOPCONTROL("CONCUERNAVACA", "CCliente");
+        miValor = Registro.ReadRegSHOPCONTROL("CONCUERNAVACA", "CCliente");
+        //if (opcionserver == "1") miValor = Registro.ReadRegSHOPCONTROL("CONMOLINA", "CCliente");
+        //if (opcionserver == "2") miValor = Registro.ReadRegSHOPCONTROL("CONBELLASARTES", "CCliente");
+        con.ConnectionString = miValor;
 
         con.Open();
     }
