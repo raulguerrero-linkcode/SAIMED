@@ -1,0 +1,32 @@
+<Configurations>
+	<!-- <ConnStr>Data Source=10.4.79.225,1433;Initial Catalog=CEPAMM;User ID=sa;Password=SAIMED123$</ConnStr> -->
+	<!-- <ConnStr>Data Source=SERVER-PC\SQLEXPRESS;Initial Catalog=CEPAMM;User ID=sa;Password=SIA123</ConnStr> -->
+	<ConnStr>Data Source=DESKTOP-QTKMO6S\SQLEXPRESS;Initial Catalog=CEPAMMCDMX;User ID=sa;Password=Fm9fytmf7q</ConnStr>
+	<!-- Usuarios que recibirán alertas del uso del SAIMED !-->
+	<emailFrom>raul.guerrero@linkcode.com.mx</emailFrom>
+	<emailTo>raul.guerrero2703@gmail.com</emailTo>
+	
+	
+	<!-- Definir los eventos a notificar -->
+	
+	<!-- Inicio de sesion de ADMIN !-->
+	<Subject>Inicio de sesión ADMIN</Subject>
+	<Body>Se ha iniciado sesión SAIMED </Body>
+	
+	
+	<!-- Mensaje para alertar sobre cambio de contraseña del usuario ADMIN -->
+	<chgAdminSubject>Se ha modificado el password de ADMIN</chgAdminSubject>
+	<chgAdminBody>Se ha realizado un cambio de contraseña admin </chgAdminBody>
+	
+	<!-- Reimpresion de ticket -->
+	<TicketReimpressSubject>Reimpresión del ticket: </TicketReimpressSubject>
+	<TicketReimpressBody>Se ha reimpreso el ticket </TicketReimpressBody>
+	
+	
+	
+	<!-- Parámetros de cliente de correo electrónico para notificaciones -->
+	<Port>587</Port>
+	<Host>smtp.ionos.mx</Host>
+	<User>raul.guerrero@linkcode.com.mx</User>
+	<Password>Fm9fytmf7q$</Password>
+</Configurations>

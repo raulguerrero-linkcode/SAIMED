@@ -1160,6 +1160,7 @@
   <ItemGroup>
     <Content Include="BillLine.ico" />
     <Content Include="bluewhales 005.ico" />
+    <Content Include="EmailConf.xml" />
     <Content Include="favicon.ico" />
     <Content Include="medicina2 %281%29.ico" />
     <Content Include="medicina2.ico" />

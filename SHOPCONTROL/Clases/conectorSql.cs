@@ -29,7 +29,8 @@ public class conectorSql
     {
         con = new SqlConnection();
 
-        XDocument xdoc = XDocument.Load("C:\\tmp\\EmailConf.xml");
+        XDocument xdoc = XDocument.Load(AppDomain.CurrentDomain.BaseDirectory + "EmailConf.xml");
+       //XDocument xdoc = XDocument.Load("./EmailConf.xml");
         string vserver = xdoc.Descendants("ConnStr").First().Value;
         con.ConnectionString = @vserver;
         
