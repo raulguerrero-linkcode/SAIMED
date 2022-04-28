@@ -235,9 +235,6 @@
       <DependentUpon>INVENTARIO.cs</DependentUpon>
     </Compile>
     <Compile Include="MailNotifications.cs" />
-    <Compile Include="Pagares.cs">
-      <DependentUpon>Pagares.xsd</DependentUpon>
-    </Compile>
     <Compile Include="PASARTURNOINDV.cs">
       <SubType>Form</SubType>
     </Compile>
