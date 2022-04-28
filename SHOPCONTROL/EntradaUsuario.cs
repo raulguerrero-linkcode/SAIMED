@@ -25,7 +25,8 @@ namespace SHOPCONTROL
         {
             bool existe = false;
             conectorSql conecta = new conectorSql();
-            string Query = "Select * from usuarios where cvusuario='" + USUARIO + "'";
+            // string Query = "Select * from usuarios where cvusuario='" + USUARIO + "'";
+            string Query = "Select IdEmployee from EmployeeCredentials where IdEmployee=" + USUARIO + "";
             existe = conecta.ExisteRegistro(Query);
             return existe;
         }
@@ -39,20 +40,27 @@ namespace SHOPCONTROL
             valoresg.Area_Cvdoctor = "";
             valoresg.Area_usuario = "";
 
-            string Decoded_Password = SecurityUsr.Base64Encode(CONTRASEÑA);
+            // string Decoded_Password = SecurityUsr.Base64Encode(CONTRASEÑA);
 
             conectorSql conecta = new conectorSql();
-            string Query = "Select * from usuarios where cvusuario='" + USUARIO + "' and contra='" + CONTRASEÑA + "'";
+            // string Query = "Select * from usuarios where cvusuario='" + USUARIO + "' and contra='" + CONTRASEÑA + "'";
+            string Query = "SELECT IdEmployee,Name as nombre,FirstLastName,SecondLastName,Age,Email,Role,usr.contra,usr.cvdoctor FROM EmployeeCredentials ec left join Usuarios usr on ec.Role = usr.cvusuario and IdEmployee =" + USUARIO ;
             SqlDataReader leer = conecta.RecordInfo(Query);
             while (leer.Read())
             {
                 existe = true;
-                NOMBRECOMPLETO = leer["nombre"].ToString();
+                NOMBRECOMPLETO = leer["nombre"].ToString() + ' ' + leer["FirstLastName"].ToString();
                 CVDOCTORAREA= leer["cvdoctor"].ToString();
-                valoresg.Area_Contra = Decoded_Password;
+                valoresg.Area_Contra = leer["contra"].ToString();
                 valoresg.Area_Cvdoctor= leer["cvdoctor"].ToString();
                 valoresg.Area_usuario = USUARIO;
+                valoresg.USUARIOSIS = leer["Role"].ToString(); ;
+                valoresg.UBICACION = comboBox2.Text;
+                valoresg.Nombre_Completo = leer["nombre"].ToString() + ' ' + leer["FirstLastName"].ToString(); 
+                valoresg.IdEmployee = leer["IdEmployee"].ToString();
 
+                MessageBox.Show("Se autoriza el acceso a " + NOMBRECOMPLETO," Ingreso exitoso " , MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
             }
             conecta.CierraConexion();
             /*
@@ -61,7 +69,7 @@ namespace SHOPCONTROL
              * 
             */
             MailNotifications mail = new MailNotifications();
-            mail.SendMail(valoresg.USUARIOSIS, comboBox2.Text);
+            mail.SendMail(valoresg.USUARIOSIS, valoresg.UBICACION);
             return existe;
         }
 
@@ -73,33 +81,40 @@ namespace SHOPCONTROL
         }
         private void button2_Click(object sender, EventArgs e)
         {
-
-            if (comboBox2.Text.Length==0)
+            /*
+             * Validate usr on employees table 
+             *  Once validate employees the application will take the role and permissions
+             *  EX.  202070 is Raul Guerrero and his Role is ADMIN
+            */
+            
+            /*if (comboBox2.Text.Length==0)
             {
                 MessageBox.Show("Se debe seleccionar una clínica", "Seleccion de clínica", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBox1.Focus();
                 return;
             }
-
+            */
+            
             try
             {
                 string opcionserver = Registro.ReadRegSHOPCONTROL("CON", "OPCIONSERVER");
-                if (opcionserver == "0") comboBox2.Text = "CUERNAVACA";
-                if (opcionserver == "1") comboBox2.Text = "MOLINA";
-                if (opcionserver == "2") comboBox2.Text = "BELLAS ARTES";
+                opcionserver = "0";
+                comboBox2.Text = "CUERNAVACA";
+                // if (opcionserver == "0") comboBox2.Text = "CUERNAVACA";
+                // if (opcionserver == "1") comboBox2.Text = "MOLINA";
+                // if (opcionserver == "2") comboBox2.Text = "BELLAS ARTES";
 
                 //CTablas.TablaUsuario();
             Recolecta();
-            valoresg.USUARIOSIS = textBox1.Text;
-            valoresg.UBICACION = comboBox2.Text;
+            
 
-            if (EvaluaUsuario())
+                if (EvaluaUsuario())
             {
                 if (EntrarUsuarioContra())
                 {
-                    Modremision.EMITE = USUARIO;
+                    Modremision.EMITE = valoresg.USUARIOSIS;
                     Modremision.NOMBREACCEDE = NOMBRECOMPLETO;
-                    Modremision.SERVER = Registro.ReadRegSHOPCONTROL("CON", "Server");
+                    Modremision.SERVER = "CUERNAVACA"; //Registro.ReadRegSHOPCONTROL("CON", "Server");
                     Modremision.USUARIO = Registro.ReadRegSHOPCONTROL("CON", "User");
                     Modremision.CONTRASEÑA = Registro.ReadRegSHOPCONTROL("CON", "Pass");
                     Modremision.BASEDATOS = Registro.ReadRegSHOPCONTROL("CON", "BD");
@@ -107,6 +122,7 @@ namespace SHOPCONTROL
                        if (CVDOCTORAREA=="0")
                         {
                             Bienvenidos pantallainicial = new Bienvenidos();
+                            pantallainicial.Text = "Bienvenido(a) " + NOMBRECOMPLETO;
                             pantallainicial.Show();
                             this.Hide();
                         }
@@ -198,6 +214,11 @@ namespace SHOPCONTROL
 
                 Informacion();
             }
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
 
         }
     }

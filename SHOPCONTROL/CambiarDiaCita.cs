@@ -407,9 +407,11 @@ namespace SHOPCONTROL
             
 
             DateTime HoraInicia = DateTime.Parse(label17.Text);
-            DateTime FechaProg = DateTime.Parse(label15.Text);
+            // DateTime FechaProg = DateTime.Parse(label15.Text);
 
-            DateTime FechaAnterior= DateTime.Parse(label11.Text);
+            //DateTime.ParseExact(this.Text, "dd/MM/yyyy", null);
+            DateTime FechaProg = DateTime.ParseExact(label15.Text, "dd/MM/yyyy", null);
+            DateTime FechaAnterior = DateTime.ParseExact(label11.Text, "dd/MM/yyyy", null);
 
 
             string tipor = "REPROGRAMADO";
@@ -422,6 +424,7 @@ namespace SHOPCONTROL
             Query = Query + "  , primeravez='" + pvisita + "'    where progresivo='" + numticket + "' and fechacod='" + FechaProg.ToString("yyyyMMdd") + "' and cvdoctor='" + label8.Text + "'";
             conecta.Excute(Query);
             conecta.CierraConexion();
+
 
            
             Query = "Update citas set  nombre='',  cvservicio=''";
@@ -463,7 +466,17 @@ namespace SHOPCONTROL
             conecta.Excute(Query);
             conecta.CierraConexion();
 
-            MessageBox.Show("Se reprogramo la cita", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            /*
+            * 
+            * Send Email Notification it could be used when the user tried to log with ADMIN Account
+            * (string usuario, string ubicacion, string subject, string msg, int send_msg)
+           */
+
+            MailNotifications mail = new MailNotifications();
+            mail.SendMail(valoresg.IdEmployee, valoresg.UBICACION, "Se reprogramó la cita con Num de recibo " + label10.Text + " en sucursal: " + valoresg.UBICACION , "\nEl usuario: " + valoresg.Nombre_Completo  + "(" + valoresg.IdEmployee + ") \nRol de: " + valoresg.USUARIOSIS + "\nha realizado una reprogramación sobre el num de recibo " + label10.Text + "\nPaciente: " + nombre + "\nServicio: " + cvservicio +"\nFecha Anterior: " +  FechaAnterior.ToString("dd/MM/yyyy")  + "\nFecha nueva: " + FechaProg.ToString("dd/MM/yyyy") + "\nHora: " + HoraInicia.ToString("HH:mm:00"), 1);
+
+            MessageBox.Show("Se reprogramó la cita", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Dispose();
 
         }

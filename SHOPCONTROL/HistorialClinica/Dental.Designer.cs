@@ -483,11 +483,11 @@
             // 
             this.label116.AutoSize = true;
             this.label116.BackColor = System.Drawing.Color.Transparent;
-            this.label116.Font = new System.Drawing.Font("Adobe Fan Heiti Std B", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label116.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label116.ForeColor = System.Drawing.Color.Black;
             this.label116.Location = new System.Drawing.Point(7, 13);
             this.label116.Name = "label116";
-            this.label116.Size = new System.Drawing.Size(53, 19);
+            this.label116.Size = new System.Drawing.Size(60, 18);
             this.label116.TabIndex = 16;
             this.label116.Text = "CLAVE";
             // 
@@ -827,6 +827,7 @@
             this.button7.Text = "Camara";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Visible = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 

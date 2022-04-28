@@ -60,7 +60,7 @@ namespace SHOPCONTROL.Analisys
 
             Lv.BeginUpdate();
             conectorSql conecta = new conectorSql();
-            string Query = "Select * from CEPAMMCDMX.dbo.v_pedidos where nombre like'%" + nombre.Text + "%'";
+            string Query = "Select * from v_pedidos where nombre like'%" + nombre.Text + "%'";
 
             // int cantColumnas = 27;
             int contador = 1;

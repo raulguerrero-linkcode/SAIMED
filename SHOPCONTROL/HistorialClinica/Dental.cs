@@ -1058,6 +1058,9 @@ namespace SHOPCONTROL.HistorialClinica
             checkBox1.Checked = false;
         }
 
+        private void button7_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
