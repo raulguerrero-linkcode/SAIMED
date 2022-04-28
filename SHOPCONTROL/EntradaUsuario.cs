@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Xml.Linq;
+using System.Linq;
+using System.IO;
 
 namespace SHOPCONTROL
 {
@@ -20,6 +23,8 @@ namespace SHOPCONTROL
         public string USUARIO = "";
         public string CONTRASEÑA = "";
         public string NOMBRECOMPLETO = "";
+        public string LocationSrv = "";
+        public string CVDOCTORAREA = "0";
 
         public bool EvaluaUsuario()
         {
@@ -31,7 +36,7 @@ namespace SHOPCONTROL
             return existe;
         }
 
-        public string CVDOCTORAREA= "0";
+        
         public bool EntrarUsuarioContra()
         {
 
@@ -44,7 +49,7 @@ namespace SHOPCONTROL
 
             conectorSql conecta = new conectorSql();
             // string Query = "Select * from usuarios where cvusuario='" + USUARIO + "' and contra='" + CONTRASEÑA + "'";
-            string Query = "SELECT IdEmployee,Name as nombre,FirstLastName,SecondLastName,Age,Email,Role,usr.contra,usr.cvdoctor FROM EmployeeCredentials ec left join Usuarios usr on ec.Role = usr.cvusuario and IdEmployee =" + USUARIO ;
+            string Query = "SELECT IdEmployee,Name as nombre,FirstLastName,SecondLastName,Age,Email,Role,usr.contra,usr.cvdoctor FROM EmployeeCredentials ec left join Usuarios usr on ec.Role = usr.cvusuario where IdEmployee =" + USUARIO ;
             SqlDataReader leer = conecta.RecordInfo(Query);
             while (leer.Read())
             {
@@ -78,6 +83,12 @@ namespace SHOPCONTROL
         {
             USUARIO = textBox1.Text;
             CONTRASEÑA = textBox2.Text;
+            string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
+            bool cfnExist = File.Exists(cfnFile);
+            XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
+
+            //XDocument xdoc = XDocument.Load("./EmailConf.xml");
+            LocationSrv = xdoc.Descendants("CurrentLocation").First().Value;
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -86,7 +97,7 @@ namespace SHOPCONTROL
              *  Once validate employees the application will take the role and permissions
              *  EX.  202070 is Raul Guerrero and his Role is ADMIN
             */
-            
+
             /*if (comboBox2.Text.Length==0)
             {
                 MessageBox.Show("Se debe seleccionar una clínica", "Seleccion de clínica", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -95,11 +106,12 @@ namespace SHOPCONTROL
             }
             */
             
+            
             try
             {
                 string opcionserver = Registro.ReadRegSHOPCONTROL("CON", "OPCIONSERVER");
                 opcionserver = "0";
-                comboBox2.Text = "CUERNAVACA";
+                comboBox2.Text = LocationSrv;
                 // if (opcionserver == "0") comboBox2.Text = "CUERNAVACA";
                 // if (opcionserver == "1") comboBox2.Text = "MOLINA";
                 // if (opcionserver == "2") comboBox2.Text = "BELLAS ARTES";
@@ -114,7 +126,7 @@ namespace SHOPCONTROL
                 {
                     Modremision.EMITE = valoresg.USUARIOSIS;
                     Modremision.NOMBREACCEDE = NOMBRECOMPLETO;
-                    Modremision.SERVER = "CUERNAVACA"; //Registro.ReadRegSHOPCONTROL("CON", "Server");
+                    Modremision.SERVER = LocationSrv; //Registro.ReadRegSHOPCONTROL("CON", "Server");
                     Modremision.USUARIO = Registro.ReadRegSHOPCONTROL("CON", "User");
                     Modremision.CONTRASEÑA = Registro.ReadRegSHOPCONTROL("CON", "Pass");
                     Modremision.BASEDATOS = Registro.ReadRegSHOPCONTROL("CON", "BD");
