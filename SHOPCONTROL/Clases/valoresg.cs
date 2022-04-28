@@ -69,6 +69,8 @@ public class valoresg
     public static string Area_usuario { get; set; }
     public static string Nombre_Completo { get; set; }
     public static string IdEmployee { get; set; }
+
+    public static string EmpEmail { get; set; }
     public static void Bitacora(string emitio, string realizo, string modulo)
     {
         conectorSql conecta = new conectorSql();

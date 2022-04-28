@@ -35,6 +35,32 @@ namespace SHOPCONTROL
                 smtp.Send(message);
 
         }
+        public void SendMail(string usuario, string ubicacion, string email, string nombre, bool envio)
+        {
+
+            MailMessage message = new MailMessage();
+            SmtpClient smtp = new SmtpClient();
+
+            //  XDocument xdoc = XDocument.Load("//SRV-DATACENTER/tmp/EmailConf.xml");
+            string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
+            bool cfnExist = File.Exists(cfnFile);
+            XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
+            string vserver = xdoc.Descendants("ConnStr").First().Value;
+
+            message.From = new MailAddress(xdoc.Descendants("emailFrom").First().Value);
+            message.To.Add(new MailAddress(email));
+            message.Subject = "Notificación de inicio de sesión";
+            message.IsBodyHtml = true;
+            message.Body = "Hola " + nombre + "<br>" + xdoc.Descendants("Body").First().Value + "<br> userid:" + valoresg.IdEmployee + "<br> Location:" + ubicacion + "<br> Si no has sido tú, favor de reportarlo a tu supervisor inmediato!";
+            smtp.Port = Int16.Parse(xdoc.Descendants("Port").First().Value);
+            smtp.Host = xdoc.Descendants("Host").First().Value;
+            smtp.EnableSsl = true;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new NetworkCredential(xdoc.Descendants("User").First().Value, xdoc.Descendants("Password").First().Value);
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.Send(message);
+
+        }
 
         public void SendMail(string usuario, string ubicacion, string subject, string msg, int send_msg)
         {

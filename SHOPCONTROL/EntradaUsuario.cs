@@ -60,9 +60,11 @@ namespace SHOPCONTROL
                 valoresg.Area_Cvdoctor= leer["cvdoctor"].ToString();
                 valoresg.Area_usuario = USUARIO;
                 valoresg.USUARIOSIS = leer["Role"].ToString(); ;
-                valoresg.UBICACION = comboBox2.Text;
+                valoresg.UBICACION = LocationSrv;
+                valoresg.EmpEmail = leer["Email"].ToString(); ;
                 valoresg.Nombre_Completo = leer["nombre"].ToString() + ' ' + leer["FirstLastName"].ToString(); 
                 valoresg.IdEmployee = leer["IdEmployee"].ToString();
+
 
                 MessageBox.Show("Se autoriza el acceso a " + NOMBRECOMPLETO," Ingreso exitoso " , MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
@@ -74,7 +76,7 @@ namespace SHOPCONTROL
              * 
             */
             MailNotifications mail = new MailNotifications();
-            mail.SendMail(valoresg.USUARIOSIS, valoresg.UBICACION);
+            mail.SendMail(valoresg.USUARIOSIS, valoresg.UBICACION, valoresg.EmpEmail, NOMBRECOMPLETO, true);
             return existe;
         }
 
@@ -173,7 +175,8 @@ namespace SHOPCONTROL
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) textBox2.Focus();
+            //if (e.KeyCode == Keys.Enter) textBox2.Focus();
+            if (e.KeyCode == Keys.Enter) button2_Click(sender, e);
         }
 
         private void EntradaUsuario_Load(object sender, EventArgs e)
@@ -233,5 +236,7 @@ namespace SHOPCONTROL
         {
 
         }
+
+    
     }
 }
