@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -13,8 +14,13 @@ namespace SHOPCONTROL
 
                 MailMessage message = new MailMessage();
                 SmtpClient smtp = new SmtpClient();
+
+            //  XDocument xdoc = XDocument.Load("//SRV-DATACENTER/tmp/EmailConf.xml");
+                string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
+                bool cfnExist = File.Exists(cfnFile);
+                XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
+                string vserver = xdoc.Descendants("ConnStr").First().Value;
                 
-                XDocument xdoc = XDocument.Load("C:\\tmp\\EmailConf.xml");                
                 message.From = new MailAddress(xdoc.Descendants("emailFrom").First().Value);
                 message.To.Add(new MailAddress(xdoc.Descendants("emailTo").First().Value));
                 message.Subject = xdoc.Descendants("Subject").First().Value;
@@ -65,7 +71,11 @@ namespace SHOPCONTROL
 
                 MailMessage message = new MailMessage();
                 SmtpClient smtp = new SmtpClient();
-                XDocument xdoc = XDocument.Load("C:\\tmp\\EmailConf.xml");
+                string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
+                bool cfnExist = File.Exists(cfnFile);
+                XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
+                string vserver = xdoc.Descendants("ConnStr").First().Value;
+
                 message.From = new MailAddress(senderMsg);
                 message.To.Add(new MailAddress(destinationMsg));
                 message.Subject = subjectMsg;
@@ -87,7 +97,11 @@ namespace SHOPCONTROL
             MailMessage message = new MailMessage();
             SmtpClient smtp = new SmtpClient();
 
-            XDocument xdoc = XDocument.Load("C:\\tmp\\EmailConf.xml");
+            string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
+            bool cfnExist = File.Exists(cfnFile);
+            XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
+            string vserver = xdoc.Descendants("ConnStr").First().Value;
+
             message.From = new MailAddress(xdoc.Descendants("emailFrom").First().Value);
             message.To.Add(new MailAddress(xdoc.Descendants("emailTo").First().Value));
             message.Subject = xdoc.Descendants("chgAdminSubject").First().Value;
@@ -108,7 +122,11 @@ namespace SHOPCONTROL
             MailMessage message = new MailMessage();
             SmtpClient smtp = new SmtpClient();
 
-            XDocument xdoc = XDocument.Load("C:\\tmp\\EmailConf.xml");
+            string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
+            bool cfnExist = File.Exists(cfnFile);
+            XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
+            string vserver = xdoc.Descendants("ConnStr").First().Value;
+
             message.From = new MailAddress(xdoc.Descendants("emailFrom").First().Value);
             message.To.Add(new MailAddress(xdoc.Descendants("emailTo").First().Value));
             message.Subject = xdoc.Descendants("TicketReimpressSubject").First().Value + " " + ticket;

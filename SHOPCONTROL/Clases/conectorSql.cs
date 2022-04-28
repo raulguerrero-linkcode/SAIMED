@@ -28,9 +28,12 @@ public class conectorSql
     public bool Abrirconexion()
     {
         con = new SqlConnection();
+        //XDocument xdoc = XDocument.Load(filename.ToString());
+        // XDocument xdoc = XDocument.Load("//SRV-DATACENTER/tmp/EmailConf.xml");
+        string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
+        bool cfnExist = File.Exists(cfnFile);
+        XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
 
-        XDocument xdoc = XDocument.Load(AppDomain.CurrentDomain.BaseDirectory + "EmailConf.xml");
-       //XDocument xdoc = XDocument.Load("./EmailConf.xml");
         string vserver = xdoc.Descendants("ConnStr").First().Value;
         con.ConnectionString = @vserver;
         
@@ -41,6 +44,7 @@ public class conectorSql
         }
         catch (SqlException ex)
         {
+            MessageBox.Show(ex.Message);
             if (ex.Number == 53)
             {
                 con.Close();
