@@ -10,10 +10,6 @@
 
 #pragma warning disable 1591
 
-using System.IO;
-using System.Linq;
-using System.Xml.Linq;
-
 namespace SHOPCONTROL {
     
     
@@ -3054,14 +3050,8 @@ namespace SHOPCONTROL.BaseReportCitasTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
-            // this._connection = new global::System.Data.SqlClient.SqlConnection();
-            // this._connection.ConnectionString = global::SHOPCONTROL.Properties.Settings.Default.BillLineConnectionString;
-            string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
-            bool cfnExist = File.Exists(cfnFile);
-            XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
-            string vserver = xdoc.Descendants("ConnStr").First().Value;
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = @vserver;
+            this._connection.ConnectionString = global::SHOPCONTROL.Properties.Settings.Default.BillLineConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3261,14 +3251,8 @@ namespace SHOPCONTROL.BaseReportCitasTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
-            // this._connection = new global::System.Data.SqlClient.SqlConnection();
-            // this._connection.ConnectionString = global::SHOPCONTROL.Properties.Settings.Default.BillLineConnectionString;
-            string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
-            bool cfnExist = File.Exists(cfnFile);
-            XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
-            string vserver = xdoc.Descendants("ConnStr").First().Value;
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = @vserver;
+            this._connection.ConnectionString = global::SHOPCONTROL.Properties.Settings.Default.BillLineConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3506,14 +3490,8 @@ namespace SHOPCONTROL.BaseReportCitasTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
-            // this._connection = new global::System.Data.SqlClient.SqlConnection();
-            // this._connection.ConnectionString = global::SHOPCONTROL.Properties.Settings.Default.BillLineConnectionString;
-            string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
-            bool cfnExist = File.Exists(cfnFile);
-            XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
-            string vserver = xdoc.Descendants("ConnStr").First().Value;
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = @vserver;
+            this._connection.ConnectionString = global::SHOPCONTROL.Properties.Settings.Default.BillLineConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3736,14 +3714,8 @@ namespace SHOPCONTROL.BaseReportCitasTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
-            // this._connection = new global::System.Data.SqlClient.SqlConnection();
-            // this._connection.ConnectionString = global::SHOPCONTROL.Properties.Settings.Default.BillLineConnectionString;
-            string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
-            bool cfnExist = File.Exists(cfnFile);
-            XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
-            string vserver = xdoc.Descendants("ConnStr").First().Value;
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = @vserver;
+            this._connection.ConnectionString = global::SHOPCONTROL.Properties.Settings.Default.BillLineConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
