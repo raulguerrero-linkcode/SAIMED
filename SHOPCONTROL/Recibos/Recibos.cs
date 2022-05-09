@@ -306,8 +306,8 @@ namespace SHOPCONTROL
 
             conectorSql conecta = new conectorSql();
             string Query = "Select distinct(numrecibo), recibos.nombrerecibo as Nombrecliente, recibos.cvcliente ";
-            // Query = Query + ",fecha,total,iva,totalgeneral,compro,ayo,estatusrecibo,colonia,emitio,entregado,tiporecibo,iddoctor,idturno,printed";
-            Query = Query + ",fecha,total,iva,totalgeneral,compro,ayo,estatusrecibo,colonia,emitio,entregado,tiporecibo,iddoctor,idturno";
+            Query = Query + ",fecha,total,iva,totalgeneral,compro,ayo,estatusrecibo,colonia,emitio,entregado,tiporecibo,iddoctor,idturno,printed";
+            // Query = Query + ",fecha,total,iva,totalgeneral,compro,ayo,estatusrecibo,colonia,emitio,entregado,tiporecibo,iddoctor,idturno";
             Query = Query + " from recibos ";
             Query = Query + " inner join clientes on clientes.cvcliente=recibos.cvcliente";
             Query = Query + " where numrecibo<>''";
@@ -1840,7 +1840,8 @@ namespace SHOPCONTROL
 
             string RFC = "";
             ReportDocument cryRpt = new ReportDocument();
-            string CadenaReporte = Application.StartupPath + "\\Reportes\\Tickets\\ReciboTicket.rpt";
+            // string CadenaReporte = Application.StartupPath + "\\Reportes\\Tickets\\ReciboTicket.rpt";
+            string CadenaReporte = Application.StartupPath + "\\ReciboTicket.rpt";
 
 
 
@@ -1872,7 +1873,6 @@ namespace SHOPCONTROL
             cryRpt.SetDataSource(CodigoBidimensional);
 
 
-
             cryRpt.SetParameterValue("parametro1", ADICIONALINFO);
             cryRpt.SetParameterValue("regimen", REGIMEN);
             cryRpt.SetParameterValue("NombreEmpresa", NOMBREEMPRESA);
@@ -1884,6 +1884,7 @@ namespace SHOPCONTROL
             cryRpt.SetParameterValue("consultorio", consultorio);
             cryRpt.SetParameterValue("turno", turno);
 
+            
 
             string NombreArchivo = Application.StartupPath + "\\Documentos\\Recibos\\ReciboTicket_" + numrecibo.ToString() + ".pdf";
             cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
@@ -1898,8 +1899,9 @@ namespace SHOPCONTROL
         private ReciboUsuario GetData2(string query, string numrecibo)
         {
             conectorSql sql = new conectorSql();
+            
             sql.Abrirconexion();
-            string cADENACONEXION = sql.CADENACONEXION;
+            string CadenaConexion = sql.CADENACONEXION;
             sql.CierraConexion();
             string cmdText = "select  cvcliente,numrecibo,nombrerecibo,direccion,colonia, total, iva, totalgeneral";
             cmdText = ((cmdText + ",entregado, emitio,vendedor,tiporecibo,estatusrecibo,fechaentrega,fecha as fecharealizo" + ",cantidades,compro,precunitarios,pretotales,unidades,claves,notas,telefono,ncliente") + ",totalletra,tdescuento " + "from recibos ") + " where numrecibo='" + numrecibo + "'";
@@ -1908,19 +1910,25 @@ namespace SHOPCONTROL
             SqlCommand command3 = new SqlCommand("select numrecibo ,cvproducto,descripcion,cantidad,preunitario as valorunitario,precio as importe,unidad,descuento from detallesrecibos where numrecibo='" + numrecibo + "' order by progresivo asc");
             SqlDataAdapter adapter = new SqlDataAdapter();
             ReciboUsuario dataSet = new ReciboUsuario();
-            using (SqlConnection connection = new SqlConnection(cADENACONEXION))
+            using (SqlConnection connection = new SqlConnection(CadenaConexion))
             {
                 using (SqlDataAdapter adapter2 = new SqlDataAdapter())
                 {
                     command.Connection = connection;
                     adapter2.SelectCommand = command;
                     adapter2.Fill(dataSet, "DataTable3");
-                    command3.Connection = connection;
-                    adapter2.SelectCommand = command3;
-                    adapter2.Fill(dataSet, "DataTable2");
+
                     command2.Connection = connection;
                     adapter2.SelectCommand = command2;
                     adapter2.Fill(dataSet, "DataTable1");
+
+
+                    command3.Connection = connection;
+                    adapter2.SelectCommand = command3;
+                    adapter2.Fill(dataSet, "DataTable2");
+
+
+                    
                 }
             }
             return dataSet;
@@ -2775,7 +2783,7 @@ namespace SHOPCONTROL
             label53.Text = estatus;
             label36.Text = Lv.Items[index].SubItems[12].Text;
             // Label47 corresponds to IsPrinted value
-            label47.Text = Lv.Items[index].SubItems[15].Text;
+            // label47.Text = Lv.Items[index].SubItems[15].Text;
             PosicionVer = index;
         }
 

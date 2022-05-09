@@ -36,7 +36,9 @@ public class conectorSql
 
         string vserver = xdoc.Descendants("ConnStr").First().Value;
         con.ConnectionString = @vserver;
-        
+        CADENACONEXION = @vserver;
+
+
         try
         {
             con.Open();

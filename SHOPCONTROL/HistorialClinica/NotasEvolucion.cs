@@ -633,6 +633,7 @@ namespace SHOPCONTROL.HistorialClinica
             }
             conecta.CierraConexion();
 
+            /*
             Query = "Select * from usuarios where cvusuario='" + usuario + "' and  contra='" + contra + "'";
             bool existe = conecta.ExisteRegistro(Query);
             if (existe == false)
@@ -641,7 +642,7 @@ namespace SHOPCONTROL.HistorialClinica
                 return;
             }
             conecta.CierraConexion();
-
+            */
             comboBox4.Items.Clear();
             if (TIPOEXPEDIENTE == "GINECO")
             {
