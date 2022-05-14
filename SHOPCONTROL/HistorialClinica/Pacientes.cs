@@ -12,6 +12,8 @@ using AForge.Video;
 using AForge.Video.DirectShow;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
+using SHOPCONTROL.Utilerias;
+
 namespace SHOPCONTROL.HistorialClinica
 {
     public partial class Pacientes : Form
@@ -74,29 +76,29 @@ namespace SHOPCONTROL.HistorialClinica
             GENERO = comboBox5.Text;
             ESCOLARIDAD = comboBox2.Text;
             EMAIL = textBox4.Text.Trim();
-            EDAD = textBox5.Text.Trim();
+            EDAD = "0";
             ECivil = comboBox1.Text;
             NoHijos = textBox6.Text.Trim();
             OCUPACION = textBox7.Text.Trim();
             TELEFONO = textBox8.Text.Trim();
             CALLE = textBox9.Text.Trim();
-            NoCalle = ".";
+            NoCalle = "ND";
             CP = "0";
-            COLONIA = ".";
+            COLONIA = "ND";
             MUNICIPIO = textBox13.Text.Trim();
-            CIUDAD = ".";
-            ESTADO = ".";
+            CIUDAD = "ND";
+            ESTADO = "ND";
 
-            Pregunta1 = ".";
+            Pregunta1 = "ND";
             Pregunta2 = comboBox3.Text.Trim();
-            Pregunta3 = ".";
-            RecibeAvisos = ".";
+            Pregunta3 = "ND";
+            RecibeAvisos = "ND";
 
-            NoExpediente = ".";
-            SERVICIO = ".";
-            MEDICO = ".";
-            TURNO = ".";
-            OBSERVACIONES = ".";
+            NoExpediente = "ND";
+            SERVICIO = "ND";
+            MEDICO = "ND";
+            TURNO = "ND";
+            OBSERVACIONES = "ND";
             FECHA = dateTimePicker1.Value.ToString("dd/MM/yyyy");
             FCOD = dateTimePicker1.Value.ToString("yyyyMMdd");
 
@@ -105,7 +107,7 @@ namespace SHOPCONTROL.HistorialClinica
 
             CLAVE = textBox24.Text;
             CELULAR = textBox26.Text;
-            EMAIL2 = ".";
+            EMAIL2 = "ND";
 
             EXPGINECO = textBox19.Text;
             EXPDENTAL = textBox12.Text;
@@ -136,25 +138,25 @@ namespace SHOPCONTROL.HistorialClinica
             if (GENERO.Equals("")) GENERO = "MASCULINO";
 
             if (ESCOLARIDAD.Equals("")) ESCOLARIDAD = "NINGUNA";
-            if (EMAIL == "") EMAIL = ".";
-
+            if (EMAIL == "") EMAIL = "ND";
+            /*
             if (EDAD.Equals(""))
             {
                 MessageBox.Show("Ingrese la edad", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBox5.Focus();
                 return false;
             }
-
+            */
             if (ECivil == "") ECivil = "NO REGISTRADO";
 
             if (OCUPACION.Equals("")) OCUPACION = "NINGUNA";
 
             if (TELEFONO.Equals("")) TELEFONO = "S/N";
-            if (CALLE.Equals("")) CALLE = ".";
-            if (COLONIA.Equals("")) COLONIA = ".";
-            if (MUNICIPIO.Equals("")) MUNICIPIO = ".";
-            if (CIUDAD.Equals("")) CIUDAD = ".";
-            if (ESTADO.Equals("")) ESTADO = ".";
+            if (CALLE.Equals("")) CALLE = "ND";
+            if (COLONIA.Equals("")) COLONIA = "ND";
+            if (MUNICIPIO.Equals("")) MUNICIPIO = "ND";
+            if (CIUDAD.Equals("")) CIUDAD = "ND";
+            if (ESTADO.Equals("")) ESTADO = "ND";
             if (NoExpediente.Equals("")) NoExpediente = "0";
 
         
@@ -163,100 +165,133 @@ namespace SHOPCONTROL.HistorialClinica
             return true;
         }
 
-        public void Guarda()
+        public bool Guarda()
         {
-            conectorSql conecta = new conectorSql();
-            string Query = "";
-            Query = "insert into Pacientes(";
-            Query += "NOMBRE,";
-            Query += "APATERNO,";
-            Query += "AMATERNO,";
-            Query += "GENERO,";
-            Query += "ESCOLARIDAD,";
-            Query += "EMAIL,";
-            Query += "EDAD,";
-            Query += "ECivil,";
-            Query += "NoHijos,";
-            Query += "OCUPACION,";
-            Query += "TELEFONO,";
-            Query += "CALLE,";
-            Query += "NoCalle,";
-            Query += "CP,";
-            Query += "COLONIA,";
-            Query += "MUNICIPIO,";
-            Query += "CIUDAD,";
-            Query += "ESTADO,";
-            Query += "Pregunta1,";
-            Query += "Pregunta2,";
-            Query += "Pregunta3,";
-            Query += "RecibeAvisos,";
-            Query += "NoExpediente,";
-            Query += "SERVICIO,";
-            Query += "MEDICO,";
-            Query += "TURNO,";
-            Query += "OBSERVACIONES,";
-            Query += "FECHA,";
-            Query += "FCOD,";
-            Query += "LUGARNAC,";
-            Query += "FECHANAC,";
+            try
+            {
+                conectorSql conecta = new conectorSql();
+                string Query = "";
+                Query = "insert into Pacientes(";
+                Query += "NOMBRE,";
+                Query += "APATERNO,";
+                Query += "AMATERNO,";
+                Query += "GENERO,";
+                Query += "ESCOLARIDAD,";
+                Query += "EMAIL,";
+                Query += "EDAD,";
+                Query += "ECivil,";
+                Query += "NoHijos,";
+                Query += "OCUPACION,";
+                Query += "TELEFONO,";
+                Query += "CALLE,";
+                Query += "NoCalle,";
+                Query += "CP,";
+                Query += "COLONIA,";
+                Query += "MUNICIPIO,";
+                Query += "CIUDAD,";
+                Query += "ESTADO,";
+                Query += "Pregunta1,";
+                Query += "Pregunta2,";
+                Query += "Pregunta3,";
+                Query += "RecibeAvisos,";
+                Query += "NoExpediente,";
+                Query += "SERVICIO,";
+                Query += "MEDICO,";
+                Query += "TURNO,";
+                Query += "OBSERVACIONES,";
+                Query += "FECHA,";
+                Query += "FCOD,";
+                Query += "LUGARNAC,";
+                Query += "FECHANAC,";
 
-            Query += "CLAVE,";
-            Query += "EMAIL2,";
-            Query += "CELULAR,";
+                Query += "CLAVE,";
+                Query += "EMAIL2,";
+                Query += "CELULAR,";
 
-            Query += "expdental,";
-            Query += "expgineco,";
-            Query += "expoftamolgo,";
+                Query += "expdental,";
+                Query += "expgineco,";
+                Query += "expoftamolgo,";
+                Query += "curp,";
+
+                Query += "STATUS)";
+                Query += "values(";
+                Query += "'" + NOMBRE + "'";
+                Query += ",'" + APATERNO + "'";
+                Query += ",'" + AMATERNO + "'";
+                Query += ",'" + GENERO + "'";
+                Query += ",'" + ESCOLARIDAD + "'";
+                Query += ",'" + EMAIL + "'";
+                Query += ",'" + GetDifferenceInYears(DOB.Value, DateTime.Now) + "'";
+                Query += ",'" + ECivil + "'";
+                Query += ",'" + NoHijos + "'";
+                Query += ",'" + OCUPACION + "'";
+                Query += ",'" + TELEFONO + "'";
+                Query += ",'" + CALLE + "'";
+                Query += ",'" + NoCalle + "'";
+                Query += ",'" + CP + "'";
+                Query += ",'" + COLONIA + "'";
+                Query += ",'" + MUNICIPIO + "'";
+                Query += ",'" + CIUDAD + "'";
+                Query += ",'" + ESTADO + "'";
+                Query += ",'" + Pregunta1 + "'";
+                Query += ",'" + Pregunta2 + "'";
+                Query += ",'" + Pregunta3 + "'";
+                Query += ",'" + RecibeAvisos + "'";
+                Query += ",'" + NoExpediente + "'";
+                Query += ",'" + SERVICIO + "'";
+                Query += ",'" + MEDICO + "'";
+                Query += ",'" + TURNO + "'";
+                Query += ",'" + OBSERVACIONES + "'";
+                Query += ",'" + FECHA + "'";
+                Query += ",'" + FCOD + "'";
+                Query += ",'" + LUGARNAC + "'";
+                Query += ",'" + DOB.Value + "'";
+
+                Query += ",'" + CLAVE + "'";
+                Query += ",'" + EMAIL2 + "'";
+                Query += ",'" + CELULAR + "'";
+
+                Query += ",'" + EXPDENTAL + "'";
+                Query += ",'" + EXPGINECO + "'";
+                Query += ",'" + EXPOFTAM + "'";
+                Query += ",'" + curp.Text + "'";
+                Query += ",'" + STATUS + "')";
+
+                conecta.Excute(Query);
+
+                ClaseFotos.GuardarFoto(pathFoto, CLAVE);
+
+
+                MailNotifications mails = new MailNotifications();
+                mails.SendMail(EMAIL, "Se ha creado su cuenta en la sucursal " + valoresg.UBICACION + "<br>Número Id único: " + CLAVE + "<br>Nombre: " + NOMBRE + " " + APATERNO + " " + AMATERNO + "' <br>Recuerde conservar su número de cliente para futuras promociones.<br>Gracias por su preferencia", true);
+                RegistroCitas rcitas = new RegistroCitas();
+                rcitas.Show();
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Este cliente ya está dado de alta con los datos proporcionados o un error de sistema impide esta creación: " + e.Message);
+                return false;
+            }
             
-
-            Query += "STATUS)";
-            Query += "values(";
-            Query += "'" + NOMBRE + "'";
-            Query += ",'" + APATERNO + "'";
-            Query += ",'" + AMATERNO + "'";
-            Query += ",'" + GENERO + "'";
-            Query += ",'" + ESCOLARIDAD + "'";
-            Query += ",'" + EMAIL + "'";
-            Query += ",'" + EDAD + "'";
-            Query += ",'" + ECivil + "'";
-            Query += ",'" + NoHijos + "'";
-            Query += ",'" + OCUPACION + "'";
-            Query += ",'" + TELEFONO + "'";
-            Query += ",'" + CALLE + "'";
-            Query += ",'" + NoCalle + "'";
-            Query += ",'" + CP + "'";
-            Query += ",'" + COLONIA + "'";
-            Query += ",'" + MUNICIPIO + "'";
-            Query += ",'" + CIUDAD + "'";
-            Query += ",'" + ESTADO + "'";
-            Query += ",'" + Pregunta1 + "'";
-            Query += ",'" + Pregunta2 + "'";
-            Query += ",'" + Pregunta3 + "'";
-            Query += ",'" + RecibeAvisos + "'";
-            Query += ",'" + NoExpediente + "'";
-            Query += ",'" + SERVICIO + "'";
-            Query += ",'" + MEDICO + "'";
-            Query += ",'" + TURNO + "'";
-            Query += ",'" + OBSERVACIONES + "'";
-            Query += ",'" + FECHA + "'";
-            Query += ",'" + FCOD + "'";
-            Query += ",'" + LUGARNAC + "'";
-            Query += ",'" + FECHANAC + "'";
-
-            Query += ",'" + CLAVE + "'";
-            Query += ",'" + EMAIL2+ "'";
-            Query += ",'" + CELULAR+ "'";
-
-            Query += ",'" + EXPDENTAL + "'";
-            Query += ",'" + EXPGINECO + "'";
-            Query += ",'" + EXPOFTAM + "'";
-
-            Query += ",'" + STATUS + "')";
-            conecta.Excute(Query);
-
-            ClaseFotos.GuardarFoto(pathFoto, CLAVE);
-
         }
+
+
+        public int GetDifferenceInYears(DateTime startDate, DateTime endDate)
+        {
+            //Excel documentation says "COMPLETE calendar years in between dates"
+            int years = endDate.Year - startDate.Year;
+
+            if (startDate.Month == endDate.Month &&// if the start month and the end month are the same
+                endDate.Day < startDate.Day// AND the end day is less than the start day
+                || endDate.Month < startDate.Month)// OR if the end month is less than the start month
+            {
+                years--;
+            }
+
+            return years;
+        }
+
 
         public bool ExistePaciente()
         {
@@ -283,7 +318,7 @@ namespace SHOPCONTROL.HistorialClinica
                 comboBox5.Text = leer["GENERO"].ToString();
                 comboBox2.Text = leer["ESCOLARIDAD"].ToString();
                 textBox4.Text = leer["EMAIL"].ToString();
-                textBox5.Text = leer["EDAD"].ToString();
+                // textBox5.Text = leer["EDAD"].ToString();
                 comboBox1.Text = leer["ECivil"].ToString();
                 textBox6.Text = leer["NoHijos"].ToString();
                 //textBox7.Text = leer["OCUPACION"].ToString();
@@ -291,7 +326,11 @@ namespace SHOPCONTROL.HistorialClinica
       
                 comboBox3.Text= leer["Pregunta2"].ToString();
                 textBox23.Text = leer["LUGARNAC"].ToString();
-                dateTimePicker1.Text = leer["FECHA"].ToString();
+
+                String[] FECHA = leer["FECHA"].ToString().Split('/');
+                DateTime value = new DateTime(Int32.Parse(FECHA[2].ToString()), Int32.Parse(FECHA[1].ToString()), Int32.Parse(FECHA[0].ToString()));
+
+                dateTimePicker1.Text = value.ToString(); 
                 textBox24.Text = leer["CLAVE"].ToString();
                 textBox26.Text = leer["CELULAR"].ToString();
 
@@ -490,11 +529,25 @@ namespace SHOPCONTROL.HistorialClinica
 
         }
 
-        public bool ExisteInfo()
+        public bool ExisteInfo(string Usrmail )
         {
             conectorSql conecta = new conectorSql();
-            string Query = "Select * from Pacientes where clave='" + CLAVE + "'";
-            return conecta.ExisteRegistro(Query);
+            string Query = "Select * from Pacientes where email='" + Usrmail + "'";
+
+            bool result = conecta.ExisteRegistro(Query);
+
+            if (result)
+            {
+                MessageBox.Show("Este cliente ya está dado de alta con el correo indicado" );
+            }
+            else
+            {
+                result = true;
+            }
+
+
+
+            return result ;
         }
 
         public void Limpiar(Control cnt)
@@ -652,12 +705,12 @@ namespace SHOPCONTROL.HistorialClinica
             return conecta.Excute(Query);
         }
 
-        public void GuardarCliente()
+        public bool GuardarCliente()
         {
 
             conectorSql conecta = new conectorSql();
             string Query = "";
-            Query = "insert into clientes(";
+            Query = "SET IDENTITY_INSERT clientes ON  insert into clientes(";
             Query = Query + "cvcliente";
             Query = Query + ",nombre";
             Query = Query + ",telefono";
@@ -702,7 +755,9 @@ namespace SHOPCONTROL.HistorialClinica
             Query = Query + ",saldo";
             //Query = Query + ",dcredito";
             Query = Query + ",saldocredito";
-            Query = Query + ",monedero)";
+            Query = Query + ",curp";
+            Query = Query + ",monedero";
+            Query = Query + ",idcliente)";
             Query = Query + " values(";
 
             Query = Query + "'" + CLAVE+ "'";
@@ -711,8 +766,8 @@ namespace SHOPCONTROL.HistorialClinica
             Query = Query + ",'" + EMAIL+ "'";
             Query = Query + ",'" + EMAIL2+ "'";
             Query = Query + ",'" + CELULAR + "'";
-            Query = Query + ",'" + CALLE + " ," + NoCalle + " " + MUNICIPIO + " "  +ESTADO  + "'";
-            Query = Query + ",'XAXX010101000'";
+            Query = Query + ",'" + CALLE + " ," + NoCalle + " " + MUNICIPIO + " "  +ESTADO  + "',";
+            Query = Query + curp.Text=="" ? "'XAXX010101000'" : curp.Text;
             Query = Query + ",'" + CALLE + " ," + NoCalle + " " + MUNICIPIO + " " + ESTADO +"'";
             Query = Query + ",'" + NOMBRE + " " + APATERNO + " " + AMATERNO  +"'";
 
@@ -750,8 +805,18 @@ namespace SHOPCONTROL.HistorialClinica
             Query = Query + ",'0'";
             //Query = Query + ",'" + DCREDITO + "'";
             Query = Query + ",'0'";
-            Query = Query + ",'0')";
-            conecta.Excute(Query);   
+            Query = Query + ",'" + curp.Text + "'";
+            Query = Query + ",'0'," + CLAVE + ")";
+
+            if (conecta.Excute(Query))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+               
         }
 
         public void ActualizarCliente()
@@ -790,13 +855,23 @@ namespace SHOPCONTROL.HistorialClinica
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (ValidateData.IsValidEmail(textBox4.Text) == false)
+            {
+                MessageBox.Show("Correo electrónico nó valido, favor de verificar", "Error en formato de correo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             Recolecta();
             if (Validacion())
             {
-                if (!ExisteInfo())
+                if (ExisteInfo(EMAIL))
                 {
-                    GuardarCliente();
-                    Guarda();
+                    bool guardaCliente = GuardarCliente();
+                    bool guardaPaciente = Guarda();
+                    if (guardaCliente==true && guardaPaciente==true)
+                    {
+
+                    
                    // GuardarRegistroServicio();
                     actualizaConsecutivo();
                     if (textBox19.Text != "") actualizaConsecutivoExpedienteGine();
@@ -805,13 +880,17 @@ namespace SHOPCONTROL.HistorialClinica
 
                     MessageBox.Show("Se guardo correctamente la información", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     valoresg.CLAVEPAC = CLAVE;
+                    valoresg.CURP = curp.Text;
 
+                    } else
+                    {
+                        MessageBox.Show("El usuario ya existe, se procede a programar la cita", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        valoresg.CLAVEPAC = CLAVE;
+                        valoresg.CURP = curp.Text;
+                    }
                     this.Dispose();
+                    
 
-                    RegistroCitas rcitas = new RegistroCitas();
-                    rcitas.Show();
-
-                  
                 }
                 else
                 {
@@ -881,7 +960,7 @@ namespace SHOPCONTROL.HistorialClinica
                 {
                     DateTime Fechareg = DateTime.Parse(Lv2.Items[i].SubItems[4].Text);
                     Query = "Insert into DetallesPreServicio (cvpreserv,cvpaciente,cantidad,cvproducto,estatus,emitio,fecha,fechacod) values(";
-                    Query = Query + "'" + cvpreser + "','" + cvpaciente + "','" + Lv2.Items[i].SubItems[2].Text + "','" + Lv2.Items[i].SubItems[1].Text + "','" + status + "','" + valoresg.USUARIOSIS + "','" + Fechareg.ToString("dd/MM/yyyy") + "','" + Fechareg.ToString("yyyyMMdd") + "')";
+                    Query = Query + "'" + cvpreser + "','" + cvpaciente + "','" + Lv2.Items[i].SubItems[2].Text + "','" + Lv2.Items[i].SubItems[1].Text + "','" + status + "','" + valoresg.IdEmployee + "','" + Fechareg.ToString("dd/MM/yyyy") + "','" + Fechareg.ToString("yyyyMMdd") + "')";
                     conecta.Excute(Query);
                     conecta.CierraConexion();
                     entroBand = true;
@@ -933,7 +1012,7 @@ namespace SHOPCONTROL.HistorialClinica
         {
             combos.ComboDoctores(comboBox4);
             dateTimePicker2.Value = DateTime.Now;
-            textBox5.KeyPress += new KeyPressEventHandler(soloNumeros);
+            // textBox5.KeyPress += new KeyPressEventHandler(soloNumeros);
             button4_Click(sender, e);
             textBox1.Focus();
             textBox17.Visible = false;
@@ -1045,12 +1124,13 @@ namespace SHOPCONTROL.HistorialClinica
                 comboBox5.Text = leer["GENERO"].ToString();
                 comboBox2.Text = leer["ESCOLARIDAD"].ToString();
                 textBox4.Text = leer["EMAIL"].ToString();
-                textBox5.Text = leer["EDAD"].ToString();
+                // textBox5.Text = leer["EDAD"].ToString();
                 comboBox1.Text = leer["ECivil"].ToString();
                 textBox6.Text = leer["NoHijos"].ToString();
                 //textBox7.Text = leer["OCUPACION"].ToString();
                 textBox8.Text = leer["TELEFONO"].ToString();
-
+                curp.Text = leer["curp"].ToString();
+                DOB.Text = leer["FECHANAC"].ToString();
                 comboBox3.Text = leer["Pregunta2"].ToString();
                 textBox23.Text = leer["LUGARNAC"].ToString();
                 dateTimePicker1.Text = leer["FECHA"].ToString();
@@ -1401,7 +1481,7 @@ namespace SHOPCONTROL.HistorialClinica
             conectorSql conecta = new conectorSql();
             string query = "Update archivos set nombre='" + textBox15.Text.Trim() + "', fecha='" + dateTimePicker4.Value.ToString("dd/MM/yyyy") + "'";
             query = query + " , fechacod='" + dateTimePicker4.Value.ToString("yyyy/MM/dd") + "'";
-            query = query + " , emite='" + valoresg.USUARIOSIS + "'";
+            query = query + " , emite='" + valoresg.IdEmployee + "'";
             query = query + " , estatus='REGISTRADO'";
             query = query + " , extension='" + label29.Text.Trim()+ "'";
             query = query + " , HORA='" + DateTime.Now.ToString("HH:mm:00") + "'";
@@ -1517,6 +1597,16 @@ namespace SHOPCONTROL.HistorialClinica
                 timer1.Enabled = false;
                 BuscarInformacion(textBox19.Text.Trim(), textBox17.Text.Trim());
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using SHOPCONTROL.Utilerias;
+
 namespace SHOPCONTROL
 {
     public partial class Clientes : Form
@@ -631,8 +633,17 @@ namespace SHOPCONTROL
             conecta.Excute(Query);
         }
 
+
+        
         private void button1_Click(object sender, EventArgs e)
         {
+            
+            if (ValidateData.IsValidEmail(textBox4.Text)==false)
+            {
+                MessageBox.Show("Correo electrónico nó valido, favor de verificar", "Error en formato de correo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             Recolectar();
            
             if (Validacion() == true)
@@ -642,7 +653,7 @@ namespace SHOPCONTROL
                     Guardar();
                     if (BandConsecutivo == true) ActualizarConsecutivo();
 
-                    MessageBox.Show("Se guardo correctamente la información registrada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);                    
+                    MessageBox.Show("Se guardo correctamente la información registrada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Limpiar();
                    
                 }
@@ -803,6 +814,16 @@ namespace SHOPCONTROL
         private void comboBox3_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             combos.ComboFormadePago(comboBox3);
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

@@ -28,7 +28,7 @@ public class conectorSql
     public bool Abrirconexion()
     {
         con = new SqlConnection();
-        //XDocument xdoc = XDocument.Load(filename.ToString());
+        // XDocument xdoc = XDocument.Load(filename.ToString());
         // XDocument xdoc = XDocument.Load("//SRV-DATACENTER/tmp/EmailConf.xml");
         string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
         bool cfnExist = File.Exists(cfnFile);

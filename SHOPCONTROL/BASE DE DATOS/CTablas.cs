@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using System.IO;
 
-    class CTablas
+class CTablas
     {
 
         private static SqlConnection con;
@@ -18,8 +20,12 @@ using System.Windows.Forms;
         {
             con = new SqlConnection();
 
-            string vserver = Registro.ReadRegSHOPCONTROL("CON", "CCliente"); 
-            con.ConnectionString = vserver;
+            string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
+            bool cfnExist = File.Exists(cfnFile);
+            XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
+            string vserver = xdoc.Descendants("ConnStr").First().Value;
+            
+            con.ConnectionString = @vserver;
 
             con.Open();
         }

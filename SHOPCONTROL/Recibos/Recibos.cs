@@ -346,9 +346,8 @@ namespace SHOPCONTROL
                 lvi.SubItems.Add(leer["iddoctor"].ToString());
                 lvi.SubItems.Add(leer["idturno"].ToString());
 
-                //int printed = int.Parse(leer["printed"].ToString());
-
-                // lvi.SubItems.Add(printed.ToString());
+                int printed = int.Parse(leer["printed"].ToString());
+                lvi.SubItems.Add(printed.ToString());
                 Lv.Items.Add(lvi);
             }
             conecta.CierraConexion();
@@ -1872,6 +1871,7 @@ namespace SHOPCONTROL
             ReciboUsuario CodigoBidimensional = GetData2(consulta, numrecibo);
             cryRpt.SetDataSource(CodigoBidimensional);
 
+            cryRpt.SetParameterValue("Reimpressed", mensajeReimpresion);
 
             cryRpt.SetParameterValue("parametro1", ADICIONALINFO);
             cryRpt.SetParameterValue("regimen", REGIMEN);
@@ -2783,7 +2783,7 @@ namespace SHOPCONTROL
             label53.Text = estatus;
             label36.Text = Lv.Items[index].SubItems[12].Text;
             // Label47 corresponds to IsPrinted value
-            // label47.Text = Lv.Items[index].SubItems[15].Text;
+            label47.Text = Lv.Items[index].SubItems[15].Text;
             PosicionVer = index;
         }
 
@@ -2800,6 +2800,11 @@ namespace SHOPCONTROL
                 return;
             }
 
+            if (numpedido=="0")
+            {
+                MessageBox.Show("No se ha seleccionado ningún pedido", "Recibo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             // Only ADMIN can reimpressed tickets
             string user = valoresg.USUARIOSIS;
             string msgReimpressed = "";

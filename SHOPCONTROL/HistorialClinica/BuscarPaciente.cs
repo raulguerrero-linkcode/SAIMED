@@ -101,5 +101,10 @@ namespace SHOPCONTROL.HistorialClinica
             if (e.KeyCode == Keys.Enter) button1_Click(sender, e);
 
         }
+
+        private void Lv_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
