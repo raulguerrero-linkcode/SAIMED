@@ -139,7 +139,7 @@ namespace SHOPCONTROL
         {
 
             ReportDocument cryRpt = new ReportDocument();
-            string CadenaReporte2 = Application.StartupPath + "\\TicketCorteRecibos.rpt";
+            string CadenaReporte2 = "C:\\tmp\\reports\\TicketCorteRecibos.rpt";
             DataSet ds = new DataSet();
 
             string fecha1 = dateTimePicker1.Value.ToString("yyyyMMdd");
@@ -192,7 +192,7 @@ namespace SHOPCONTROL
           
                 ReportDocument cryRpt = new ReportDocument();
 
-            string CadenaReporte = Application.StartupPath + "\\TicketCorte.rpt";
+            string CadenaReporte = "C:\\tmp\\reports\\TicketCorte.rpt";
             // string CadenaReporte = @"C:\tmp\TicketCorte12.rpt";
             DataSet ds = new DataSet();
 

@@ -66,6 +66,15 @@ namespace SHOPCONTROL
 
             message.From = new MailAddress(xdoc.Descendants("emailFrom").First().Value);
             message.To.Add(new MailAddress(email));
+
+            string[] mails = xdoc.Descendants("emailTo").First().Value.Split(';');
+
+            foreach (var mail in mails)
+            {
+                message.CC.Add(new MailAddress(mail));
+            }
+
+
             message.Subject = "Creación de cuenta sistema SAIMED";
             message.IsBodyHtml = true;
             message.Body = datos;
@@ -101,6 +110,17 @@ namespace SHOPCONTROL
 
             message.From = new MailAddress(xdoc.Descendants("emailFrom").First().Value);
             message.To.Add(new MailAddress(email));
+
+            // Temp 
+            string[] mails = xdoc.Descendants("emailTo").First().Value.Split(';');
+
+            foreach (var mail in mails)
+            {
+                message.CC.Add(new MailAddress(mail));
+            }
+
+
+
             message.Subject = "Notificación de inicio de sesión";
             message.IsBodyHtml = true;
             message.Body = "Hola " + nombre + "<br>" + xdoc.Descendants("Body").First().Value + "<br> userid:" + valoresg.IdEmployee + "<br> Location:" + ubicacion + "<br> Si no has sido tú, favor de reportarlo a tu supervisor inmediato!";
@@ -132,6 +152,15 @@ namespace SHOPCONTROL
 
             message.From = new MailAddress(xdoc.Descendants("emailFrom").First().Value);
             message.To.Add(new MailAddress(email));
+
+            // Temp 
+            string[] mails = xdoc.Descendants("emailTo").First().Value.Split(';');
+
+            foreach (var mail in mails)
+            {
+                message.CC.Add(new MailAddress(mail));
+            }
+
             message.Subject = "Confirmación de cita: " + nombre;
             message.IsBodyHtml = true;
             message.Body = "Hola " + nombre + "<br>" + "Se ha registrado exitosamente su cita con número: " + cita + " <br>" + fecha + "<br>Para el área de:" + servicio + "<br>Muchas gracias por su preferencia";
@@ -197,6 +226,17 @@ namespace SHOPCONTROL
 
                 message.From = new MailAddress(senderMsg);
                 message.To.Add(new MailAddress(destinationMsg));
+
+
+                // Temp 
+                string[] mails = xdoc.Descendants("emailTo").First().Value.Split(';');
+
+                foreach (var mail in mails)
+                {
+                    message.CC.Add(new MailAddress(mail));
+                }
+
+
                 message.Subject = subjectMsg;
                 message.IsBodyHtml = true;
                 message.Body = msg;

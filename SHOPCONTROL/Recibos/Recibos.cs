@@ -1840,7 +1840,7 @@ namespace SHOPCONTROL
             string RFC = "";
             ReportDocument cryRpt = new ReportDocument();
             // string CadenaReporte = Application.StartupPath + "\\Reportes\\Tickets\\ReciboTicket.rpt";
-            string CadenaReporte = Application.StartupPath + "\\ReciboTicket.rpt";
+            string CadenaReporte = "C:\\tmp\\reports\\ReciboTicket.rpt";
 
 
 
@@ -2791,9 +2791,26 @@ namespace SHOPCONTROL
 
         private void button22_Click(object sender, EventArgs e)
         {
+
             string numpedido = label50.Text;
             string ayo = label51.Text;
             string estatuspedido = label53.Text;
+            string nombrearea = "";
+            string msgReimpressed = "";
+
+            string sqlGetRecibo = "SELECT * FROM Recibos where numrecibo = " + label50.Text + "";
+            conectorSql conectar = new conectorSql();
+            SqlDataReader leerGetRecibo = conectar.RecordInfo(sqlGetRecibo);
+            while (leerGetRecibo.Read())
+            {
+                nombrearea = leerGetRecibo["nombrerecibo"].ToString();
+                ayo = leerGetRecibo["ayo"].ToString();
+                estatuspedido = leerGetRecibo["estatusrecibo"].ToString();
+                msgReimpressed = leerGetRecibo["printed"].ToString();
+
+            }
+            conectar.CierraConexion();
+
             if (estatuspedido == "CANCELADO")
             {
                 MessageBox.Show("El pedido ya se encuentra cancelado, realize otro pedido", "Facturación", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -2807,9 +2824,9 @@ namespace SHOPCONTROL
             }
             // Only ADMIN can reimpressed tickets
             string user = valoresg.USUARIOSIS;
-            string msgReimpressed = "";
+            
             // UPDATE MESSAGE in case the ticket were reimpressed before
-            if (label47.Text == "1")
+            if (msgReimpressed == "1")
             {
                 msgReimpressed = "COPIA DE TICKET SIN VALOR";
             }
@@ -2819,11 +2836,10 @@ namespace SHOPCONTROL
              *   Validate if the user is not ADMIN and the ticket was impressed before, then not print
              *   If the ticket is 0 that means the ticket never be printed before, then go ahead and print
             */
-            if (label47.Text == "0" || user == "ADMIN")
+            if (msgReimpressed  == "0" || user == "ADMIN")
             {
                 MessageBox.Show("Se mandara a imprimir el recibo seleccionado ", "Recibo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                string nombrearea = "";
-
+                
                 try
                 {
                     conectorSql conecta2 = new conectorSql();

@@ -140,7 +140,7 @@ namespace SHOPCONTROL.HistorialClinica
                     FuenteDeVideo.Start();
                     btnIniciar.Text = "Detener";
                     cboDispositivos.Enabled = false;
-                    //gbMenu.Text = DispositivosDeVideo[cboDispositivos.SelectedIndex].Name.ToString();
+                    // gbMenu.Text = DispositivosDeVideo[cboDispositivos.SelectedIndex].Name.ToString();
                 }
                 else
                     MessageBox.Show("Error: No se encuentra dispositivo.");

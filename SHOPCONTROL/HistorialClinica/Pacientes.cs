@@ -99,11 +99,11 @@ namespace SHOPCONTROL.HistorialClinica
             MEDICO = "ND";
             TURNO = "ND";
             OBSERVACIONES = "ND";
-            FECHA = dateTimePicker1.Value.ToString("dd/MM/yyyy");
+            FECHA = dateTimePicker1.Value.ToShortDateString();
             FCOD = dateTimePicker1.Value.ToString("yyyyMMdd");
 
             LUGARNAC = textBox23.Text.Trim();
-            FECHANAC = "";
+            FECHANAC = DOB.Value.ToShortDateString();
 
             CLAVE = textBox24.Text;
             CELULAR = textBox26.Text;
@@ -245,7 +245,7 @@ namespace SHOPCONTROL.HistorialClinica
                 Query += ",'" + FECHA + "'";
                 Query += ",'" + FCOD + "'";
                 Query += ",'" + LUGARNAC + "'";
-                Query += ",'" + DOB.Value + "'";
+                Query += ",'" + DOB.Value.ToShortDateString() + "'";
 
                 Query += ",'" + CLAVE + "'";
                 Query += ",'" + EMAIL2 + "'";
@@ -261,16 +261,14 @@ namespace SHOPCONTROL.HistorialClinica
 
                 ClaseFotos.GuardarFoto(pathFoto, CLAVE);
 
-
-                MailNotifications mails = new MailNotifications();
-                mails.SendMail(EMAIL, "Se ha creado su cuenta en la sucursal " + valoresg.UBICACION + "<br>Número Id único: " + CLAVE + "<br>Nombre: " + NOMBRE + " " + APATERNO + " " + AMATERNO + "' <br>Recuerde conservar su número de cliente para futuras promociones.<br>Gracias por su preferencia", true);
                 RegistroCitas rcitas = new RegistroCitas();
                 rcitas.Show();
                 return true;
             }
             catch (Exception e)
             {
-                MessageBox.Show("Este cliente ya está dado de alta con los datos proporcionados o un error de sistema impide esta creación: " + e.Message);
+                // MessageBox.Show("Este cliente ya está dado de alta con los datos proporcionados o un error de sistema impide esta creación: " + e.Message);
+                Console.WriteLine("IOException source: {0}", e.Source);
                 return false;
             }
             
@@ -323,14 +321,17 @@ namespace SHOPCONTROL.HistorialClinica
                 textBox6.Text = leer["NoHijos"].ToString();
                 //textBox7.Text = leer["OCUPACION"].ToString();
                 textBox8.Text = leer["TELEFONO"].ToString();
-      
+                curp.Text = leer["CURP"].ToString();
                 comboBox3.Text= leer["Pregunta2"].ToString();
                 textBox23.Text = leer["LUGARNAC"].ToString();
 
-                String[] FECHA = leer["FECHA"].ToString().Split('/');
-                DateTime value = new DateTime(Int32.Parse(FECHA[2].ToString()), Int32.Parse(FECHA[1].ToString()), Int32.Parse(FECHA[0].ToString()));
+                dateTimePicker1.Value = new DateTime(DateTime.Parse(leer["FECHA"].ToString()).Year,
+                                            DateTime.Parse(leer["FECHA"].ToString()).Month,
+                                            DateTime.Parse(leer["FECHA"].ToString()).Day);
 
-                dateTimePicker1.Text = value.ToString(); 
+                DOB.Value = new DateTime(DateTime.Parse(leer["FECHANAC"].ToString()).Year,
+                                            DateTime.Parse(leer["FECHANAC"].ToString()).Month,
+                                            DateTime.Parse(leer["FECHANAC"].ToString()).Day);
                 textBox24.Text = leer["CLAVE"].ToString();
                 textBox26.Text = leer["CELULAR"].ToString();
 
@@ -707,10 +708,13 @@ namespace SHOPCONTROL.HistorialClinica
 
         public bool GuardarCliente()
         {
+            string CURPUSR = curp.Text == "" ? "'XAXX010101000'" : curp.Text;
+            string usercreated = valoresg.IdEmployee;
+            DateTime ferchacreacion = DateTime.Now;
 
             conectorSql conecta = new conectorSql();
             string Query = "";
-            Query = "SET IDENTITY_INSERT clientes ON  insert into clientes(";
+            Query = "insert into clientes(";
             Query = Query + "cvcliente";
             Query = Query + ",nombre";
             Query = Query + ",telefono";
@@ -757,7 +761,7 @@ namespace SHOPCONTROL.HistorialClinica
             Query = Query + ",saldocredito";
             Query = Query + ",curp";
             Query = Query + ",monedero";
-            Query = Query + ",idcliente)";
+            Query = Query + ",idcliente, usercreated, datecreated)";
             Query = Query + " values(";
 
             Query = Query + "'" + CLAVE+ "'";
@@ -766,9 +770,13 @@ namespace SHOPCONTROL.HistorialClinica
             Query = Query + ",'" + EMAIL+ "'";
             Query = Query + ",'" + EMAIL2+ "'";
             Query = Query + ",'" + CELULAR + "'";
-            Query = Query + ",'" + CALLE + " ," + NoCalle + " " + MUNICIPIO + " "  +ESTADO  + "',";
-            Query = Query + curp.Text=="" ? "'XAXX010101000'" : curp.Text;
+            
             Query = Query + ",'" + CALLE + " ," + NoCalle + " " + MUNICIPIO + " " + ESTADO +"'";
+
+            Query = Query + ",'" + CURPUSR + "'";
+
+            Query = Query + ",'" + CALLE + " ," + NoCalle + " " + MUNICIPIO + " "  +ESTADO  + "'";
+
             Query = Query + ",'" + NOMBRE + " " + APATERNO + " " + AMATERNO  +"'";
 
             Query = Query + ",'" + CALLE + "'";
@@ -806,16 +814,19 @@ namespace SHOPCONTROL.HistorialClinica
             //Query = Query + ",'" + DCREDITO + "'";
             Query = Query + ",'0'";
             Query = Query + ",'" + curp.Text + "'";
-            Query = Query + ",'0'," + CLAVE + ")";
+            Query = Query + ",'0'," + CLAVE + "," + usercreated + ",'" + ferchacreacion + "')";
 
-            if (conecta.Excute(Query))
+            try
             {
+                conecta.Excute(Query);
                 return true;
             }
-            else
+            catch (Exception e)
             {
+                Console.WriteLine("IOException source: {0}", e.Source);
                 return false;
             }
+
                
         }
 
@@ -871,9 +882,10 @@ namespace SHOPCONTROL.HistorialClinica
                     if (guardaCliente==true && guardaPaciente==true)
                     {
 
-                    
-                   // GuardarRegistroServicio();
-                    actualizaConsecutivo();
+                        MailNotifications mails = new MailNotifications();
+                        mails.SendMail(EMAIL, "Se ha creado su cuenta en la sucursal " + valoresg.UBICACION + "<br>Número Id único: " + CLAVE + "<br>Nombre: " + NOMBRE + " " + APATERNO + " " + AMATERNO + "' <br>Recuerde conservar su número de cliente para futuras promociones.<br>Gracias por su preferencia", true);
+                        // GuardarRegistroServicio();
+                        actualizaConsecutivo();
                     if (textBox19.Text != "") actualizaConsecutivoExpedienteGine();
                     if (textBox12.Text != "") actualizaConsecutivoExpedienteDental();
                     if (textBox14.Text != "") actualizaConsecutivoExpedienteOftamo();
@@ -1075,10 +1087,10 @@ namespace SHOPCONTROL.HistorialClinica
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if (textBox19.Text == "")
+            if (textBox17.Text == "" && textBox1.Text == "")
             {
                 MessageBox.Show("Ingresa el número de paciente primero");
-                textBox19.Focus();
+                textBox17.Focus();
             }
             else
             {

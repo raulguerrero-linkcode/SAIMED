@@ -862,7 +862,7 @@ namespace SHOPCONTROL.HistorialClinica
              {
                  ReportDocument cryRpt = new ReportDocument();
 
-                 string CadenaReporte = Application.StartupPath + "\\DDental.rpt";
+                 string CadenaReporte = "C:\\tmp\\reports\\DDental.rpt";
 
                  DataSet ds = new DataSet();
 

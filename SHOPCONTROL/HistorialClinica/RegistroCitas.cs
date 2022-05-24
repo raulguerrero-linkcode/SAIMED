@@ -1571,7 +1571,7 @@ namespace SHOPCONTROL.HistorialClinica
             {
                 ReportDocument cryRpt = new ReportDocument();
 
-                string CadenaReporte = Application.StartupPath + "\\ImpresoTicket.rpt";
+                string CadenaReporte = "C:\\tmp\\reports\\ImpresoTicket.rpt";
                 string cvdoctor = comboBox1.SelectedValue.ToString();
                 string cvservicio = "0";
                 string numexpediente="";
@@ -2030,7 +2030,7 @@ namespace SHOPCONTROL.HistorialClinica
         {
             ReportDocument cryRpt = new ReportDocument();
 
-            string CadenaReporte = Application.StartupPath + "\\Reportes\\ReporteAreaDiario.rpt";
+            string CadenaReporte = "C:\\tmp\\reports\\ReporteAreaDiario.rpt";
 
             DataSet ds = new DataSet();
             string fechacod = dateTimePicker1.Value.ToString("yyyyMMdd");
@@ -2062,7 +2062,7 @@ namespace SHOPCONTROL.HistorialClinica
             cryRpt.Load(CadenaReporte);
             cryRpt.SetDataSource(ds);
 
-            string NombreArchivo =Application.StartupPath+ "\\Reportes\\ReporteDiarioCitas.pdf"; ;
+            string NombreArchivo =Application.StartupPath+ "\\Reportes\\ReporteDiarioCitas.pdf"; 
             cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
             //cryRpt.PrintToPrinter(1, false, 0, 0);
             cryRpt.Close();
