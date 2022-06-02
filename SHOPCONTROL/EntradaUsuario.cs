@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Xml.Linq;
+using System.Linq;
+using System.IO;
 
 namespace SHOPCONTROL
 {
@@ -20,6 +23,8 @@ namespace SHOPCONTROL
         public string USUARIO = "";
         public string CONTRASEÑA = "";
         public string NOMBRECOMPLETO = "";
+        public string LocationSrv = "";
+        public string CVDOCTORAREA = "0";
 
         public bool EvaluaUsuario()
         {
@@ -31,53 +36,69 @@ namespace SHOPCONTROL
             return existe;
         }
 
-        public string CVDOCTORAREA= "0";
+        
         public bool EntrarUsuarioContra()
         {
+           
+                bool existe = false;
+                valoresg.Area_Contra = "";
+                valoresg.Area_Cvdoctor = "";
+                valoresg.Area_usuario = "";
 
-            bool existe = false;
-            valoresg.Area_Contra = "";
-            valoresg.Area_Cvdoctor = "";
-            valoresg.Area_usuario = "";
+                // string Decoded_Password = SecurityUsr.Base64Encode(CONTRASEÑA);
 
-            // string Decoded_Password = SecurityUsr.Base64Encode(CONTRASEÑA);
+                conectorSql conecta = new conectorSql();
+                // string Query = "Select * from usuarios where cvusuario='" + USUARIO + "' and contra='" + CONTRASEÑA + "'";
+                string Query = "SELECT IdEmployee,Name as nombre,FirstLastName,SecondLastName,Age,Email,Role,usr.contra,usr.cvdoctor FROM EmployeeCredentials ec left join Usuarios usr on ec.Role = usr.cvusuario where IdEmployee =" + USUARIO;
+                SqlDataReader leer = conecta.RecordInfo(Query);
+                while (leer.Read())
+                {
+                    existe = true;
+                    NOMBRECOMPLETO = leer["nombre"].ToString() + ' ' + leer["FirstLastName"].ToString();
+                    CVDOCTORAREA = leer["cvdoctor"].ToString();
+                    valoresg.Area_Contra = leer["contra"].ToString();
+                    valoresg.Area_Cvdoctor = leer["cvdoctor"].ToString();
+                    valoresg.Area_usuario = USUARIO;
+                    valoresg.USUARIOSIS = leer["Role"].ToString(); ;
+                    valoresg.UBICACION = LocationSrv;
+                    valoresg.EmpEmail = leer["Email"].ToString(); ;
+                    valoresg.Nombre_Completo = leer["nombre"].ToString() + ' ' + leer["FirstLastName"].ToString();
+                    valoresg.IdEmployee = leer["IdEmployee"].ToString();
 
-            conectorSql conecta = new conectorSql();
-            // string Query = "Select * from usuarios where cvusuario='" + USUARIO + "' and contra='" + CONTRASEÑA + "'";
-            string Query = "SELECT IdEmployee,Name as nombre,FirstLastName,SecondLastName,Age,Email,Role,usr.contra,usr.cvdoctor FROM EmployeeCredentials ec left join Usuarios usr on ec.Role = usr.cvusuario and IdEmployee =" + USUARIO ;
-            SqlDataReader leer = conecta.RecordInfo(Query);
-            while (leer.Read())
-            {
-                existe = true;
-                NOMBRECOMPLETO = leer["nombre"].ToString() + ' ' + leer["FirstLastName"].ToString();
-                CVDOCTORAREA= leer["cvdoctor"].ToString();
-                valoresg.Area_Contra = leer["contra"].ToString();
-                valoresg.Area_Cvdoctor= leer["cvdoctor"].ToString();
-                valoresg.Area_usuario = USUARIO;
-                valoresg.USUARIOSIS = leer["Role"].ToString(); ;
-                valoresg.UBICACION = comboBox2.Text;
-                valoresg.Nombre_Completo = leer["nombre"].ToString() + ' ' + leer["FirstLastName"].ToString(); 
-                valoresg.IdEmployee = leer["IdEmployee"].ToString();
 
-                MessageBox.Show("Se autoriza el acceso a " + NOMBRECOMPLETO," Ingreso exitoso " , MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
-            }
-            conecta.CierraConexion();
-            /*
-             * 
-             * Send Email Notification it could be used when the user tried to log with ADMIN Account
-             * 
-            */
-            MailNotifications mail = new MailNotifications();
-            mail.SendMail(valoresg.USUARIOSIS, valoresg.UBICACION);
+                    MessageBox.Show("Se autoriza el acceso a " + NOMBRECOMPLETO, " Ingreso exitoso ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                }
+                conecta.CierraConexion();
+                try
+                {
+                    /*
+                    * 
+                    * Send Email Notification it could be used when the user tried to log with ADMIN Account
+                    * 
+                   */
+                    MailNotifications mail = new MailNotifications();
+                    mail.SendMail("Rol: " + valoresg.USUARIOSIS + " usuario:" + valoresg.IdEmployee, valoresg.UBICACION, valoresg.EmpEmail, NOMBRECOMPLETO, true);
+                } catch (Exception E)
+                {
+                    MessageBox.Show("Error al enviar el correo de confirmación, revise su conexión a internet");
+                }
             return existe;
         }
-
+            
+        
 
         public void Recolecta()
         {
             USUARIO = textBox1.Text;
             CONTRASEÑA = textBox2.Text;
+            string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
+            bool cfnExist = File.Exists(cfnFile);
+            XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
+
+            //XDocument xdoc = XDocument.Load("./EmailConf.xml");
+            LocationSrv = xdoc.Descendants("CurrentLocation").First().Value;
+            
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -86,7 +107,7 @@ namespace SHOPCONTROL
              *  Once validate employees the application will take the role and permissions
              *  EX.  202070 is Raul Guerrero and his Role is ADMIN
             */
-            
+
             /*if (comboBox2.Text.Length==0)
             {
                 MessageBox.Show("Se debe seleccionar una clínica", "Seleccion de clínica", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -95,11 +116,12 @@ namespace SHOPCONTROL
             }
             */
             
+            
             try
             {
                 string opcionserver = Registro.ReadRegSHOPCONTROL("CON", "OPCIONSERVER");
                 opcionserver = "0";
-                comboBox2.Text = "CUERNAVACA";
+                comboBox2.Text = LocationSrv;
                 // if (opcionserver == "0") comboBox2.Text = "CUERNAVACA";
                 // if (opcionserver == "1") comboBox2.Text = "MOLINA";
                 // if (opcionserver == "2") comboBox2.Text = "BELLAS ARTES";
@@ -114,7 +136,7 @@ namespace SHOPCONTROL
                 {
                     Modremision.EMITE = valoresg.USUARIOSIS;
                     Modremision.NOMBREACCEDE = NOMBRECOMPLETO;
-                    Modremision.SERVER = "CUERNAVACA"; //Registro.ReadRegSHOPCONTROL("CON", "Server");
+                    Modremision.SERVER = LocationSrv; //Registro.ReadRegSHOPCONTROL("CON", "Server");
                     Modremision.USUARIO = Registro.ReadRegSHOPCONTROL("CON", "User");
                     Modremision.CONTRASEÑA = Registro.ReadRegSHOPCONTROL("CON", "Pass");
                     Modremision.BASEDATOS = Registro.ReadRegSHOPCONTROL("CON", "BD");
@@ -146,10 +168,10 @@ namespace SHOPCONTROL
                 textBox1.Focus();
             }
             }
-            catch (Exception)
+            catch (Exception E)
             {
-                CTablas.TablaUsuario();
-                MessageBox.Show("vuelva a intenta ingresar con ADMIN", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // CTablas.TablaUsuario();
+                MessageBox.Show("Se produjo un error de login " + E.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }
@@ -161,7 +183,8 @@ namespace SHOPCONTROL
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) textBox2.Focus();
+            //if (e.KeyCode == Keys.Enter) textBox2.Focus();
+            if (e.KeyCode == Keys.Enter) button2_Click(sender, e);
         }
 
         private void EntradaUsuario_Load(object sender, EventArgs e)
@@ -221,5 +244,7 @@ namespace SHOPCONTROL
         {
 
         }
+
+    
     }
 }

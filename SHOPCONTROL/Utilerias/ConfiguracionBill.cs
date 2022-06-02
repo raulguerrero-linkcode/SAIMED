@@ -384,9 +384,9 @@ namespace SHOPCONTROL
             {
                 MessageBox.Show("No tiene conexion a internet verifique para realizar esta operación", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            EnviarCorreo();
+            // EnviarCorreo();
         }
-
+        /*
         public void EnviarCorreo()
         {
             string Cadena = "Solicitud de licencia \n\n\n";
@@ -422,7 +422,7 @@ namespace SHOPCONTROL
             MessageBox.Show("Se envio correctamente la información solcitada, gracias.\nEnvie la Transacción o Voucher de pago a ventas@soluciones-sia.com", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
-
+        */
         private void button5_Click(object sender, EventArgs e)
         {
             if (textBox6.Text=="")
@@ -482,7 +482,7 @@ namespace SHOPCONTROL
 
             MailMessage objEmail = new MailMessage();
             objEmail.From = new MailAddress("ventas@soluciones-sia.com", "Liberacion de Licencia por Timbrado");
-            objEmail.ReplyTo = new MailAddress("ventas@soluciones-sia.com");
+            // objEmail.ReplyTo = new MailAddress("ventas@soluciones-sia.com");
             //Destinatario
             objEmail.To.Add("ventas@soluciones-sia.com");
 

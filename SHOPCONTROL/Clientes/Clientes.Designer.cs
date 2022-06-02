@@ -907,6 +907,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(476, 22);
             this.textBox4.TabIndex = 61;
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // label5
             // 
@@ -1225,6 +1226,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(204, 25);
             this.textBox1.TabIndex = 0;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // label2
@@ -1387,6 +1389,7 @@
             this.Lv.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lv.FullRowSelect = true;
             this.Lv.GridLines = true;
+            this.Lv.HideSelection = false;
             this.Lv.Location = new System.Drawing.Point(6, 3);
             this.Lv.Name = "Lv";
             this.Lv.Size = new System.Drawing.Size(1002, 538);

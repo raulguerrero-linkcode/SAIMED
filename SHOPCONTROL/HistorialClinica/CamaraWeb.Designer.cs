@@ -49,6 +49,7 @@
             // 
             // pbFotoUser
             // 
+            this.pbFotoUser.Image = global::SHOPCONTROL.Properties.Resources.angulo;
             this.pbFotoUser.Location = new System.Drawing.Point(51, 86);
             this.pbFotoUser.Name = "pbFotoUser";
             this.pbFotoUser.Size = new System.Drawing.Size(367, 338);

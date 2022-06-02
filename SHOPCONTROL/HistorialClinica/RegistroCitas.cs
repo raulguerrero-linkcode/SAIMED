@@ -136,7 +136,7 @@ namespace SHOPCONTROL.HistorialClinica
                         CadHora = "";
                         for (int i = 0; i < cadena.Length; i++)
                         {
-                            if (cadena.Substring(i, 1) == ".") break;
+                            if (cadena.Substring(i, 1) == "ND") break;
                             CadHora = CadHora + cadena.Substring(i, 1);
                         }
 
@@ -209,7 +209,7 @@ namespace SHOPCONTROL.HistorialClinica
                         CadHora = "";
                         for (int i = 0; i < cadena.Length; i++)
                         {
-                            if (cadena.Substring(i, 1) == ".") break;
+                            if (cadena.Substring(i, 1) == "ND") break;
                             CadHora = CadHora + cadena.Substring(i, 1);
                         }
 
@@ -283,7 +283,7 @@ namespace SHOPCONTROL.HistorialClinica
                         CadHora = "";
                         for (int i = 0; i < cadena.Length; i++)
                         {
-                            if (cadena.Substring(i, 1) == ".") break;
+                            if (cadena.Substring(i, 1) == "ND") break;
                             CadHora = CadHora + cadena.Substring(i, 1);
                         }
 
@@ -856,6 +856,7 @@ namespace SHOPCONTROL.HistorialClinica
             Query = Query + ",saldo";
             //Query = Query + ",dcredito";
             Query = Query + ",saldocredito";
+            Query = Query + ",idcliente";
             Query = Query + ",curp";
             Query = Query + ",monedero)";
             Query = Query + " values(";
@@ -905,9 +906,11 @@ namespace SHOPCONTROL.HistorialClinica
             Query = Query + ",'0'";
             //Query = Query + ",'" + DCREDITO + "'";
             Query = Query + ",'0'";
-            Query = Query + ",'"  + CURP + "'";
+            Query = Query + ",'"  + CLAVE + "'," + CURP + "'";
             Query = Query + ",'0')";
             conecta.Excute(Query);
+
+
         }
 
 
@@ -931,8 +934,8 @@ namespace SHOPCONTROL.HistorialClinica
 
             CURP = textBox14.Text.Trim();
             NOMBRE = textBox1.Text.Trim();
-            APATERNO = ".";
-            AMATERNO = ".";
+            APATERNO = "ND";
+            AMATERNO = "ND";
             GENERO = "FEMENINO";
             ESCOLARIDAD = "";
             EMAIL = "";
@@ -942,32 +945,32 @@ namespace SHOPCONTROL.HistorialClinica
             OCUPACION = "";
             TELEFONO = textBox5.Text.Trim();
             CALLE = "";
-            NoCalle = ".";
+            NoCalle = "ND";
             CP = "0";
-            COLONIA = ".";
-            MUNICIPIO = ".";
-            CIUDAD = ".";
-            ESTADO = ".";
+            COLONIA = "ND";
+            MUNICIPIO = "ND";
+            CIUDAD = "ND";
+            ESTADO = "ND";
 
-            Pregunta1 = ".";
-            Pregunta2 = ".";
-            Pregunta3 = ".";
-            RecibeAvisos = ".";
+            Pregunta1 = "ND";
+            Pregunta2 = "ND";
+            Pregunta3 = "ND";
+            RecibeAvisos = "ND";
 
             NoExpediente = "";
-            SERVICIO = ".";
-            MEDICO = ".";
-            TURNO = ".";
-            OBSERVACIONES = ".";
+            SERVICIO = "ND";
+            MEDICO = "ND";
+            TURNO = "ND";
+            OBSERVACIONES = "ND";
             FECHA = dateTimePicker1.Value.ToString("dd/MM/yyyy");
             FCOD = dateTimePicker1.Value.ToString("yyyyMMdd");
 
-            LUGARNAC = ".";
+            LUGARNAC = "ND";
             FECHANAC = "";
 
             CLAVE = textBox6.Text;
             CELULAR = textBox5.Text;
-            EMAIL2 = ".";
+            EMAIL2 = "ND";
             EXPGINECO = "";
             EXPDENTAL = "";
             EXPOFTAM = "";
@@ -1147,9 +1150,28 @@ namespace SHOPCONTROL.HistorialClinica
             conecta.CierraConexion();
             return clave;
         }
+
+
+        public string existemail(string clave)
+        {
+            string nombrereg = clave;
+            bool existeNom = false;
+            string email = "";
+            conectorSql conecta = new conectorSql();
+            string consulta = "select * from pacientes where clave='" + clave + "'";
+            SqlDataReader leer = conecta.RecordInfo(consulta);
+            while (leer.Read())
+            {
+                existeNom = true;
+                email = leer["email"].ToString();
+            }
+            conecta.CierraConexion();
+            return email;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox6.Text.Trim() == "")
+             if (textBox6.Text.Trim() == "")
             {
                 timer1.Enabled = true;
                 textBox6.Enabled = false;
@@ -1248,6 +1270,7 @@ namespace SHOPCONTROL.HistorialClinica
             string ValArea = label40.Text.Trim();
             string TURNOTICKET = ValArea + "-" + numticket;
 
+            valoresg.SERVICIONOMBRE = cvservicio;
 
             string Query = "Update citas set  nombre='" + nombre + "',  cvservicio='" + cvservicio + "'";
             Query = Query + "  , observa='" + observa + "' , emite='" + valoresg.USUARIOSIS + "', Estatus='SIN PAGAR', tipo='" + tipor + "', NombreServicio='"+ nombreservicio + "'";
@@ -1288,8 +1311,13 @@ namespace SHOPCONTROL.HistorialClinica
                     string consulta = "Update citas set horainicia='" + TiempoInicia.ToString("HH:mm:00") + "', hmininicia='" + Hmininicia.ToString() + "', ttiempo='" + minutosconsulta.ToString() + "' where fechacod='" + dateTimePicker1.Value.ToString("yyyyMMdd") + "' and cvdoctor='" + comboBox1.SelectedValue.ToString() + "' and progresivo='" + progresivo+ "'";
                     conecta2.Excute(consulta);
                     conecta2.CierraConexion();
+
+                    valoresg.FECHACITA = " Con fecha " + dateTimePicker1.Value.ToString("yyyy-MM-dd") + " a las " + TiempoInicia.ToString("HH:mm:00");
+
                 }
                 conecta.CierraConexion();
+
+                
 
             }
 
@@ -1300,6 +1328,15 @@ namespace SHOPCONTROL.HistorialClinica
             {
                 mandarReporteCristal();
             }
+
+            /*
+             * Enviar correo al cliente de su cita
+             * 
+             * */
+            MailNotifications mails = new MailNotifications();
+            //(string cita, string email, string nombre, string fecha , string servicio)
+
+            mails.SendMail(numticket + " su id único:" + cvpaciente, existemail(cvpaciente), nombre, "Con fecha: " + HoraInicia.ToString(), sel_nomArea, true);
 
             MessageBox.Show("Se registro correctamente la cita ", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -1322,7 +1359,7 @@ namespace SHOPCONTROL.HistorialClinica
             SqlDataReader leer = conecta.RecordInfo(Query);
             while (leer.Read())
             {
-                IDPACIENTEREGM = int.Parse(leer["idpaciente"].ToString());
+                IDPACIENTEREGM = int.Parse(leer["CLAVE"].ToString());
                 existepacienteREGM = true;
             }
             conecta.CierraConexion();
@@ -1534,7 +1571,7 @@ namespace SHOPCONTROL.HistorialClinica
             {
                 ReportDocument cryRpt = new ReportDocument();
 
-                string CadenaReporte = Application.StartupPath + "\\ImpresoTicket.rpt";
+                string CadenaReporte = "C:\\tmp\\reports\\ImpresoTicket.rpt";
                 string cvdoctor = comboBox1.SelectedValue.ToString();
                 string cvservicio = "0";
                 string numexpediente="";
@@ -1573,8 +1610,9 @@ namespace SHOPCONTROL.HistorialClinica
                 ds.Tables.Add(tparametro);
 
                 cryRpt.Load(CadenaReporte);
+                
                 cryRpt.SetDataSource(ds);
-
+                // cryRpt.SetParameterValue("fecha1", 13);
                 string NombreArchivo = @"C:\TicketImpreso.pdf";
                 //cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
                 cryRpt.PrintToPrinter(1, false, 0, 0);
@@ -1606,7 +1644,7 @@ namespace SHOPCONTROL.HistorialClinica
 
             CLAVEPACIENTE = Lv.Items[index].SubItems[2].Text;
             NOMBREPACIENTE = Lv.Items[index].SubItems[3].Text;
-      
+            
 
             valoresg.Reagendar_cvdoctor = Sel_cvdoctor;
             valoresg.Reagendar_cvpaciente = cvpaciente;
@@ -1662,6 +1700,7 @@ namespace SHOPCONTROL.HistorialClinica
             {
                 label27.Text = valoresg.CLAVEPAC;
                 textBox6.Text = valoresg.CLAVEPAC;
+                textBox14.Text = valoresg.CURP;
                 valoresg.CLAVEPAC = "";
                 comboBox4.SelectedIndex = 1;
                 BuscarPaciente();
@@ -1685,6 +1724,7 @@ namespace SHOPCONTROL.HistorialClinica
             while (leer.Read())
             {
                 textBox1.Text = leer["nombrec"].ToString();
+                textBox14.Text = valoresg.CURP;
             }
             conecta.CierraConexion();
         }
@@ -1990,7 +2030,7 @@ namespace SHOPCONTROL.HistorialClinica
         {
             ReportDocument cryRpt = new ReportDocument();
 
-            string CadenaReporte = Application.StartupPath + "\\Reportes\\ReporteAreaDiario.rpt";
+            string CadenaReporte = "C:\\tmp\\reports\\ReporteAreaDiario.rpt";
 
             DataSet ds = new DataSet();
             string fechacod = dateTimePicker1.Value.ToString("yyyyMMdd");
@@ -2022,7 +2062,7 @@ namespace SHOPCONTROL.HistorialClinica
             cryRpt.Load(CadenaReporte);
             cryRpt.SetDataSource(ds);
 
-            string NombreArchivo =Application.StartupPath+ "\\Reportes\\ReporteDiarioCitas.pdf"; ;
+            string NombreArchivo =Application.StartupPath+ "\\Reportes\\ReporteDiarioCitas.pdf"; 
             cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
             //cryRpt.PrintToPrinter(1, false, 0, 0);
             cryRpt.Close();

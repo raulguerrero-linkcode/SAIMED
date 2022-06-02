@@ -945,7 +945,7 @@ namespace SHOPCONTROL.HistorialClinica
              {
                  ReportDocument cryRpt = new ReportDocument();
 
-                 string CadenaReporte = Application.StartupPath + "\\DOftalmologia.rpt";
+                 string CadenaReporte = "C:\\tmp\\reports\\DOftalmologia.rpt";
 
                  DataSet ds = new DataSet();
 

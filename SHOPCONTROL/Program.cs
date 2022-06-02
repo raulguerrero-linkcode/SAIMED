@@ -17,9 +17,9 @@ namespace SHOPCONTROL
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new EntradaUsuario());
 
-           // Application.Run(new VISORTURNOS());
+            // Application.Run(new VISORTURNOS());
             // Application.Run(new PASARTURNO());
-           // Application.Run(new PASARTURNOINDV());
+            // Application.Run(new PASARTURNOINDV());
         }
     }
 }

@@ -428,7 +428,7 @@ namespace SHOPCONTROL
             if (FacturarcionOnline(numpedido, ayo) == true && TieneTimbresFacturar()==true)
             {
 
-                string CadenaReporte = Application.StartupPath + "\\Factura.rpt";
+                string CadenaReporte = "C:\\tmp\\reports\\Factura.rpt";
 
                 Query = "Select * from facturas where numfactura='" + numpedido + "' and ayo='" + ayo + "'";
                 SqlDataReader leer2 = conecta2.RecordInfo(Query);
@@ -577,7 +577,7 @@ namespace SHOPCONTROL
             }
             else
             {
-                string CadenaReporte = Application.StartupPath + "\\FacturaAuxiliar.rpt";
+                string CadenaReporte = "C:\\tmp\\reports\\FacturaAuxiliar.rpt";
 
                 Query = "Select * from facturas where numfactura='" + numpedido + "' and ayo='" + ayo + "'";
                 SqlDataReader leer2 = conecta2.RecordInfo(Query);
@@ -755,7 +755,7 @@ namespace SHOPCONTROL
             conectorSql conecta = new conectorSql();
             LimpiarVariables();
 
-            string CadenaReporte = Application.StartupPath + "\\Factura.rpt";
+            string CadenaReporte = "C:\\tmp\\reports\\Factura.rpt";
 
             Query = "Select * from facturas where numfactura='" + numpedido + "' and ayo='" + ayo + "'";
             SqlDataReader leer2 = conecta2.RecordInfo(Query);

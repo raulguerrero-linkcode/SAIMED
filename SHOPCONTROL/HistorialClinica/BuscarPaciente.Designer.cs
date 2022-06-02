@@ -85,12 +85,14 @@
             this.Lv.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lv.FullRowSelect = true;
             this.Lv.GridLines = true;
+            this.Lv.HideSelection = false;
             this.Lv.Location = new System.Drawing.Point(6, 96);
             this.Lv.Name = "Lv";
             this.Lv.Size = new System.Drawing.Size(825, 466);
             this.Lv.TabIndex = 2;
             this.Lv.UseCompatibleStateImageBehavior = false;
             this.Lv.View = System.Windows.Forms.View.Details;
+            this.Lv.SelectedIndexChanged += new System.EventHandler(this.Lv_SelectedIndexChanged);
             this.Lv.DoubleClick += new System.EventHandler(this.Lv_DoubleClick);
             // 
             // columnHeader6

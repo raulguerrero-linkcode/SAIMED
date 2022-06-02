@@ -306,8 +306,8 @@ namespace SHOPCONTROL
 
             conectorSql conecta = new conectorSql();
             string Query = "Select distinct(numrecibo), recibos.nombrerecibo as Nombrecliente, recibos.cvcliente ";
-            // Query = Query + ",fecha,total,iva,totalgeneral,compro,ayo,estatusrecibo,colonia,emitio,entregado,tiporecibo,iddoctor,idturno,printed";
-            Query = Query + ",fecha,total,iva,totalgeneral,compro,ayo,estatusrecibo,colonia,emitio,entregado,tiporecibo,iddoctor,idturno";
+            Query = Query + ",fecha,total,iva,totalgeneral,compro,ayo,estatusrecibo,colonia,emitio,entregado,tiporecibo,iddoctor,idturno,printed";
+            // Query = Query + ",fecha,total,iva,totalgeneral,compro,ayo,estatusrecibo,colonia,emitio,entregado,tiporecibo,iddoctor,idturno";
             Query = Query + " from recibos ";
             Query = Query + " inner join clientes on clientes.cvcliente=recibos.cvcliente";
             Query = Query + " where numrecibo<>''";
@@ -346,9 +346,8 @@ namespace SHOPCONTROL
                 lvi.SubItems.Add(leer["iddoctor"].ToString());
                 lvi.SubItems.Add(leer["idturno"].ToString());
 
-                //int printed = int.Parse(leer["printed"].ToString());
-
-                // lvi.SubItems.Add(printed.ToString());
+                int printed = int.Parse(leer["printed"].ToString());
+                lvi.SubItems.Add(printed.ToString());
                 Lv.Items.Add(lvi);
             }
             conecta.CierraConexion();
@@ -1840,7 +1839,8 @@ namespace SHOPCONTROL
 
             string RFC = "";
             ReportDocument cryRpt = new ReportDocument();
-            string CadenaReporte = Application.StartupPath + "\\Reportes\\Tickets\\ReciboTicket.rpt";
+            // string CadenaReporte = Application.StartupPath + "\\Reportes\\Tickets\\ReciboTicket.rpt";
+            string CadenaReporte = "C:\\tmp\\reports\\ReciboTicket.rpt";
 
 
 
@@ -1871,7 +1871,7 @@ namespace SHOPCONTROL
             ReciboUsuario CodigoBidimensional = GetData2(consulta, numrecibo);
             cryRpt.SetDataSource(CodigoBidimensional);
 
-
+            cryRpt.SetParameterValue("Reimpressed", mensajeReimpresion);
 
             cryRpt.SetParameterValue("parametro1", ADICIONALINFO);
             cryRpt.SetParameterValue("regimen", REGIMEN);
@@ -1884,6 +1884,7 @@ namespace SHOPCONTROL
             cryRpt.SetParameterValue("consultorio", consultorio);
             cryRpt.SetParameterValue("turno", turno);
 
+            
 
             string NombreArchivo = Application.StartupPath + "\\Documentos\\Recibos\\ReciboTicket_" + numrecibo.ToString() + ".pdf";
             cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
@@ -1898,8 +1899,9 @@ namespace SHOPCONTROL
         private ReciboUsuario GetData2(string query, string numrecibo)
         {
             conectorSql sql = new conectorSql();
+            
             sql.Abrirconexion();
-            string cADENACONEXION = sql.CADENACONEXION;
+            string CadenaConexion = sql.CADENACONEXION;
             sql.CierraConexion();
             string cmdText = "select  cvcliente,numrecibo,nombrerecibo,direccion,colonia, total, iva, totalgeneral";
             cmdText = ((cmdText + ",entregado, emitio,vendedor,tiporecibo,estatusrecibo,fechaentrega,fecha as fecharealizo" + ",cantidades,compro,precunitarios,pretotales,unidades,claves,notas,telefono,ncliente") + ",totalletra,tdescuento " + "from recibos ") + " where numrecibo='" + numrecibo + "'";
@@ -1908,19 +1910,25 @@ namespace SHOPCONTROL
             SqlCommand command3 = new SqlCommand("select numrecibo ,cvproducto,descripcion,cantidad,preunitario as valorunitario,precio as importe,unidad,descuento from detallesrecibos where numrecibo='" + numrecibo + "' order by progresivo asc");
             SqlDataAdapter adapter = new SqlDataAdapter();
             ReciboUsuario dataSet = new ReciboUsuario();
-            using (SqlConnection connection = new SqlConnection(cADENACONEXION))
+            using (SqlConnection connection = new SqlConnection(CadenaConexion))
             {
                 using (SqlDataAdapter adapter2 = new SqlDataAdapter())
                 {
                     command.Connection = connection;
                     adapter2.SelectCommand = command;
                     adapter2.Fill(dataSet, "DataTable3");
-                    command3.Connection = connection;
-                    adapter2.SelectCommand = command3;
-                    adapter2.Fill(dataSet, "DataTable2");
+
                     command2.Connection = connection;
                     adapter2.SelectCommand = command2;
                     adapter2.Fill(dataSet, "DataTable1");
+
+
+                    command3.Connection = connection;
+                    adapter2.SelectCommand = command3;
+                    adapter2.Fill(dataSet, "DataTable2");
+
+
+                    
                 }
             }
             return dataSet;
@@ -2783,20 +2791,42 @@ namespace SHOPCONTROL
 
         private void button22_Click(object sender, EventArgs e)
         {
+
             string numpedido = label50.Text;
             string ayo = label51.Text;
             string estatuspedido = label53.Text;
+            string nombrearea = "";
+            string msgReimpressed = "";
+
+            string sqlGetRecibo = "SELECT * FROM Recibos where numrecibo = " + label50.Text + "";
+            conectorSql conectar = new conectorSql();
+            SqlDataReader leerGetRecibo = conectar.RecordInfo(sqlGetRecibo);
+            while (leerGetRecibo.Read())
+            {
+                nombrearea = leerGetRecibo["nombrerecibo"].ToString();
+                ayo = leerGetRecibo["ayo"].ToString();
+                estatuspedido = leerGetRecibo["estatusrecibo"].ToString();
+                msgReimpressed = leerGetRecibo["printed"].ToString();
+
+            }
+            conectar.CierraConexion();
+
             if (estatuspedido == "CANCELADO")
             {
                 MessageBox.Show("El pedido ya se encuentra cancelado, realize otro pedido", "Facturación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            if (numpedido=="0")
+            {
+                MessageBox.Show("No se ha seleccionado ningún pedido", "Recibo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             // Only ADMIN can reimpressed tickets
             string user = valoresg.USUARIOSIS;
-            string msgReimpressed = "";
+            
             // UPDATE MESSAGE in case the ticket were reimpressed before
-            if (label47.Text == "1")
+            if (msgReimpressed == "1")
             {
                 msgReimpressed = "COPIA DE TICKET SIN VALOR";
             }
@@ -2806,11 +2836,10 @@ namespace SHOPCONTROL
              *   Validate if the user is not ADMIN and the ticket was impressed before, then not print
              *   If the ticket is 0 that means the ticket never be printed before, then go ahead and print
             */
-            if (label47.Text == "0" || user == "ADMIN")
+            if (msgReimpressed  == "0" || user == "ADMIN")
             {
                 MessageBox.Show("Se mandara a imprimir el recibo seleccionado ", "Recibo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                string nombrearea = "";
-
+                
                 try
                 {
                     conectorSql conecta2 = new conectorSql();

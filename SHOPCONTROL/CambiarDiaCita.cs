@@ -474,7 +474,7 @@ namespace SHOPCONTROL
            */
 
             MailNotifications mail = new MailNotifications();
-            mail.SendMail(valoresg.IdEmployee, valoresg.UBICACION, "Se reprogramó la cita con Num de recibo " + label10.Text + " en sucursal: " + valoresg.UBICACION , "\nEl usuario: " + valoresg.Nombre_Completo  + "(" + valoresg.IdEmployee + ") \nRol de: " + valoresg.USUARIOSIS + "\nha realizado una reprogramación sobre el num de recibo " + label10.Text + "\nPaciente: " + nombre + "\nServicio: " + cvservicio +"\nFecha Anterior: " +  FechaAnterior.ToString("dd/MM/yyyy")  + "\nFecha nueva: " + FechaProg.ToString("dd/MM/yyyy") + "\nHora: " + HoraInicia.ToString("HH:mm:00"), 1);
+            mail.SendMail(valoresg.IdEmployee, valoresg.UBICACION, "Se reprogramó una cita con Num de recibo " + label10.Text + "en Sucursal: " + valoresg.UBICACION , "<br> Usuario que reprogramó: " + valoresg.Nombre_Completo  + " (" + valoresg.IdEmployee + ") <br>Rol de: " + valoresg.USUARIOSIS + "<br> ha realizado una reprogramación sobre el num de recibo:<br> " + label10.Text + "<br>Paciente: " + nombre + "<br>Servicio: " + cvservicio +"<br>Fecha Anterior: " +  FechaAnterior.ToString("dd/MM/yyyy")  + "<br>Fecha nueva: " + FechaProg.ToString("dd/MM/yyyy") + "<br>Hora: " + HoraInicia.ToString("HH:mm:00"), 1);
 
             MessageBox.Show("Se reprogramó la cita", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Dispose();

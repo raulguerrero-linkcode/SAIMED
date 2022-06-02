@@ -1166,7 +1166,7 @@ namespace SHOPCONTROL.HistorialClinica
             else { 
                 ReportDocument cryRpt = new ReportDocument();
             
-                string CadenaReporte = Application.StartupPath + "\\DEColposcopico.rpt";
+                string CadenaReporte = "C:\\tmp\\reports\\DEColposcopico.rpt";
 
                 DataSet ds = new DataSet();
 

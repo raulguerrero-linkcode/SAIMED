@@ -735,6 +735,7 @@
     <Compile Include="Utilerias\LeerArchivoExcel.designer.cs">
       <DependentUpon>LeerArchivoExcel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilerias\ValidateData.cs" />
     <Compile Include="VentaRegistroCobro.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -29,11 +29,15 @@ public class conectorSql
     {
         con = new SqlConnection();
 
-        XDocument xdoc = XDocument.Load(AppDomain.CurrentDomain.BaseDirectory + "EmailConf.xml");
+        string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
+        bool cfnExist = File.Exists(cfnFile);
+        XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
        //XDocument xdoc = XDocument.Load("./EmailConf.xml");
         string vserver = xdoc.Descendants("ConnStr").First().Value;
         con.ConnectionString = @vserver;
-        
+        CADENACONEXION = @vserver;
+
+
         try
         {
             con.Open();

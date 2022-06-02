@@ -139,7 +139,7 @@ namespace SHOPCONTROL
         {
 
             ReportDocument cryRpt = new ReportDocument();
-            string CadenaReporte2 = Application.StartupPath + "\\TicketCorteRecibos.rpt";
+            string CadenaReporte2 = "C:\\tmp\\reports\\TicketCorteRecibos.rpt";
             DataSet ds = new DataSet();
 
             string fecha1 = dateTimePicker1.Value.ToString("yyyyMMdd");
@@ -192,8 +192,9 @@ namespace SHOPCONTROL
           
                 ReportDocument cryRpt = new ReportDocument();
 
-                string CadenaReporte = Application.StartupPath + "\\TicketCorte.rpt";
-                DataSet ds = new DataSet();
+            string CadenaReporte = "C:\\tmp\\reports\\TicketCorte.rpt";
+            // string CadenaReporte = @"C:\tmp\TicketCorte12.rpt";
+            DataSet ds = new DataSet();
 
                 string fecha1 = dateTimePicker1.Value.ToString("yyyyMMdd");
                 string fecha2 = dateTimePicker2.Value.ToString("yyyyMMdd");
@@ -213,7 +214,7 @@ namespace SHOPCONTROL
 
                 HistorialClinica.DataSetCorteTableAdapters.ParametrosReciboTableAdapter parametro = new HistorialClinica.DataSetCorteTableAdapters.ParametrosReciboTableAdapter();
                 HistorialClinica.DataSetCorte.ParametrosReciboDataTable tparametro = new HistorialClinica.DataSetCorte.ParametrosReciboDataTable();
-                parametro.Fill(tparametro);
+                parametro.Fill(tparametro); 
 
                 decimal tdebito = 0;
                 decimal tcredito = 0;
@@ -261,7 +262,7 @@ namespace SHOPCONTROL
                 cryRpt.SetParameterValue("tdebito", tdebito.ToString());
                 cryRpt.SetParameterValue("tcredito", tcredito.ToString());
                 cryRpt.SetParameterValue("tefectivo", tefectivo.ToString());
-                string NombreArchivo = @"C:\TicketCorte.pdf";
+                string NombreArchivo = @"C:\tmp\TicketCorte.pdf";
                 cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
                 cryRpt.PrintToPrinter(1, false, 0, 0);
                 cryRpt.Close();
