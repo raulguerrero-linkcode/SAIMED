@@ -22,16 +22,5 @@ namespace SHOPCONTROL.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-QTKMO6S\\SQLEXPRESS;Initial Catalog=CNV-CEPAMM;User ID=sa;Pass" +
-            "word=Fm9fytmf7q")]
-        public string BillLineConnectionString {
-            get {
-                return ((string)(this["BillLineConnectionString"]));
-            }
-        }
     }
 }

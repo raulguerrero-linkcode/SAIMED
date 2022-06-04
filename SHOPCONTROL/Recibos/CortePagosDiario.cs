@@ -192,9 +192,9 @@ namespace SHOPCONTROL
           
                 ReportDocument cryRpt = new ReportDocument();
 
-            string CadenaReporte = "C:\\tmp\\reports\\TicketCorte.rpt";
-            // string CadenaReporte = @"C:\tmp\TicketCorte12.rpt";
-            DataSet ds = new DataSet();
+                string CadenaReporte = "C:\\tmp\\reports\\TicketCorte.rpt";
+                // string CadenaReporte = @"C:\tmp\TicketCorte12.rpt";
+                DataSet ds = new DataSet();
 
                 string fecha1 = dateTimePicker1.Value.ToString("yyyyMMdd");
                 string fecha2 = dateTimePicker2.Value.ToString("yyyyMMdd");
