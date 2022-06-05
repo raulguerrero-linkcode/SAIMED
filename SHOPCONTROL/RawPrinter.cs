@@ -1,9 +1,6 @@
 ﻿using System;
 using System.IO;
-using System.Drawing.Printing;
 using System.Runtime.InteropServices;
-using System.Collections.Generic;
-using System.Text;
 public class RawPrinter
 {
 

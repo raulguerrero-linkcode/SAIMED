@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Net.Mail;
 using System.Net;
 
-  public  class EnviarCorreo
+public  class EnviarCorreo
     {
 
       public string HOST;

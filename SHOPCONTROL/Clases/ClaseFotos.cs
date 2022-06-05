@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Drawing; 
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Drawing.Imaging;
 
 /// <summary>
 /// Descripción breve de ClaseFotos

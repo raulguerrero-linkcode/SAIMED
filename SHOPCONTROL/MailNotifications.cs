@@ -146,6 +146,12 @@ namespace SHOPCONTROL
             string vserver = xdoc.Descendants("ConnStr").First().Value;
 
             message.From = new MailAddress(xdoc.Descendants("emailFrom").First().Value);
+
+            if (email == "")
+            {
+                return;
+            }
+
             message.To.Add(new MailAddress(email));
 
             // Temp 

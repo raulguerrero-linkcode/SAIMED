@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // La información general sobre un ensamblado se controla mediante el siguiente 
@@ -8,9 +7,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("SAIMED")]
 [assembly: AssemblyDescription("Sistema Atención Integra Medica")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("SOLUCIONES SIA")]
+[assembly: AssemblyCompany("LINKCODE SERVICES")]
 [assembly: AssemblyProduct("SAIMED")]
-[assembly: AssemblyCopyright("Copyright © SIA 2013")]
+[assembly: AssemblyCopyright("Copyright © LINKCODE SERVICES 2022")]
 [assembly: AssemblyTrademark("SAIMED")]
 [assembly: AssemblyCulture("")]
 

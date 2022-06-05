@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Runtime;
-using System.Runtime.InteropServices; 
+﻿using System.Runtime.InteropServices;
 
- public static  class InternetDisponible
+public static  class InternetDisponible
     {
 
         //Importamos la funcion de wininet.dll, 

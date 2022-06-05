@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 using System.IO;
-using System.Drawing.Imaging;
 using AForge.Video;
 using AForge.Video.DirectShow;
 using System.Data.SqlClient;

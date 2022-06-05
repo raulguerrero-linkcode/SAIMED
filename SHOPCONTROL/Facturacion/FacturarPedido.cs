@@ -1,21 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using DGMC.TimbraCFDI;
-using System.IO;
-using System.Configuration;
 using System.Globalization;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
-using CrystalDecisions.ReportSource;
-using System.Xml;
-using System.Xml.Serialization;
 using System.Net.Mail;
 using System.Net;
 

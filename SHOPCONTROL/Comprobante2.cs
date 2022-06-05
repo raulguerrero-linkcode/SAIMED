@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Serialization;
-using System.IO;
+﻿using System.Xml.Serialization;
 
- [XmlRootAttribute(Namespace = "http://www.sat.gob.mx/cfd/3")]
+[XmlRootAttribute(Namespace = "http://www.sat.gob.mx/cfd/3")]
  public partial class Comprobante2
     {
         [XmlAttributeAttribute()]

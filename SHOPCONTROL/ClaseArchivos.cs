@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Drawing.Imaging;
 
 
-   public class ClaseArchivos
+public class ClaseArchivos
     {
        public static string Nombre_Archivo = "";
        public static string Ext_Archivo = "";

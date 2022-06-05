@@ -1,8 +1,6 @@
-﻿using System;
-using System.Windows.Forms;
-using System.Collections;
+﻿using System.Windows.Forms;
 
-    class Sorter : System.Collections.IComparer
+class Sorter : System.Collections.IComparer
     {
         public int Column = 0;
         public System.Windows.Forms.SortOrder Order = SortOrder.Ascending;

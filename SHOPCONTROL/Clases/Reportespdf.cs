@@ -1,23 +1,10 @@
 ﻿using System;
-using System.Data;
-using System.Configuration;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
-using System.IO;
 using System.Data.SqlClient;
 
 using System.Globalization;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
 
 
-    class Reportespdf
+class Reportespdf
     {
         public string ReporteRecibo(string Numrecibo, string ayo)
         {

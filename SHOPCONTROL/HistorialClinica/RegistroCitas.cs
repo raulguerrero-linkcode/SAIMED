@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
 
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
-using CrystalDecisions.ReportSource;
 namespace SHOPCONTROL.HistorialClinica
 {
     public partial class RegistroCitas : Form
@@ -724,7 +719,7 @@ namespace SHOPCONTROL.HistorialClinica
             label8.Text = numticket;
             combos.ComboDoctores(comboBox2);
             comboBox2.SelectedValue = cvdoctor;
-            dateTimePicker3.Value = DateTime.Parse(horainicia);
+            dateTimePicker3.Value = DateTime.Parse(horainicia.Replace(".",":"));
             panel5.Visible = false;
 
             if (cvdoctor == "1" || cvdoctor == "2" || cvdoctor == "2")
@@ -811,7 +806,7 @@ namespace SHOPCONTROL.HistorialClinica
             conecta.Excute(Query);
             conecta.CierraConexion();
 
-            Query = "insert into clientes(";
+            Query = "set IDENTITY_INSERT clientes on insert into clientes(";
             Query = Query + "cvcliente";
             Query = Query + ",nombre";
             Query = Query + ",telefono";
@@ -907,7 +902,7 @@ namespace SHOPCONTROL.HistorialClinica
             //Query = Query + ",'" + DCREDITO + "'";
             Query = Query + ",'0'";
             Query = Query + ",'"  + CLAVE + "'," + CURP + "'";
-            Query = Query + ",'0')";
+            Query = Query + "','0')";
             conecta.Excute(Query);
 
 

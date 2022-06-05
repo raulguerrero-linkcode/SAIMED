@@ -55,6 +55,7 @@
             this.accesoAUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reimpresionDeFacturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registroDeGastosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pendientesDePagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripDropDownButton6 = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,7 +94,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -108,16 +108,16 @@
             this.linkLabel5 = new System.Windows.Forms.LinkLabel();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.pendientesDePagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -339,6 +339,13 @@
             this.registroDeGastosToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.registroDeGastosToolStripMenuItem.Text = "Registro de Gastos ";
             this.registroDeGastosToolStripMenuItem.Click += new System.EventHandler(this.registroDeGastosToolStripMenuItem_Click);
+            // 
+            // pendientesDePagoToolStripMenuItem
+            // 
+            this.pendientesDePagoToolStripMenuItem.Name = "pendientesDePagoToolStripMenuItem";
+            this.pendientesDePagoToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.pendientesDePagoToolStripMenuItem.Text = "Pendientes de Pago";
+            this.pendientesDePagoToolStripMenuItem.Click += new System.EventHandler(this.pendientesDePagoToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -675,18 +682,6 @@
             this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.White;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(736, 54);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(237, 126);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 14;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.DoubleClick += new System.EventHandler(this.pictureBox2_DoubleClick);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -847,12 +842,17 @@
             this.label7.TabIndex = 28;
             this.label7.Text = "...";
             // 
-            // pendientesDePagoToolStripMenuItem
+            // pictureBox2
             // 
-            this.pendientesDePagoToolStripMenuItem.Name = "pendientesDePagoToolStripMenuItem";
-            this.pendientesDePagoToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.pendientesDePagoToolStripMenuItem.Text = "Pendientes de Pago";
-            this.pendientesDePagoToolStripMenuItem.Click += new System.EventHandler(this.pendientesDePagoToolStripMenuItem_Click);
+            this.pictureBox2.BackColor = System.Drawing.Color.White;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(736, 54);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(237, 126);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 14;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.DoubleClick += new System.EventHandler(this.pictureBox2_DoubleClick);
             // 
             // Bienvenidos
             // 
@@ -895,12 +895,12 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -940,7 +940,6 @@
         private System.Windows.Forms.ToolStripMenuItem vendedoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pagosDePedidosToolStripMenuItem;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.ToolStripMenuItem configurarFacturacionElectronicaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reciboToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importaciónDeProductosserviciosExcelToolStripMenuItem;
@@ -987,6 +986,7 @@
         private System.Windows.Forms.ToolStripMenuItem inventarioToolStripMenuItem;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ToolStripMenuItem pendientesDePagoToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 

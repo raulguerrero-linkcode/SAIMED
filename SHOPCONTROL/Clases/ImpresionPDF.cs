@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
+﻿using iTextSharp.text.pdf;
 using System.IO;
 using System.Diagnostics;
 
-    public class ImpresionPDF
+public class ImpresionPDF
     {
 
         public static void AgregarPrintScript(string Original, string Copia)

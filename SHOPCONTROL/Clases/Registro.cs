@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Win32;
-
-   class Registro
+﻿class Registro
     {
 
         public static bool CreateRegSHOPCONTROL()
