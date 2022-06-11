@@ -133,7 +133,7 @@ namespace SHOPCONTROL
         {
 
             ReportDocument cryRpt = new ReportDocument();
-            string CadenaReporte2 = "C:\\tmp\\reports\\TicketCorteRecibos.rpt";
+            string CadenaReporte2 = @"\\SRV-DATACENTER\\tmp\\reports\\TicketCorteRecibos.rpt";
             DataSet ds = new DataSet();
 
             string fecha1 = dateTimePicker1.Value.ToString("yyyyMMdd");
@@ -172,8 +172,8 @@ namespace SHOPCONTROL
             cryRpt.SetParameterValue("tdebito", tdebito.ToString());
             cryRpt.SetParameterValue("tcredito", tcredito.ToString());
             cryRpt.SetParameterValue("tefectivo", tefectivo.ToString());
-            string NombreArchivo = @"C:\TicketCorteRecibos.pdf";
-            cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
+            // string NombreArchivo = @"C:\TicketCorteRecibos.pdf";
+            // cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
             cryRpt.PrintToPrinter(1, false, 0, 0);
             cryRpt.Close();
             cryRpt.Dispose();
@@ -186,7 +186,7 @@ namespace SHOPCONTROL
           
                 ReportDocument cryRpt = new ReportDocument();
 
-                string CadenaReporte = "C:\\tmp\\reports\\TicketCorte.rpt";
+                string CadenaReporte = @"\\SRV-DATACENTER\\tmp\\reports\\TicketCorte.rpt";
                 // string CadenaReporte = @"C:\tmp\TicketCorte12.rpt";
                 DataSet ds = new DataSet();
 
@@ -256,8 +256,8 @@ namespace SHOPCONTROL
                 cryRpt.SetParameterValue("tdebito", tdebito.ToString());
                 cryRpt.SetParameterValue("tcredito", tcredito.ToString());
                 cryRpt.SetParameterValue("tefectivo", tefectivo.ToString());
-                string NombreArchivo = @"C:\tmp\TicketCorte.pdf";
-                cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
+                // string NombreArchivo = @"C:\tmp\TicketCorte.pdf";
+                // cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
                 cryRpt.PrintToPrinter(1, false, 0, 0);
                 cryRpt.Close();
                 cryRpt.Dispose();

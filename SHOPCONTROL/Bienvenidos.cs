@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using SHOPCONTROL.Analisys;
+using SHOPCONTROL.Inventarios;
 
 namespace SHOPCONTROL
 {
@@ -1086,8 +1087,27 @@ namespace SHOPCONTROL
 
         private void pendientesDePagoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PendientesPago pagos = new PendientesPago();
+            NotificacionClientesSMS pagos = new NotificacionClientesSMS();
             pagos.Show();
+
+        }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            Analisys.IngresosPorArea ingresos = new Analisys.IngresosPorArea();
+            ingresos.Show();
+        }
+
+        private void listadoDePacientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListadoPacientes listado = new ListadoPacientes();
+            listado.Show();
+        }
+
+        private void linkLabel6_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            CapturaInventarios inventarios = new CapturaInventarios();
+            inventarios.Show();
 
         }
     }

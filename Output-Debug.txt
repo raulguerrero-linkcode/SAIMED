@@ -1,0 +1,38 @@
+﻿'SAIMED.exe' (CLR v4.0.30319: DefaultDomain): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_64\mscorlib\v4.0_4.0.0.0__b77a5c561934e089\mscorlib.dll'. Cannot find or open the PDB file.
+'SAIMED.exe' (CLR v4.0.30319: DefaultDomain): Loaded 'C:\release\SHOPCONTROL\bin\Debug\SAIMED.exe'. Symbols loaded.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Windows.Forms\v4.0_4.0.0.0__b77a5c561934e089\System.Windows.Forms.dll'. Cannot find or open the PDB file.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System\v4.0_4.0.0.0__b77a5c561934e089\System.dll'. Cannot find or open the PDB file.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Drawing\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Drawing.dll'. Cannot find or open the PDB file.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Configuration\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Configuration.dll'. Cannot find or open the PDB file.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Core\v4.0_4.0.0.0__b77a5c561934e089\System.Core.dll'. Cannot find or open the PDB file.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Xml\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.dll'. Cannot find or open the PDB file.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_64\System.Data\v4.0_4.0.0.0__b77a5c561934e089\System.Data.dll'. Cannot find or open the PDB file.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Xml.Linq\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.Linq.dll'. Cannot find or open the PDB file.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_64\System.Transactions\v4.0_4.0.0.0__b77a5c561934e089\System.Transactions.dll'. Cannot find or open the PDB file.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_64\System.EnterpriseServices\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.EnterpriseServices.dll'. Cannot find or open the PDB file.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_64\System.EnterpriseServices\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.EnterpriseServices.Wrapper.dll'. Cannot find or open the PDB file.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Numerics\v4.0_4.0.0.0__b77a5c561934e089\System.Numerics.dll'. Cannot find or open the PDB file.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_MSIL\CrystalDecisions.CrystalReports.Engine\v4.0_13.0.4000.0__692fbea5521e1304\CrystalDecisions.CrystalReports.Engine.dll'. Module was built without symbols.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_MSIL\CrystalDecisions.Shared\v4.0_13.0.4000.0__692fbea5521e1304\CrystalDecisions.Shared.dll'. Module was built without symbols.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Data.DataSetExtensions\v4.0_4.0.0.0__b77a5c561934e089\System.Data.DataSetExtensions.dll'. Cannot find or open the PDB file.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_64\CrystalDecisions.ReportAppServer.CommLayer\v4.0_13.0.4000.0__692fbea5521e1304\CrystalDecisions.ReportAppServer.CommLayer.dll'. Cannot find or open the PDB file.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_64\CrystalDecisions.ReportAppServer.ClientDoc\v4.0_13.0.4000.0__692fbea5521e1304\CrystalDecisions.ReportAppServer.ClientDoc.dll'. Cannot find or open the PDB file.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_64\CrystalDecisions.ReportAppServer.DataDefModel\v4.0_13.0.4000.0__692fbea5521e1304\CrystalDecisions.ReportAppServer.DataDefModel.dll'. Cannot find or open the PDB file.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_64\CrystalDecisions.ReportAppServer.CubeDefModel\v4.0_13.0.4000.0__692fbea5521e1304\CrystalDecisions.ReportAppServer.CubeDefModel.dll'. Cannot find or open the PDB file.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_64\CrystalDecisions.ReportAppServer.ReportDefModel\v4.0_13.0.4000.0__692fbea5521e1304\CrystalDecisions.ReportAppServer.ReportDefModel.dll'. Cannot find or open the PDB file.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_64\CrystalDecisions.ReportAppServer.Controllers\v4.0_13.0.4000.0__692fbea5521e1304\CrystalDecisions.ReportAppServer.Controllers.dll'. Cannot find or open the PDB file.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_64\CrystalDecisions.ReportAppServer.DataSetConversion\v4.0_13.0.4000.0__692fbea5521e1304\CrystalDecisions.ReportAppServer.DataSetConversion.dll'. Module was built without symbols.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_64\System.Web\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Web.dll'. Cannot find or open the PDB file.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_MSIL\log4net\v4.0_2.0.12.0__669e0ddf0bb1aa2a\log4net.dll'. Module was built without symbols.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win64_x64\crdb_adoplus.dll'. Cannot find or open the PDB file.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_64\CustomMarshalers\v4.0_4.0.0.0__b03f5f7f11d50a3a\CustomMarshalers.dll'. Cannot find or open the PDB file.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Web.Services\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll'. Cannot find or open the PDB file.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_MSIL\CrystalDecisions.ReportSource\v4.0_13.0.4000.0__692fbea5521e1304\CrystalDecisions.ReportSource.dll'. Module was built without symbols.
+'SAIMED.exe' (CLR v4.0.30319: SAIMED.exe): Loaded 'C:\Windows\Microsoft.Net\assembly\GAC_64\CrystalDecisions.ReportAppServer.CommonObjectModel\v4.0_13.0.4000.0__692fbea5521e1304\CrystalDecisions.ReportAppServer.CommonObjectModel.dll'. Cannot find or open the PDB file.
+Exception thrown: 'System.UriFormatException' in System.dll
+The thread 0x312c has exited with code 0 (0x0).
+The thread 0xb38 has exited with code 0 (0x0).
+Exception thrown: 'System.UriFormatException' in System.dll
+The thread 0x1d4 has exited with code 0 (0x0).
+The thread 0x1e8c has exited with code 0 (0x0).
+The program '[11608] SAIMED.exe' has exited with code -1 (0xffffffff).

@@ -857,7 +857,7 @@ namespace SHOPCONTROL.HistorialClinica
              {
                  ReportDocument cryRpt = new ReportDocument();
 
-                 string CadenaReporte = "C:\\tmp\\reports\\DDental.rpt";
+                 string CadenaReporte = @"\\SRV-DATACENTER\\tmp\\reports\\DDental.rpt";
 
                  DataSet ds = new DataSet();
 
@@ -882,7 +882,7 @@ namespace SHOPCONTROL.HistorialClinica
                  cryRpt.SetDataSource(ds);
 
                  string NombreArchivo = @"C:\EDental_" + textBox1.Text + "_" + int.Parse(label114.Text) + ".pdf"; ;
-                 cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
+                 // cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
                  //cryRpt.PrintToPrinter(1, false, 0, 0);
                  cryRpt.Close();
                  cryRpt.Dispose();

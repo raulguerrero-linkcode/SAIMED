@@ -12865,9 +12865,9 @@ namespace SHOPCONTROL.HistorialClinica.DataSetOftalmologiaTableAdapters {
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
             // this._connection.ConnectionString = global::SHOPCONTROL.Properties.Settings.Default.BillLineConnectionString;
-            string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
+            string cfnFile = @"//SRV-DATACENTER/tmp/EmailConf.xml";
             bool cfnExist = File.Exists(cfnFile);
-            XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
+            XDocument xdoc = XDocument.Load(cfnExist ? @"//SRV-DATACENTER/tmp/EmailConf.xml" : @"C:\\tmp\\EmailConf.xml");
             string vserver = xdoc.Descendants("ConnStr").First().Value;
 
             this._connection = new global::System.Data.SqlClient.SqlConnection();
@@ -13162,9 +13162,9 @@ namespace SHOPCONTROL.HistorialClinica.DataSetOftalmologiaTableAdapters {
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
             // this._connection.ConnectionString = global::SHOPCONTROL.Properties.Settings.Default.BillLineConnectionString;
-            string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
+            string cfnFile = @"//SRV-DATACENTER/tmp/EmailConf.xml";
             bool cfnExist = File.Exists(cfnFile);
-            XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
+            XDocument xdoc = XDocument.Load(cfnExist ? @"//SRV-DATACENTER/tmp/EmailConf.xml" : @"C:\\tmp\\EmailConf.xml");
             string vserver = xdoc.Descendants("ConnStr").First().Value;
 
             this._connection = new global::System.Data.SqlClient.SqlConnection();
@@ -13390,9 +13390,9 @@ namespace SHOPCONTROL.HistorialClinica.DataSetOftalmologiaTableAdapters {
         private void InitConnection() {
             // this._connection = new global::System.Data.SqlClient.SqlConnection();
             // this._connection.ConnectionString = global::SHOPCONTROL.Properties.Settings.Default.BillLineConnectionString;
-            string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
+            string cfnFile = @"//SRV-DATACENTER/tmp/EmailConf.xml";
             bool cfnExist = File.Exists(cfnFile);
-            XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
+            XDocument xdoc = XDocument.Load(cfnExist ? @"//SRV-DATACENTER/tmp/EmailConf.xml" : @"C:\\tmp\\EmailConf.xml");
             string vserver = xdoc.Descendants("ConnStr").First().Value;
 
             this._connection = new global::System.Data.SqlClient.SqlConnection();
@@ -13627,9 +13627,9 @@ namespace SHOPCONTROL.HistorialClinica.DataSetOftalmologiaTableAdapters {
         private void InitConnection() {
             // this._connection = new global::System.Data.SqlClient.SqlConnection();
             // this._connection.ConnectionString = global::SHOPCONTROL.Properties.Settings.Default.BillLineConnectionString;
-            string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
+            string cfnFile = @"//SRV-DATACENTER/tmp/EmailConf.xml";
             bool cfnExist = File.Exists(cfnFile);
-            XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
+            XDocument xdoc = XDocument.Load(cfnExist ? @"//SRV-DATACENTER/tmp/EmailConf.xml" : @"C:\\tmp\\EmailConf.xml");
             string vserver = xdoc.Descendants("ConnStr").First().Value;
 
             this._connection = new global::System.Data.SqlClient.SqlConnection();
@@ -13842,9 +13842,9 @@ namespace SHOPCONTROL.HistorialClinica.DataSetOftalmologiaTableAdapters {
         private void InitConnection() {
             // this._connection = new global::System.Data.SqlClient.SqlConnection();
             // this._connection.ConnectionString = global::SHOPCONTROL.Properties.Settings.Default.BillLineConnectionString;
-            string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
+            string cfnFile = @"//SRV-DATACENTER/tmp/EmailConf.xml";
             bool cfnExist = File.Exists(cfnFile);
-            XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
+            XDocument xdoc = XDocument.Load(cfnExist ? @"//SRV-DATACENTER/tmp/EmailConf.xml" : @"C:\\tmp\\EmailConf.xml");
             string vserver = xdoc.Descendants("ConnStr").First().Value;
 
             this._connection = new global::System.Data.SqlClient.SqlConnection();
@@ -14084,9 +14084,9 @@ namespace SHOPCONTROL.HistorialClinica.DataSetOftalmologiaTableAdapters {
         private void InitConnection() {
             // this._connection = new global::System.Data.SqlClient.SqlConnection();
             // this._connection.ConnectionString = global::SHOPCONTROL.Properties.Settings.Default.BillLineConnectionString;
-            string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
+            string cfnFile = @"//SRV-DATACENTER/tmp/EmailConf.xml";
             bool cfnExist = File.Exists(cfnFile);
-            XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
+            XDocument xdoc = XDocument.Load(cfnExist ? @"//SRV-DATACENTER/tmp/EmailConf.xml" : @"C:\\tmp\\EmailConf.xml");
             string vserver = xdoc.Descendants("ConnStr").First().Value;
 
             this._connection = new global::System.Data.SqlClient.SqlConnection();
@@ -14326,9 +14326,9 @@ namespace SHOPCONTROL.HistorialClinica.DataSetOftalmologiaTableAdapters {
         private void InitConnection() {
             //this._connection = new global::System.Data.SqlClient.SqlConnection();
             //this._connection.ConnectionString = global::SHOPCONTROL.Properties.Settings.Default.BillLineConnectionString;
-            string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
+            string cfnFile = @"//SRV-DATACENTER/tmp/EmailConf.xml";
             bool cfnExist = File.Exists(cfnFile);
-            XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
+            XDocument xdoc = XDocument.Load(cfnExist ? @"//SRV-DATACENTER/tmp/EmailConf.xml" : @"C:\\tmp\\EmailConf.xml");
             string vserver = xdoc.Descendants("ConnStr").First().Value;
 
             this._connection = new global::System.Data.SqlClient.SqlConnection();
@@ -14568,9 +14568,9 @@ namespace SHOPCONTROL.HistorialClinica.DataSetOftalmologiaTableAdapters {
         private void InitConnection() {
             //this._connection = new global::System.Data.SqlClient.SqlConnection();
             // this._connection.ConnectionString = global::SHOPCONTROL.Properties.Settings.Default.BillLineConnectionString;
-            string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
+            string cfnFile = @"//SRV-DATACENTER/tmp/EmailConf.xml";
             bool cfnExist = File.Exists(cfnFile);
-            XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
+            XDocument xdoc = XDocument.Load(cfnExist ? @"//SRV-DATACENTER/tmp/EmailConf.xml" : @"C:\\tmp\\EmailConf.xml");
             string vserver = xdoc.Descendants("ConnStr").First().Value;
 
             this._connection = new global::System.Data.SqlClient.SqlConnection();
@@ -14810,9 +14810,9 @@ namespace SHOPCONTROL.HistorialClinica.DataSetOftalmologiaTableAdapters {
         private void InitConnection() {
             //this._connection = new global::System.Data.SqlClient.SqlConnection();
             //this._connection.ConnectionString = global::SHOPCONTROL.Properties.Settings.Default.BillLineConnectionString;
-            string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
+            string cfnFile = @"//SRV-DATACENTER/tmp/EmailConf.xml";
             bool cfnExist = File.Exists(cfnFile);
-            XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
+            XDocument xdoc = XDocument.Load(cfnExist ? @"//SRV-DATACENTER/tmp/EmailConf.xml" : @"C:\\tmp\\EmailConf.xml");
             string vserver = xdoc.Descendants("ConnStr").First().Value;
 
             this._connection = new global::System.Data.SqlClient.SqlConnection();
@@ -15052,9 +15052,9 @@ namespace SHOPCONTROL.HistorialClinica.DataSetOftalmologiaTableAdapters {
         private void InitConnection() {
             // this._connection = new global::System.Data.SqlClient.SqlConnection();
             // this._connection.ConnectionString = global::SHOPCONTROL.Properties.Settings.Default.BillLineConnectionString;
-            string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
+            string cfnFile = @"//SRV-DATACENTER/tmp/EmailConf.xml";
             bool cfnExist = File.Exists(cfnFile);
-            XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
+            XDocument xdoc = XDocument.Load(cfnExist ? @"//SRV-DATACENTER/tmp/EmailConf.xml" : @"C:\\tmp\\EmailConf.xml");
             string vserver = xdoc.Descendants("ConnStr").First().Value;
 
             this._connection = new global::System.Data.SqlClient.SqlConnection();
@@ -15294,9 +15294,9 @@ namespace SHOPCONTROL.HistorialClinica.DataSetOftalmologiaTableAdapters {
         private void InitConnection() {
             // this._connection = new global::System.Data.SqlClient.SqlConnection();
             // this._connection.ConnectionString = global::SHOPCONTROL.Properties.Settings.Default.BillLineConnectionString;
-            string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
+            string cfnFile = @"//SRV-DATACENTER/tmp/EmailConf.xml";
             bool cfnExist = File.Exists(cfnFile);
-            XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
+            XDocument xdoc = XDocument.Load(cfnExist ? @"//SRV-DATACENTER/tmp/EmailConf.xml" : @"C:\\tmp\\EmailConf.xml");
             string vserver = xdoc.Descendants("ConnStr").First().Value;
 
             this._connection = new global::System.Data.SqlClient.SqlConnection();
@@ -15536,9 +15536,9 @@ namespace SHOPCONTROL.HistorialClinica.DataSetOftalmologiaTableAdapters {
         private void InitConnection() {
             // this._connection = new global::System.Data.SqlClient.SqlConnection();
             // this._connection.ConnectionString = global::SHOPCONTROL.Properties.Settings.Default.BillLineConnectionString;
-            string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
+            string cfnFile = @"//SRV-DATACENTER/tmp/EmailConf.xml";
             bool cfnExist = File.Exists(cfnFile);
-            XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
+            XDocument xdoc = XDocument.Load(cfnExist ? @"//SRV-DATACENTER/tmp/EmailConf.xml" : @"C:\\tmp\\EmailConf.xml");
             string vserver = xdoc.Descendants("ConnStr").First().Value;
 
             this._connection = new global::System.Data.SqlClient.SqlConnection();
@@ -15778,9 +15778,9 @@ namespace SHOPCONTROL.HistorialClinica.DataSetOftalmologiaTableAdapters {
         private void InitConnection() {
             // this._connection = new global::System.Data.SqlClient.SqlConnection();
             // this._connection.ConnectionString = global::SHOPCONTROL.Properties.Settings.Default.BillLineConnectionString;
-            string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
+            string cfnFile = @"//SRV-DATACENTER/tmp/EmailConf.xml";
             bool cfnExist = File.Exists(cfnFile);
-            XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
+            XDocument xdoc = XDocument.Load(cfnExist ? @"//SRV-DATACENTER/tmp/EmailConf.xml" : @"C:\\tmp\\EmailConf.xml");
             string vserver = xdoc.Descendants("ConnStr").First().Value;
 
             this._connection = new global::System.Data.SqlClient.SqlConnection();

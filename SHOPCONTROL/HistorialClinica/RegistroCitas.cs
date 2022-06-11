@@ -7,6 +7,8 @@ using System.Data.SqlClient;
 
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
+using SHOPCONTROL.Utilerias;
+
 namespace SHOPCONTROL.HistorialClinica
 {
     public partial class RegistroCitas : Form
@@ -374,7 +376,7 @@ namespace SHOPCONTROL.HistorialClinica
        //     Lv.Columns.Add("Observa", 100).Tag = "STRING";
             Lv.Columns.Add("Emitio", 60).Tag = "STRING";
             Lv.Columns.Add("Recibo de Pago", 65).Tag = "STRING";
-            Lv.Columns.Add("Telefono", 100).Tag = "STRING";
+       //     Lv.Columns.Add("Telefono", 100).Tag = "STRING";
             Lv.Columns.Add("Observa", 100).Tag = "STRING";
             Lv.Columns.Add("Turno", 100).Tag = "STRING";
             Lv.Columns.Add("Hora Pago", 100).Tag = "STRING";
@@ -408,7 +410,7 @@ namespace SHOPCONTROL.HistorialClinica
                 lvi.SubItems.Add(leer["NombreServicio"].ToString());
                 lvi.SubItems.Add(leer["emite"].ToString());
                 lvi.SubItems.Add(leer["recibopago"].ToString());
-                lvi.SubItems.Add(leer["telefono"].ToString());
+                // lvi.SubItems.Add(leer["telefono"].ToString());
                 lvi.SubItems.Add(leer["observa"].ToString());
                 string cadturno = leer["idturno"].ToString();
                 string estatus = leer["estatus"].ToString();
@@ -789,121 +791,134 @@ namespace SHOPCONTROL.HistorialClinica
 
         public void ProcesoGuardarPaciente()
         {
+
             cargaConsecutivo();
             RecolectaPacienteReg();
-            GuardarCliente();
-            GuardaPacienteDirecto();
-            actualizaConsecutivo();
+
+            if (GuardarCliente()) {
+                GuardaPacienteDirecto();
+                actualizaConsecutivo();
+            };
         }
 
-        public void GuardarCliente()
+        public bool GuardarCliente()
         {
 
-            conectorSql conecta = new conectorSql();
-            string Query = "";
 
-            Query = "Delete from clientes where cvcliente='" + CLAVE + "'";
-            conecta.Excute(Query);
-            conecta.CierraConexion();
+            try
+            {
+                conectorSql conecta = new conectorSql();
+                string Query = "";
 
-            Query = "set IDENTITY_INSERT clientes on insert into clientes(";
-            Query = Query + "cvcliente";
-            Query = Query + ",nombre";
-            Query = Query + ",telefono";
-            Query = Query + ",email";
-            Query = Query + ",email2";
-            Query = Query + ",celular";
-            Query = Query + ",direccion";
-            Query = Query + ",rfc";
-            Query = Query + ",direfiscal";
-            Query = Query + ",empresa";
-            Query = Query + ",calleE";
-            Query = Query + ",ColoniaE";
-            Query = Query + ",MunicipioE";
-            Query = Query + ",EstadoE";
-            Query = Query + ",CodE";
-            Query = Query + ",PaisE";
-            Query = Query + ",CalleF";
-            Query = Query + ",ColoniaF";
-            Query = Query + ",MunicipioF";
-            Query = Query + ",EstadoF";
-            Query = Query + ",CodF";
-            Query = Query + ",PaisF";
-            Query = Query + ",fechamod";
-            Query = Query + ",fcodmod";
-            Query = Query + ",sincronizado";
-            Query = Query + ",actividad";
-            Query = Query + ",numf";
-            Query = Query + ",observafact";
+                Query = "Delete from clientes where cvcliente='" + CLAVE + "'";
+                conecta.Excute(Query);
+                conecta.CierraConexion();
 
-            Query = Query + ",numcuenta";
-            Query = Query + ",cvbanco";
-            Query = Query + ",metodopago";
-            Query = Query + ",vendedor";
-            Query = Query + ",formapago";
+                Query = "set IDENTITY_INSERT clientes on insert into clientes(";
+                Query = Query + "cvcliente";
+                Query = Query + ",nombre";
+                Query = Query + ",telefono";
+                Query = Query + ",email";
+                Query = Query + ",email2";
+                Query = Query + ",celular";
+                Query = Query + ",direccion";
+                Query = Query + ",rfc";
+                Query = Query + ",direfiscal";
+                Query = Query + ",empresa";
+                Query = Query + ",calleE";
+                Query = Query + ",ColoniaE";
+                Query = Query + ",MunicipioE";
+                Query = Query + ",EstadoE";
+                Query = Query + ",CodE";
+                Query = Query + ",PaisE";
+                Query = Query + ",CalleF";
+                Query = Query + ",ColoniaF";
+                Query = Query + ",MunicipioF";
+                Query = Query + ",EstadoF";
+                Query = Query + ",CodF";
+                Query = Query + ",PaisF";
+                Query = Query + ",fechamod";
+                Query = Query + ",fcodmod";
+                Query = Query + ",sincronizado";
+                Query = Query + ",actividad";
+                Query = Query + ",numf";
+                Query = Query + ",observafact";
 
-            Query = Query + ",tipopago";
-            Query = Query + ",diascredito";
-            Query = Query + ",nombrefactura";
-            Query = Query + ",factura";
+                Query = Query + ",numcuenta";
+                Query = Query + ",cvbanco";
+                Query = Query + ",metodopago";
+                Query = Query + ",vendedor";
+                Query = Query + ",formapago";
 
-            Query = Query + ",activo";
-            Query = Query + ",saldo";
-            //Query = Query + ",dcredito";
-            Query = Query + ",saldocredito";
-            Query = Query + ",idcliente";
-            Query = Query + ",curp";
-            Query = Query + ",monedero)";
-            Query = Query + " values(";
+                Query = Query + ",tipopago";
+                Query = Query + ",diascredito";
+                Query = Query + ",nombrefactura";
+                Query = Query + ",factura";
 
-            Query = Query + "'" + CLAVE + "'";
-            Query = Query + ",'" + NOMBRE + " " + APATERNO + " " + AMATERNO + "'";
-            Query = Query + ",'" + TELEFONO + "'";
-            Query = Query + ",'" + EMAIL + "'";
-            Query = Query + ",'" + EMAIL2 + "'";
-            Query = Query + ",'" + CELULAR + "'";
-            Query = Query + ",'" + CALLE + " ," + NoCalle + " " + MUNICIPIO + " " + ESTADO + "'";
-            Query = Query + ",'XAXX010101000'";
-            Query = Query + ",'" + CALLE + " ," + NoCalle + " " + MUNICIPIO + " " + ESTADO + "'";
-            Query = Query + ",'" + NOMBRE + " " + APATERNO + " " + AMATERNO + "'";
+                Query = Query + ",activo";
+                Query = Query + ",saldo";
+                //Query = Query + ",dcredito";
+                Query = Query + ",saldocredito";
+                Query = Query + ",idcliente";
+                Query = Query + ",curp";
+                Query = Query + ",monedero)";
+                Query = Query + " values(";
 
-            Query = Query + ",'" + CALLE + "'";
-            Query = Query + ",'" + COLONIA + "'";
-            Query = Query + ",'" + MUNICIPIO + "'";
-            Query = Query + ",'" + ESTADO + "'";
-            Query = Query + ",'" + CP + "'";
-            Query = Query + ",'MÈXICO'";
-            Query = Query + ",'" + CALLE + "'";
-            Query = Query + ",'" + COLONIA + "'";
-            Query = Query + ",'" + MUNICIPIO + "'";
-            Query = Query + ",'" + ESTADO + "'";
-            Query = Query + ",'" + CP + "'";
-            Query = Query + ",'MÈXICO'";
-            Query = Query + ",'" + FECHA + "'";
-            Query = Query + ",'" + FCOD + "'";
-            Query = Query + ",'0'";
-            Query = Query + ",'FISICA'";
-            Query = Query + ",'" + NoCalle + "'";
-            Query = Query + ",''";
+                Query = Query + "'" + CLAVE + "'";
+                Query = Query + ",'" + NOMBRE + " " + APATERNO + " " + AMATERNO + "'";
+                Query = Query + ",'" + TELEFONO + "'";
+                Query = Query + ",'" + EMAIL + "'";
+                Query = Query + ",'" + EMAIL2 + "'";
+                Query = Query + ",'" + CELULAR + "'";
+                Query = Query + ",'" + CALLE + " ," + NoCalle + " " + MUNICIPIO + " " + ESTADO + "'";
+                Query = Query + ",'XAXX010101000'";
+                Query = Query + ",'" + CALLE + " ," + NoCalle + " " + MUNICIPIO + " " + ESTADO + "'";
+                Query = Query + ",'" + NOMBRE + " " + APATERNO + " " + AMATERNO + "'";
 
-            Query = Query + ",'0000'";
-            Query = Query + ",'0'";
-            Query = Query + ",'No Identificado'";
-            Query = Query + ",'NO APLICA'";
-            Query = Query + ",'PAGO EN UNA SOLA EXHIBICIÓN'";
+                Query = Query + ",'" + CALLE + "'";
+                Query = Query + ",'" + COLONIA + "'";
+                Query = Query + ",'" + MUNICIPIO + "'";
+                Query = Query + ",'" + ESTADO + "'";
+                Query = Query + ",'" + CP + "'";
+                Query = Query + ",'MÈXICO'";
+                Query = Query + ",'" + CALLE + "'";
+                Query = Query + ",'" + COLONIA + "'";
+                Query = Query + ",'" + MUNICIPIO + "'";
+                Query = Query + ",'" + ESTADO + "'";
+                Query = Query + ",'" + CP + "'";
+                Query = Query + ",'MÈXICO'";
+                Query = Query + ",'" + FECHA + "'";
+                Query = Query + ",'" + FCOD + "'";
+                Query = Query + ",'0'";
+                Query = Query + ",'FISICA'";
+                Query = Query + ",'" + NoCalle + "'";
+                Query = Query + ",''";
 
-            Query = Query + ",'Contado'";
-            Query = Query + ",'0'";
-            Query = Query + ",''";
-            Query = Query + ",'SI'";
+                Query = Query + ",'0000'";
+                Query = Query + ",'0'";
+                Query = Query + ",'No Identificado'";
+                Query = Query + ",'NO APLICA'";
+                Query = Query + ",'PAGO EN UNA SOLA EXHIBICIÓN'";
 
-            Query = Query + ",'1'";
-            Query = Query + ",'0'";
-            //Query = Query + ",'" + DCREDITO + "'";
-            Query = Query + ",'0'";
-            Query = Query + ",'"  + CLAVE + "'," + CURP + "'";
-            Query = Query + "','0')";
-            conecta.Excute(Query);
+                Query = Query + ",'Contado'";
+                Query = Query + ",'0'";
+                Query = Query + ",''";
+                Query = Query + ",'SI'";
+
+                Query = Query + ",'1'";
+                Query = Query + ",'0'";
+                //Query = Query + ",'" + DCREDITO + "'";
+                Query = Query + ",'0'";
+                Query = Query + ",'" + CLAVE + "'," + CURP + "'";
+                Query = Query + "','0')";
+                return conecta.Excute(Query);
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
+            
 
 
         }
@@ -929,8 +944,8 @@ namespace SHOPCONTROL.HistorialClinica
 
             CURP = textBox14.Text.Trim();
             NOMBRE = textBox1.Text.Trim();
-            APATERNO = "ND";
-            AMATERNO = "ND";
+            APATERNO = "";
+            AMATERNO = "";
             GENERO = "FEMENINO";
             ESCOLARIDAD = "";
             EMAIL = "";
@@ -1330,8 +1345,15 @@ namespace SHOPCONTROL.HistorialClinica
              * */
             MailNotifications mails = new MailNotifications();
             //(string cita, string email, string nombre, string fecha , string servicio)
+            // valida mail si es correcto
+            string emailPaciente = existemail(cvpaciente);
 
-            mails.SendMail(numticket + " su id único:" + cvpaciente, existemail(cvpaciente), nombre, "Con fecha: " + HoraInicia.ToString(), sel_nomArea, true);
+            if (ValidateData.IsValidEmail(emailPaciente) == true)
+            { 
+                mails.SendMail(numticket + " su id único:" + cvpaciente, emailPaciente, nombre, "Con fecha: " + HoraInicia.ToString(), sel_nomArea, true);
+                return;
+            }
+
 
             MessageBox.Show("Se registro correctamente la cita ", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -1566,7 +1588,7 @@ namespace SHOPCONTROL.HistorialClinica
             {
                 ReportDocument cryRpt = new ReportDocument();
 
-                string CadenaReporte = "C:\\tmp\\reports\\ImpresoTicket.rpt";
+                string CadenaReporte = @"\\SRV-DATACENTER\\tmp\\reports\\ImpresoTicket.rpt";
                 string cvdoctor = comboBox1.SelectedValue.ToString();
                 string cvservicio = "0";
                 string numexpediente="";
@@ -1609,7 +1631,7 @@ namespace SHOPCONTROL.HistorialClinica
                 cryRpt.SetDataSource(ds);
                 // cryRpt.SetParameterValue("fecha1", 13);
                 string NombreArchivo = @"C:\TicketImpreso.pdf";
-                //cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
+                //// cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
                 cryRpt.PrintToPrinter(1, false, 0, 0);
                 cryRpt.Close();
                 cryRpt.Dispose();
@@ -2025,7 +2047,7 @@ namespace SHOPCONTROL.HistorialClinica
         {
             ReportDocument cryRpt = new ReportDocument();
 
-            string CadenaReporte = "C:\\tmp\\reports\\ReporteAreaDiario.rpt";
+            string CadenaReporte = @"\\SRV-DATACENTER\\tmp\\reports\\ReporteAreaDiario.rpt";
 
             DataSet ds = new DataSet();
             string fechacod = dateTimePicker1.Value.ToString("yyyyMMdd");
@@ -2058,7 +2080,7 @@ namespace SHOPCONTROL.HistorialClinica
             cryRpt.SetDataSource(ds);
 
             string NombreArchivo =Application.StartupPath+ "\\Reportes\\ReporteDiarioCitas.pdf"; 
-            cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
+            // cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
             //cryRpt.PrintToPrinter(1, false, 0, 0);
             cryRpt.Close();
             cryRpt.Dispose();

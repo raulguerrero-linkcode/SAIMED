@@ -248,7 +248,7 @@ namespace SHOPCONTROL
             string DIRECCION = "";
 
             ReportDocument cryRpt = new ReportDocument();
-            string CadenaReporte = "C:\\tmp\\reports\\DocGastoind.rpt";
+            string CadenaReporte = @"\\SRV-DATACENTER\\tmp\\reports\\DocGastoind.rpt";
 
             conectorSql conecta = new conectorSql();
             string Query = "Select * from ParametrosFactura where nombre<>''";

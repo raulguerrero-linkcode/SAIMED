@@ -164,6 +164,7 @@
             this.listView1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
+            this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(0, 225);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(798, 139);
@@ -286,6 +287,7 @@
             this.Lv.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lv.FullRowSelect = true;
             this.Lv.GridLines = true;
+            this.Lv.HideSelection = false;
             this.Lv.Location = new System.Drawing.Point(3, 28);
             this.Lv.Name = "Lv";
             this.Lv.Size = new System.Drawing.Size(798, 138);
@@ -306,6 +308,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(849, 66);
             this.panel1.TabIndex = 0;
+            this.panel1.Visible = false;
             // 
             // checkBox1
             // 

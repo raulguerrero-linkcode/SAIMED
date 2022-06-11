@@ -339,7 +339,7 @@ namespace SHOPCONTROL
             if (FacturarcionOnline(numpedido, ayo) == true && TieneTimbresFacturar()==true)
             {
 
-                string CadenaReporte = "C:\\tmp\\reports\\Factura.rpt";
+                string CadenaReporte = @"\\SRV-DATACENTER\\tmp\\reports\\Factura.rpt";
 
                 Query = "Select * from facturas where numfactura='" + numpedido + "' and ayo='" + ayo + "'";
                 SqlDataReader leer2 = conecta2.RecordInfo(Query);
@@ -466,7 +466,7 @@ namespace SHOPCONTROL
                 else
                     NombreArchivo = DIRCARPETA + "\\" + NOMBREDEFACTURA + "_" + numpedido + ".pdf";
 
-                cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
+                // cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
                
                 
                 if (IMPRESIONDIRECTA=="SI") cryRpt.PrintToPrinter(Numcopias, false, 0, 0);
@@ -479,7 +479,7 @@ namespace SHOPCONTROL
             }
             else
             {
-                string CadenaReporte = "C:\\tmp\\reports\\FacturaAuxiliar.rpt";
+                string CadenaReporte = @"\\SRV-DATACENTER\\tmp\\reports\\FacturaAuxiliar.rpt";
 
                 Query = "Select * from facturas where numfactura='" + numpedido + "' and ayo='" + ayo + "'";
                 SqlDataReader leer2 = conecta2.RecordInfo(Query);
@@ -594,7 +594,7 @@ namespace SHOPCONTROL
 
                NombreArchivo = DIRCARPETA + "\\RECIBOTEMP_" + numpedido + ".pdf";
 
-                cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
+                // cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
 
                 if (IMPRESIONDIRECTA == "SI") cryRpt.PrintToPrinter(2, false, 0, 0);
                 cryRpt.Close();
@@ -657,7 +657,7 @@ namespace SHOPCONTROL
             conectorSql conecta = new conectorSql();
             LimpiarVariables();
 
-            string CadenaReporte = "C:\\tmp\\reports\\Factura.rpt";
+            string CadenaReporte = @"\\SRV-DATACENTER\\tmp\\reports\\Factura.rpt";
 
             Query = "Select * from facturas where numfactura='" + numpedido + "'";
             SqlDataReader leer2 = conecta2.RecordInfo(Query);
@@ -791,7 +791,7 @@ namespace SHOPCONTROL
             else
                 NombreArchivo = DIRCARPETA + "\\F" + numpedido + "_" + NOMBREDEFACTURA + "_RIMP.pdf";
 
-            cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
+            // cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
 
             ENVIARCORREO(CORREODESTINATARIO, NombreArchivo, Archivo2);
 

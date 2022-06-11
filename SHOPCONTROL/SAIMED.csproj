@@ -28,7 +28,7 @@
     <PublisherName>LINKCODE SERVICES</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>10</ApplicationRevision>
+    <ApplicationRevision>11</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -72,7 +72,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -113,6 +113,31 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>.\CrystalDecisions.ReportAppServer.CommLayer.dll</HintPath>
     </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommonControls, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>.\CrystalDecisions.ReportAppServer.CommonControls.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.Controllers, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>.\CrystalDecisions.ReportAppServer.Controllers.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.DataDefModel, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>.\CrystalDecisions.ReportAppServer.DataDefModel.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ObjectFactory, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>.\CrystalDecisions.ReportAppServer.ObjectFactory.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ReportDefModel, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>.\CrystalDecisions.ReportAppServer.ReportDefModel.dll</HintPath>
+    </Reference>
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <HintPath>.\CrystalDecisions.ReportSource.dll</HintPath>
     </Reference>
@@ -146,6 +171,12 @@
     <Reference Include="itextsharp">
       <HintPath>..\itextsharp.dll</HintPath>
     </Reference>
+    <Reference Include="JWT, Version=9.0.0.0, Culture=neutral, PublicKeyToken=6f98bca0f40f2ecf, processorArchitecture=MSIL">
+      <HintPath>..\packages\JWT.9.0.3\lib\net46\JWT.dll</HintPath>
+    </Reference>
+    <Reference Include="MessageBird, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MessageBird.3.2.0\lib\net40\MessageBird.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Office.Interop.Excel1">
       <HintPath>..\..\..\..\Program Files (x86)\Microsoft Visual Studio\Shared\Visual Studio Tools for Office\PIA\Office14\Microsoft.Office.Interop.Excel.dll</HintPath>
@@ -157,6 +188,9 @@
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel3">
       <HintPath>.\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -192,12 +226,25 @@
     <Compile Include="ActivacionCitas.Designer.cs">
       <DependentUpon>ActivacionCitas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Analisys\PendientesPago.cs">
+    <Compile Include="Analisys\IngresosPorArea.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Analisys\PendientesPago.Designer.cs">
-      <DependentUpon>PendientesPago.cs</DependentUpon>
+    <Compile Include="Analisys\IngresosPorArea.Designer.cs">
+      <DependentUpon>IngresosPorArea.cs</DependentUpon>
     </Compile>
+    <Compile Include="Analisys\ListadoPacientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Analisys\ListadoPacientes.Designer.cs">
+      <DependentUpon>ListadoPacientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Analisys\NotificacionClientesSMS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Analisys\NotificacionClientesSMS.Designer.cs">
+      <DependentUpon>NotificacionClientesSMS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Analisys\SMSNotification.cs" />
     <Compile Include="BASE DE DATOS\CBaseD.cs" />
     <Compile Include="BASE DE DATOS\CTablas.cs" />
     <Compile Include="BaseReportCitas.Designer.cs">
@@ -272,6 +319,18 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Inventarios\Cantidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventarios\Cantidad.Designer.cs">
+      <DependentUpon>Cantidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventarios\CapturaInventarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventarios\CapturaInventarios.Designer.cs">
+      <DependentUpon>CapturaInventarios.cs</DependentUpon>
     </Compile>
     <Compile Include="JOSEFORMS\CodigoQR.cs">
       <SubType>Form</SubType>
@@ -805,8 +864,14 @@
     <EmbeddedResource Include="ActivacionCitas.resx">
       <DependentUpon>ActivacionCitas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Analisys\PendientesPago.resx">
-      <DependentUpon>PendientesPago.cs</DependentUpon>
+    <EmbeddedResource Include="Analisys\IngresosPorArea.resx">
+      <DependentUpon>IngresosPorArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Analisys\ListadoPacientes.resx">
+      <DependentUpon>ListadoPacientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Analisys\NotificacionClientesSMS.resx">
+      <DependentUpon>NotificacionClientesSMS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Bienvenidos.resx">
       <DependentUpon>Bienvenidos.cs</DependentUpon>
@@ -839,6 +904,12 @@
     <EmbeddedResource Include="HistorialClinica\TicketCorteRecibos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>TicketCorteRecibos.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventarios\Cantidad.resx">
+      <DependentUpon>Cantidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventarios\CapturaInventarios.resx">
+      <DependentUpon>CapturaInventarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="JOSEFORMS\CodigoQR.resx">
       <DependentUpon>CodigoQR.cs</DependentUpon>
@@ -1174,6 +1245,7 @@
     <None Include="ImagenB.xss">
       <DependentUpon>ImagenB.xsd</DependentUpon>
     </None>
+    <None Include="packages.config" />
     <None Include="Pagares.xsc">
       <DependentUpon>Pagares.xsd</DependentUpon>
     </None>
@@ -1213,7 +1285,6 @@
   <ItemGroup>
     <Content Include="BillLine.ico" />
     <Content Include="bluewhales 005.ico" />
-    <Content Include="EmailConf.xml" />
     <Content Include="favicon.ico" />
     <Content Include="medicina2 %281%29.ico" />
     <Content Include="medicina2.ico" />

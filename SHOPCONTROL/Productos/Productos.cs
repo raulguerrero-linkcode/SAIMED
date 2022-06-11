@@ -1056,6 +1056,68 @@ namespace SHOPCONTROL
         {
             //if (e.KeyCode == Keys.Enter) { JOSE_FROMS.CodigoQR QR = new JOSE_FROMS.CodigoQR(); QR.Show(); }
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            conectorSql conecta = new conectorSql();
+            string query = "";
+            query = query + "INSERT INTO Productos ";
+            query = query + "([cvproducto] ";
+            query = query + ",[nombre] ";
+            query = query + ",[descripcion] ";
+            query = query + ",[categoria] ";
+            query = query + ",[unidad] ";
+            query = query + ",[cantidad] ";
+            query = query + ",[minimo] ";
+            query = query + ",[maximo] ";
+            query = query + ",[causaiva] ";
+            query = query + ",[marca] ";
+            query = query + ",[codbarras] ";
+            query = query + ",[ubicacion] ";
+            query = query + ",[fechaModifica] ";
+            query = query + ",[fcodmodifica] ";
+            query = query + ",[emitio] ";
+            query = query + ",[causaAdicional]  ";
+            query = query + ",[pasillo] ";
+            query = query + ",[altura] ";
+            query = query + ",[sucursal] ";
+            query = query + ",[idtipo] ";
+            query = query + ",[activo] ";
+            query = query + ",[cvusuario]) ";
+            query = query + " VALUES ( ";
+            query = query + "'" + textBox1.Text + "',";
+            query = query + "'" + textBox2.Text + "',";
+            query = query + "'" + textBox7.Text + "',";
+            query = query + "'" + comboBox1.Text + "',";
+            query = query + "'" + comboBox5.Text + "',";
+            query = query + "" + textBox4.Text + ",";
+            query = query + "" + textBox5.Text + ",";
+            query = query + "" + textBox6.Text + ",";
+            query = query + "'" + CAUSAIVA + "',";
+            query = query + "'" + comboBox3.Text + "',";
+            query = query + "'" + UPC.Text + "',";
+            query = query + "'" + textBox20.Text + "',";
+            query = query + "'" + FECHAMODIFICA + "',";
+            query = query + "'" + FCODMODIFICA + "',";
+            query = query + "'" + valoresg.USUARIOSIS + "',";
+            query = query + "'',";
+            query = query + "'" + textBox21.Text + "',";
+            query = query + "'" + comboBox6.Text + "',";
+            query = query + "'CUERNAVACA',";
+            query = query + "1,";
+            query = query + "1,";
+            query = query + "'" + valoresg.USUARIOSIS + "')";
+            
+            conecta.Excute(query);
+            conecta.CierraConexion();
+            MessageBox.Show("Arttículo agregado exitosamente!");
+
+        }
+
+        private void button9_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

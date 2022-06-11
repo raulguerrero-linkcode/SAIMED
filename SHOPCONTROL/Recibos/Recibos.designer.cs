@@ -227,11 +227,10 @@
             this.panel1.Controls.Add(this.label33);
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.panel11);
-            this.panel1.Location = new System.Drawing.Point(0, -3);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1007, 735);
             this.panel1.TabIndex = 0;
-            this.panel1.Visible = false;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label42
@@ -392,7 +391,7 @@
             this.radioButton2.ForeColor = System.Drawing.Color.White;
             this.radioButton2.Location = new System.Drawing.Point(16, 105);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(72, 17);
+            this.radioButton2.Size = new System.Drawing.Size(77, 18);
             this.radioButton2.TabIndex = 190;
             this.radioButton2.Text = "Por Pagar";
             this.radioButton2.UseVisualStyleBackColor = true;
@@ -404,7 +403,7 @@
             this.radioButton1.ForeColor = System.Drawing.Color.White;
             this.radioButton1.Location = new System.Drawing.Point(16, 82);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(65, 17);
+            this.radioButton1.Size = new System.Drawing.Size(71, 18);
             this.radioButton1.TabIndex = 189;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Contado";
@@ -845,7 +844,7 @@
             this.radioButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.radioButton4.Location = new System.Drawing.Point(105, 4);
             this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(41, 17);
+            this.radioButton4.Size = new System.Drawing.Size(42, 18);
             this.radioButton4.TabIndex = 182;
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "NO";
@@ -857,7 +856,7 @@
             this.radioButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.radioButton3.Location = new System.Drawing.Point(65, 4);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(35, 17);
+            this.radioButton3.Size = new System.Drawing.Size(36, 18);
             this.radioButton3.TabIndex = 181;
             this.radioButton3.Text = "SI";
             this.radioButton3.UseVisualStyleBackColor = true;
@@ -1091,7 +1090,7 @@
             this.checkBox2.ForeColor = System.Drawing.Color.White;
             this.checkBox2.Location = new System.Drawing.Point(882, 12);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(96, 17);
+            this.checkBox2.Size = new System.Drawing.Size(105, 18);
             this.checkBox2.TabIndex = 64;
             this.checkBox2.Text = "Activar Listado";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -1331,6 +1330,7 @@
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.panel3.Controls.Add(this.label47);
             this.panel3.Controls.Add(this.label46);
+            this.panel3.Controls.Add(this.panel1);
             this.panel3.Controls.Add(this.label45);
             this.panel3.Controls.Add(this.label36);
             this.panel3.Controls.Add(this.button16);
@@ -1847,7 +1847,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1014, 730);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Recibos";

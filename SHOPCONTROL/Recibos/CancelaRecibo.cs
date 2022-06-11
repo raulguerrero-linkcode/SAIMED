@@ -282,9 +282,13 @@ namespace SHOPCONTROL
             }
             //Query = "Delete from CobroenVentana where numpedido='" + NUMREMISION + "'";
             //conecta.Excute(Query);
+            // Enviar correo de cancelación
+            MailNotifications mail = new MailNotifications();
+            mail.SendMailOnlySubjectAndMSG("Se canceló el pedido del cliente: " + NUMCLIENTE, "Se ha cancelado el recibo del cliente : " + NOMBRECLIENTE + ", con fecha " + FECHA + ", emitido por " + EMITIO + "y con un importe de " + TOTALC + " (" + CANTIDADLETRA);
 
             //BuscarFactura();
             MessageBox.Show("Se cancelo correctamente el recibo", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             this.Dispose();
         }
 

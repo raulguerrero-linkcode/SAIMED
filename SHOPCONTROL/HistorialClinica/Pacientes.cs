@@ -247,6 +247,7 @@ namespace SHOPCONTROL.HistorialClinica
                 Query += ",'" + STATUS + "')";
 
                 conecta.Excute(Query);
+                conecta.CierraConexion();
 
                 ClaseFotos.GuardarFoto(pathFoto, CLAVE);
 
@@ -505,7 +506,7 @@ namespace SHOPCONTROL.HistorialClinica
 
             Query = Query + " where clave='" + CLAVE+ "'";
             conecta.Excute(Query);
-
+            conecta.CierraConexion();
             ClaseFotos.GuardarFotoPaciente(pathFoto, NoExpediente);
         }
 
@@ -650,49 +651,116 @@ namespace SHOPCONTROL.HistorialClinica
         public bool actualizaConsecutivoExpediente()
         {
             conectorSql conecta = new conectorSql();
-            int Siguiente = NUMEXPEDIENTEG + 1;
-            string Query = "update consecutivos set numexpe='" + Siguiente.ToString() + "'";
-            return conecta.Excute(Query);
+            try
+            {
+                
+                int Siguiente = NUMEXPEDIENTEG + 1;
+                string Query = "update consecutivos set numexpe='" + Siguiente.ToString() + "'";
+                return conecta.Excute(Query);
+            }
+            catch (Exception)
+            {
+                throw;
+            } finally
+            {
+                conecta.CierraConexion();
+            }
+            
         }
 
         public bool actualizaConsecutivoArchivos()
         {
+
             conectorSql conecta = new conectorSql();
-            int Siguiente = NUM_ARCHIVOS + 1;
+            try
+            {
+
+                int Siguiente = NUM_ARCHIVOS + 1;
             string Query = "update consecutivos set numarchivos='" + Siguiente.ToString() + "'";
             return conecta.Excute(Query);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conecta.CierraConexion();
+            }
         }
 
         public bool actualizaConsecutivoExpedienteGine()
         {
             conectorSql conecta = new conectorSql();
-            int Siguiente = int.Parse(textBox19.Text) + 1;
+            try
+            {
+                int Siguiente = int.Parse(textBox19.Text) + 1;
             string Query = "update consecutivos set numexpegine='" + Siguiente.ToString() + "'";
             return conecta.Excute(Query);
+        }
+            catch (Exception)
+            {
+                throw;
+            } finally
+            {
+                conecta.CierraConexion();
+            }
         }
 
         public bool actualizaConsecutivoExpedienteDental()
         {
             conectorSql conecta = new conectorSql();
-            int Siguiente = int.Parse(textBox12.Text) + 1;
+            try
+            {
+                int Siguiente = int.Parse(textBox12.Text) + 1;
             string Query = "update consecutivos set numexpedental='" + Siguiente.ToString() + "'";
             return conecta.Excute(Query);
+        }
+            catch (Exception)
+            {
+                throw;
+            } finally
+            {
+                conecta.CierraConexion();
+            }
         }
 
         public bool actualizaConsecutivoExpedienteOftamo()
         {
             conectorSql conecta = new conectorSql();
-            int Siguiente = int.Parse(textBox14.Text) + 1;
+            try
+            {
+                int Siguiente = int.Parse(textBox14.Text) + 1;
             string Query = "update consecutivos set numexpeofta='" + Siguiente.ToString() + "'";
             return conecta.Excute(Query);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conecta.CierraConexion();
+            }
         }
 
         public bool actualizaConsecutivo()
         {
-            conectorSql conecta = new conectorSql();
-            int Siguiente = int.Parse(textBox24.Text) + 1;
+                conectorSql conecta = new conectorSql();
+                try
+                {
+                    int Siguiente = int.Parse(textBox24.Text) + 1;
             string Query = "update consecutivos set paciente='" + Siguiente.ToString() + "'";
             return conecta.Excute(Query);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conecta.CierraConexion();
+            }
         }
 
         public bool GuardarCliente()
@@ -701,9 +769,11 @@ namespace SHOPCONTROL.HistorialClinica
             string usercreated = valoresg.IdEmployee;
             DateTime ferchacreacion = DateTime.Now;
 
-            conectorSql conecta = new conectorSql();
-            string Query = "";
-            Query = "insert into clientes(";
+                    conectorSql conecta = new conectorSql();
+                    try
+                    {
+                        string Query = "";
+            Query = "set IDENTITY_INSERT clientes on  insert into clientes(";
             Query = Query + "cvcliente";
             Query = Query + ",nombre";
             Query = Query + ",telefono";
@@ -805,18 +875,18 @@ namespace SHOPCONTROL.HistorialClinica
             Query = Query + ",'" + curp.Text + "'";
             Query = Query + ",'0'," + CLAVE + "," + usercreated + ",'" + ferchacreacion + "')";
 
-            try
-            {
-                conecta.Excute(Query);
-                return true;
+                return conecta.Excute(Query);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine("IOException source: {0}", e.Source);
-                return false;
+                throw;
+            }
+            finally
+            {
+                conecta.CierraConexion();
             }
 
-               
+
         }
 
         public void ActualizarCliente()
@@ -851,6 +921,7 @@ namespace SHOPCONTROL.HistorialClinica
             Query = Query + ",numf='" + NoCalle + "'";
             Query = Query + " where cvcliente ='" + CLAVE + "'";
             conecta.Excute(Query);
+            conecta.CierraConexion();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -1309,6 +1380,7 @@ namespace SHOPCONTROL.HistorialClinica
                 {
                     Query = "Delete from DetallesPreServicio where cvpreserv='" + Lv2.Items[i].Text + "' and cvpaciente='" + textBox24.Text.Trim() +"' and estatus='CAPTURADO'";
                     conecta.Excute(Query);
+                    conecta.CierraConexion();
                 }
             }
             MessageBox.Show("Se elimino la informacion seleccionada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1340,6 +1412,7 @@ namespace SHOPCONTROL.HistorialClinica
 
                         string Query = "Delete from DetallesPreServicio where cvpreserv='" + Lv2.Items[item].Text + "' and cvpaciente='" + textBox24.Text.Trim() + "' and estatus='CAPTURADO'";
                         conecta.Excute(Query);
+                        conecta.CierraConexion();
                         MessageBox.Show("Se elimino la informacion seleccionada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 

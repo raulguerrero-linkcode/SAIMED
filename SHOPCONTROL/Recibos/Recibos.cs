@@ -8,6 +8,10 @@ using System.Data.SqlClient;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 using System.Runtime.InteropServices;
+using SHOPCONTROL.Inventarios;
+using System.IO;
+using System.Xml.Linq;
+using System.Linq;
 //using System.Collections.Generic; //MODIFICADO POR JOSE 26-11-19
 namespace SHOPCONTROL
 {
@@ -488,7 +492,7 @@ namespace SHOPCONTROL
 
             string consulta = "delete from DetallesPreServicio where (cvpaciente='0' or cvpaciente='') and  estatus='CAPTURADO'";
             conecta.Excute(consulta);
-
+            conecta.CierraConexion();
             string Query = "Select * from DetallesPreServicio where cvpaciente='" + textBox1.Text + "' and  estatus='CAPTURADO' order by fechacod desc";
             SqlDataReader leer = conecta.RecordInfo(Query);
             while (leer.Read())
@@ -571,7 +575,6 @@ namespace SHOPCONTROL
                     Numero = leer["numrecibo"].ToString();
                 }
                 conecta.CierraConexion();
-                conecta.CierraConexion();
                 label17.Text = Numero;
             }
         }
@@ -579,9 +582,23 @@ namespace SHOPCONTROL
         public bool ActualizaRemision()
         {
             conectorSql conecta = new conectorSql();
-            int Siguiente = int.Parse(label17.Text) + 1;
-            string Query = "update consecutivos set numrecibo='" + Siguiente.ToString() + "'";
-            return conecta.Excute(Query);
+            try
+            {
+                int Siguiente = int.Parse(label17.Text) + 1;
+                string Query = "update consecutivos set numrecibo='" + Siguiente.ToString() + "'";
+                return conecta.Excute(Query);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                conecta.CierraConexion();
+            }
+            
+            
         }
 
 
@@ -590,51 +607,64 @@ namespace SHOPCONTROL
             Limpiar();
             LimpiarCliente();
             conectorSql conecta = new conectorSql();
-            string Query = "";
-            if (clave != "")
+            try
             {
+                string Query = "";
+                if (clave != "")
+                {
+                    Query = "Select * from clientes where cvcliente='" + clave + "'";
+                    bool existeCliente = conecta.ExisteRegistro(Query);
+                    if (existeCliente == false)
+                    {
+                        MessageBox.Show("No existe la clave del cliente, verifique por favor", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+
                 Query = "Select * from clientes where cvcliente='" + clave + "'";
-                bool existeCliente = conecta.ExisteRegistro(Query);
-                if (existeCliente == false)
+                SqlDataReader leer = conecta.RecordInfo(Query);
+                while (leer.Read())
                 {
-                    MessageBox.Show("No existe la clave del cliente, verifique por favor", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    textBox1.Text = clave;
+                    textBox2.Text = leer["nombre"].ToString();
+                    textBox10.Text = leer["direccion"].ToString();
+
+                    if (clave == "0")
+                    {
+                        textBox2.Text = "";
+                        textBox10.Text = "";
+                    }
+
+                    textBox5.Text = leer["telefono"].ToString();
+                    textBox16.Text = leer["observafact"].ToString();
+
+                    ReLocalidad = "";
+
+                    ReNoInterior = "0";
+                    RePais = leer["PaisF"].ToString();
+                    ReReferencia = "";
+
+
+                    string valor = leer["tipopago"].ToString();
+
+                    comboBox8.Text = leer["vendedor"].ToString();
+                    IngresarPreServicios(); // solo para clinica de registro de pacientes 2015
+
+                    textBox2.Focus();
                 }
             }
-
-            Query = "Select * from clientes where cvcliente='" + clave + "'";
-            SqlDataReader leer = conecta.RecordInfo(Query);
-            while (leer.Read())
+            catch (Exception)
             {
-                textBox1.Text = clave;
-                textBox2.Text = leer["nombre"].ToString();
-                textBox10.Text = leer["direccion"].ToString();
 
-                if (clave == "0")
-                {
-                    textBox2.Text = "";
-                    textBox10.Text = "";
-                }
-
-                textBox5.Text = leer["telefono"].ToString();
-                textBox16.Text = leer["observafact"].ToString();
-
-                ReLocalidad = "";
-
-                ReNoInterior = "0";
-                RePais = leer["PaisF"].ToString();
-                ReReferencia = "";
-
-
-                string valor = leer["tipopago"].ToString();
-
-                comboBox8.Text = leer["vendedor"].ToString();
+                throw;
             }
-            conecta.CierraConexion();
+            finally
+            {
+                conecta.CierraConexion();
+            }
+            
 
-            IngresarPreServicios(); // solo para clinica de registro de pacientes 2015
-
-            textBox2.Focus();
+           
         }
 
 
@@ -714,9 +744,17 @@ namespace SHOPCONTROL
                 this.LimpiarProductoNuevo();
                 if (MessageBox.Show("Usted tiene " + this.label28.Text + " productos , Desea actualizar su inventario de productos?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Hand, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
+
+                    // Notificar por correo la falta de inventario
+                    MailNotifications mail = new MailNotifications();
+                    mail.SendMailOnlySubjectAndMSG("Falta inventario para venta en sucursal Cuernavaca", "El producto " + clave + " ( " + NOMBREPRO + ") no tiene existencias, favor de tomar acciones inmediatas");
+
                     valoresg.NUMPRODUCTOSURTIR = clave;
-                    Productos nproductos = new Productos();
-                    nproductos.Show();
+                    // Productos nproductos = new Productos();
+                    // nproductos.Show();
+                    // valoresg.NUMPRODUCTOSURTIR = cvproducto;
+                    // new Productos().Show();
+                    new CapturaInventarios().ShowDialog();
                 }
             }
 
@@ -879,11 +917,12 @@ namespace SHOPCONTROL
 
             Query = Query + ",'" + CADCLAVE + "')";
             conecta.Excute(Query);
+            conecta.CierraConexion();
 
             Query = "Insert into comisiones(cvvendedor,numrecibo,total,cancelado) values('" + this.VENDEDORGEN + "','" + this.NUMPEDIDO + "','" + this.label37.Text.Trim() + "','SI')";
             conecta.Excute(Query);
-
-
+            conecta.CierraConexion();
+            
 
 
             int Contador = 1;
@@ -914,8 +953,7 @@ namespace SHOPCONTROL
                 conecta2.CierraConexion();
 
                 decimal cantfinal = canttotal - cantprod;
-                if (cantfinal <= 0) cantfinal = 1;
-
+                // if (cantfinal <= 0) cantfinal = 1;
                 consulta = "update productos set cantidad='" + cantfinal.ToString() + "' where cvproducto='" + CLAVEPRODUCTO + "'";
                 conecta2.Excute(consulta);
                 conecta2.CierraConexion();
@@ -1325,11 +1363,20 @@ namespace SHOPCONTROL
 
             if (decimal.Parse(this.label28.Text) < cantidad)
             {
+
+                // Notificar por correo la falta de inventario
+                MailNotifications mail = new MailNotifications();
+                mail.SendMailOnlySubjectAndMSG("Falta inventario para venta en sucursal Cuernavaca", "El producto " + cvproducto + " ( " + Nombre + ") no tiene existencias, favor de tomar acciones inmediatas");
+
                 if (MessageBox.Show("Usted tiene " + this.label28.Text + " productos en existencia \nNo es posible surtir el recibo necesita " + porSurtir.ToString() + " productos , Desea actualizar su inventario de productos?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Hand, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
                     valoresg.NUMPRODUCTOSURTIR = cvproducto;
-                    new Productos().Show();
+
+                    // new Productos().Show();
+                    new CapturaInventarios().ShowDialog();
+
                 }
+
                 this.LimpiarProductoNuevo();
             }
             else
@@ -1831,7 +1878,7 @@ namespace SHOPCONTROL
             string RFC = "";
             ReportDocument cryRpt = new ReportDocument();
             // string CadenaReporte = Application.StartupPath + "\\Reportes\\Tickets\\ReciboTicket.rpt";
-            string CadenaReporte = "C:\\tmp\\reports\\ReciboTicket.rpt";
+            string CadenaReporte = @"\\SRV-DATACENTER\\tmp\\reports\\ReciboTicket.rpt";
 
 
 
@@ -1855,35 +1902,46 @@ namespace SHOPCONTROL
             }
             conecta.CierraConexion();
 
+            try
+            {
+                cryRpt.Load(CadenaReporte);
+                string consulta = "SELECT cvempresa, foto FROM Logoempresa where cvempresa='0'";
+                ReciboUsuario CodigoBidimensional = GetData2(consulta, numrecibo);
+                cryRpt.SetDataSource(CodigoBidimensional);
 
+                cryRpt.SetParameterValue("Reimpressed", mensajeReimpresion);
 
-            cryRpt.Load(CadenaReporte);
-            string consulta = "SELECT cvempresa, foto FROM Logoempresa where cvempresa='0'";
-            ReciboUsuario CodigoBidimensional = GetData2(consulta, numrecibo);
-            cryRpt.SetDataSource(CodigoBidimensional);
+                cryRpt.SetParameterValue("parametro1", ADICIONALINFO);
+                cryRpt.SetParameterValue("regimen", REGIMEN);
+                cryRpt.SetParameterValue("NombreEmpresa", NOMBREEMPRESA);
+                cryRpt.SetParameterValue("direccion", DIRECCION);
+                cryRpt.SetParameterValue("rfc", RFC);
+                cryRpt.SetParameterValue("Lugarexpedir", LUGAREXPIDE);
+                cryRpt.SetParameterValue("nombrecajero", valoresg.NOMBREUSUARIO.ToString());
 
-            cryRpt.SetParameterValue("Reimpressed", mensajeReimpresion);
+                cryRpt.SetParameterValue("consultorio", consultorio);
+                cryRpt.SetParameterValue("turno", turno);
 
-            cryRpt.SetParameterValue("parametro1", ADICIONALINFO);
-            cryRpt.SetParameterValue("regimen", REGIMEN);
-            cryRpt.SetParameterValue("NombreEmpresa", NOMBREEMPRESA);
-            cryRpt.SetParameterValue("direccion", DIRECCION);
-            cryRpt.SetParameterValue("rfc", RFC);
-            cryRpt.SetParameterValue("Lugarexpedir", LUGAREXPIDE);
-            cryRpt.SetParameterValue("nombrecajero", valoresg.NOMBREUSUARIO.ToString());
+                cryRpt.PrintToPrinter(1, false, 0, 0);
+            }
+            catch (Exception)
+            {
+                // string NombreArchivo = @"C:/tmp/ReciboTicket_" + numrecibo.ToString() + ".pdf";
+                // cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
+            } finally
+            {
+                cryRpt.Close();
+                cryRpt.Dispose();
 
-            cryRpt.SetParameterValue("consultorio", consultorio);
-            cryRpt.SetParameterValue("turno", turno);
+                MessageBox.Show("Se mando a imprimir correctamente", "Impresion de Recibo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
+            
 
             
 
-            string NombreArchivo = Application.StartupPath + "\\Documentos\\Recibos\\ReciboTicket_" + numrecibo.ToString() + ".pdf";
-            cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
-            cryRpt.PrintToPrinter(1, false, 0, 0);
-            cryRpt.Close();
-            cryRpt.Dispose();
-
-            MessageBox.Show("Se mando a imprimir correctamente", "Impresion de Recibo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+            
         }
 
 
@@ -3133,9 +3191,12 @@ namespace SHOPCONTROL
             destination = Marshal.AllocCoTaskMem(5);
             Marshal.Copy(source, 0, destination, 5);
             //RawPrinterHelper.SendBytesToPrinter("EPSON TM-T88IV Receipt", destination, 5);
-
-            envio.SendBytesToPrinter("EPSON TM-T88IV Receipt", destination, 5);
+            string cfnFile = @"//SRV-DATACENTER/tmp/EmailConf.xml";
+            bool cfnExist = File.Exists(cfnFile);
+            XDocument xdoc = XDocument.Load(cfnExist ? @"//SRV-DATACENTER/tmp/EmailConf.xml" : @"C:\\tmp\\EmailConf.xml");
+            envio.SendBytesToPrinter(xdoc.Descendants("PrinterName").First().Value, destination, 5);
             Marshal.FreeCoTaskMem(destination);
+
         }
 
         private void button16_Click_2(object sender, EventArgs e)

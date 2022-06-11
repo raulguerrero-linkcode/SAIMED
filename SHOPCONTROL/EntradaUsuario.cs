@@ -92,9 +92,9 @@ namespace SHOPCONTROL
         {
             USUARIO = textBox1.Text;
             CONTRASEÑA = textBox2.Text;
-            string cfnFile = "//SRV-DATACENTER/tmp/EmailConf.xml";
+            string cfnFile = @"//SRV-DATACENTER/tmp/EmailConf.xml";
             bool cfnExist = File.Exists(cfnFile);
-            XDocument xdoc = XDocument.Load(cfnExist ? "//SRV-DATACENTER/tmp/EmailConf.xml" : "C:\\tmp\\EmailConf.xml");
+            XDocument xdoc = XDocument.Load(cfnExist ? @"//SRV-DATACENTER/tmp/EmailConf.xml" : @"C:\\tmp\\EmailConf.xml");
 
             //XDocument xdoc = XDocument.Load("./EmailConf.xml");
             LocationSrv = xdoc.Descendants("CurrentLocation").First().Value;

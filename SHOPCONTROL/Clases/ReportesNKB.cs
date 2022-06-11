@@ -145,6 +145,182 @@ public class ReportesNKB
 
     }
 
+
+
+    public static void ReportePacientes()
+    {
+
+        Excel.Application oXL;
+        Excel._Workbook oWB;
+        Excel._Worksheet oSheet;
+        Excel.Range oRng;
+        Excel.Range oResizeRange;
+        string filename, filePath;
+
+
+        try
+        {
+            //Start Excel and get Application object.
+            oXL = new Excel.Application();
+            oXL.Visible = false;
+
+            //filePath = oXL.GetSaveAsFilename("HUELLASEMPLEADOS", "Archivos de Excel (*.xlsx), *.xlsx", 1, "Guardar huellas empleados", Missing.Value).ToString(); 
+
+            //Get a new workbook.
+            oWB = (Excel._Workbook)(oXL.Workbooks.Add(Missing.Value));
+            oSheet = (Excel._Worksheet)oWB.ActiveSheet;
+
+
+
+            //Format A1:D1 as bold, vertical alignment = center.
+            //oSheet.get_Range("A1", "K1").Font.Background=System.Drawing.Color.Fuchsia;
+            int iNumQtrs = 7;
+            bool bandera = false;
+            oResizeRange = oSheet.get_Range("A1", "AO1").get_Resize(Missing.Value, iNumQtrs);
+            oSheet.get_Range("A1", "AN1").Font.Bold = true;
+            oSheet.get_Range("A1", "AN1").Font.Size = 16;
+            oSheet.get_Range("A1", "AN1").HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+            oSheet.get_Range("A1", "AN1").Merge(bandera);
+
+            oSheet.Cells[1, 1] = "Listado de Pacientes actualizado al " + DateTime.Now.ToString("dd/MM/yyyy");
+
+            //oSheet.get_Range("A1", "A1").Value2 = "LISTADO DE PROVEEDORES";
+
+
+            //Add table headers going cell by cell.
+
+            oSheet.Cells[3, 1] = "clave";
+            oSheet.Cells[3, 2] = "NOMBRE";
+            oSheet.Cells[3, 3] = "APATERNO";
+            oSheet.Cells[3, 4] = "AMATERNO";
+            oSheet.Cells[3, 5] = "GENERO";
+            oSheet.Cells[3, 6] = "ESCOLARIDAD";
+            oSheet.Cells[3, 7] = "EMAIL";
+            oSheet.Cells[3, 8] = "EDAD";
+            oSheet.Cells[3, 9] = "ECivil";
+            oSheet.Cells[3, 10] = "NoHijos";
+            oSheet.Cells[3, 11] = "OCUPACION";
+            oSheet.Cells[3, 12] = "TELEFONO";
+            oSheet.Cells[3, 13] = "CALLE";
+            oSheet.Cells[3, 14] = "NoCalle";
+            oSheet.Cells[3, 15] = "CP";
+            oSheet.Cells[3, 16] = "COLONIA";
+            oSheet.Cells[3, 17] = "MUNICIPIO";
+            oSheet.Cells[3, 18] = "CIUDAD";
+            oSheet.Cells[3, 19] = "ESTADO";
+            oSheet.Cells[3, 20] = "Pregunta1";
+            oSheet.Cells[3, 21] = "Pregunta2";
+            oSheet.Cells[3, 22] = "Pregunta3";
+            oSheet.Cells[3, 23] = "RecibeAvisos";
+            oSheet.Cells[3, 24] = "NoExpediente";
+            oSheet.Cells[3, 25] = "SERVICIO";
+            oSheet.Cells[3, 26] = "MEDICO";
+            oSheet.Cells[3, 27] = "TURNO";
+            oSheet.Cells[3, 28] = "OBSERVACIONES";
+            oSheet.Cells[3, 29] = "FECHA";
+            oSheet.Cells[3, 30] = "FCOD";
+            oSheet.Cells[3, 31] = "LUGARNAC";
+            oSheet.Cells[3, 32] = "FECHANAC";
+            oSheet.Cells[3, 33] = "STATUS";
+            oSheet.Cells[3, 34] = "CELULAR";
+            oSheet.Cells[3, 35] = "EMAIL2";
+            oSheet.Cells[3, 36] = "expdental";
+            oSheet.Cells[3, 37] = "expgineco";
+            oSheet.Cells[3, 38] = "expoftamolgo";
+            oSheet.Cells[3, 39] = "curp";
+            // oSheet.Cells[3, 40] = "NomCompleto";
+
+            oResizeRange = oSheet.get_Range("A3", "AN3").get_Resize(Missing.Value, iNumQtrs);      
+            oResizeRange.Interior.ColorIndex = 23;
+            oResizeRange.Font.ColorIndex = 2;
+
+            oSheet.get_Range("A3", "AO3").Font.Bold = true;
+            oSheet.get_Range("A3", "AO3").HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+            oSheet.get_Range("A3", "AO3").EntireColumn.AutoFit();
+            int contar = 0;
+
+            string Formato = "0";
+            conectorSql conecta = new conectorSql();
+            conectorSql conecta2 = new conectorSql();
+            string Query = "Select top 100 clave,	NOMBRE,	APATERNO,	AMATERNO,	GENERO,	ESCOLARIDAD,	EMAIL,	EDAD,	ECivil,	NoHijos,	OCUPACION,	TELEFONO,	CALLE,	NoCalle,	CP,	COLONIA,	MUNICIPIO,	CIUDAD,	ESTADO,	Pregunta1,	Pregunta2,	Pregunta3,	RecibeAvisos,	NoExpediente,	SERVICIO,	MEDICO,	TURNO,	OBSERVACIONES,	FECHA,	FCOD,	LUGARNAC,	FECHANAC,	STATUS,	CELULAR,	EMAIL2,	expdental,	expgineco,	expoftamolgo,	curp from pacientes;";
+            
+            int i = 4;
+            SqlDataReader leer = conecta.RecordInfo(Query);
+            while (leer.Read())
+            {
+                string clave = leer["clave"].ToString();
+                //string estatuspedido = leer["estatusrecibo"].ToString();
+
+                oSheet.get_Range("A" + i, "A" + i).Value2 = clave;
+                oSheet.get_Range("B" + i, "B" + i).Value2 = leer["NOMBRE"].ToString();
+                oSheet.get_Range("C" + i, "C" + i).Value2 = leer["APATERNO"].ToString();
+                oSheet.get_Range("D" + i, "D" + i).Value2 = leer["AMATERNO"].ToString();
+                oSheet.get_Range("E" + i, "E" + i).Value2 = leer["GENERO"].ToString();
+                oSheet.get_Range("F" + i, "F" + i).Value2 = leer["ESCOLARIDAD"].ToString();
+                oSheet.get_Range("G" + i, "G" + i).Value2 = leer["EMAIL"].ToString();
+                oSheet.get_Range("H" + i, "H" + i).Value2 = leer["EDAD"].ToString();
+                oSheet.get_Range("I" + i, "I" + i).Value2 = leer["ECivil"].ToString();
+                oSheet.get_Range("J" + i, "J" + i).Value2 = leer["NoHijos"].ToString();
+                oSheet.get_Range("K" + i, "K" + i).Value2 = leer["OCUPACION"].ToString();
+                oSheet.get_Range("L" + i, "L" + i).Value2 = leer["TELEFONO"].ToString();
+                oSheet.get_Range("M" + i, "M" + i).Value2 = leer["CALLE"].ToString();
+                oSheet.get_Range("N" + i, "N" + i).Value2 = leer["NoCalle"].ToString();
+                oSheet.get_Range("O" + i, "O" + i).Value2 = leer["CP"].ToString();
+                oSheet.get_Range("P" + i, "P" + i).Value2 = leer["COLONIA"].ToString();
+                oSheet.get_Range("Q" + i, "Q" + i).Value2 = leer["MUNICIPIO"].ToString();
+                oSheet.get_Range("R" + i, "R" + i).Value2 = leer["CIUDAD"].ToString();
+                oSheet.get_Range("S" + i, "S" + i).Value2 = leer["ESTADO"].ToString();
+                oSheet.get_Range("T" + i, "T" + i).Value2 = leer["Pregunta1"].ToString();
+                oSheet.get_Range("U" + i, "U" + i).Value2 = leer["Pregunta2"].ToString();
+                oSheet.get_Range("V" + i, "V" + i).Value2 = leer["Pregunta3"].ToString();
+                oSheet.get_Range("W" + i, "W" + i).Value2 = leer["RecibeAvisos"].ToString();
+                oSheet.get_Range("X" + i, "X" + i).Value2 = leer["NoExpediente"].ToString();
+                oSheet.get_Range("Y" + i, "Y" + i).Value2 = leer["SERVICIO"].ToString();
+                oSheet.get_Range("Z" + i, "Z" + i).Value2 = leer["MEDICO"].ToString();
+                oSheet.get_Range("AA" + i, "AA" + i).Value2 = leer["TURNO"].ToString();
+                oSheet.get_Range("AB" + i, "AB" + i).Value2 = leer["OBSERVACIONES"].ToString();
+                oSheet.get_Range("AC" + i, "AC" + i).Value2 = leer["FECHA"].ToString();
+                oSheet.get_Range("AD" + i, "AD" + i).Value2 = leer["FCOD"].ToString();
+                oSheet.get_Range("AE" + i, "AE" + i).Value2 = leer["LUGARNAC"].ToString();
+                oSheet.get_Range("AF" + i, "AF" + i).Value2 = leer["FECHANAC"].ToString();
+                oSheet.get_Range("AG" + i, "AG" + i).Value2 = leer["STATUS"].ToString();
+                oSheet.get_Range("AH" + i, "AH" + i).Value2 = leer["CELULAR"].ToString();
+                oSheet.get_Range("AI" + i, "AI" + i).Value2 = leer["EMAIL2"].ToString();
+                oSheet.get_Range("AJ" + i, "AJ" + i).Value2 = leer["expdental"].ToString();
+                oSheet.get_Range("AK" + i, "AK" + i).Value2 = leer["expgineco"].ToString();
+                oSheet.get_Range("AL" + i, "AL" + i).Value2 = leer["expoftamolgo"].ToString();
+                oSheet.get_Range("AM" + i, "AM" + i).Value2 = leer["curp"].ToString();
+                // oSheet.get_Range("AN" + i, "AN" + i).Value2 = leer["NomCompleto"].ToString();
+
+                
+                oSheet.get_Range("A" + i, "AO" + i).Font.Size = 9;
+                oSheet.get_Range("A" + i, "AO" + i).HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                oSheet.get_Range("A" + i, "AO" + i).EntireColumn.AutoFit();
+                i++;
+            }
+            conecta.CierraConexion();
+
+            //Make sure Excel is visible and give the user control
+            //of Microsoft Excel's lifetime.
+            oXL.Visible = true;
+            oXL.UserControl = true;
+            
+        }
+        catch (Exception theException)
+        {
+            String errorMessage;
+            errorMessage = "Error: ";
+            errorMessage = String.Concat(errorMessage, theException.Message);
+            errorMessage = String.Concat(errorMessage, " Line: ");
+            errorMessage = String.Concat(errorMessage, theException.Source);
+
+            MessageBox.Show(errorMessage, "Error");
+        }
+
+    }
+
+
+
     public static void RBusquedaRemisionesRecibos(string Fecha1, string Fecha2, string numpedido, bool Todas)
        {
 
@@ -1568,7 +1744,147 @@ public class ReportesNKB
             }
 
         }
-  
+
+
+    public static void ReporteIngresosUnidad(string Fecha1, string Fecha2)
+    {
+
+        Excel.Application oXL;
+        Excel._Workbook oWB;
+        Excel._Worksheet oSheet;
+        Excel.Range oRng;
+        Excel.Range oResizeRange;
+        string filename, filePath;
+
+
+        try
+        {
+            //Start Excel and get Application object.
+            oXL = new Excel.Application();
+            oXL.Visible = true;
+
+            //Get a new workbook.
+            oWB = (Excel._Workbook)(oXL.Workbooks.Add(Missing.Value));
+            oSheet = (Excel._Worksheet)oWB.ActiveSheet;
+
+
+
+            //Format A1:D1 as bold, vertical alignment = center.
+            //oSheet.get_Range("A1", "K1").Font.Background=System.Drawing.Color.Fuchsia;
+            int iNumQtrs = 7;
+            bool bandera = false;
+            oResizeRange = oSheet.get_Range("A1", "E1").get_Resize(Missing.Value, iNumQtrs);
+            oSheet.get_Range("A1", "E1").Font.Bold = true;
+            oSheet.get_Range("A1", "E1").Font.Size = 16;
+            oSheet.get_Range("A1", "E1").HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+            oSheet.get_Range("A1", "E1").Merge(bandera);
+
+            oSheet.Cells[1, 1] = "Reporte de Ingresos por unidad "; //  + DateTime.Now.ToString("dd/MM/yyyy");
+                                                                    //Add table headers going cell by cell.
+
+            oSheet.Cells[3, 1] = "Fecha";
+            oSheet.Cells[3, 2] = "TOTAL";
+            oSheet.Cells[3, 3] = "DENTAL";
+            oSheet.Cells[3, 4] = "ENDODONCIA";
+            oSheet.Cells[3, 5] = "FARMACIA";
+            oSheet.Cells[3, 6] = "GINECOLOGIA";
+            oSheet.Cells[3, 7] = "INVENTARIO";
+            oSheet.Cells[3, 8] = "LABORATORIO";
+            oSheet.Cells[3, 9] = "MXILOFACIAL";
+            oSheet.Cells[3, 10] = "OFTALMOLOGIA";
+            oSheet.Cells[3, 11] = "OPTICA";
+            oSheet.Cells[3, 12] = "ORTODONCIA";
+            oSheet.Cells[3, 13] = "ORTOPEDIA_ORTODONCIA";
+            oSheet.Cells[3, 14] = "PAPANICOLAO";
+            oSheet.Cells[3, 15] = "PAPELERIA";
+            oSheet.Cells[3, 16] = "PROTESIS";
+            oSheet.Cells[3, 17] = "RAYOS_X_DENTAL";
+            oSheet.Cells[3, 18] = "SIN_CATEGORIA";
+            oSheet.Cells[3, 19] = "TIENDA";
+            oSheet.Cells[3, 20] = "ULTRASONIDO";
+
+
+
+            oResizeRange = oSheet.get_Range("A3", "T3").get_Resize(Missing.Value, iNumQtrs);
+            oResizeRange.Interior.ColorIndex = 23;
+            oResizeRange.Font.ColorIndex = 2;
+
+            oSheet.get_Range("A3", "T3").Font.Bold = true;
+            oSheet.get_Range("A3", "T3").HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+            oSheet.get_Range("A3", "T3").EntireColumn.AutoFit();
+            int contar = 0;
+
+            string Formato = "0";
+            conectorSql conecta = new conectorSql();
+
+            string Query = "SELECT * FROM [CEPAMM].[dbo].[v_ingresos_area] where Fecha between '" + Fecha1 + "' and '" + Fecha2  + "' order by Fecha asc ";
+
+            int i = 4;
+            SqlDataReader leer = conecta.RecordInfo(Query);
+            while (leer.Read())
+            {
+                string clave = leer["FECHA"].ToString();
+                //string estatuspedido = leer["estatusrecibo"].ToString();
+                
+                oSheet.get_Range("A" + i, "A" + i).Value2 = clave;
+
+                oSheet.get_Range("B" + i, "B" + i).Value2 = "$ " + decimal.Parse(leer["TOTAL"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("C" + i, "C" + i).Value2 = "$ " + decimal.Parse(leer["DENTAL"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("D" + i, "D" + i).Value2 = "$ " + decimal.Parse(leer["ENDODONCIA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("E" + i, "E" + i).Value2 = "$ " + decimal.Parse(leer["FARMACIA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("F" + i, "F" + i).Value2 = "$ " + decimal.Parse(leer["GINECOLOGIA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("G" + i, "G" + i).Value2 = "$ " + decimal.Parse(leer["INVENTARIO"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("H" + i, "H" + i).Value2 = "$ " + decimal.Parse(leer["LABORATORIO"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("I" + i, "I" + i).Value2 = "$ " + decimal.Parse(leer["MXILOFACIAL"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("J" + i, "J" + i).Value2 = "$ " + decimal.Parse(leer["OFTALMOLOGIA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("K" + i, "K" + i).Value2 = "$ " + decimal.Parse(leer["OPTICA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("L" + i, "L" + i).Value2 = "$ " + decimal.Parse(leer["ORTODONCIA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("M" + i, "M" + i).Value2 = "$ " + decimal.Parse(leer["ORTOPEDIA_ORTODONCIA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("N" + i, "N" + i).Value2 = "$ " + decimal.Parse(leer["PAPANICOLAO"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("O" + i, "O" + i).Value2 = "$ " + decimal.Parse(leer["PAPELERIA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("P" + i, "P" + i).Value2 = "$ " + decimal.Parse(leer["PROTESIS"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("Q" + i, "Q" + i).Value2 = "$ " + decimal.Parse(leer["RAYOS_X_DENTAL"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("R" + i, "R" + i).Value2 = "$ " + decimal.Parse(leer["SIN_CATEGORIA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("S" + i, "S" + i).Value2 = "$ " + decimal.Parse(leer["TIENDA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("T" + i, "T" + i).Value2 = "$ " + decimal.Parse(leer["ULTRASONIDO"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+
+                oSheet.get_Range("A" + i, "T" + i).Font.Size = 9;
+                oSheet.get_Range("A" + i, "T" + i).HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                oSheet.get_Range("A" + i, "T" + i).EntireColumn.AutoFit();
+                i++;
+            }
+            conecta.CierraConexion();
+
+            //Make sure Excel is visible and give the user control
+            //of Microsoft Excel's lifetime.
+            oXL.Visible = true;
+            oXL.UserControl = true;
+            ////------ proceso para guardarlo y cerrarlo 
+            //oXL.ActiveWorkbook.Close(true, filePath, Type.Missing); 
+            //oXL.Quit();
+            //System.Diagnostics.Process[] myProcesses;
+            //myProcesses = System.Diagnostics.Process.GetProcessesByName("EXCEL");
+            //foreach (System.Diagnostics.Process instance in myProcesses)
+            //{
+            //    instance.CloseMainWindow();
+            //    instance.Kill();
+            //    instance.Close();
+            //}
+        }
+        catch (Exception theException)
+        {
+            String errorMessage;
+            errorMessage = "Error: ";
+            errorMessage = String.Concat(errorMessage, theException.Message);
+            errorMessage = String.Concat(errorMessage, " Line: ");
+            errorMessage = String.Concat(errorMessage, theException.Source);
+
+            MessageBox.Show(errorMessage, "Error");
+        }
 
     }
+
+
+
+}
 
