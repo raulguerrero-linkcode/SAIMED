@@ -54,6 +54,7 @@ namespace SHOPCONTROL.Analisys
             while (leer.Read())
             {
 
+                // CultureInfo culture = new CultureInfo("en-US");
                 CultureInfo culture = new CultureInfo("en-US");
                 DateTime tempDate = Convert.ToDateTime(leer["FechaCita"].ToString(), culture);
 

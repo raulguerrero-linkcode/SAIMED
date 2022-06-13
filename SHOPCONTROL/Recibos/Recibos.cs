@@ -6,7 +6,6 @@ using System.Globalization;
 using System.Data.SqlClient;
 
 using CrystalDecisions.CrystalReports.Engine;
-using CrystalDecisions.Shared;
 using System.Runtime.InteropServices;
 using SHOPCONTROL.Inventarios;
 using System.IO;
@@ -2063,7 +2062,8 @@ namespace SHOPCONTROL
 
             conectorSql conecta = new conectorSql();
             string Query = "";
-            DateTime Fecha = DateTime.Parse(FECHA);
+
+            // DateTime Fecha = ();
 
             Query = "Insert into Pagos (cvcliente";
             Query = Query + ",numpedido";
@@ -2091,8 +2091,8 @@ namespace SHOPCONTROL
             Query = Query + "'" + CVCLIENTE + "'";
             Query = Query + ",'" + NUMPEDIDO + "'";
             Query = Query + ",'" + TOTAL + "'";
-            Query = Query + ",'" + Fecha.ToString("dd/MM/yyyy") + "'";
-            Query = Query + ",'" + Fecha.ToString("yyyyMMdd") + "'";
+            Query = Query + ",'" + FECHA.ToString() + "'";
+            Query = Query + ",'" + FECHA.ToString() + "'";
             Query = Query + ",'REGISTRO DE RECIBO - " + NUMPEDIDO + "'";
             Query = Query + ",'1'"; //pendiente por verificar el cobro ESTATUS 1
             Query = Query + ",'" + NUMPEDIDO + "'";

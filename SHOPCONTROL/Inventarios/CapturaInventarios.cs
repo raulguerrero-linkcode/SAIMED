@@ -96,7 +96,15 @@ namespace SHOPCONTROL.Inventarios
             }
             else
             {
-                MessageBox.Show("Producto no encontrado, desea dar de alta un nuevo producto? ");
+
+                if (MessageBox.Show("Desea dar de alta un nuevo producto?", "Producto no encontrado", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+
+                    Productos productos = new Productos();
+                    productos.Show();
+                }
+                
+                
 
             }
             conecta.CierraConexion();

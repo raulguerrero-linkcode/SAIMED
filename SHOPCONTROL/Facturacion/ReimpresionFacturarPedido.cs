@@ -4,7 +4,6 @@ using System.Data.SqlClient;
 using DGMC.TimbraCFDI;
 using System.Globalization;
 using CrystalDecisions.CrystalReports.Engine;
-using CrystalDecisions.Shared;
 using System.Net.Mail;
 using System.Net;
 

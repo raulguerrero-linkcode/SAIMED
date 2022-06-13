@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SHOPCONTROL.Analisys
@@ -80,8 +73,8 @@ namespace SHOPCONTROL.Analisys
             while (leer.Read())
             {
 
-                //CultureInfo culture = new CultureInfo("en-US");
-                //DateTime tempDate = Convert.ToDateTime(leer["Fecha"].ToString(), culture);
+                CultureInfo culture = new CultureInfo("en-US");
+                DateTime tempDate = Convert.ToDateTime(leer["Fecha"].ToString(), culture);
 
                 //cvcliente = tempDate.ToShortDateString();
                 ListViewItem lvi = new ListViewItem(leer["clave"].ToString());

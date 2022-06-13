@@ -113,6 +113,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.linkLabel6 = new System.Windows.Forms.LinkLabel();
+            this.faltaDePagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -440,7 +441,8 @@
             this.reporteDeRecibosToolStripMenuItem,
             this.inventarioToolStripMenuItem,
             this.toolStripMenuItem4,
-            this.listadoDePacientesToolStripMenuItem});
+            this.listadoDePacientesToolStripMenuItem,
+            this.faltaDePagosToolStripMenuItem});
             this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
             this.toolStripDropDownButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -900,6 +902,13 @@
             this.linkLabel6.Text = " 5.- Inventarios";
             this.linkLabel6.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel6_LinkClicked_1);
             // 
+            // faltaDePagosToolStripMenuItem
+            // 
+            this.faltaDePagosToolStripMenuItem.Name = "faltaDePagosToolStripMenuItem";
+            this.faltaDePagosToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.faltaDePagosToolStripMenuItem.Text = "Falta de pagos";
+            this.faltaDePagosToolStripMenuItem.Click += new System.EventHandler(this.faltaDePagosToolStripMenuItem_Click);
+            // 
             // Bienvenidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1040,6 +1049,7 @@
         private System.Windows.Forms.ToolStripMenuItem listadoDePacientesToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.LinkLabel linkLabel6;
+        private System.Windows.Forms.ToolStripMenuItem faltaDePagosToolStripMenuItem;
     }
 }
 

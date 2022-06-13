@@ -6,7 +6,6 @@ using System.Data.SqlClient;
 
 
 using CrystalDecisions.CrystalReports.Engine;
-using CrystalDecisions.Shared;
 using SHOPCONTROL.Utilerias;
 
 namespace SHOPCONTROL.HistorialClinica

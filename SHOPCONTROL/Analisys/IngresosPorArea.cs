@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SHOPCONTROL.Analisys
@@ -63,7 +56,7 @@ namespace SHOPCONTROL.Analisys
                 Query = "SELECT * FROM [CEPAMM].[dbo].[v_ingresos_area] order by Fecha asc ";
             } else
             {
-                Query = "SELECT * FROM [CEPAMM].[dbo].[v_ingresos_area] where Fecha between '" + dateTimePicker1.Value + "' and '" + dateTimePicker2.Value + "' order by Fecha asc ";
+                Query = "SELECT * FROM [CEPAMM].[dbo].[v_ingresos_area] where Fecha between '" + dateTimePicker1.Value.ToShortDateString() + "' and '" + dateTimePicker2.Value.ToShortDateString() + "' order by Fecha asc ";
             }
 
             
@@ -72,6 +65,8 @@ namespace SHOPCONTROL.Analisys
             SqlDataReader leer = conecta.RecordInfo(Query);
             while (leer.Read())
             {
+
+                // CultureInfo culture = new CultureInfo("en-US");
 
                 CultureInfo culture = new CultureInfo("en-US");
                 DateTime tempDate = Convert.ToDateTime(leer["Fecha"].ToString(), culture);

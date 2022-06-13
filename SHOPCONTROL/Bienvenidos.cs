@@ -1110,5 +1110,11 @@ namespace SHOPCONTROL
             inventarios.Show();
 
         }
+
+        private void faltaDePagosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StatusCreditos creditos = new StatusCreditos();
+            creditos.Show();
+        }
     }
 }

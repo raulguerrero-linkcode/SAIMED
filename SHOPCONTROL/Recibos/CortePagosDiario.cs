@@ -4,7 +4,6 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 
 using CrystalDecisions.CrystalReports.Engine;
-using CrystalDecisions.Shared;
 namespace SHOPCONTROL
 {
     public partial class CortePagosDiario : Form

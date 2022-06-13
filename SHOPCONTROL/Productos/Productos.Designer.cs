@@ -54,26 +54,25 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.textBox22 = new System.Windows.Forms.TextBox();
+            this.textBox21 = new System.Windows.Forms.TextBox();
+            this.textBox20 = new System.Windows.Forms.TextBox();
+            this.UPC = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.Lv = new System.Windows.Forms.ListView();
-            this.label29 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.textBox22 = new System.Windows.Forms.TextBox();
             this.label34 = new System.Windows.Forms.Label();
             this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.label30 = new System.Windows.Forms.Label();
-            this.textBox21 = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.textBox20 = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -89,7 +88,6 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.button11 = new System.Windows.Forms.Button();
@@ -125,15 +123,14 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
-            this.button9 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.UPC = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.Lv = new System.Windows.Forms.ListView();
+            this.label29 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -439,6 +436,67 @@
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // textBox22
+            // 
+            this.textBox22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox22.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBox22.Location = new System.Drawing.Point(485, 261);
+            this.textBox22.MaxLength = 20;
+            this.textBox22.Name = "textBox22";
+            this.textBox22.Size = new System.Drawing.Size(133, 23);
+            this.textBox22.TabIndex = 80;
+            this.toolTip1.SetToolTip(this.textBox22, "KILO / PZA / SERV / NO APLICA");
+            // 
+            // textBox21
+            // 
+            this.textBox21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox21.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBox21.Location = new System.Drawing.Point(143, 265);
+            this.textBox21.MaxLength = 20;
+            this.textBox21.Name = "textBox21";
+            this.textBox21.Size = new System.Drawing.Size(60, 23);
+            this.textBox21.TabIndex = 77;
+            this.toolTip1.SetToolTip(this.textBox21, "KILO / PZA / SERV / NO APLICA");
+            // 
+            // textBox20
+            // 
+            this.textBox20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox20.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBox20.Location = new System.Drawing.Point(485, 232);
+            this.textBox20.MaxLength = 20;
+            this.textBox20.Name = "textBox20";
+            this.textBox20.Size = new System.Drawing.Size(133, 23);
+            this.textBox20.TabIndex = 68;
+            this.toolTip1.SetToolTip(this.textBox20, "KILO / PZA / SERV / NO APLICA");
+            // 
+            // UPC
+            // 
+            this.UPC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UPC.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UPC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.UPC.Location = new System.Drawing.Point(142, 232);
+            this.UPC.Name = "UPC";
+            this.UPC.Size = new System.Drawing.Size(204, 23);
+            this.UPC.TabIndex = 66;
+            this.toolTip1.SetToolTip(this.UPC, "KILO / PZA / SERV / NO APLICA");
+            // 
+            // textBox7
+            // 
+            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBox7.Location = new System.Drawing.Point(139, 22);
+            this.textBox7.MaxLength = 900;
+            this.textBox7.Multiline = true;
+            this.textBox7.Name = "textBox7";
+            this.textBox7.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox7.Size = new System.Drawing.Size(476, 80);
+            this.textBox7.TabIndex = 71;
+            this.toolTip1.SetToolTip(this.textBox7, "Descripción detallada del producto.");
+            // 
             // panel6
             // 
             this.panel6.Controls.Add(this.button4);
@@ -463,37 +521,6 @@
             this.panel4.Size = new System.Drawing.Size(1161, 870);
             this.panel4.TabIndex = 54;
             // 
-            // Lv
-            // 
-            this.Lv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Lv.BackColor = System.Drawing.Color.White;
-            this.Lv.CheckBoxes = true;
-            this.Lv.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lv.FullRowSelect = true;
-            this.Lv.GridLines = true;
-            this.Lv.HideSelection = false;
-            this.Lv.Location = new System.Drawing.Point(3, 104);
-            this.Lv.Name = "Lv";
-            this.Lv.Size = new System.Drawing.Size(1152, 735);
-            this.Lv.TabIndex = 141;
-            this.Lv.UseCompatibleStateImageBehavior = false;
-            this.Lv.View = System.Windows.Forms.View.Details;
-            this.Lv.DoubleClick += new System.EventHandler(this.Lv_DoubleClick);
-            // 
-            // label29
-            // 
-            this.label29.BackColor = System.Drawing.Color.Transparent;
-            this.label29.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.ForeColor = System.Drawing.Color.Black;
-            this.label29.Location = new System.Drawing.Point(23, 27);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(153, 23);
-            this.label29.TabIndex = 140;
-            this.label29.Text = "Cargando información....";
-            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -501,7 +528,6 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.panel1.Controls.Add(this.tabControl2);
             this.panel1.Controls.Add(this.tabControl1);
-            this.panel1.Controls.Add(this.button9);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
@@ -513,6 +539,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1076, 720);
             this.panel1.TabIndex = 142;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
             // tabControl2
             // 
@@ -529,8 +556,6 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.UPC);
-            this.tabPage3.Controls.Add(this.label10);
             this.tabPage3.Controls.Add(this.panel5);
             this.tabPage3.Controls.Add(this.textBox22);
             this.tabPage3.Controls.Add(this.label34);
@@ -541,7 +566,7 @@
             this.tabPage3.Controls.Add(this.comboBox5);
             this.tabPage3.Controls.Add(this.textBox20);
             this.tabPage3.Controls.Add(this.label25);
-            this.tabPage3.Controls.Add(this.textBox10);
+            this.tabPage3.Controls.Add(this.UPC);
             this.tabPage3.Controls.Add(this.label24);
             this.tabPage3.Controls.Add(this.comboBox3);
             this.tabPage3.Controls.Add(this.label23);
@@ -597,18 +622,6 @@
             this.radioButton4.Text = "Servicio";
             this.radioButton4.UseVisualStyleBackColor = true;
             // 
-            // textBox22
-            // 
-            this.textBox22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox22.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBox22.Location = new System.Drawing.Point(485, 261);
-            this.textBox22.MaxLength = 20;
-            this.textBox22.Name = "textBox22";
-            this.textBox22.Size = new System.Drawing.Size(133, 23);
-            this.textBox22.TabIndex = 80;
-            this.toolTip1.SetToolTip(this.textBox22, "KILO / PZA / SERV / NO APLICA");
-            // 
             // label34
             // 
             this.label34.BackColor = System.Drawing.Color.Transparent;
@@ -648,18 +661,6 @@
             this.label30.Text = "Altura";
             this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox21
-            // 
-            this.textBox21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox21.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBox21.Location = new System.Drawing.Point(143, 265);
-            this.textBox21.MaxLength = 20;
-            this.textBox21.Name = "textBox21";
-            this.textBox21.Size = new System.Drawing.Size(60, 23);
-            this.textBox21.TabIndex = 77;
-            this.toolTip1.SetToolTip(this.textBox21, "KILO / PZA / SERV / NO APLICA");
-            // 
             // label22
             // 
             this.label22.BackColor = System.Drawing.Color.Transparent;
@@ -689,18 +690,6 @@
             this.comboBox5.Size = new System.Drawing.Size(204, 24);
             this.comboBox5.TabIndex = 75;
             // 
-            // textBox20
-            // 
-            this.textBox20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox20.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBox20.Location = new System.Drawing.Point(485, 232);
-            this.textBox20.MaxLength = 20;
-            this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(133, 23);
-            this.textBox20.TabIndex = 68;
-            this.toolTip1.SetToolTip(this.textBox20, "KILO / PZA / SERV / NO APLICA");
-            // 
             // label25
             // 
             this.label25.BackColor = System.Drawing.Color.Transparent;
@@ -712,17 +701,6 @@
             this.label25.TabIndex = 74;
             this.label25.Text = "Ubicación Almacen";
             this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // textBox10
-            // 
-            this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox10.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBox10.Location = new System.Drawing.Point(142, 232);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(204, 23);
-            this.textBox10.TabIndex = 66;
-            this.toolTip1.SetToolTip(this.textBox10, "KILO / PZA / SERV / NO APLICA");
             // 
             // label24
             // 
@@ -871,7 +849,7 @@
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox2.Size = new System.Drawing.Size(482, 38);
+            this.textBox2.Size = new System.Drawing.Size(478, 65);
             this.textBox2.TabIndex = 56;
             // 
             // label3
@@ -897,20 +875,6 @@
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "Caracteristicas";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // textBox7
-            // 
-            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBox7.Location = new System.Drawing.Point(139, 22);
-            this.textBox7.MaxLength = 900;
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox7.Size = new System.Drawing.Size(476, 80);
-            this.textBox7.TabIndex = 71;
-            this.toolTip1.SetToolTip(this.textBox7, "Descripción detallada del producto.");
             // 
             // label8
             // 
@@ -1338,18 +1302,6 @@
             this.label31.Text = "Porcentaje de descuento";
             this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // button9
-            // 
-            this.button9.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button9.Location = new System.Drawing.Point(292, 31);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(40, 30);
-            this.button9.TabIndex = 44;
-            this.button9.Text = "...";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click_1);
-            // 
             // label9
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1376,6 +1328,7 @@
             this.button2.Text = "&Cancelar";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // button1
             // 
@@ -1430,27 +1383,36 @@
             this.label1.Text = "Administración de productos / servicios";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // UPC
+            // Lv
             // 
-            this.UPC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.UPC.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UPC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.UPC.Location = new System.Drawing.Point(140, 51);
-            this.UPC.Name = "UPC";
-            this.UPC.Size = new System.Drawing.Size(361, 23);
-            this.UPC.TabIndex = 85;
+            this.Lv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Lv.BackColor = System.Drawing.Color.White;
+            this.Lv.CheckBoxes = true;
+            this.Lv.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lv.FullRowSelect = true;
+            this.Lv.GridLines = true;
+            this.Lv.HideSelection = false;
+            this.Lv.Location = new System.Drawing.Point(3, 104);
+            this.Lv.Name = "Lv";
+            this.Lv.Size = new System.Drawing.Size(1152, 735);
+            this.Lv.TabIndex = 141;
+            this.Lv.UseCompatibleStateImageBehavior = false;
+            this.Lv.View = System.Windows.Forms.View.Details;
+            this.Lv.DoubleClick += new System.EventHandler(this.Lv_DoubleClick);
             // 
-            // label10
+            // label29
             // 
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label10.Location = new System.Drawing.Point(-3, 50);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(146, 23);
-            this.label10.TabIndex = 86;
-            this.label10.Text = "upc (Código de barras)";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label29.BackColor = System.Drawing.Color.Transparent;
+            this.label29.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.Color.Black;
+            this.label29.Location = new System.Drawing.Point(23, 27);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(153, 23);
+            this.label29.TabIndex = 140;
+            this.label29.Text = "Cargando información....";
+            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Productos
             // 
@@ -1536,7 +1498,7 @@
         private System.Windows.Forms.ComboBox comboBox5;
         private System.Windows.Forms.TextBox textBox20;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox UPC;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label label23;
@@ -1588,14 +1550,11 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox UPC;
-        private System.Windows.Forms.Label label10;
     }
 }

@@ -245,6 +245,12 @@
       <DependentUpon>NotificacionClientesSMS.cs</DependentUpon>
     </Compile>
     <Compile Include="Analisys\SMSNotification.cs" />
+    <Compile Include="Analisys\StatusCreditos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Analisys\StatusCreditos.Designer.cs">
+      <DependentUpon>StatusCreditos.cs</DependentUpon>
+    </Compile>
     <Compile Include="BASE DE DATOS\CBaseD.cs" />
     <Compile Include="BASE DE DATOS\CTablas.cs" />
     <Compile Include="BaseReportCitas.Designer.cs">
@@ -872,6 +878,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Analisys\NotificacionClientesSMS.resx">
       <DependentUpon>NotificacionClientesSMS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Analisys\StatusCreditos.resx">
+      <DependentUpon>StatusCreditos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Bienvenidos.resx">
       <DependentUpon>Bienvenidos.cs</DependentUpon>

@@ -305,7 +305,15 @@ namespace SHOPCONTROL.HistorialClinica
                 textBox3.Text = leer["AMATERNO"].ToString();
                 comboBox5.Text = leer["GENERO"].ToString();
                 comboBox2.Text = leer["ESCOLARIDAD"].ToString();
-                textBox4.Text = leer["EMAIL"].ToString();
+                if (ValidateData.IsValidEmail(leer["EMAIL"].ToString()))
+                {
+                    textBox4.Text = leer["EMAIL"].ToString();
+                } else
+                {
+                    textBox4.Text = "ventas@linkcode.com.mx";
+                }
+
+                
                 // textBox5.Text = leer["EDAD"].ToString();
                 comboBox1.Text = leer["ECivil"].ToString();
                 textBox6.Text = leer["NoHijos"].ToString();
@@ -315,13 +323,32 @@ namespace SHOPCONTROL.HistorialClinica
                 comboBox3.Text= leer["Pregunta2"].ToString();
                 textBox23.Text = leer["LUGARNAC"].ToString();
 
-                dateTimePicker1.Value = new DateTime(DateTime.Parse(leer["FECHA"].ToString()).Year,
+
+                if (DateTime.TryParse(leer["FECHA"].ToString(), out DateTime temp) == true)
+                {
+                    dateTimePicker1.Value = new DateTime(DateTime.Parse(leer["FECHA"].ToString()).Year,
                                             DateTime.Parse(leer["FECHA"].ToString()).Month,
                                             DateTime.Parse(leer["FECHA"].ToString()).Day);
+                }
 
-                DOB.Value = new DateTime(DateTime.Parse(leer["FECHANAC"].ToString()).Year,
-                                            DateTime.Parse(leer["FECHANAC"].ToString()).Month,
-                                            DateTime.Parse(leer["FECHANAC"].ToString()).Day);
+                FECHANAC = leer["FECHANAC"].ToString();
+                if (FECHANAC == "")
+                {
+                    DOB.Value = DateTime.Now;
+                    FECHANAC = DateTime.Now.ToShortDateString();
+                }
+
+                if (DateTime.TryParse(FECHANAC, out DateTime Temp) == true)
+                {
+                    DOB.Value = new DateTime(DateTime.Parse(FECHANAC).Year,
+                                            DateTime.Parse(FECHANAC).Month,
+                                            DateTime.Parse(FECHANAC).Day);
+                } else
+                {
+                    FECHANAC = DateTime.Now.ToShortDateString();
+                }
+                
+
                 textBox24.Text = leer["CLAVE"].ToString();
                 textBox26.Text = leer["CELULAR"].ToString();
 
@@ -1679,6 +1706,11 @@ namespace SHOPCONTROL.HistorialClinica
         }
 
         private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

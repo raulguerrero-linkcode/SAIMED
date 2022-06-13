@@ -123,7 +123,7 @@ namespace SHOPCONTROL
 
 
 
-            CODIGODEBARRAS = textBox10.Text;
+            CODIGODEBARRAS = UPC.Text;
             UBICACION = textBox20.Text;
             FECHAMODIFICA = DateTime.Now.ToString("dd/MM/yyyy");
             FCODMODIFICA = DateTime.Now.ToString("yyyyMMdd");
@@ -428,7 +428,7 @@ namespace SHOPCONTROL
                 textBox5.Text = leer["minimo"].ToString();
                 textBox6.Text = leer["maximo"].ToString();
                 textBox7.Text = leer["descripcion"].ToString();
-                textBox10.Text = leer["codbarras"].ToString();
+                UPC.Text = leer["codbarras"].ToString();
                 textBox20.Text = leer["ubicacion"].ToString();
                 comboBox3.Text = leer["marca"].ToString();
 
@@ -1059,6 +1059,10 @@ namespace SHOPCONTROL
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            try
+            {
+
+            
             conectorSql conecta = new conectorSql();
             string query = "";
             query = query + "INSERT INTO Productos ";
@@ -1107,16 +1111,37 @@ namespace SHOPCONTROL
             query = query + "1,";
             query = query + "1,";
             query = query + "'" + valoresg.USUARIOSIS + "')";
-            
-            conecta.Excute(query);
-            conecta.CierraConexion();
-            MessageBox.Show("Arttículo agregado exitosamente!");
+
+                if (conecta.Excute(query))
+                {
+                    MessageBox.Show("Arttículo agregado exitosamente!");
+                } else {
+                    MessageBox.Show("Artículo existente en base de datos, favor de verificar");
+                }
+
+                conecta.CierraConexion();
+            }
+            catch (SqlException ex)
+            {
+
+                throw new Exception(ex.Message); 
+            }
 
         }
 
         private void button9_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void panel1_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }
