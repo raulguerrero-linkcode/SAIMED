@@ -2723,6 +2723,9 @@ namespace SHOPCONTROL
                 return;
             }
 
+            button20.Enabled = false;
+
+
             string consulta = "Update recibos set cvcliente='0' where cvcliente=''";
             conectorSql conecta = new conectorSql();
             conecta.Excute(consulta);
@@ -2738,9 +2741,10 @@ namespace SHOPCONTROL
 
 
             //panel28.Visible = true;
-
+            button20.Enabled = true;
             VentaRegistroCobro registro = new VentaRegistroCobro(NUMRECIBOG);
             registro.ShowDialog();
+
 
         }
 
