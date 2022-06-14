@@ -31,16 +31,18 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StatusCreditos));
             this.Lv = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.idCliente = new System.Windows.Forms.TextBox();
+            this.unidad = new System.Windows.Forms.ComboBox();
             this.button3 = new System.Windows.Forms.Button();
             this.AllDatesCheck = new System.Windows.Forms.CheckBox();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label35 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
-            this.unidad = new System.Windows.Forms.ComboBox();
-            this.idCliente = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.nombrePaciente = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,10 +59,13 @@
             this.Lv.TabIndex = 143;
             this.Lv.UseCompatibleStateImageBehavior = false;
             this.Lv.View = System.Windows.Forms.View.Details;
+            this.Lv.SelectedIndexChanged += new System.EventHandler(this.Lv_SelectedIndexChanged);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.nombrePaciente);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.idCliente);
@@ -76,11 +81,45 @@
             this.panel1.Size = new System.Drawing.Size(175, 639);
             this.panel1.TabIndex = 144;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 215);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(102, 13);
+            this.label2.TabIndex = 202;
+            this.label2.Text = "Id Cliente (Opcional)";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 156);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(106, 13);
+            this.label1.TabIndex = 201;
+            this.label1.Text = "Seleccione la unidad";
+            // 
+            // idCliente
+            // 
+            this.idCliente.Location = new System.Drawing.Point(11, 231);
+            this.idCliente.Name = "idCliente";
+            this.idCliente.Size = new System.Drawing.Size(152, 20);
+            this.idCliente.TabIndex = 200;
+            // 
+            // unidad
+            // 
+            this.unidad.FormattingEnabled = true;
+            this.unidad.Location = new System.Drawing.Point(11, 172);
+            this.unidad.Name = "unidad";
+            this.unidad.Size = new System.Drawing.Size(152, 21);
+            this.unidad.TabIndex = 199;
+            // 
             // button3
             // 
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(75, 267);
+            this.button3.Location = new System.Drawing.Point(73, 331);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(90, 39);
             this.button3.TabIndex = 143;
@@ -143,39 +182,22 @@
             this.label34.Text = "De";
             this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // unidad
+            // label3
             // 
-            this.unidad.FormattingEnabled = true;
-            this.unidad.Location = new System.Drawing.Point(11, 172);
-            this.unidad.Name = "unidad";
-            this.unidad.Size = new System.Drawing.Size(152, 21);
-            this.unidad.TabIndex = 199;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(14, 268);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(141, 13);
+            this.label3.TabIndex = 204;
+            this.label3.Text = "Nombre completo (Opcional)";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // idCliente
+            // nombrePaciente
             // 
-            this.idCliente.Location = new System.Drawing.Point(11, 231);
-            this.idCliente.Name = "idCliente";
-            this.idCliente.Size = new System.Drawing.Size(152, 20);
-            this.idCliente.TabIndex = 200;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 156);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 13);
-            this.label1.TabIndex = 201;
-            this.label1.Text = "Seleccione la unidad";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 215);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 13);
-            this.label2.TabIndex = 202;
-            this.label2.Text = "Id Cliente (Opcional)";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.nombrePaciente.Location = new System.Drawing.Point(12, 284);
+            this.nombrePaciente.Name = "nombrePaciente";
+            this.nombrePaciente.Size = new System.Drawing.Size(152, 20);
+            this.nombrePaciente.TabIndex = 203;
             // 
             // StatusCreditos
             // 
@@ -208,5 +230,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox idCliente;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox nombrePaciente;
     }
 }

@@ -28,7 +28,7 @@ namespace SHOPCONTROL.Inventarios
                 Query = Query + " where cvproducto='" + this.item + "'";
                 conecta.Excute(Query);
                 conecta.CierraConexion();
-                MessageBox.Show("Inventario actualizado exitosamente, nuevo inventario:" + String.Format("{0:C}", decimal.Parse(suma.ToString())));
+                MessageBox.Show("Inventario actualizado exitosamente, nuevo inventario:" + decimal.Parse(suma.ToString()));
                 // Refresh();
                 this.Dispose();
             }

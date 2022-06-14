@@ -305,6 +305,9 @@ namespace SHOPCONTROL
 
         private void Bienvenidos_Load(object sender, EventArgs e)
         {
+
+            this.ControlBox = false;
+
             string opcionserver = Registro.ReadRegSHOPCONTROL("CON", "OPCIONSERVER");
             if (opcionserver == "0") label7.Text = "CUERNAVACA";
             if (opcionserver == "1") label7.Text = "SUCURSAL MOLINA";

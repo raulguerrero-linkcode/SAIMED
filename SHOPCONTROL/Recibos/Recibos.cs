@@ -1418,7 +1418,7 @@ namespace SHOPCONTROL
                 decimal ReComision = (total + Rdescuento) * PorComision / 100;
 
 
-                decimal TotalIva = total * IVAParametro;
+                decimal TotalIva = (total * IVAParametro) + (total) - (Rdescuento);
                 if (radioButton4.Checked == true) TotalIva = 0;
 
                 ListViewItem lvi = new ListViewItem(unidad);
@@ -1427,7 +1427,7 @@ namespace SHOPCONTROL
                 lvi.SubItems.Add(Nombre);
                 lvi.SubItems.Add(precio.ToString("##.00", CultureInfo.InvariantCulture));
                 lvi.SubItems.Add(Rdescuento.ToString("##.00", CultureInfo.InvariantCulture));
-                lvi.SubItems.Add(total.ToString("##.00", CultureInfo.InvariantCulture));
+                lvi.SubItems.Add(Ganancia.ToString("##.00", CultureInfo.InvariantCulture));
                 lvi.SubItems.Add(NumPrecio);
                 lvi.SubItems.Add(TotalDistribuidor.ToString("##.00", CultureInfo.InvariantCulture));
                 lvi.SubItems.Add(Ganancia.ToString("##.00", CultureInfo.InvariantCulture));

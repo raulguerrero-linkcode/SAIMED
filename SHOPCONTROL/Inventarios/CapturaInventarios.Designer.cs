@@ -31,25 +31,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CapturaInventarios));
             this.label13 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.txtQR = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
-            this.comboBox8 = new System.Windows.Forms.ComboBox();
-            this.label40 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
-            this.label36 = new System.Windows.Forms.Label();
             this.textBox23 = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label28 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label21 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtQR = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.Lv = new System.Windows.Forms.ListView();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -73,17 +67,11 @@
             this.panel3.Controls.Add(this.txtQR);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.button5);
-            this.panel3.Controls.Add(this.comboBox8);
-            this.panel3.Controls.Add(this.label40);
             this.panel3.Controls.Add(this.label39);
-            this.panel3.Controls.Add(this.comboBox7);
-            this.panel3.Controls.Add(this.label36);
             this.panel3.Controls.Add(this.textBox23);
             this.panel3.Controls.Add(this.label35);
             this.panel3.Controls.Add(this.comboBox4);
             this.panel3.Controls.Add(this.label28);
-            this.panel3.Controls.Add(this.comboBox2);
-            this.panel3.Controls.Add(this.label21);
             this.panel3.Controls.Add(this.label15);
             this.panel3.Controls.Add(this.button3);
             this.panel3.Controls.Add(this.textBox11);
@@ -94,6 +82,27 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1244, 139);
             this.panel3.TabIndex = 3;
+            // 
+            // txtQR
+            // 
+            this.txtQR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtQR.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQR.Location = new System.Drawing.Point(109, 35);
+            this.txtQR.Name = "txtQR";
+            this.txtQR.Size = new System.Drawing.Size(352, 22);
+            this.txtQR.TabIndex = 55;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label2.Location = new System.Drawing.Point(10, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(359, 23);
+            this.label2.TabIndex = 54;
+            this.label2.Text = "Código de barras";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // button5
             // 
@@ -108,29 +117,6 @@
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // comboBox8
-            // 
-            this.comboBox8.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox8.FormattingEnabled = true;
-            this.comboBox8.Items.AddRange(new object[] {
-            ""});
-            this.comboBox8.Location = new System.Drawing.Point(735, 87);
-            this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(187, 27);
-            this.comboBox8.TabIndex = 46;
-            // 
-            // label40
-            // 
-            this.label40.BackColor = System.Drawing.Color.Transparent;
-            this.label40.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label40.Location = new System.Drawing.Point(688, 90);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(75, 23);
-            this.label40.TabIndex = 52;
-            this.label40.Text = "Tipo";
-            this.label40.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // label39
             // 
             this.label39.BackColor = System.Drawing.Color.Transparent;
@@ -142,27 +128,6 @@
             this.label39.TabIndex = 49;
             this.label39.Text = "0";
             this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // comboBox7
-            // 
-            this.comboBox7.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(493, 93);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(187, 23);
-            this.comboBox7.TabIndex = 46;
-            // 
-            // label36
-            // 
-            this.label36.BackColor = System.Drawing.Color.Transparent;
-            this.label36.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label36.Location = new System.Drawing.Point(424, 91);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(75, 23);
-            this.label36.TabIndex = 45;
-            this.label36.Text = "Unidad";
-            this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // textBox23
             // 
@@ -205,27 +170,6 @@
             this.label28.TabIndex = 42;
             this.label28.Text = "Marca";
             this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(493, 63);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(187, 23);
-            this.comboBox2.TabIndex = 39;
-            // 
-            // label21
-            // 
-            this.label21.BackColor = System.Drawing.Color.Transparent;
-            this.label21.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label21.Location = new System.Drawing.Point(424, 64);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(75, 23);
-            this.label21.TabIndex = 40;
-            this.label21.Text = "Categoría";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label15
             // 
@@ -287,27 +231,6 @@
             this.label1.Text = "Busqueda de producto/servicio";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // txtQR
-            // 
-            this.txtQR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtQR.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQR.Location = new System.Drawing.Point(109, 35);
-            this.txtQR.Name = "txtQR";
-            this.txtQR.Size = new System.Drawing.Size(352, 22);
-            this.txtQR.TabIndex = 55;
-            // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(10, 34);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(359, 23);
-            this.label2.TabIndex = 54;
-            this.label2.Text = "Código de barras";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // Lv
             // 
             this.Lv.BackColor = System.Drawing.Color.White;
@@ -346,17 +269,11 @@
         private System.Windows.Forms.TextBox txtQR;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.ComboBox comboBox8;
-        private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.ComboBox comboBox7;
-        private System.Windows.Forms.Label label36;
         private System.Windows.Forms.TextBox textBox23;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBox11;

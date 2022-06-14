@@ -73,8 +73,21 @@ namespace SHOPCONTROL.Analisys
             while (leer.Read())
             {
 
-                CultureInfo culture = new CultureInfo("en-US");
-                DateTime tempDate = Convert.ToDateTime(leer["Fecha"].ToString(), culture);
+                // CultureInfo culture = new CultureInfo("en-US");
+                DateTime tempDate = new DateTime(1900, 01, 01);
+                string temporal = leer["Fecha"].ToString();
+
+                try
+                {
+                    CultureInfo culture = new CultureInfo("en-US");
+                    tempDate = Convert.ToDateTime(leer["Fecha"].ToString(), culture);
+                }
+                catch (Exception)
+                {
+                    tempDate = new DateTime(1900, 01, 01);
+
+                }
+
 
                 //cvcliente = tempDate.ToShortDateString();
                 ListViewItem lvi = new ListViewItem(leer["clave"].ToString());

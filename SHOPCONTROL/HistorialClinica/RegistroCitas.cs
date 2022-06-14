@@ -1629,7 +1629,7 @@ namespace SHOPCONTROL.HistorialClinica
                 
                 cryRpt.SetDataSource(ds);
                 // cryRpt.SetParameterValue("fecha1", 13);
-                string NombreArchivo = @"C:\TicketImpreso.pdf";
+                string NombreArchivo = @"C:\\tmp\\reports\\TicketImpreso.pdf";
                 //// cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
                 cryRpt.PrintToPrinter(1, false, 0, 0);
                 cryRpt.Close();
@@ -2078,9 +2078,9 @@ namespace SHOPCONTROL.HistorialClinica
             cryRpt.Load(CadenaReporte);
             cryRpt.SetDataSource(ds);
 
-            string NombreArchivo =Application.StartupPath+ "\\Reportes\\ReporteDiarioCitas.pdf"; 
+            string NombreArchivo =  @"C:\\tmp\\reports\\ReporteDiarioCitas.pdf"; 
             // cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
-            //cryRpt.PrintToPrinter(1, false, 0, 0);
+            cryRpt.PrintToPrinter(1, false, 0, 0);
             cryRpt.Close();
             cryRpt.Dispose();
 

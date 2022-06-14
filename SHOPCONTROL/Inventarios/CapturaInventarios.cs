@@ -62,13 +62,13 @@ namespace SHOPCONTROL.Inventarios
 
             //Query = Query + "Cat_tipos.descripcion as nomtipo from Productos inner join Cat_tipos on Cat_tipos.idtipo = Productos.idtipo where cvproducto <> ''";
             if (textBox11.Text != "") Query = Query + " and nombre like '%" + textBox11.Text + "%'";
-            if (comboBox2.Text != "") Query = Query + " and  categoria='" + comboBox2.SelectedValue.ToString() + "'";
-            if (comboBox4.Text != "") Query = Query + " and marca='" + comboBox2.Text + "'";
-            if (comboBox7.Text != "") Query = Query + " and unidad='" + comboBox7.Text.Trim() + "'";
+            // if (comboBox2.Text != "") Query = Query + " and  categoria='" + comboBox2.SelectedValue.ToString() + "'";
+            // f (comboBox4.Text != "") Query = Query + " and marca='" + comboBox2.Text + "'";
+            // if (comboBox7.Text != "") Query = Query + " and unidad='" + comboBox7.Text.Trim() + "'";
             if (textBox23.Text != "") Query = Query + " and cvproducto='" + textBox23.Text.Trim() + "'";
             if (txtQR.Text != "") Query = Query + " and codbarras='" + txtQR.Text.Trim() + "'";
 
-            if (comboBox8.Text != "") Query = Query + "and Cat_tipos.idtipo = '" + comboBox8.SelectedValue.ToString().Trim() + "'";
+            // if (comboBox8.Text != "") Query = Query + "and Cat_tipos.idtipo = '" + comboBox8.SelectedValue.ToString().Trim() + "'";
 
             conectorSql conecta = new conectorSql();
             Query = Query + " order by nombre asc, Cat_Categorias.descripcion asc";
