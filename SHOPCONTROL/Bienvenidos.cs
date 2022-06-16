@@ -140,7 +140,7 @@ namespace SHOPCONTROL
             importaciónDeProductosserviciosExcelToolStripMenuItem.Enabled = false;
             baseDeDatosToolStripMenuItem.Enabled = false;
 
-            accesoAUsuariosToolStripMenuItem.Enabled = false;
+            // accesoAUsuariosToolStripMenuItem.Enabled = false;
             linkLabel1.Enabled = false;
             linkLabel2.Enabled = false;
             linkLabel4.Enabled = false;
@@ -248,7 +248,7 @@ namespace SHOPCONTROL
                 if (ENTRA16 == "SI") importaciónDeProductosserviciosExcelToolStripMenuItem.Enabled = true;
                 if (ENTRA17 == "SI") baseDeDatosToolStripMenuItem.Enabled = true;
 
-                if (ENTRA18 == "SI") accesoAUsuariosToolStripMenuItem.Enabled = true;
+                // if (ENTRA18 == "SI") accesoAUsuariosToolStripMenuItem.Enabled = true;
 
                 if (ENTRA19 == "SI") reimpresionDeFacturaToolStripMenuItem.Enabled = true;
                 if (ENTRA20 == "SI") reporteDeRecibosToolStripMenuItem.Enabled = true;

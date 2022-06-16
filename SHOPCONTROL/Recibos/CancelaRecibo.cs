@@ -234,7 +234,12 @@ namespace SHOPCONTROL
 
                 Query = "Update citas set  estatus='SIN PAGAR', recibopago='0' where recibopago='" + NUMREMISION + "' and cvpaciente='" + label11.Text + "'";
                 conecta.Excute(Query);
-               
+
+
+                Query = "update DetallesRecibos  set descripcion =  'CANCELADO ' + descripcion ,precio = 0 ,tganancia = 0 where numrecibo = '" + NUMREMISION + "' and cvpaciente='" + label11.Text + "'";
+                conecta.Excute(Query);
+
+
             }
             else
             {

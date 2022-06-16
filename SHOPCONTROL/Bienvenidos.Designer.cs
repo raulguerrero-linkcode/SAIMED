@@ -52,7 +52,6 @@
             this.pagosDePedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.carteraDePagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registroDePagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.accesoAUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reimpresionDeFacturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registroDeGastosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pendientesDePagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,7 +70,7 @@
             this.reporteDeRecibosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inventarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.listadoDePacientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.faltaDePagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripDropDownButton4 = new System.Windows.Forms.ToolStripDropDownButton();
             this.cosecutivosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -113,7 +112,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.linkLabel6 = new System.Windows.Forms.LinkLabel();
-            this.faltaDePagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -245,7 +243,6 @@
             this.reciboToolStripMenuItem,
             this.pagosDePedidosToolStripMenuItem,
             this.carteraDePagosToolStripMenuItem,
-            this.accesoAUsuariosToolStripMenuItem,
             this.reimpresionDeFacturaToolStripMenuItem,
             this.registroDeGastosToolStripMenuItem,
             this.pendientesDePagoToolStripMenuItem});
@@ -324,13 +321,6 @@
             this.registroDePagoToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.registroDePagoToolStripMenuItem.Text = "Registro de pago";
             this.registroDePagoToolStripMenuItem.Click += new System.EventHandler(this.registroDePagoToolStripMenuItem_Click);
-            // 
-            // accesoAUsuariosToolStripMenuItem
-            // 
-            this.accesoAUsuariosToolStripMenuItem.Name = "accesoAUsuariosToolStripMenuItem";
-            this.accesoAUsuariosToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.accesoAUsuariosToolStripMenuItem.Text = "Acceso a Usuarios";
-            this.accesoAUsuariosToolStripMenuItem.Click += new System.EventHandler(this.accesoAUsuariosToolStripMenuItem_Click);
             // 
             // reimpresionDeFacturaToolStripMenuItem
             // 
@@ -441,7 +431,6 @@
             this.reporteDeRecibosToolStripMenuItem,
             this.inventarioToolStripMenuItem,
             this.toolStripMenuItem4,
-            this.listadoDePacientesToolStripMenuItem,
             this.faltaDePagosToolStripMenuItem});
             this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
             this.toolStripDropDownButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -479,12 +468,12 @@
             this.toolStripMenuItem4.Text = "Ingresos por área";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
             // 
-            // listadoDePacientesToolStripMenuItem
+            // faltaDePagosToolStripMenuItem
             // 
-            this.listadoDePacientesToolStripMenuItem.Name = "listadoDePacientesToolStripMenuItem";
-            this.listadoDePacientesToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.listadoDePacientesToolStripMenuItem.Text = "Listado de Pacientes";
-            this.listadoDePacientesToolStripMenuItem.Click += new System.EventHandler(this.listadoDePacientesToolStripMenuItem_Click);
+            this.faltaDePagosToolStripMenuItem.Name = "faltaDePagosToolStripMenuItem";
+            this.faltaDePagosToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.faltaDePagosToolStripMenuItem.Text = "Falta de pagos";
+            this.faltaDePagosToolStripMenuItem.Click += new System.EventHandler(this.faltaDePagosToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
@@ -902,13 +891,6 @@
             this.linkLabel6.Text = " 5.- Inventarios";
             this.linkLabel6.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel6_LinkClicked_1);
             // 
-            // faltaDePagosToolStripMenuItem
-            // 
-            this.faltaDePagosToolStripMenuItem.Name = "faltaDePagosToolStripMenuItem";
-            this.faltaDePagosToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.faltaDePagosToolStripMenuItem.Text = "Falta de pagos";
-            this.faltaDePagosToolStripMenuItem.Click += new System.EventHandler(this.faltaDePagosToolStripMenuItem_Click);
-            // 
             // Bienvenidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1013,7 +995,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem formaDePagoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem respaldoDeBaseBillLineToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem accesoAUsuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reimpresionDeFacturaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteDeRecibosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem operacionesToolStripMenuItem;
@@ -1046,7 +1027,6 @@
         private System.Windows.Forms.ToolStripMenuItem pendientesDePagoToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem listadoDePacientesToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.LinkLabel linkLabel6;
         private System.Windows.Forms.ToolStripMenuItem faltaDePagosToolStripMenuItem;

@@ -127,11 +127,11 @@
             this.button10 = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
             this.Lv = new System.Windows.Forms.ListView();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.historialDelPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.informaciónDeLaCitaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -926,6 +926,7 @@
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(89, 22);
             this.textBox6.TabIndex = 3;
+            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             this.textBox6.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox6_KeyDown);
             // 
             // label16
@@ -1315,18 +1316,6 @@
             this.Lv.SelectedIndexChanged += new System.EventHandler(this.Lv_SelectedIndexChanged);
             this.Lv.DoubleClick += new System.EventHandler(this.Lv_DoubleClick);
             // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 600;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // timer2
-            // 
-            this.timer2.Enabled = true;
-            this.timer2.Interval = 180000;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1347,6 +1336,18 @@
             this.informaciónDeLaCitaToolStripMenuItem.Name = "informaciónDeLaCitaToolStripMenuItem";
             this.informaciónDeLaCitaToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.informaciónDeLaCitaToolStripMenuItem.Text = "Información de la Cita   F1";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 600;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // timer2
+            // 
+            this.timer2.Enabled = true;
+            this.timer2.Interval = 180000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // RegistroCitas
             // 

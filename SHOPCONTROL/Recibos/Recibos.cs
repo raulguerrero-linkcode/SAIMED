@@ -1414,7 +1414,7 @@ namespace SHOPCONTROL
                 decimal TotalDistribuidor = cantidad * PreDistribuidor;
 
 
-                decimal Ganancia = (total + Rdescuento) - TotalDistribuidor;
+                decimal Ganancia = (total + Rdescuento); // - TotalDistribuidor;
                 decimal ReComision = (total + Rdescuento) * PorComision / 100;
 
 

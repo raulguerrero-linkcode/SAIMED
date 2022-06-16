@@ -720,7 +720,37 @@ namespace SHOPCONTROL.HistorialClinica
             label8.Text = numticket;
             combos.ComboDoctores(comboBox2);
             comboBox2.SelectedValue = cvdoctor;
-            dateTimePicker3.Value = DateTime.Parse(horainicia.Replace(".",":"));
+
+            //ring hora = leer2["horainicia"].ToString().Replace(".", ":");
+            string[] validacion = horainicia.Replace(".",":").Split(':');
+
+            try
+            {
+                int horaVal = int.Parse(validacion[0]);
+                int minutoVal = int.Parse(validacion[1]);
+                int segundoVal = 0;
+
+                if (horaVal > 23)
+                {
+                    horaVal = 0;
+                }
+
+                if (minutoVal > 60)
+                {
+                    minutoVal = 35;
+                }
+                string horaFinal = horaVal.ToString() + ':' + minutoVal.ToString() + ':' + segundoVal.ToString();
+
+                dateTimePicker3.Value = DateTime.Parse(horaFinal);
+            }
+            catch (Exception)
+            {
+
+                dateTimePicker3.Value = DateTime.Now;
+            }
+            
+
+            
             panel5.Visible = false;
 
             if (cvdoctor == "1" || cvdoctor == "2" || cvdoctor == "2")
@@ -1200,10 +1230,9 @@ namespace SHOPCONTROL.HistorialClinica
                 checkBox1.Checked = false;
                 timer1.Enabled = false;
                 textBox6.Enabled = true;
-              
-                MessageBox.Show("El nombre ya esta registrado la clave del paciente es "+ claveNombreReg.ToString(), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // MessageBox.Show("El nombre ya esta registrado la clave del paciente es "+ claveNombreReg.ToString(), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBox6.Text=claveNombreReg;
-
+                BuscarPaciente();
                 return;
             }
 
@@ -1215,7 +1244,6 @@ namespace SHOPCONTROL.HistorialClinica
                 {
                     MessageBox.Show("El paciente ya se encuentra registrado su numero de paciente es:" + IDPACIENTEREGM.ToString(), "SAIMED", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
-
                 }
             }
 
@@ -1307,7 +1335,28 @@ namespace SHOPCONTROL.HistorialClinica
                 SqlDataReader leer2 = conecta.RecordInfo(Query);
                 while (leer2.Read())
                 {
-                    TiempoInicia=DateTime.Parse(leer2["horainicia"].ToString());
+                    string hora = leer2["horainicia"].ToString().Replace(".",":");
+                    string[] validacion = hora.Split(':');
+
+                    int horaVal = int.Parse(validacion[0]);
+                    int minutoVal = int.Parse(validacion[1]);
+                    int segundoVal = 0;
+
+                    if (horaVal > 23)
+                    {
+                        horaVal = 0;
+                    }
+
+                    if (minutoVal > 60)
+                    {
+                        minutoVal = 35;
+                    }
+
+                    string horaFinal = horaVal.ToString() + ':' + minutoVal.ToString() + ':' + segundoVal.ToString();
+
+                    TiempoInicia =DateTime.Parse(horaFinal.ToString());
+
+
                     int minutosconsulta=int.Parse(leer2["ttiempo"].ToString());
                     string progresivo= leer2["progresivo"].ToString();
 
@@ -2237,6 +2286,11 @@ namespace SHOPCONTROL.HistorialClinica
                 CADENA = historiapaciente.INFO_PACIENTE(CLAVEPACIENTE, NOMBREPACIENTE);
                 historiapaciente.Show();
             }
+
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

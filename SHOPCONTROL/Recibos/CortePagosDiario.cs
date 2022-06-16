@@ -4,6 +4,10 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 
 using CrystalDecisions.CrystalReports.Engine;
+using System.IO;
+using System.Xml.Linq;
+using CrystalDecisions.Shared;
+
 namespace SHOPCONTROL
 {
     public partial class CortePagosDiario : Form
@@ -119,12 +123,29 @@ namespace SHOPCONTROL
 
         }
 
+
+        private void lockButtons()
+        {
+            button3.Enabled = false;
+            button4.Enabled = false;
+            button5.Enabled = false;
+        }
+
+        private void enableButtons()
+        {
+            button3.Enabled = true;
+            button4.Enabled = true;
+            button5.Enabled = true;
+        }
         private void button3_Click(object sender, EventArgs e)
         {
+
             DialogResult reply = MessageBox.Show("¿Impresion de corte diario?", "Impresion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (reply == DialogResult.Yes)
             {
+                lockButtons();
                 mandarReporteCristal();
+                enableButtons();
             }
         }
 
@@ -186,6 +207,14 @@ namespace SHOPCONTROL
                 ReportDocument cryRpt = new ReportDocument();
 
                 string CadenaReporte = @"\\SRV-DATACENTER\\tmp\\reports\\TicketCorte.rpt";
+                bool cfnExist = File.Exists(CadenaReporte);
+                if (cfnExist) {
+                    CadenaReporte = @"\\SRV-DATACENTER\\tmp\\reports\\TicketCorte.rpt";
+                } else {
+                CadenaReporte = @"C:\\tmp\\reports\\TicketCorte.rpt";
+                };
+            
+
                 // string CadenaReporte = @"C:\tmp\TicketCorte12.rpt";
                 DataSet ds = new DataSet();
 
@@ -255,8 +284,8 @@ namespace SHOPCONTROL
                 cryRpt.SetParameterValue("tdebito", tdebito.ToString());
                 cryRpt.SetParameterValue("tcredito", tcredito.ToString());
                 cryRpt.SetParameterValue("tefectivo", tefectivo.ToString());
-                // string NombreArchivo = @"C:\tmp\TicketCorte.pdf";
-                // cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
+                string NombreArchivo = @"C:\\tmp\\TicketCorte.pdf";
+                cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
                 cryRpt.PrintToPrinter(1, false, 0, 0);
                 cryRpt.Close();
                 cryRpt.Dispose();
