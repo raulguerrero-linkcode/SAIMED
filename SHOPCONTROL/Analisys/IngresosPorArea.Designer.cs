@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IngresosPorArea));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.AllDatesCheck = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -39,7 +40,6 @@
             this.label35 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.Lv = new System.Windows.Forms.ListView();
-            this.button6 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,13 +60,27 @@
             this.panel1.Size = new System.Drawing.Size(175, 701);
             this.panel1.TabIndex = 141;
             // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.White;
+            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
+            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button6.Location = new System.Drawing.Point(46, 326);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(84, 46);
+            this.button6.TabIndex = 198;
+            this.button6.Text = "&Exportar";
+            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // button3
             // 
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(11, 129);
+            this.button3.Location = new System.Drawing.Point(65, 129);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(152, 39);
+            this.button3.Size = new System.Drawing.Size(98, 39);
             this.button3.TabIndex = 143;
             this.button3.Text = "Buscar";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -166,20 +180,6 @@
             this.Lv.UseCompatibleStateImageBehavior = false;
             this.Lv.View = System.Windows.Forms.View.Details;
             this.Lv.SelectedIndexChanged += new System.EventHandler(this.Lv_SelectedIndexChanged);
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(46, 326);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(84, 46);
-            this.button6.TabIndex = 198;
-            this.button6.Text = "&Exportar";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // IngresosPorArea
             // 

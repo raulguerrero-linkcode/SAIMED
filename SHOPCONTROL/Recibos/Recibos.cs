@@ -3195,9 +3195,9 @@ namespace SHOPCONTROL
             destination = Marshal.AllocCoTaskMem(5);
             Marshal.Copy(source, 0, destination, 5);
             //RawPrinterHelper.SendBytesToPrinter("EPSON TM-T88IV Receipt", destination, 5);
-            string cfnFile = @"//SRV-DATACENTER/tmp/EmailConf.xml";
+            string cfnFile = @"\\SRV-DATACENTER\tmp\EmailConf.xml";
             bool cfnExist = File.Exists(cfnFile);
-            XDocument xdoc = XDocument.Load(cfnExist ? @"//SRV-DATACENTER/tmp/EmailConf.xml" : @"C:\\tmp\\EmailConf.xml");
+            XDocument xdoc = XDocument.Load(cfnExist ? @"\\SRV-DATACENTER\tmp\EmailConf.xml" : @"C:\tmp\EmailConf.xml");
             envio.SendBytesToPrinter(xdoc.Descendants("PrinterName").First().Value, destination, 5);
             Marshal.FreeCoTaskMem(destination);
 

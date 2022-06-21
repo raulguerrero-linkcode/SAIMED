@@ -11,9 +11,9 @@ namespace SHOPCONTROL.Analisys
         public static void SendNotification(string mensaje, long numero) 
         {
            
-                string cfnFile = @"//SRV-DATACENTER/tmp/EmailConf.xml";
+                string cfnFile = @"\\SRV-DATACENTER\tmp\EmailConf.xml";
                 bool cfnExist = File.Exists(cfnFile);
-                XDocument xdoc = XDocument.Load(cfnExist ? @"//SRV-DATACENTER/tmp/EmailConf.xml" : @"C:\\tmp\\EmailConf.xml");
+                XDocument xdoc = XDocument.Load(cfnExist ? @"\\SRV-DATACENTER\tmp\EmailConf.xml" : @"C:\tmp\EmailConf.xml");
 
                 string AccessKey = xdoc.Descendants("SMSAccessToken").First().Value; // your access key here
 

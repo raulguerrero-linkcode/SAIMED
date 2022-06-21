@@ -226,6 +226,12 @@
     <Compile Include="ActivacionCitas.Designer.cs">
       <DependentUpon>ActivacionCitas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Analisys\creditos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Analisys\creditos.Designer.cs">
+      <DependentUpon>creditos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Analisys\IngresosPorArea.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -869,6 +875,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ActivacionCitas.resx">
       <DependentUpon>ActivacionCitas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Analisys\creditos.resx">
+      <DependentUpon>creditos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Analisys\IngresosPorArea.resx">
       <DependentUpon>IngresosPorArea.cs</DependentUpon>

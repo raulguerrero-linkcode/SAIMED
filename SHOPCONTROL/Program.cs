@@ -18,7 +18,7 @@ namespace SHOPCONTROL
             // timer.Start();
 
             var timer = new System.Threading.Timer(
-                s => Application.Exit(), null, CalcMsToHour(21, 00, 00), Timeout.Infinite);
+                s => Application.Exit(), null, CalcMsToHour(23, 00, 00), Timeout.Infinite);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
