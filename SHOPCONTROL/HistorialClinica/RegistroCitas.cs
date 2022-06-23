@@ -1233,7 +1233,7 @@ namespace SHOPCONTROL.HistorialClinica
                 // MessageBox.Show("El nombre ya esta registrado la clave del paciente es "+ claveNombreReg.ToString(), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBox6.Text=claveNombreReg;
                 BuscarPaciente();
-                return;
+                // return;
             }
 
             if (textBox14.Text.Trim()!="")

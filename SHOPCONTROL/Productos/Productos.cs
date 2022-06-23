@@ -334,6 +334,17 @@ namespace SHOPCONTROL
             panel6.Visible = false;
             panel4.Visible = false;
             Limpiar();
+            conectorSql conecta = new conectorSql();
+            string consulta = "Select numproducto +2 as numproducto from Consecutivos";
+            SqlDataReader leer2 = conecta.RecordInfo(consulta);
+            while (leer2.Read())
+            {
+                int NumProducto = int.Parse(leer2["numproducto"].ToString());
+
+                textBox1.Text = NumProducto.ToString();
+            }
+            conecta.CierraConexion();
+
         }
 
         public void Limpiar()
@@ -1064,6 +1075,20 @@ namespace SHOPCONTROL
 
             
             conectorSql conecta = new conectorSql();
+
+             string CATEGORIA = "";
+
+             string categonbr = "Select idCategoria from Cat_Categorias where descripcion = '" + comboBox1.Text + "'";
+            conectorSql conecta1 = new conectorSql();
+            
+            SqlDataReader leer = conecta.RecordInfo(categonbr);
+            while (leer.Read())
+            {
+               CATEGORIA = leer["idCategoria"].ToString();
+             
+            }
+            conecta.CierraConexion();
+
             string query = "";
             query = query + "INSERT INTO Productos ";
             query = query + "([cvproducto] ";
@@ -1092,7 +1117,7 @@ namespace SHOPCONTROL
             query = query + "'" + textBox1.Text + "',";
             query = query + "'" + textBox2.Text + "',";
             query = query + "'" + textBox7.Text + "',";
-            query = query + "'" + comboBox1.Text + "',";
+            query = query + "'" + CATEGORIA + "',";
             query = query + "'" + comboBox5.Text + "',";
             query = query + "" + textBox4.Text + ",";
             query = query + "" + textBox5.Text + ",";
@@ -1142,6 +1167,11 @@ namespace SHOPCONTROL
         private void button2_Click_1(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
