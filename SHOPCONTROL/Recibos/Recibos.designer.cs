@@ -227,10 +227,11 @@
             this.panel1.Controls.Add(this.label33);
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.panel11);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1007, 735);
             this.panel1.TabIndex = 0;
+            this.panel1.Visible = false;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label42
@@ -1329,8 +1330,8 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.panel3.Controls.Add(this.label47);
-            this.panel3.Controls.Add(this.label46);
             this.panel3.Controls.Add(this.panel1);
+            this.panel3.Controls.Add(this.label46);
             this.panel3.Controls.Add(this.label45);
             this.panel3.Controls.Add(this.label36);
             this.panel3.Controls.Add(this.button16);
@@ -1879,8 +1880,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label13;
@@ -2010,5 +2009,6 @@
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label47;
+        public System.Windows.Forms.Panel panel1;
     }
 }

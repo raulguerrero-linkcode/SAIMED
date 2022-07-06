@@ -239,12 +239,14 @@
             this.Lv.GridLines = true;
             this.Lv.HideSelection = false;
             this.Lv.Location = new System.Drawing.Point(0, 145);
+            this.Lv.MultiSelect = false;
             this.Lv.Name = "Lv";
             this.Lv.Size = new System.Drawing.Size(1242, 416);
             this.Lv.TabIndex = 144;
             this.Lv.UseCompatibleStateImageBehavior = false;
             this.Lv.View = System.Windows.Forms.View.Details;
-            this.Lv.SelectedIndexChanged += new System.EventHandler(this.Lv_SelectedIndexChanged_1);
+            // this.Lv.SelectedIndexChanged += new System.EventHandler(this.Lv_SelectedIndexChanged_1);
+            this.Lv.DoubleClick += new System.EventHandler(this.Lv_SelectedIndexChanged_1);
             // 
             // CapturaInventarios
             // 

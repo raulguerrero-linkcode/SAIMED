@@ -53,7 +53,8 @@
             this.Lv.TabIndex = 4;
             this.Lv.UseCompatibleStateImageBehavior = false;
             this.Lv.View = System.Windows.Forms.View.Details;
-            this.Lv.SelectedIndexChanged += new System.EventHandler(this.Lv_SelectedIndexChanged);
+            // this.Lv.SelectedIndexChanged += new System.EventHandler(this.Lv_SelectedIndexChanged);
+            this.Lv.DoubleClick += new System.EventHandler(this.Lv_SelectedIndexChanged);
             // 
             // label1
             // 

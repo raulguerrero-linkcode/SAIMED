@@ -23,17 +23,14 @@ namespace SHOPCONTROL.Inventarios
 
         private void Lv_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            if (Lv.SelectedItems.Count > 0)
+            if (Lv.SelectedItems.Count == 1)
             {
-                ListView.SelectedIndexCollection seleccion = Lv.SelectedIndices;
-                foreach (int item in seleccion)
-                {
-                 
-                    Cantidad cantidad = new Cantidad(Lv.Items[item].SubItems[0].Text, long.Parse( Lv.Items[item].SubItems[4].Text) );
-                    cantidad.ShowDialog();
-                    ProcesaBusqueda();
-                    break;
-                }
+                
+                Cantidad cantidad = new Cantidad(Lv.SelectedItems[0].SubItems[0].Text, long.Parse(Lv.SelectedItems[0].SubItems[4].Text));
+                cantidad.ShowDialog();
+                ProcesaBusqueda();
+                cantidad.Dispose();
+                Lv.SelectedItems.Clear();
             }
 
             

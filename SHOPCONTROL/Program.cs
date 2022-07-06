@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -12,13 +13,13 @@ namespace SHOPCONTROL
         [STAThread]
         static void Main()
         {
-
+            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
             // System.Timers.Timer timer = new System.Timers.Timer(300000);
             // timer.Elapsed += Timer_Elapsed;
             // timer.Start();
 
             var timer = new System.Threading.Timer(
-                s => Application.Exit(), null, CalcMsToHour(23, 00, 00), Timeout.Infinite);
+                s => Application.Exit(), null, CalcMsToHour(21, 00, 00), Timeout.Infinite);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

@@ -452,6 +452,7 @@ namespace SHOPCONTROL
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Recibos entrarecibo = new Recibos();
+            entrarecibo.panel1.Visible = true;
             entrarecibo.Show();
         }
 
@@ -1118,6 +1119,13 @@ namespace SHOPCONTROL
         {
             StatusCreditos creditos = new StatusCreditos();
             creditos.Show();
+        }
+
+        private void linkLabel7_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Recibos entrarecibo = new Recibos();
+            entrarecibo.panel1.Visible = false;
+            entrarecibo.Show();
         }
     }
 }

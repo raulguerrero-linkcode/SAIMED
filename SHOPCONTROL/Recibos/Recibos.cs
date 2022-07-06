@@ -11,6 +11,7 @@ using SHOPCONTROL.Inventarios;
 using System.IO;
 using System.Xml.Linq;
 using System.Linq;
+using CrystalDecisions.Shared;
 //using System.Collections.Generic; //MODIFICADO POR JOSE 26-11-19
 namespace SHOPCONTROL
 {
@@ -1674,6 +1675,8 @@ namespace SHOPCONTROL
 
             for (int i = 0; i < Lv2.Items.Count; i++)
             {
+
+
                 decimal total = decimal.Parse(Lv2.Items[i].SubItems[6].Text);
                 acumulado = acumulado + total;
 
@@ -1690,6 +1693,7 @@ namespace SHOPCONTROL
 
                 decimal Comision = decimal.Parse(Lv2.Items[i].SubItems[13].Text);
                 AcumulaComision = AcumulaComision + Comision;
+
 
             }
 
@@ -1876,8 +1880,8 @@ namespace SHOPCONTROL
 
             string RFC = "";
             ReportDocument cryRpt = new ReportDocument();
-            // string CadenaReporte = Application.StartupPath + "\\Reportes\\Tickets\\ReciboTicket.rpt";
-            string CadenaReporte = @"\\SRV-DATACENTER\\tmp\\reports\\ReciboTicket.rpt";
+            string CadenaReporte = @"C:\tmp\reports\ReciboTicket.rpt";
+            // string CadenaReporte = @"\\SRV-DATACENTER\\tmp\\reports\\ReciboTicket.rpt";
 
 
 
@@ -1920,6 +1924,9 @@ namespace SHOPCONTROL
 
                 cryRpt.SetParameterValue("consultorio", consultorio);
                 cryRpt.SetParameterValue("turno", turno);
+
+                string NombreArchivo = @"C:/tmp/ReciboTicket_" + numrecibo.ToString() + ".pdf";
+                cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
 
                 cryRpt.PrintToPrinter(1, false, 0, 0);
             }

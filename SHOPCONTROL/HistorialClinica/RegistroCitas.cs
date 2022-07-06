@@ -1636,7 +1636,8 @@ namespace SHOPCONTROL.HistorialClinica
             {
                 ReportDocument cryRpt = new ReportDocument();
 
-                string CadenaReporte = @"\\SRV-DATACENTER\\tmp\\reports\\ImpresoTicket.rpt";
+                string CadenaReporte = @"C:\tmp\reports\ImpresoTicket.rpt";
+                // string CadenaReporte = @"\\SRV-DATACENTER\\tmp\\reports\\ImpresoTicket.rpt";
                 string cvdoctor = comboBox1.SelectedValue.ToString();
                 string cvservicio = "0";
                 string numexpediente="";
