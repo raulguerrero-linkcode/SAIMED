@@ -24,10 +24,10 @@ namespace SHOPCONTROL.Analisys
         {
             conectorSql conecta = new conectorSql();
 
-            SqlDataReader leer = conecta.RecordInfo("select distinct nombre from Doctores");
+            SqlDataReader leer = conecta.RecordInfo("SELECT distinct descripcion FROM [CEPAMM].[dbo].[v_statusCreditos] order by descripcion desc; ");
             while (leer.Read())
             {
-                unidad.Items.Add(leer["nombre"].ToString());
+                unidad.Items.Add(leer["descripcion"].ToString());
             }
         }
 
@@ -75,7 +75,7 @@ namespace SHOPCONTROL.Analisys
                 return;
             }
 
-            query.AppendLine("  unidad = '" + unidad.Text + "'");
+            query.AppendLine("  descripcion = '" + unidad.Text + "'  or nombre like '%" + unidad.Text  + "%' ");
 
             if (idCliente.Text.Length>0)
             {
@@ -86,6 +86,9 @@ namespace SHOPCONTROL.Analisys
             {
                 query.AppendLine(" and NomCompleto like'%" + nombrePaciente.Text + "%'");
             }
+
+
+             
 
 
 
@@ -117,7 +120,7 @@ namespace SHOPCONTROL.Analisys
 
                 // lvi.SubItems.Add(leer["Fecha"].ToString());
                 lvi.SubItems.Add(leer["iddoctor"].ToString());
-                lvi.SubItems.Add(leer["unidad"].ToString());
+                lvi.SubItems.Add(leer["descripcion"].ToString());
                 lvi.SubItems.Add(leer["cvpreserv"].ToString());
                 lvi.SubItems.Add(leer["cvpaciente"].ToString());
                 lvi.SubItems.Add(leer["NomCompleto"].ToString());
@@ -141,9 +144,8 @@ namespace SHOPCONTROL.Analisys
 
         }
 
-        private void Lv_SelectedIndexChanged(object sender, EventArgs e)
+        private void Lv_SendNotifications(object sender, EventArgs e)
         {
-
             if (Lv.SelectedItems.Count > 0)
             {
                 ListView.SelectedIndexCollection seleccion = Lv.SelectedIndices;
@@ -175,7 +177,7 @@ namespace SHOPCONTROL.Analisys
                     string idCita = Lv.Items[item].SubItems[7].Text;
                     string Fecha = Lv.Items[item].SubItems[0].Text;
 
-                    if (Telefono.Length==0)
+                    if (Telefono.Length == 0)
                     {
                         MessageBox.Show("El paciente no tiene un número de teléfono para notificar!");
                         break;
@@ -199,6 +201,14 @@ namespace SHOPCONTROL.Analisys
                     }
                 }
             }
+       }
+
+
+        private void Lv_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            
+   
 
 
 

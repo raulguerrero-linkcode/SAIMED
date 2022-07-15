@@ -133,7 +133,7 @@ namespace SHOPCONTROL.Analisys
 
             string idcategoria = "";
 
-            ReportesNKB.ReporteIngresosUnidad(dateTimePicker1.Value.ToShortDateString(), dateTimePicker1.Value.ToShortDateString());
+            ReportesNKB.ReporteIngresosUnidad(dateTimePicker1.Value.ToShortDateString(), dateTimePicker2.Value.ToShortDateString());
 
             MessageBox.Show("Reporte creado con éxito!");
 

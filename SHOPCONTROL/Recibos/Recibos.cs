@@ -1676,21 +1676,46 @@ namespace SHOPCONTROL
             for (int i = 0; i < Lv2.Items.Count; i++)
             {
 
-
+                if (Lv2.Items[i].SubItems[9].Text=="")
+                {
+                    Lv2.Items[i].SubItems[9].Text = "0";
+                }
                 decimal total = decimal.Parse(Lv2.Items[i].SubItems[6].Text);
                 acumulado = acumulado + total;
 
+                if (Lv2.Items[i].SubItems[9].Text=="")
+                {
+                    Lv2.Items[i].SubItems[9].Text = "0";
+                }
                 decimal total2 = decimal.Parse(Lv2.Items[i].SubItems[9].Text);
                 acumulado2 = acumulado2 + total2;
+
+                if (Lv2.Items[i].SubItems[8].Text=="")
+                {
+                    Lv2.Items[i].SubItems[8].Text = "0";
+                }
                 decimal total3 = decimal.Parse(Lv2.Items[i].SubItems[8].Text);
                 acumulado3 = acumulado3 + total3;
 
+                if (Lv2.Items[i].SubItems[12].Text=="")
+                {
+                    Lv2.Items[i].SubItems[12].Text = "0";
+                }
                 decimal CantIva = decimal.Parse(Lv2.Items[i].SubItems[12].Text);
                 AcumulaIva = AcumulaIva + CantIva;
 
+
+                if (Lv2.Items[i].SubItems[5].Text=="")
+                {
+                    Lv2.Items[i].SubItems[5].Text = "0";
+                }
                 decimal Descuento = decimal.Parse(Lv2.Items[i].SubItems[5].Text);
                 AcumulaDesc = AcumulaDesc + Descuento;
 
+                if (Lv2.Items[i].SubItems[13].Text=="")
+                {
+                    Lv2.Items[i].SubItems[13].Text = "0";
+                }
                 decimal Comision = decimal.Parse(Lv2.Items[i].SubItems[13].Text);
                 AcumulaComision = AcumulaComision + Comision;
 

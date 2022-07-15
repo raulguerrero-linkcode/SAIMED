@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using SHOPCONTROL.Analisys;
 using SHOPCONTROL.Inventarios;
+using System.Diagnostics;
 
 namespace SHOPCONTROL
 {
@@ -428,7 +429,9 @@ namespace SHOPCONTROL
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             this.Dispose();
-            Application.Exit();
+            String process = Process.GetCurrentProcess().ProcessName;
+            Process.Start("cmd.exe", "/c taskkill /F /IM " + process + ".exe /T");
+            // Application.Exit();
         }
 
         private void registroDePagoToolStripMenuItem_Click(object sender, EventArgs e)

@@ -107,6 +107,15 @@ namespace SHOPCONTROL.Inventarios
             conecta.CierraConexion();
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Lv_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
     }
 

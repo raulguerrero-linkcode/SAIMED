@@ -1784,24 +1784,20 @@ public class ReportesNKB
 
             oSheet.Cells[3, 1] = "Fecha";
             oSheet.Cells[3, 2] = "TOTAL";
-            oSheet.Cells[3, 3] = "DENTAL";
-            oSheet.Cells[3, 4] = "ENDODONCIA";
-            oSheet.Cells[3, 5] = "FARMACIA";
-            oSheet.Cells[3, 6] = "GINECOLOGIA";
-            oSheet.Cells[3, 7] = "INVENTARIO";
-            oSheet.Cells[3, 8] = "LABORATORIO";
-            oSheet.Cells[3, 9] = "MXILOFACIAL";
-            oSheet.Cells[3, 10] = "OFTALMOLOGIA";
-            oSheet.Cells[3, 11] = "OPTICA";
-            oSheet.Cells[3, 12] = "ORTODONCIA";
-            oSheet.Cells[3, 13] = "ORTOPEDIA_ORTODONCIA";
-            oSheet.Cells[3, 14] = "PAPANICOLAO";
-            oSheet.Cells[3, 15] = "PAPELERIA";
-            oSheet.Cells[3, 16] = "PROTESIS";
-            oSheet.Cells[3, 17] = "RAYOS_X_DENTAL";
-            oSheet.Cells[3, 18] = "SIN_CATEGORIA";
-            oSheet.Cells[3, 19] = "TIENDA";
-            oSheet.Cells[3, 20] = "ULTRASONIDO";
+            oSheet.Cells[3, 3] = "UNIDAD_1";
+            oSheet.Cells[3, 4] = "UNIDAD_2";
+            oSheet.Cells[3, 5] = "UNIDAD_3";
+            oSheet.Cells[3, 6] = "UNIDAD_4";
+            oSheet.Cells[3, 7] = "C_ENDONCIA";
+            oSheet.Cells[3, 8] = "C_GINECOLOGIA";
+            oSheet.Cells[3, 9] = "C_ULTRASONIDO";
+            oSheet.Cells[3, 10] = "LABORATORIO";
+            oSheet.Cells[3, 11] = "OFTALMOLOGIA";
+            oSheet.Cells[3, 12] = "OPTOMETRIA";
+            oSheet.Cells[3, 13] = "ORTODONCIA";
+            oSheet.Cells[3, 14] = "ORTOPEDIA";
+            oSheet.Cells[3, 15] = "RAYOS_X_DENTAL";
+           
 
 
 
@@ -1829,24 +1825,24 @@ public class ReportesNKB
                 oSheet.get_Range("A" + i, "A" + i).Value2 = clave;
 
                 oSheet.get_Range("B" + i, "B" + i).Value2 = "$ " + decimal.Parse(leer["TOTAL"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
-                oSheet.get_Range("C" + i, "C" + i).Value2 = "$ " + decimal.Parse(leer["DENTAL"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
-                oSheet.get_Range("D" + i, "D" + i).Value2 = "$ " + decimal.Parse(leer["ENDODONCIA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
-                oSheet.get_Range("E" + i, "E" + i).Value2 = "$ " + decimal.Parse(leer["FARMACIA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
-                oSheet.get_Range("F" + i, "F" + i).Value2 = "$ " + decimal.Parse(leer["GINECOLOGIA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
-                oSheet.get_Range("G" + i, "G" + i).Value2 = "$ " + decimal.Parse(leer["INVENTARIO"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
-                oSheet.get_Range("H" + i, "H" + i).Value2 = "$ " + decimal.Parse(leer["LABORATORIO"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
-                oSheet.get_Range("I" + i, "I" + i).Value2 = "$ " + decimal.Parse(leer["MXILOFACIAL"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
-                oSheet.get_Range("J" + i, "J" + i).Value2 = "$ " + decimal.Parse(leer["OFTALMOLOGIA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
-                oSheet.get_Range("K" + i, "K" + i).Value2 = "$ " + decimal.Parse(leer["OPTICA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
-                oSheet.get_Range("L" + i, "L" + i).Value2 = "$ " + decimal.Parse(leer["ORTODONCIA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
-                oSheet.get_Range("M" + i, "M" + i).Value2 = "$ " + decimal.Parse(leer["ORTOPEDIA_ORTODONCIA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
-                oSheet.get_Range("N" + i, "N" + i).Value2 = "$ " + decimal.Parse(leer["PAPANICOLAO"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
-                oSheet.get_Range("O" + i, "O" + i).Value2 = "$ " + decimal.Parse(leer["PAPELERIA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
-                oSheet.get_Range("P" + i, "P" + i).Value2 = "$ " + decimal.Parse(leer["PROTESIS"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
-                oSheet.get_Range("Q" + i, "Q" + i).Value2 = "$ " + decimal.Parse(leer["RAYOS_X_DENTAL"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
-                oSheet.get_Range("R" + i, "R" + i).Value2 = "$ " + decimal.Parse(leer["SIN_CATEGORIA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
-                oSheet.get_Range("S" + i, "S" + i).Value2 = "$ " + decimal.Parse(leer["TIENDA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
-                oSheet.get_Range("T" + i, "T" + i).Value2 = "$ " + decimal.Parse(leer["ULTRASONIDO"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("C" + i, "C" + i).Value2 = "$ " + decimal.Parse(leer["UNIDAD_1"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("D" + i, "D" + i).Value2 = "$ " + decimal.Parse(leer["UNIDAD_2"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("E" + i, "E" + i).Value2 = "$ " + decimal.Parse(leer["UNIDAD_3"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("F" + i, "F" + i).Value2 = "$ " + decimal.Parse(leer["UNIDAD_4"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("G" + i, "G" + i).Value2 = "$ " + decimal.Parse(leer["C_ENDONCIA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("H" + i, "H" + i).Value2 = "$ " + decimal.Parse(leer["C_GINECOLOGIA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("I" + i, "I" + i).Value2 = "$ " + decimal.Parse(leer["C_ULTRASONIDO"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("J" + i, "J" + i).Value2 = "$ " + decimal.Parse(leer["LABORATORIO"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("K" + i, "K" + i).Value2 = "$ " + decimal.Parse(leer["OFTALMOLOGIA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("L" + i, "L" + i).Value2 = "$ " + decimal.Parse(leer["OPTOMETRIA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("M" + i, "M" + i).Value2 = "$ " + decimal.Parse(leer["ORTODONCIA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("N" + i, "N" + i).Value2 = "$ " + decimal.Parse(leer["ORTOPEDIA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                oSheet.get_Range("O" + i, "O" + i).Value2 = "$ " + decimal.Parse(leer["RAYOS_X_DENTAL"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                // oSheet.get_Range("P" + i, "P" + i).Value2 = "$ " + decimal.Parse(leer["PROTESIS"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                // oSheet.get_Range("Q" + i, "Q" + i).Value2 = "$ " + decimal.Parse(leer["RAYOS_X_DENTAL"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                // oSheet.get_Range("R" + i, "R" + i).Value2 = "$ " + decimal.Parse(leer["SIN_CATEGORIA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                // oSheet.get_Range("S" + i, "S" + i).Value2 = "$ " + decimal.Parse(leer["TIENDA"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
+                // oSheet.get_Range("T" + i, "T" + i).Value2 = "$ " + decimal.Parse(leer["ULTRASONIDO"].ToString()).ToString("##.00", CultureInfo.InvariantCulture);
 
                 oSheet.get_Range("A" + i, "T" + i).Font.Size = 9;
                 oSheet.get_Range("A" + i, "T" + i).HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;

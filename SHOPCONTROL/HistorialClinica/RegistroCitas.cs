@@ -2096,7 +2096,7 @@ namespace SHOPCONTROL.HistorialClinica
         {
             ReportDocument cryRpt = new ReportDocument();
 
-            string CadenaReporte = @"\\SRV-DATACENTER\\tmp\\reports\\ReporteAreaDiario.rpt";
+            string CadenaReporte = @"\\SRV-DATACENTER\tmp\reports\ReporteAreaDiario.rpt";
 
             DataSet ds = new DataSet();
             string fechacod = dateTimePicker1.Value.ToString("yyyyMMdd");

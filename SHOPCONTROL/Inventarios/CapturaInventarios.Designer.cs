@@ -230,6 +230,7 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Busqueda de producto/servicio";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Lv
             // 
@@ -245,7 +246,7 @@
             this.Lv.TabIndex = 144;
             this.Lv.UseCompatibleStateImageBehavior = false;
             this.Lv.View = System.Windows.Forms.View.Details;
-            // this.Lv.SelectedIndexChanged += new System.EventHandler(this.Lv_SelectedIndexChanged_1);
+            this.Lv.SelectedIndexChanged += new System.EventHandler(this.Lv_SelectedIndexChanged);
             this.Lv.DoubleClick += new System.EventHandler(this.Lv_SelectedIndexChanged_1);
             // 
             // CapturaInventarios
