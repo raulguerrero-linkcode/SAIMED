@@ -49,17 +49,12 @@
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.textBox22 = new System.Windows.Forms.TextBox();
             this.textBox21 = new System.Windows.Forms.TextBox();
             this.textBox20 = new System.Windows.Forms.TextBox();
             this.UPC = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -131,8 +126,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Lv = new System.Windows.Forms.ListView();
             this.label29 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -144,6 +143,7 @@
             this.tabPage1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel3
@@ -380,68 +380,12 @@
             this.label13.Text = "Busqueda de producto/servicio";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // button10
-            // 
-            this.button10.BackColor = System.Drawing.Color.White;
-            this.button10.Image = ((System.Drawing.Image)(resources.GetObject("button10.Image")));
-            this.button10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button10.Location = new System.Drawing.Point(738, 20);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(129, 46);
-            this.button10.TabIndex = 48;
-            this.button10.Text = "&Importar Productos";
-            this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button10.UseVisualStyleBackColor = false;
-            this.button10.Click += new System.EventHandler(this.button10_Click_1);
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.White;
-            this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Location = new System.Drawing.Point(953, 20);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(79, 46);
-            this.button7.TabIndex = 13;
-            this.button7.Text = "&Eliminar";
-            this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(1038, 20);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(111, 46);
-            this.button6.TabIndex = 12;
-            this.button6.Text = "&Exportar excel";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(868, 20);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(79, 46);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "Nuevo";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // textBox22
             // 
             this.textBox22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox22.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBox22.Location = new System.Drawing.Point(485, 261);
+            this.textBox22.Location = new System.Drawing.Point(483, 209);
             this.textBox22.MaxLength = 20;
             this.textBox22.Name = "textBox22";
             this.textBox22.Size = new System.Drawing.Size(133, 23);
@@ -453,7 +397,7 @@
             this.textBox21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox21.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBox21.Location = new System.Drawing.Point(143, 265);
+            this.textBox21.Location = new System.Drawing.Point(141, 213);
             this.textBox21.MaxLength = 20;
             this.textBox21.Name = "textBox21";
             this.textBox21.Size = new System.Drawing.Size(60, 23);
@@ -465,7 +409,7 @@
             this.textBox20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox20.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBox20.Location = new System.Drawing.Point(485, 232);
+            this.textBox20.Location = new System.Drawing.Point(483, 180);
             this.textBox20.MaxLength = 20;
             this.textBox20.Name = "textBox20";
             this.textBox20.Size = new System.Drawing.Size(133, 23);
@@ -477,7 +421,7 @@
             this.UPC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.UPC.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UPC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.UPC.Location = new System.Drawing.Point(142, 232);
+            this.UPC.Location = new System.Drawing.Point(140, 180);
             this.UPC.Name = "UPC";
             this.UPC.Size = new System.Drawing.Size(204, 23);
             this.UPC.TabIndex = 66;
@@ -497,18 +441,6 @@
             this.textBox7.TabIndex = 71;
             this.toolTip1.SetToolTip(this.textBox7, "Descripción detallada del producto.");
             // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.button4);
-            this.panel6.Controls.Add(this.button6);
-            this.panel6.Controls.Add(this.button7);
-            this.panel6.Controls.Add(this.button10);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, 870);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1161, 81);
-            this.panel6.TabIndex = 2;
-            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
@@ -526,18 +458,16 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.tabControl2);
             this.panel1.Controls.Add(this.tabControl1);
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel1.Location = new System.Drawing.Point(65, 106);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1076, 720);
+            this.panel1.Size = new System.Drawing.Size(1069, 518);
             this.panel1.TabIndex = 142;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
@@ -551,7 +481,7 @@
             this.tabControl2.Location = new System.Drawing.Point(10, 71);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(1063, 332);
+            this.tabControl2.Size = new System.Drawing.Size(1056, 278);
             this.tabControl2.TabIndex = 52;
             // 
             // tabPage3
@@ -584,7 +514,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1055, 306);
+            this.tabPage3.Size = new System.Drawing.Size(1048, 252);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Producto";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -593,7 +523,7 @@
             // 
             this.panel5.Controls.Add(this.radioButton3);
             this.panel5.Controls.Add(this.radioButton4);
-            this.panel5.Location = new System.Drawing.Point(140, 134);
+            this.panel5.Location = new System.Drawing.Point(139, 92);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(212, 27);
             this.panel5.TabIndex = 84;
@@ -627,7 +557,7 @@
             this.label34.BackColor = System.Drawing.Color.Transparent;
             this.label34.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label34.Location = new System.Drawing.Point(355, 261);
+            this.label34.Location = new System.Drawing.Point(353, 209);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(124, 23);
             this.label34.TabIndex = 81;
@@ -644,7 +574,7 @@
             "ABAJO",
             "EN MEDIO",
             "ARRIBA"});
-            this.comboBox6.Location = new System.Drawing.Point(246, 263);
+            this.comboBox6.Location = new System.Drawing.Point(244, 211);
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(100, 24);
             this.comboBox6.TabIndex = 79;
@@ -654,7 +584,7 @@
             this.label30.BackColor = System.Drawing.Color.Transparent;
             this.label30.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label30.Location = new System.Drawing.Point(206, 264);
+            this.label30.Location = new System.Drawing.Point(204, 212);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(53, 23);
             this.label30.TabIndex = 78;
@@ -666,7 +596,7 @@
             this.label22.BackColor = System.Drawing.Color.Transparent;
             this.label22.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label22.Location = new System.Drawing.Point(78, 264);
+            this.label22.Location = new System.Drawing.Point(76, 212);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(53, 23);
             this.label22.TabIndex = 76;
@@ -685,7 +615,7 @@
             "KG",
             "MT",
             "NO APLICA"});
-            this.comboBox5.Location = new System.Drawing.Point(142, 175);
+            this.comboBox5.Location = new System.Drawing.Point(140, 123);
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(204, 24);
             this.comboBox5.TabIndex = 75;
@@ -695,7 +625,7 @@
             this.label25.BackColor = System.Drawing.Color.Transparent;
             this.label25.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label25.Location = new System.Drawing.Point(355, 232);
+            this.label25.Location = new System.Drawing.Point(353, 180);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(124, 23);
             this.label25.TabIndex = 74;
@@ -707,7 +637,7 @@
             this.label24.BackColor = System.Drawing.Color.Transparent;
             this.label24.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label24.Location = new System.Drawing.Point(10, 232);
+            this.label24.Location = new System.Drawing.Point(8, 180);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(121, 23);
             this.label24.TabIndex = 73;
@@ -719,7 +649,7 @@
             this.comboBox3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(141, 80);
+            this.comboBox3.Location = new System.Drawing.Point(140, 38);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(476, 24);
             this.comboBox3.TabIndex = 58;
@@ -729,7 +659,7 @@
             this.label23.BackColor = System.Drawing.Color.Transparent;
             this.label23.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label23.Location = new System.Drawing.Point(8, 80);
+            this.label23.Location = new System.Drawing.Point(7, 38);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(122, 23);
             this.label23.TabIndex = 72;
@@ -742,7 +672,7 @@
             this.comboBox1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(141, 107);
+            this.comboBox1.Location = new System.Drawing.Point(140, 65);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(476, 23);
             this.comboBox1.TabIndex = 59;
@@ -753,7 +683,7 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label11.Location = new System.Drawing.Point(20, 105);
+            this.label11.Location = new System.Drawing.Point(19, 63);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(110, 23);
             this.label11.TabIndex = 71;
@@ -766,7 +696,7 @@
             this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBox6.Location = new System.Drawing.Point(485, 204);
+            this.textBox6.Location = new System.Drawing.Point(483, 152);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(133, 23);
             this.textBox6.TabIndex = 64;
@@ -776,7 +706,7 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label7.Location = new System.Drawing.Point(352, 203);
+            this.label7.Location = new System.Drawing.Point(350, 151);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(127, 23);
             this.label7.TabIndex = 69;
@@ -789,7 +719,7 @@
             this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBox5.Location = new System.Drawing.Point(142, 204);
+            this.textBox5.Location = new System.Drawing.Point(140, 152);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(204, 23);
             this.textBox5.TabIndex = 62;
@@ -799,7 +729,7 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(9, 203);
+            this.label6.Location = new System.Drawing.Point(7, 151);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(122, 23);
             this.label6.TabIndex = 67;
@@ -811,7 +741,7 @@
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBox4.Location = new System.Drawing.Point(485, 175);
+            this.textBox4.Location = new System.Drawing.Point(483, 123);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(133, 23);
             this.textBox4.TabIndex = 61;
@@ -821,7 +751,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(352, 174);
+            this.label5.Location = new System.Drawing.Point(350, 122);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(127, 23);
             this.label5.TabIndex = 63;
@@ -833,7 +763,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(9, 174);
+            this.label4.Location = new System.Drawing.Point(7, 122);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(127, 23);
             this.label4.TabIndex = 60;
@@ -850,7 +780,7 @@
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox2.Size = new System.Drawing.Size(478, 65);
+            this.textBox2.Size = new System.Drawing.Size(478, 23);
             this.textBox2.TabIndex = 56;
             // 
             // label3
@@ -872,7 +802,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1055, 306);
+            this.tabPage4.Size = new System.Drawing.Size(1048, 238);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "Caracteristicas";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -901,7 +831,7 @@
             this.tabPage5.Controls.Add(this.label38);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1055, 306);
+            this.tabPage5.Size = new System.Drawing.Size(1048, 238);
             this.tabPage5.TabIndex = 2;
             this.tabPage5.Text = "Historial";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1004,10 +934,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(3, 432);
+            this.tabControl1.Location = new System.Drawing.Point(10, 355);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1059, 237);
+            this.tabControl1.Size = new System.Drawing.Size(1052, 158);
             this.tabControl1.TabIndex = 51;
             // 
             // tabPage1
@@ -1015,7 +945,9 @@
             this.tabPage1.Controls.Add(this.label26);
             this.tabPage1.Controls.Add(this.panel2);
             this.tabPage1.Controls.Add(this.button8);
+            this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.textBox17);
+            this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.textBox18);
             this.tabPage1.Controls.Add(this.textBox19);
             this.tabPage1.Controls.Add(this.label20);
@@ -1033,7 +965,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1051, 211);
+            this.tabPage1.Size = new System.Drawing.Size(1044, 132);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Precios";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1043,7 +975,7 @@
             this.label26.BackColor = System.Drawing.Color.Transparent;
             this.label26.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label26.Location = new System.Drawing.Point(10, 139);
+            this.label26.Location = new System.Drawing.Point(536, 35);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(205, 30);
             this.label26.TabIndex = 66;
@@ -1055,7 +987,7 @@
             this.panel2.Controls.Add(this.radioButton2);
             this.panel2.Controls.Add(this.radioButton1);
             this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel2.Location = new System.Drawing.Point(221, 139);
+            this.panel2.Location = new System.Drawing.Point(747, 35);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(110, 30);
             this.panel2.TabIndex = 64;
@@ -1096,6 +1028,7 @@
             this.button8.Text = "&Calcular ";
             this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click_1);
             // 
             // textBox17
             // 
@@ -1275,7 +1208,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1051, 211);
+            this.tabPage2.Size = new System.Drawing.Size(1044, 136);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Descuento";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1311,9 +1244,9 @@
             this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label9.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(0, 406);
+            this.label9.Location = new System.Drawing.Point(-2, 332);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(1075, 23);
+            this.label9.Size = new System.Drawing.Size(1068, 23);
             this.label9.TabIndex = 20;
             this.label9.Text = "Precio de Lista";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1322,7 +1255,7 @@
             // 
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(738, 675);
+            this.button2.Location = new System.Drawing.Point(965, 89);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(76, 38);
             this.button2.TabIndex = 25;
@@ -1336,7 +1269,7 @@
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(635, 675);
+            this.button1.Location = new System.Drawing.Point(874, 89);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(85, 38);
             this.button1.TabIndex = 24;
@@ -1354,7 +1287,7 @@
             this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.textBox1.Location = new System.Drawing.Point(91, 33);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(195, 27);
+            this.textBox1.Size = new System.Drawing.Size(71, 27);
             this.textBox1.TabIndex = 0;
             // 
             // label2
@@ -1379,7 +1312,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1076, 23);
+            this.label1.Size = new System.Drawing.Size(1069, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "Administración de productos / servicios";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1395,9 +1328,9 @@
             this.Lv.FullRowSelect = true;
             this.Lv.GridLines = true;
             this.Lv.HideSelection = false;
-            this.Lv.Location = new System.Drawing.Point(3, 104);
+            this.Lv.Location = new System.Drawing.Point(3, 106);
             this.Lv.Name = "Lv";
-            this.Lv.Size = new System.Drawing.Size(1152, 735);
+            this.Lv.Size = new System.Drawing.Size(1152, 620);
             this.Lv.TabIndex = 141;
             this.Lv.UseCompatibleStateImageBehavior = false;
             this.Lv.View = System.Windows.Forms.View.Details;
@@ -1414,6 +1347,74 @@
             this.label29.TabIndex = 140;
             this.label29.Text = "Cargando información....";
             this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.button4);
+            this.panel6.Controls.Add(this.button6);
+            this.panel6.Controls.Add(this.button7);
+            this.panel6.Controls.Add(this.button10);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel6.Location = new System.Drawing.Point(0, 870);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1161, 81);
+            this.panel6.TabIndex = 2;
+            // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.Color.White;
+            this.button10.Image = ((System.Drawing.Image)(resources.GetObject("button10.Image")));
+            this.button10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button10.Location = new System.Drawing.Point(738, 20);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(129, 46);
+            this.button10.TabIndex = 48;
+            this.button10.Text = "&Importar Productos";
+            this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click_1);
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.White;
+            this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
+            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button7.Location = new System.Drawing.Point(953, 20);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(79, 46);
+            this.button7.TabIndex = 13;
+            this.button7.Text = "&Eliminar";
+            this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.White;
+            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
+            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button6.Location = new System.Drawing.Point(1038, 20);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(111, 46);
+            this.button6.TabIndex = 12;
+            this.button6.Text = "&Exportar excel";
+            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.White;
+            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button4.Location = new System.Drawing.Point(868, 20);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(79, 46);
+            this.button4.TabIndex = 10;
+            this.button4.Text = "Nuevo";
+            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Productos
             // 
@@ -1432,7 +1433,6 @@
             this.Load += new System.EventHandler(this.Clientes_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel6.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -1451,6 +1451,7 @@
             this.panel2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1461,9 +1462,6 @@
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label21;
@@ -1475,11 +1473,9 @@
         private System.Windows.Forms.ComboBox comboBox7;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.ComboBox comboBox8;
-        private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.ListView Lv;
         private System.Windows.Forms.Label label29;
@@ -1557,5 +1553,10 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button10;
     }
 }

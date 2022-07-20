@@ -121,6 +121,7 @@
             this.Lv.TabIndex = 2;
             this.Lv.UseCompatibleStateImageBehavior = false;
             this.Lv.View = System.Windows.Forms.View.Details;
+            this.Lv.SelectedIndexChanged += new System.EventHandler(this.Lv_SelectedIndexChanged);
             this.Lv.DoubleClick += new System.EventHandler(this.Lv_DoubleClick);
             // 
             // BrapidaProducto

@@ -621,7 +621,7 @@ namespace SHOPCONTROL.HistorialClinica
             lvi.SubItems.Add(Nombre);
             lvi.SubItems.Add(fecha);
             Lv2.Items.Add(lvi);
-
+            // Lv2.Items.Count;
             textBox7.Text = "";
             textBox10.Text = "";
             textBox11.Text = "";
@@ -1825,8 +1825,8 @@ namespace SHOPCONTROL.HistorialClinica
             textBox5.Text = "";
             textBox2.Text = "";
 
-            Lv2.Items.Clear();
-            Lv2.Columns.Clear();
+            // Lv2.Items.Clear();
+            // Lv2.Columns.Clear();
 
             textBox7.Text = "";
             textBox10.Text = "";
@@ -1915,7 +1915,10 @@ namespace SHOPCONTROL.HistorialClinica
             string fechacita = label11.Text;
             string iddoctor = comboBox1.SelectedValue.ToString();
 
-            for (int i = 0; i < Lv2.Items.Count; i++)
+            int counter = Lv2.Items.Count;
+
+
+            for (int i = 0; i < this.Lv2.Items.Count; i++)
             {
                 Query = "Select * from DetallesPreServicio where cvpaciente='" + cvpaciente + "' and cvproducto='" + Lv2.Items[i].SubItems[1].Text + "' and estatus='CAPTURADO'";
                 bool existe = conecta.ExisteRegistro(Query);

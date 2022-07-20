@@ -1074,75 +1074,110 @@ namespace SHOPCONTROL
             {
 
             
-            conectorSql conecta = new conectorSql();
+                conectorSql conecta = new conectorSql();
 
-             string CATEGORIA = "";
+                 string CATEGORIA = "";
 
-             string categonbr = "Select idCategoria from Cat_Categorias where descripcion = '" + comboBox1.Text + "'";
-            conectorSql conecta1 = new conectorSql();
+                 string categonbr = "Select idCategoria from Cat_Categorias where descripcion = '" + comboBox1.Text + "'";
+                conectorSql conecta1 = new conectorSql();
             
-            SqlDataReader leer = conecta.RecordInfo(categonbr);
-            while (leer.Read())
-            {
-               CATEGORIA = leer["idCategoria"].ToString();
+                SqlDataReader leer = conecta.RecordInfo(categonbr);
+                while (leer.Read())
+                {
+                   CATEGORIA = leer["idCategoria"].ToString();
              
-            }
-            conecta.CierraConexion();
+                }
+                conecta.CierraConexion();
 
-            string query = "";
-            query = query + "INSERT INTO Productos ";
-            query = query + "([cvproducto] ";
-            query = query + ",[nombre] ";
-            query = query + ",[descripcion] ";
-            query = query + ",[categoria] ";
-            query = query + ",[unidad] ";
-            query = query + ",[cantidad] ";
-            query = query + ",[minimo] ";
-            query = query + ",[maximo] ";
-            query = query + ",[causaiva] ";
-            query = query + ",[marca] ";
-            query = query + ",[codbarras] ";
-            query = query + ",[ubicacion] ";
-            query = query + ",[fechaModifica] ";
-            query = query + ",[fcodmodifica] ";
-            query = query + ",[emitio] ";
-            query = query + ",[causaAdicional]  ";
-            query = query + ",[pasillo] ";
-            query = query + ",[altura] ";
-            query = query + ",[sucursal] ";
-            query = query + ",[idtipo] ";
-            query = query + ",[activo] ";
-            query = query + ",[cvusuario]) ";
-            query = query + " VALUES ( ";
-            query = query + "'" + textBox1.Text + "',";
-            query = query + "'" + textBox2.Text + "',";
-            query = query + "'" + textBox7.Text + "',";
-            query = query + "'" + CATEGORIA + "',";
-            query = query + "'" + comboBox5.Text + "',";
-            query = query + "" + textBox4.Text + ",";
-            query = query + "" + textBox5.Text + ",";
-            query = query + "" + textBox6.Text + ",";
-            query = query + "'" + CAUSAIVA + "',";
-            query = query + "'" + comboBox3.Text + "',";
-            query = query + "'" + UPC.Text + "',";
-            query = query + "'" + textBox20.Text + "',";
-            query = query + "'" + FECHAMODIFICA + "',";
-            query = query + "'" + FCODMODIFICA + "',";
-            query = query + "'" + valoresg.USUARIOSIS + "',";
-            query = query + "'',";
-            query = query + "'" + textBox21.Text + "',";
-            query = query + "'" + comboBox6.Text + "',";
-            query = query + "'CUERNAVACA',";
-            query = query + "1,";
-            query = query + "1,";
-            query = query + "'" + valoresg.USUARIOSIS + "')";
+                string query = "";
+                query = query + "INSERT INTO Productos ";
+                query = query + "([cvproducto] ";
+                query = query + ",[nombre] ";
+                query = query + ",[descripcion] ";
+                query = query + ",[categoria] ";
+                query = query + ",[unidad] ";
+                query = query + ",[cantidad] ";
+                query = query + ",[minimo] ";
+                query = query + ",[maximo] ";
+                query = query + ",[causaiva] ";
+                query = query + ",[marca] ";
+                query = query + ",[codbarras] ";
+                query = query + ",[ubicacion] ";
+                query = query + ",[fechaModifica] ";
+                query = query + ",[fcodmodifica] ";
+                query = query + ",[emitio] ";
+                query = query + ",[causaAdicional]  ";
+                query = query + ",[pasillo] ";
+                query = query + ",[altura] ";
+                query = query + ",[sucursal] ";
+                query = query + ",[idtipo] ";
+                query = query + ",[activo] ";
+                query = query + ",[cvusuario]) ";
+                query = query + " VALUES ( ";
+                query = query + "'" + textBox1.Text + "',";
+                query = query + "'" + textBox2.Text + "',";
+                query = query + "'" + textBox7.Text + "',";
+                query = query + "'" + CATEGORIA + "',";
+                query = query + "'" + comboBox5.Text + "',";
+                query = query + "" + textBox4.Text + ",";
+                query = query + "" + textBox5.Text + ",";
+                query = query + "" + textBox6.Text + ",";
+                query = query + "'" + CAUSAIVA + "',";
+                query = query + "'" + comboBox3.Text + "',";
+                query = query + "'" + UPC.Text + "',";
+                query = query + "'" + textBox20.Text + "',";
+                query = query + "'" + FECHAMODIFICA + "',";
+                query = query + "'" + FCODMODIFICA + "',";
+                query = query + "'" + valoresg.USUARIOSIS + "',";
+                query = query + "'',";
+                query = query + "'" + textBox21.Text + "',";
+                query = query + "'" + comboBox6.Text + "',";
+                query = query + "'CUERNAVACA',";
+                query = query + "1,";
+                query = query + "1,";
+                query = query + "'" + valoresg.USUARIOSIS + "')";
 
-            if (conecta.Excute(query))
-            {
-                MessageBox.Show("Arttículo agregado exitosamente!");
-            } else {
-                MessageBox.Show("Artículo existente en base de datos, favor de verificar");
-            }
+
+                // Save the product on table "Productos" 
+                if (conecta.Excute(query))
+                {
+                    MessageBox.Show("Arttículo agregado exitosamente!");
+                }
+                else
+                {
+                    MessageBox.Show("Artículo existente en base de datos, favor de verificar");
+                }
+
+
+                // Lista de precios
+                string Query = "";
+
+                Query = "Insert into ListaPrecios(cvproducto";
+                Query = Query + ",distribuidor";
+                Query = Query + ",publico1";
+                Query = Query + ",porciento1";
+                Query = Query + ",ganancia1";
+                Query = Query + ",publico2";
+                Query = Query + ",porciento2";
+                Query = Query + ",ganancia2";
+                Query = Query + ",publico3";
+                Query = Query + ",porciento3";
+                Query = Query + ",porcdescuento";
+                Query = Query + ",ganancia3)";
+                Query = Query + " values(";
+                Query = Query + "'" + textBox1.Text + "'";
+                Query = Query + ",'" + DISTRIBUIDOR + "'";
+                Query = Query + ",'" + textBox12.Text + "'";
+                Query = Query + ",'" + textBox9.Text + "'";
+                Query = Query + ",'" + textBox13.Text + "'";
+                Query = Query + ",'" + textBox15.Text + "'";
+                Query = Query + ",'" + textBox16.Text + "'";
+                Query = Query + ",'" + textBox14.Text + "'";
+                Query = Query + ",'" + textBox18.Text + "'";
+                Query = Query + ",'" + textBox19.Text + "'";
+                Query = Query + ",'" + PORCDESCUENTO.Trim() + "'";
+                Query = Query + ",'" + textBox17.Text + "')";
+                conecta.Excute(Query);
 
                 conecta.CierraConexion();
             }
@@ -1170,6 +1205,11 @@ namespace SHOPCONTROL
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button8_Click_1(object sender, EventArgs e)
         {
 
         }

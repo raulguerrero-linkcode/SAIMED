@@ -141,5 +141,10 @@ namespace SHOPCONTROL
             }
             conecta.CierraConexion();
         }
+
+        private void Lv_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
