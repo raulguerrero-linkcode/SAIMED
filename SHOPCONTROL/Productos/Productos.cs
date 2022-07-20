@@ -1137,12 +1137,12 @@ namespace SHOPCONTROL
             query = query + "1,";
             query = query + "'" + valoresg.USUARIOSIS + "')";
 
-                if (conecta.Excute(query))
-                {
-                    MessageBox.Show("Arttículo agregado exitosamente!");
-                } else {
-                    MessageBox.Show("Artículo existente en base de datos, favor de verificar");
-                }
+            if (conecta.Excute(query))
+            {
+                MessageBox.Show("Arttículo agregado exitosamente!");
+            } else {
+                MessageBox.Show("Artículo existente en base de datos, favor de verificar");
+            }
 
                 conecta.CierraConexion();
             }

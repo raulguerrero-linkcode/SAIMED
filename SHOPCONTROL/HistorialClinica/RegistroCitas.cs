@@ -823,11 +823,10 @@ namespace SHOPCONTROL.HistorialClinica
 
             cargaConsecutivo();
             RecolectaPacienteReg();
-
-            if (GuardarCliente()) {
-                GuardaPacienteDirecto();
-                actualizaConsecutivo();
-            };
+            GuardarCliente();
+            GuardaPacienteDirecto();
+            actualizaConsecutivo();
+            
         }
 
         public bool GuardarCliente()
@@ -843,7 +842,7 @@ namespace SHOPCONTROL.HistorialClinica
                 conecta.Excute(Query);
                 conecta.CierraConexion();
 
-                Query = "set IDENTITY_INSERT clientes on insert into clientes(";
+                Query = "insert into clientes(";
                 Query = Query + "cvcliente";
                 Query = Query + ",nombre";
                 Query = Query + ",telefono";
@@ -1247,10 +1246,10 @@ namespace SHOPCONTROL.HistorialClinica
                 }
             }
 
-            
+            ProcesoGuardarPaciente();
             if (checkBox1.Checked == true)
             {
-                ProcesoGuardarPaciente();
+                
                 textBox14.Text = "";
 
                 string cvdoctor2 = comboBox1.SelectedValue.ToString();
@@ -1312,8 +1311,8 @@ namespace SHOPCONTROL.HistorialClinica
             string Query = "Update citas set  nombre='" + nombre + "',  cvservicio='" + cvservicio + "'";
             Query = Query + "  , observa='" + observa + "' , emite='" + valoresg.USUARIOSIS + "', Estatus='SIN PAGAR', tipo='" + tipor + "', NombreServicio='"+ nombreservicio + "'";
             Query = Query + "  , cvpaciente='" + cvpaciente + "', ttiempo='" + timepoCon + "',  telefono='" + telefono+ "'";
-           // Query = Query + "  , estatusserv='POR ATENDER'";
-          // Query = Query + "  , idturno='" + TURNOTICKET.ToString() + "'";
+            // Query = Query + "  , estatusserv='POR ATENDER'";
+            // Query = Query + "  , idturno='" + TURNOTICKET.ToString() + "'";
             Query = Query + "  , primeravez='" + pvisita + "'    where progresivo='" + numticket + "' and fechacod='" + dateTimePicker1.Value.ToString("yyyyMMdd") + "' and cvdoctor='" + comboBox1.SelectedValue.ToString()+ "'";
             conecta.Excute(Query);
 

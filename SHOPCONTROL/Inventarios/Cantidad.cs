@@ -7,11 +7,13 @@ namespace SHOPCONTROL.Inventarios
     {
         private string item;
         private long cantidades;
+        private string desc;
 
-        public Cantidad(string item, long cantidades)
+        public Cantidad(string item, string desc, long cantidades)
         {
             InitializeComponent();
             this.item = item;
+            this.desc = desc;
             this.cantidades = cantidades;
         }
                 
@@ -25,10 +27,19 @@ namespace SHOPCONTROL.Inventarios
 
                 string Query = "Update Productos set ";
                 Query = Query + "cantidad=" + suma + "";
-                Query = Query + " where cvproducto='" + this.item + "'";
-                conecta.Excute(Query);
+                Query = Query + " where cvproducto='" + this.item + "' and nombre='" + desc + "'";
+
+                if (conecta.Excute(Query))
+                {
+                    MessageBox.Show("Inventario actualizado exitosamente, nuevo inventario:" + decimal.Parse(suma.ToString()));
+
+                }else
+                {
+                    MessageBox.Show("Inventario no actualizado, revise la información");
+
+                }
+
                 conecta.CierraConexion();
-                MessageBox.Show("Inventario actualizado exitosamente, nuevo inventario:" + decimal.Parse(suma.ToString()));
                 // Refresh();
                 this.Dispose();
             }

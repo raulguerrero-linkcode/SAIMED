@@ -11,6 +11,7 @@ namespace SHOPCONTROL
     {
         public void SendMail (string usuario, string ubicacion)
         {
+            
 
                 MailMessage message = new MailMessage();
                 SmtpClient smtp = new SmtpClient();
@@ -40,6 +41,7 @@ namespace SHOPCONTROL
                 smtp.Credentials = new NetworkCredential(xdoc.Descendants("User").First().Value, xdoc.Descendants("Password").First().Value);
                 smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                 smtp.Send(message);
+                
 
         }
 
@@ -52,7 +54,7 @@ namespace SHOPCONTROL
          * */
         public void SendMail(string email, string datos, bool envio)
         {
-
+            
             MailMessage message = new MailMessage();
             SmtpClient smtp = new SmtpClient();
 
@@ -83,7 +85,7 @@ namespace SHOPCONTROL
             smtp.Credentials = new NetworkCredential(xdoc.Descendants("User").First().Value, xdoc.Descendants("Password").First().Value);
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.Send(message);
-
+            
         }
 
 
@@ -96,7 +98,7 @@ namespace SHOPCONTROL
          * */
         public void SendMail(string usuario, string ubicacion, string email, string nombre, bool envio)
         {
-
+            
             MailMessage message = new MailMessage();
             SmtpClient smtp = new SmtpClient();
 
@@ -129,6 +131,7 @@ namespace SHOPCONTROL
             smtp.Credentials = new NetworkCredential(xdoc.Descendants("User").First().Value, xdoc.Descendants("Password").First().Value);
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.Send(message);
+            
 
         }
 
@@ -138,7 +141,7 @@ namespace SHOPCONTROL
          * */
         public void SendMail(string cita, string email, string nombre, string fecha, string servicio, bool sendEmailNotification)
         {
-
+            
             MailMessage message = new MailMessage();
             SmtpClient smtp = new SmtpClient();
 
@@ -175,13 +178,13 @@ namespace SHOPCONTROL
             smtp.Credentials = new NetworkCredential(xdoc.Descendants("User").First().Value, xdoc.Descendants("Password").First().Value);
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.Send(message);
-
+            
         }
 
 
         public void SendMail(string usuario, string ubicacion, string subject, string msg, int send_msg)
         {
-
+            
             MailMessage message = new MailMessage();
             SmtpClient smtp = new SmtpClient();
             if (send_msg == 1)
@@ -220,6 +223,7 @@ namespace SHOPCONTROL
 
         public void SendMail(string senderMsg, string destinationMsg, string subjectMsg, string msg)
         {
+            
 
                 MailMessage message = new MailMessage();
                 SmtpClient smtp = new SmtpClient();
@@ -250,12 +254,13 @@ namespace SHOPCONTROL
                 smtp.Credentials = new NetworkCredential(xdoc.Descendants("User").First().Value, xdoc.Descendants("Password").First().Value);
                 smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                 smtp.Send(message);
-
+                
         }
 
         // Falta de inventario
         public void SendMailOnlySubjectAndMSG(string subjectMsg, string msg)
         {
+            
 
             MailMessage message = new MailMessage();
             SmtpClient smtp = new SmtpClient();
@@ -285,7 +290,7 @@ namespace SHOPCONTROL
             smtp.Credentials = new NetworkCredential(xdoc.Descendants("User").First().Value, xdoc.Descendants("Password").First().Value);
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.Send(message);
-
+            
         }
 
 
@@ -293,6 +298,7 @@ namespace SHOPCONTROL
 
         public void SendMailChangePasswordAdmin()
         {
+            /*
             MailMessage message = new MailMessage();
             SmtpClient smtp = new SmtpClient();
 
@@ -320,11 +326,13 @@ namespace SHOPCONTROL
             smtp.Credentials = new NetworkCredential(xdoc.Descendants("User").First().Value, xdoc.Descendants("Password").First().Value);
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.Send(message);
+            */
         }
 
 
         public void SendMailRePrintTickets(string ticket, string ayo, string area)
         {
+            /*
             MailMessage message = new MailMessage();
             SmtpClient smtp = new SmtpClient();
 
@@ -353,6 +361,7 @@ namespace SHOPCONTROL
             smtp.Credentials = new NetworkCredential(xdoc.Descendants("User").First().Value, xdoc.Descendants("Password").First().Value);
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.Send(message);
+            */
         }
 
 

@@ -26,7 +26,7 @@ namespace SHOPCONTROL.Inventarios
             if (Lv.SelectedItems.Count == 1)
             {
                 
-                Cantidad cantidad = new Cantidad(Lv.SelectedItems[0].SubItems[0].Text, long.Parse(Lv.SelectedItems[0].SubItems[4].Text));
+                Cantidad cantidad = new Cantidad(Lv.SelectedItems[0].SubItems[0].Text, Lv.SelectedItems[0].SubItems[1].Text, long.Parse(Lv.SelectedItems[0].SubItems[4].Text));
                 cantidad.ShowDialog();
                 ProcesaBusqueda();
                 cantidad.Dispose();
