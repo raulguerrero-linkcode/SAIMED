@@ -138,5 +138,10 @@ namespace SHOPCONTROL.Analisys
             MessageBox.Show("Reporte creado con éxito!");
 
         }
+
+        private void IngresosPorArea_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using SHOPCONTROL.Analisys;
 using SHOPCONTROL.Inventarios;
 using System.Diagnostics;
+using SHOPCONTROL.RolesAndUsers;
 
 namespace SHOPCONTROL
 {
@@ -1129,6 +1130,19 @@ namespace SHOPCONTROL
             Recibos entrarecibo = new Recibos();
             entrarecibo.panel1.Visible = false;
             entrarecibo.Show();
+        }
+
+        private void accesosUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (valoresg.IdEmployee.Equals("14141") )
+            {
+                UsersAndRoles usuarios = new UsersAndRoles();
+                usuarios.Show();
+            } else
+            {
+                MessageBox.Show("Acceso restringdido");
+            }
+            
         }
     }
 }

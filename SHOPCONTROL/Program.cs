@@ -28,7 +28,7 @@ namespace SHOPCONTROL
             // timer.Elapsed += Timer_Elapsed;
             // timer.Start();
             
-            var timer = new System.Threading.Timer(
+             var timer = new System.Threading.Timer(
                s => Application.Exit(), null, CalcMsToHour(21, 00, 00), Timeout.Infinite);
             
             int ActiveAccessTocken = ValLicencia();

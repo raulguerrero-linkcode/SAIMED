@@ -266,9 +266,7 @@ namespace SHOPCONTROL
                 MailNotifications mail = new MailNotifications();
                 mail.SendMailChangePasswordAdmin();
             }
-
-
-
+            
             conectorSql conecta = new conectorSql();
             string Query = "";
 
@@ -470,6 +468,11 @@ namespace SHOPCONTROL
         private void checkBox32_CheckedChanged(object sender, EventArgs e)
         {
             comboBox2.Visible = checkBox32.Checked;
+        }
+
+        private void Lv_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

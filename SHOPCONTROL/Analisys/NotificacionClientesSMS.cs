@@ -378,6 +378,11 @@ namespace SHOPCONTROL.Analisys
             conecta.CierraConexion();
             Lv.EndUpdate();
         }
+
+        private void Lv_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
     

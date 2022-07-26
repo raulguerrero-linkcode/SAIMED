@@ -132,6 +132,8 @@
             this.informaciónDeLaCitaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.rootlabelingresoimporte = new System.Windows.Forms.Label();
+            this.rootlabelingresoporarea = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -142,6 +144,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.rootlabelingresoimporte);
+            this.panel1.Controls.Add(this.rootlabelingresoporarea);
             this.panel1.Controls.Add(this.label47);
             this.panel1.Controls.Add(this.label46);
             this.panel1.Controls.Add(this.label45);
@@ -1349,6 +1353,30 @@
             this.timer2.Interval = 180000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // rootlabelingresoimporte
+            // 
+            this.rootlabelingresoimporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(98)))), ((int)(((byte)(148)))));
+            this.rootlabelingresoimporte.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rootlabelingresoimporte.ForeColor = System.Drawing.Color.White;
+            this.rootlabelingresoimporte.Location = new System.Drawing.Point(948, 80);
+            this.rootlabelingresoimporte.Name = "rootlabelingresoimporte";
+            this.rootlabelingresoimporte.Size = new System.Drawing.Size(85, 23);
+            this.rootlabelingresoimporte.TabIndex = 70;
+            this.rootlabelingresoimporte.Text = "0";
+            this.rootlabelingresoimporte.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // rootlabelingresoporarea
+            // 
+            this.rootlabelingresoporarea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(98)))), ((int)(((byte)(148)))));
+            this.rootlabelingresoporarea.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rootlabelingresoporarea.ForeColor = System.Drawing.Color.White;
+            this.rootlabelingresoporarea.Location = new System.Drawing.Point(800, 80);
+            this.rootlabelingresoporarea.Name = "rootlabelingresoporarea";
+            this.rootlabelingresoporarea.Size = new System.Drawing.Size(142, 23);
+            this.rootlabelingresoporarea.TabIndex = 69;
+            this.rootlabelingresoporarea.Text = "INGRESOS ACTUALES";
+            this.rootlabelingresoporarea.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // RegistroCitas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1485,5 +1513,7 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem historialDelPacienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem informaciónDeLaCitaToolStripMenuItem;
+        private System.Windows.Forms.Label rootlabelingresoimporte;
+        private System.Windows.Forms.Label rootlabelingresoporarea;
     }
 }

@@ -340,8 +340,9 @@ namespace SHOPCONTROL
                 lvi.SubItems.Add(leer["cvcliente"].ToString());
                 lvi.SubItems.Add(leer["iddoctor"].ToString());
                 lvi.SubItems.Add(leer["idturno"].ToString());
+                
 
-                int printed = int.Parse(leer["printed"].ToString());
+                int printed = 0;
                 lvi.SubItems.Add(printed.ToString());
                 Lv.Items.Add(lvi);
             }
@@ -954,7 +955,7 @@ namespace SHOPCONTROL
 
                 decimal cantfinal = canttotal - cantprod;
                 // if (cantfinal <= 0) cantfinal = 1;
-                consulta = "update productos set cantidad='" + cantfinal.ToString() + "' where cvproducto='" + CLAVEPRODUCTO + "'";
+                consulta = "update productos set cantidad=" + cantfinal.ToString() + " where cvproducto=" + CLAVEPRODUCTO + "";
                 conecta2.Excute(consulta);
                 conecta2.CierraConexion();
 
@@ -1009,15 +1010,10 @@ namespace SHOPCONTROL
                 Query = Query + ",'" + UNI + "')";
 
                 conecta.Excute(Query);
-
-
-
+                
                 Query = "Update DetallesPreServicio set estatus='COBRADO' , numrecibo='" + NUMPEDIDO + "' where cvpaciente='" + CVCLIENTE + "' and cvproducto='" + CLAVEPRODUCTO + "' and cvpreserv='" + CLAVEPRESERVICIO + "'";
                 conecta.Excute(Query);
-
-
-
-
+                
                 Contador++;
             }
         }
@@ -2769,12 +2765,12 @@ namespace SHOPCONTROL
             GuardarInfo();
             valoresg.CVPACIENTECITAR = CVCLIENTE;
             valoresg.AGENDA_CVPACIENTE = CVCLIENTE;
-            valoresg.NUMPEDIDOREGISTRAR = NUMRECIBOG;
+            valoresg.NUMPEDIDOREGISTRAR = NUMPEDIDO;
 
 
             //panel28.Visible = true;
             button20.Enabled = true;
-            VentaRegistroCobro registro = new VentaRegistroCobro(NUMRECIBOG);
+            VentaRegistroCobro registro = new VentaRegistroCobro(NUMPEDIDO);
             registro.ShowDialog();
 
 

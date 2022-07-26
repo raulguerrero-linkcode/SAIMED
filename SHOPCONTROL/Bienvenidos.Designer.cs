@@ -114,6 +114,7 @@
             this.linkLabel6 = new System.Windows.Forms.LinkLabel();
             this.linkLabel7 = new System.Windows.Forms.LinkLabel();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.accesosUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -248,7 +249,8 @@
             this.carteraDePagosToolStripMenuItem,
             this.reimpresionDeFacturaToolStripMenuItem,
             this.registroDeGastosToolStripMenuItem,
-            this.pendientesDePagoToolStripMenuItem});
+            this.pendientesDePagoToolStripMenuItem,
+            this.accesosUsuariosToolStripMenuItem});
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -919,6 +921,13 @@
             this.pictureBox9.TabIndex = 32;
             this.pictureBox9.TabStop = false;
             // 
+            // accesosUsuariosToolStripMenuItem
+            // 
+            this.accesosUsuariosToolStripMenuItem.Name = "accesosUsuariosToolStripMenuItem";
+            this.accesosUsuariosToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.accesosUsuariosToolStripMenuItem.Text = "Accesos usuarios";
+            this.accesosUsuariosToolStripMenuItem.Click += new System.EventHandler(this.accesosUsuariosToolStripMenuItem_Click);
+            // 
             // Bienvenidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1063,6 +1072,7 @@
         private System.Windows.Forms.ToolStripMenuItem faltaDePagosToolStripMenuItem;
         private System.Windows.Forms.LinkLabel linkLabel7;
         private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.ToolStripMenuItem accesosUsuariosToolStripMenuItem;
     }
 }
 

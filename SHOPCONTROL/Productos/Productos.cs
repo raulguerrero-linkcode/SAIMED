@@ -335,7 +335,7 @@ namespace SHOPCONTROL
             panel4.Visible = false;
             Limpiar();
             conectorSql conecta = new conectorSql();
-            string consulta = "Select numproducto +2 as numproducto from Consecutivos";
+            string consulta = "Select numproducto +3 as numproducto from Consecutivos";
             SqlDataReader leer2 = conecta.RecordInfo(consulta);
             while (leer2.Read())
             {
@@ -344,6 +344,7 @@ namespace SHOPCONTROL
                 textBox1.Text = NumProducto.ToString();
             }
             conecta.CierraConexion();
+            button1.Enabled = true;
 
         }
 
@@ -1070,10 +1071,39 @@ namespace SHOPCONTROL
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+
+            int n;
+            bool isNumeric = int.TryParse(textBox1.Text, out n);
+            if (isNumeric==false)
+            {
+                MessageBox.Show("El id del producto debe ser un número, favor de verificar");
+                return;
+            }
+
+            if (textBox2.Text=="")
+            {
+                MessageBox.Show("El nombre del producto debe tener una descripción válida");
+                return;
+            }
+
+            if (comboBox1.Text == "")
+            {
+                MessageBox.Show("El producto debe contener una Categoría válilda");
+                return;
+            }
+
+
+            //
+            if (textBox12.Text == "")
+            {
+                MessageBox.Show("El producto debe tener un precio (en número), no puede estar en blanco");
+                return;
+            }
+
             try
             {
-
-            
+                
+                button1.Enabled = false;
                 conectorSql conecta = new conectorSql();
 
                  string CATEGORIA = "";
@@ -1087,104 +1117,158 @@ namespace SHOPCONTROL
                    CATEGORIA = leer["idCategoria"].ToString();
              
                 }
-                conecta.CierraConexion();
+                
 
-                string query = "";
-                query = query + "INSERT INTO Productos ";
-                query = query + "([cvproducto] ";
-                query = query + ",[nombre] ";
-                query = query + ",[descripcion] ";
-                query = query + ",[categoria] ";
-                query = query + ",[unidad] ";
-                query = query + ",[cantidad] ";
-                query = query + ",[minimo] ";
-                query = query + ",[maximo] ";
-                query = query + ",[causaiva] ";
-                query = query + ",[marca] ";
-                query = query + ",[codbarras] ";
-                query = query + ",[ubicacion] ";
-                query = query + ",[fechaModifica] ";
-                query = query + ",[fcodmodifica] ";
-                query = query + ",[emitio] ";
-                query = query + ",[causaAdicional]  ";
-                query = query + ",[pasillo] ";
-                query = query + ",[altura] ";
-                query = query + ",[sucursal] ";
-                query = query + ",[idtipo] ";
-                query = query + ",[activo] ";
-                query = query + ",[cvusuario]) ";
-                query = query + " VALUES ( ";
-                query = query + "'" + textBox1.Text + "',";
-                query = query + "'" + textBox2.Text + "',";
-                query = query + "'" + textBox7.Text + "',";
-                query = query + "'" + CATEGORIA + "',";
-                query = query + "'" + comboBox5.Text + "',";
-                query = query + "" + textBox4.Text + ",";
-                query = query + "" + textBox5.Text + ",";
-                query = query + "" + textBox6.Text + ",";
-                query = query + "'" + CAUSAIVA + "',";
-                query = query + "'" + comboBox3.Text + "',";
-                query = query + "'" + UPC.Text + "',";
-                query = query + "'" + textBox20.Text + "',";
-                query = query + "'" + FECHAMODIFICA + "',";
-                query = query + "'" + FCODMODIFICA + "',";
-                query = query + "'" + valoresg.USUARIOSIS + "',";
-                query = query + "'',";
-                query = query + "'" + textBox21.Text + "',";
-                query = query + "'" + comboBox6.Text + "',";
-                query = query + "'CUERNAVACA',";
-                query = query + "1,";
-                query = query + "1,";
-                query = query + "'" + valoresg.USUARIOSIS + "')";
+                string SQLexiste = "Select count(*) as conteo from Productos where nombre = '" + textBox2.Text + "'";
+                string resultadoExiste = "0";
 
-
-                // Save the product on table "Productos" 
-                if (conecta.Excute(query))
+                SqlDataReader datos = conecta.RecordInfo(SQLexiste);
+                while (datos.Read())
                 {
-                    MessageBox.Show("Arttículo agregado exitosamente!");
-                }
-                else
-                {
-                    MessageBox.Show("Artículo existente en base de datos, favor de verificar");
+                    resultadoExiste = datos["conteo"].ToString();
+
                 }
 
-
-                // Lista de precios
-                string Query = "";
-
-                Query = "Insert into ListaPrecios(cvproducto";
-                Query = Query + ",distribuidor";
-                Query = Query + ",publico1";
-                Query = Query + ",porciento1";
-                Query = Query + ",ganancia1";
-                Query = Query + ",publico2";
-                Query = Query + ",porciento2";
-                Query = Query + ",ganancia2";
-                Query = Query + ",publico3";
-                Query = Query + ",porciento3";
-                Query = Query + ",porcdescuento";
-                Query = Query + ",ganancia3)";
-                Query = Query + " values(";
-                Query = Query + "'" + textBox1.Text + "'";
-                Query = Query + ",'" + DISTRIBUIDOR + "'";
-                Query = Query + ",'" + textBox12.Text + "'";
-                Query = Query + ",'" + textBox9.Text + "'";
-                Query = Query + ",'" + textBox13.Text + "'";
-                Query = Query + ",'" + textBox15.Text + "'";
-                Query = Query + ",'" + textBox16.Text + "'";
-                Query = Query + ",'" + textBox14.Text + "'";
-                Query = Query + ",'" + textBox18.Text + "'";
-                Query = Query + ",'" + textBox19.Text + "'";
-                Query = Query + ",'" + PORCDESCUENTO.Trim() + "'";
-                Query = Query + ",'" + textBox17.Text + "')";
-                conecta.Excute(Query);
-
                 conecta.CierraConexion();
+                int ResultadosExisteInt = Int16.Parse(resultadoExiste);
+
+
+                // Validate if the Product was added before by 
+                if (ResultadosExisteInt == 0)
+                {
+                    string query = "";
+                    query = query + "INSERT INTO Productos ";
+                    query = query + "([cvproducto] ";
+                    query = query + ",[nombre] ";
+                    query = query + ",[descripcion] ";
+                    query = query + ",[categoria] ";
+                    query = query + ",[unidad] ";
+                    query = query + ",[cantidad] ";
+                    query = query + ",[minimo] ";
+                    query = query + ",[maximo] ";
+                    query = query + ",[causaiva] ";
+                    query = query + ",[marca] ";
+                    query = query + ",[codbarras] ";
+                    query = query + ",[ubicacion] ";
+                    query = query + ",[fechaModifica] ";
+                    query = query + ",[fcodmodifica] ";
+                    query = query + ",[emitio] ";
+                    query = query + ",[causaAdicional]  ";
+                    query = query + ",[pasillo] ";
+                    query = query + ",[altura] ";
+                    query = query + ",[sucursal] ";
+                    query = query + ",[idtipo] ";
+                    query = query + ",[activo] ";
+                    query = query + ",[cvusuario]) ";
+                    query = query + " VALUES ( ";
+                    query = query + "'" + textBox1.Text + "',";
+                    query = query + "'" + textBox2.Text + "',";
+                    query = query + "'" + textBox7.Text + "',";
+                    query = query + "'" + CATEGORIA + "',";
+                    query = query + "'" + comboBox5.Text + "',";
+                    query = query + "" + textBox4.Text + ",";
+                    query = query + "" + textBox5.Text + ",";
+                    query = query + "" + textBox6.Text + ",";
+                    query = query + "'" + CAUSAIVA + "',";
+                    query = query + "'" + comboBox3.Text + "',";
+                    query = query + "'" + UPC.Text + "',";
+                    query = query + "'" + textBox20.Text + "',";
+                    query = query + "'" + FECHAMODIFICA + "',";
+                    query = query + "'" + FCODMODIFICA + "',";
+                    query = query + "'" + valoresg.USUARIOSIS + "',";
+                    query = query + "'',";
+                    query = query + "'" + textBox21.Text + "',";
+                    query = query + "'" + comboBox6.Text + "',";
+                    query = query + "'CUERNAVACA',";
+                    query = query + "1,";
+                    query = query + "1,";
+                    query = query + "'" + valoresg.USUARIOSIS + "')";
+
+
+                    // Save the product on table "Productos" 
+                    bool producto = conecta.Excute(query);
+           
+
+                    // Lista de precios
+                    string Query = "";
+
+                    Query = "Insert into ListaPrecios(cvproducto";
+                    Query = Query + ",distribuidor";
+                    Query = Query + ",publico1";
+                    Query = Query + ",porciento1";
+                    Query = Query + ",ganancia1";
+                    Query = Query + ",publico2";
+                    Query = Query + ",porciento2";
+                    Query = Query + ",ganancia2";
+                    Query = Query + ",publico3";
+                    Query = Query + ",porciento3";
+                    Query = Query + ",porcdescuento";
+                    Query = Query + ",ganancia3)";
+                    Query = Query + " values(";
+                    Query = Query + "'" + textBox1.Text + "'";
+                    Query = Query + ",'" + DISTRIBUIDOR + "'";
+                    Query = Query + ",'" + textBox12.Text + "'";
+                    Query = Query + ",'" + textBox9.Text + "'";
+                    Query = Query + ",'" + textBox13.Text + "'";
+                    Query = Query + ",'" + textBox15.Text + "'";
+                    Query = Query + ",'" + textBox16.Text + "'";
+                    Query = Query + ",'" + textBox14.Text + "'";
+                    Query = Query + ",'" + textBox18.Text + "'";
+                    Query = Query + ",'" + textBox19.Text + "'";
+                    Query = Query + ",'" + PORCDESCUENTO.Trim() + "'";
+                    Query = Query + ",'" + textBox17.Text + "')";
+                    bool precios = conecta.Excute(Query);
+
+                    conecta.CierraConexion();
+                   
+
+
+                    if (producto == true && precios == true)
+                    {
+
+
+                        conectorSql conectaUpdate = new conectorSql();
+                        string QueryUpdate = "";
+                        QueryUpdate = "update consecutivos set numproducto ="  + textBox1.Text + "";
+                        
+                        conectaUpdate.Excute(QueryUpdate);
+
+                        MessageBox.Show("Artículo agregado satisfactoriamente");
+                        // this.Dispose();
+                        Limpiar();
+
+                        conectorSql conecta11 = new conectorSql();
+                        string consulta = "Select numproducto +3 as numproducto from Consecutivos";
+                        SqlDataReader leer211 = conecta11.RecordInfo(consulta);
+                        while (leer211.Read())
+                        {
+                            int NumProducto = int.Parse(leer211["numproducto"].ToString());
+
+                            textBox1.Text = NumProducto.ToString();
+                        }
+                        conecta11.CierraConexion();
+
+                    } else
+                    {
+                        MessageBox.Show("Producto no agregado, favor de revisar la información");
+                    }
+                    
+
+
+                    
+                } else {
+                    MessageBox.Show("Ya existe un artículo con la descripción indicada");
+                }
+
+
             }
             catch (SqlException ex)
             {
 
                 throw new Exception(ex.Message); 
+            } finally
+            {
+                button1.Enabled = true;
             }
 
         }
@@ -1215,6 +1299,11 @@ namespace SHOPCONTROL
         }
 
         private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

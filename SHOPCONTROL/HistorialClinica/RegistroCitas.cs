@@ -91,6 +91,29 @@ namespace SHOPCONTROL.HistorialClinica
             BuscarinfoDoctor();
             BuscarClaveTurno();
             GenerarCitasdiarias();
+
+
+            if (valoresg.IdEmployee.Equals("14141"))
+            {
+                rootlabelingresoimporte.Visible = true;
+                rootlabelingresoporarea.Visible = true;
+                conectorSql conecta = new conectorSql();
+                string sqlQuery = "Select ISNULL(SUM(DetallesRecibos.precio),0) as Total  from productos inner join DetallesRecibos on DetallesRecibos.cvproducto = Productos.cvproducto inner join Recibos on Recibos.numrecibo = DetallesRecibos.numrecibo LEFT JOIN Doctores on Recibos.iddoctor = Doctores.cvdoctor where  DetallesRecibos.fechacod='" + dateTimePicker1.Value.ToString("yyyyMMdd") + "' and Doctores.cvdoctor='" + comboBox1.SelectedValue.ToString() + "'";
+                string TotalArea = "0.0";
+
+                SqlDataReader leerGetTotal = conecta.RecordInfo(sqlQuery);
+                while (leerGetTotal.Read())
+                {
+                    TotalArea = String.Format("{0:C}", decimal.Parse(leerGetTotal["Total"].ToString()));
+                }
+                conecta.CierraConexion();
+                rootlabelingresoimporte.Text = TotalArea.ToString();
+            } else
+            {
+                rootlabelingresoimporte.Visible = false;
+                rootlabelingresoporarea.Visible = false;
+            }
+            
         }
 
         public int NumTurno = 0;
