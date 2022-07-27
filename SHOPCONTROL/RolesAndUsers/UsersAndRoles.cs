@@ -73,9 +73,31 @@ namespace SHOPCONTROL.RolesAndUsers
 
         }
 
+        public void showUsersDataTxt()
+        {
+            IdEmployee.Enabled = true;
+            EmpName.Enabled = true;
+            EmpApPat.Enabled = true;
+            EmpApMat.Enabled = true;
+            EmpEmail.Enabled = true;
+            TipoUsuario.Enabled = true;
+
+        }
+
+        public void blockUsersDataTxt()
+        {
+            IdEmployee.Enabled = false;
+            EmpName.Enabled = false;
+            EmpApPat.Enabled = false;
+            EmpApMat.Enabled = false;
+            EmpEmail.Enabled = false;
+            TipoUsuario.Enabled = false;
+
+        }
 
         public void LoadAppRoles()
         {
+            blockUsersDataTxt();
             // Cargar los usuarios (empleados) activos
             newRole.Visible = false;
             newRoleLabel.Visible = false;
@@ -94,7 +116,7 @@ namespace SHOPCONTROL.RolesAndUsers
             Lv.BeginUpdate();
             conectorSql conecta = new conectorSql();
 
-            string SQLStr = "SELECT IdEmployee,Name,FirstLastName,SecondLastName, Email,TRIM(Role) Role FROM UsersManagement;";
+            string SQLStr = "SELECT IdEmployee,Name,FirstLastName,SecondLastName, Email, Role FROM UsersManagement;";
 
             SqlDataReader leer = conecta.RecordInfo(SQLStr);
             while (leer.Read())
@@ -122,7 +144,7 @@ namespace SHOPCONTROL.RolesAndUsers
 
 
             // Load The Role
-            SQLStr = "SELECT RoleId, TRIM(RoleName) AS RoleName FROM Roles;";
+            SQLStr = "SELECT RoleId, RoleName AS RoleName FROM Roles;";
 
             SqlDataReader leer1 = conecta.RecordInfo(SQLStr);
             while (leer1.Read())
@@ -327,6 +349,12 @@ namespace SHOPCONTROL.RolesAndUsers
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (IdEmployee.Text.Length <= 1)
+            {
+                MessageBox.Show("Nada que guardar");
+                return;
+            }
+
             button1.Enabled = false;
 
             conectorSql conecta = new conectorSql();
@@ -381,10 +409,10 @@ namespace SHOPCONTROL.RolesAndUsers
 
             if (newRole.Text=="")
             {
-                tipoUsuario = TipoUsuario.Text;
+                tipoUsuario = TipoUsuario.Text.Trim();
             } else
             {
-                tipoUsuario = newRole.Text;
+                tipoUsuario = newRole.Text.Trim();
             }
 
             Query = Query + "'" + tipoUsuario.Trim()  + "'";
@@ -421,7 +449,17 @@ namespace SHOPCONTROL.RolesAndUsers
             Query = Query + ",'" + CVDOCTOR + "'";
             Query = Query + ",'" + ENTRA30 + "')";
             conecta.Excute(Query);
+
+
+            Query = "";
+            Query = "insert into Roles (RoleName) values ('" + tipoUsuario.Trim() + "')";
+            conecta.Excute(Query);
+
             MessageBox.Show("Usuario creado y/o actualizado");
+
+
+
+
             conecta.CierraConexion();
 
             LoadAppRoles();
@@ -544,6 +582,8 @@ namespace SHOPCONTROL.RolesAndUsers
 
         private void button2_Click(object sender, EventArgs e)
         {
+            showUsersDataTxt();
+
             LoadAppRoles();
             IdEmployee.Text = generateNumber().ToString();
             IdEmployee.Enabled = false;

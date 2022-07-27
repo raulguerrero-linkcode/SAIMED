@@ -1187,7 +1187,7 @@ namespace SHOPCONTROL
 
                     // Save the product on table "Productos" 
                     bool producto = conecta.Excute(query);
-           
+
 
                     // Lista de precios
                     string Query = "";
@@ -1220,47 +1220,30 @@ namespace SHOPCONTROL
                     bool precios = conecta.Excute(Query);
 
                     conecta.CierraConexion();
+
                    
+                    conectorSql conectaUpdate = new conectorSql();
+                    string QueryUpdate = "";
+                    QueryUpdate = "update consecutivos set numproducto =" + textBox1.Text + "";
 
+                    conectaUpdate.Excute(QueryUpdate);
 
-                    if (producto == true && precios == true)
+                    MessageBox.Show("Artículo agregado satisfactoriamente");
+                    // this.Dispose();
+                    Limpiar();
+
+                    conectorSql conecta11 = new conectorSql();
+                    string consulta = "Select numproducto +3 as numproducto from Consecutivos";
+                    SqlDataReader leer211 = conecta11.RecordInfo(consulta);
+                    while (leer211.Read())
                     {
+                        int NumProducto = int.Parse(leer211["numproducto"].ToString());
 
-
-                        conectorSql conectaUpdate = new conectorSql();
-                        string QueryUpdate = "";
-                        QueryUpdate = "update consecutivos set numproducto ="  + textBox1.Text + "";
-                        
-                        conectaUpdate.Excute(QueryUpdate);
-
-                        MessageBox.Show("Artículo agregado satisfactoriamente");
-                        // this.Dispose();
-                        Limpiar();
-
-                        conectorSql conecta11 = new conectorSql();
-                        string consulta = "Select numproducto +3 as numproducto from Consecutivos";
-                        SqlDataReader leer211 = conecta11.RecordInfo(consulta);
-                        while (leer211.Read())
-                        {
-                            int NumProducto = int.Parse(leer211["numproducto"].ToString());
-
-                            textBox1.Text = NumProducto.ToString();
-                        }
-                        conecta11.CierraConexion();
-
-                    } else
-                    {
-                        MessageBox.Show("Producto no agregado, favor de revisar la información");
+                        textBox1.Text = NumProducto.ToString();
                     }
-                    
+                    conecta11.CierraConexion();
 
-
-                    
-                } else {
-                    MessageBox.Show("Ya existe un artículo con la descripción indicada");
                 }
-
-
             }
             catch (SqlException ex)
             {
