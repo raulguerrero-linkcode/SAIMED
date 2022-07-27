@@ -31,7 +31,8 @@ namespace SHOPCONTROL
             bool existe = false;
             conectorSql conecta = new conectorSql();
             // string Query = "Select * from usuarios where cvusuario='" + USUARIO + "'";
-            string Query = "Select IdEmployee from EmployeeCredentials where IdEmployee=" + USUARIO + "";
+            // string Query = "Select IdEmployee from EmployeeCredentials where IdEmployee=" + USUARIO + "";
+            string Query = "Select IdEmployee from UsersManagement where IdEmployee=" + USUARIO + "";
             existe = conecta.ExisteRegistro(Query);
             return existe;
         }
@@ -49,14 +50,17 @@ namespace SHOPCONTROL
 
                 conectorSql conecta = new conectorSql();
                 // string Query = "Select * from usuarios where cvusuario='" + USUARIO + "' and contra='" + CONTRASEÑA + "'";
-                string Query = "SELECT IdEmployee,Name as nombre,FirstLastName,SecondLastName,Age,Email,Role,usr.contra,usr.cvdoctor FROM EmployeeCredentials ec left join Usuarios usr on ec.Role = usr.cvusuario where IdEmployee =" + USUARIO;
+                // string Query = "SELECT IdEmployee,Name as nombre,FirstLastName,SecondLastName,Age,Email,Role,usr.contra,usr.cvdoctor FROM EmployeeCredentials ec left join Usuarios usr on ec.Role = usr.cvusuario where IdEmployee =" + USUARIO;
+
+                string Query = "SELECT IdEmployee,Name as nombre,FirstLastName,SecondLastName,Email,Role, cvdoctor FROM UsersManagement where IdEmployee =" + USUARIO;
+
                 SqlDataReader leer = conecta.RecordInfo(Query);
                 while (leer.Read())
                 {
                     existe = true;
                     NOMBRECOMPLETO = leer["nombre"].ToString() + ' ' + leer["FirstLastName"].ToString();
                     CVDOCTORAREA = leer["cvdoctor"].ToString();
-                    valoresg.Area_Contra = leer["contra"].ToString();
+                    valoresg.Area_Contra = "";
                     valoresg.Area_Cvdoctor = leer["cvdoctor"].ToString();
                     valoresg.Area_usuario = USUARIO;
                     valoresg.USUARIOSIS = leer["Role"].ToString(); ;
@@ -81,7 +85,7 @@ namespace SHOPCONTROL
                     mail.SendMail("Rol: " + valoresg.USUARIOSIS + " usuario:" + valoresg.IdEmployee, valoresg.UBICACION, valoresg.EmpEmail, NOMBRECOMPLETO, true);
                 } catch (Exception E)
                 {
-                    MessageBox.Show("Error al enviar el correo de confirmación, revise su conexión a internet");
+                    // MessageBox.Show("Error al enviar el correo de confirmación, revise su conexión a internet");
                 }
             return existe;
         }

@@ -119,7 +119,7 @@ namespace SHOPCONTROL
         public void PermisosUsuario()
         {
 
-            if (valoresg.USUARIOSIS == "ADMIN") return;
+            // if (valoresg.USUARIOSIS == "ADMIN") return;
 
             empresaToolStripMenuItem.Enabled = false;
             estadosToolStripMenuItem.Enabled = false;
@@ -174,45 +174,43 @@ namespace SHOPCONTROL
       
 
             conectorSql conecta = new conectorSql();
-            string Query = "Select * from usuarios where cvusuario='" + valoresg.USUARIOSIS + "'";
+            string Query = "Select * from UsersManagement where IdEmployee=" + valoresg.IdEmployee;
             SqlDataReader leer = conecta.RecordInfo(Query);
             while (leer.Read())
             {
 
-                label5.Text = leer["nombre"].ToString();
+                label5.Text = leer["Name"].ToString().Trim() + " " + leer["FirstLastName"].ToString().Trim();
 
-                ENTRA1 = leer["entra1"].ToString();
-                ENTRA2 = leer["entra2"].ToString();
-                ENTRA3 = leer["entra3"].ToString();
-                ENTRA4 = leer["entra4"].ToString();
-                ENTRA5 = leer["entra5"].ToString();
-                ENTRA6 = leer["entra6"].ToString();
-                ENTRA7 = leer["entra7"].ToString();
-                ENTRA8 = leer["entra8"].ToString();
-                ENTRA9 = leer["entra9"].ToString();
-                ENTRA10 = leer["entra10"].ToString();
-                ENTRA11 = leer["entra11"].ToString();
-                ENTRA12 = leer["entra12"].ToString();
-                ENTRA13 = leer["entra13"].ToString();
-                ENTRA14 = leer["entra14"].ToString();
-                ENTRA15 = leer["entra15"].ToString();
-                ENTRA16 = leer["entra16"].ToString();
-                ENTRA17 = leer["entra17"].ToString();
-                ENTRA18 = leer["entra18"].ToString();
-
-                ENTRA19 = leer["entra19"].ToString();
-
-                ENTRA20 = leer["entra20"].ToString();
-                ENTRA21 = leer["entra21"].ToString();
-                ENTRA22 = leer["entra22"].ToString();
-                ENTRA23 = leer["entra23"].ToString();
-                ENTRA24 = leer["entra24"].ToString();
-                ENTRA25 = leer["entra25"].ToString();
-                ENTRA26 = leer["entra26"].ToString();
-                ENTRA27 = leer["entra27"].ToString();
-                ENTRA28 = leer["entra28"].ToString();
-                ENTRA29 = leer["entra29"].ToString();
-                ENTRA30 = leer["entra30"].ToString();
+                ENTRA1 = leer["entra1"].ToString().Trim();
+                ENTRA2 = leer["entra2"].ToString().Trim();
+                ENTRA3 = leer["entra3"].ToString().Trim();
+                ENTRA4 = leer["entra4"].ToString().Trim();
+                ENTRA5 = leer["entra5"].ToString().Trim();
+                ENTRA6 = leer["entra6"].ToString().Trim();
+                ENTRA7 = leer["entra7"].ToString().Trim();
+                ENTRA8 = leer["entra8"].ToString().Trim();
+                ENTRA9 = leer["entra9"].ToString().Trim();
+                ENTRA10 = leer["entra10"].ToString().Trim();
+                ENTRA11 = leer["entra11"].ToString().Trim();
+                ENTRA12 = leer["entra12"].ToString().Trim();
+                ENTRA13 = leer["entra13"].ToString().Trim();
+                ENTRA14 = leer["entra14"].ToString().Trim();
+                ENTRA15 = leer["entra15"].ToString().Trim();
+                ENTRA16 = leer["entra16"].ToString().Trim();
+                ENTRA17 = leer["entra17"].ToString().Trim();
+                ENTRA18 = leer["entra18"].ToString().Trim();
+                ENTRA19 = leer["entra19"].ToString().Trim();
+                ENTRA20 = leer["entra20"].ToString().Trim();
+                ENTRA21 = leer["entra21"].ToString().Trim();
+                ENTRA22 = leer["entra22"].ToString().Trim();
+                ENTRA23 = leer["entra23"].ToString().Trim();
+                ENTRA24 = leer["entra24"].ToString().Trim();
+                ENTRA25 = leer["entra25"].ToString().Trim();
+                ENTRA26 = leer["entra26"].ToString().Trim();
+                ENTRA27 = leer["entra27"].ToString().Trim();
+                ENTRA28 = leer["entra28"].ToString().Trim();
+                ENTRA29 = leer["entra29"].ToString().Trim();
+                ENTRA30 = leer["entra30"].ToString().Trim();
 
 
                 if (ENTRA1 == "SI") empresaToolStripMenuItem.Enabled = true;

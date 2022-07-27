@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SHOPCONTROL.RolesAndUsers
@@ -93,9 +86,8 @@ namespace SHOPCONTROL.RolesAndUsers
             Lv.Columns.Clear();
             Lv.Columns.Add("IdEmployee", 80);
             Lv.Columns.Add("Name", 80);
-
-            Lv.Columns.Add("FirstLastName", 80);
-            Lv.Columns.Add("SecondLastName", 80);
+            Lv.Columns.Add("FirstLastName", 100);
+            Lv.Columns.Add("SecondLastName", 100);
             Lv.Columns.Add("Email", 120);
             Lv.Columns.Add("Role", 80);
 

@@ -55,6 +55,7 @@
             this.reimpresionDeFacturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registroDeGastosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pendientesDePagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.accesosUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripDropDownButton6 = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -114,7 +115,6 @@
             this.linkLabel6 = new System.Windows.Forms.LinkLabel();
             this.linkLabel7 = new System.Windows.Forms.LinkLabel();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.accesosUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -347,6 +347,13 @@
             this.pendientesDePagoToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.pendientesDePagoToolStripMenuItem.Text = "Próximas citas";
             this.pendientesDePagoToolStripMenuItem.Click += new System.EventHandler(this.pendientesDePagoToolStripMenuItem_Click);
+            // 
+            // accesosUsuariosToolStripMenuItem
+            // 
+            this.accesosUsuariosToolStripMenuItem.Name = "accesosUsuariosToolStripMenuItem";
+            this.accesosUsuariosToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.accesosUsuariosToolStripMenuItem.Text = "Accesos usuarios";
+            this.accesosUsuariosToolStripMenuItem.Click += new System.EventHandler(this.accesosUsuariosToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -705,11 +712,11 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(29, 173);
+            this.label4.Location = new System.Drawing.Point(15, 173);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 20);
+            this.label4.Size = new System.Drawing.Size(97, 20);
             this.label4.TabIndex = 15;
-            this.label4.Text = "BIENVENIDO";
+            this.label4.Text = "Bienvenido (a)";
             // 
             // label5
             // 
@@ -920,13 +927,6 @@
             this.pictureBox9.Size = new System.Drawing.Size(36, 37);
             this.pictureBox9.TabIndex = 32;
             this.pictureBox9.TabStop = false;
-            // 
-            // accesosUsuariosToolStripMenuItem
-            // 
-            this.accesosUsuariosToolStripMenuItem.Name = "accesosUsuariosToolStripMenuItem";
-            this.accesosUsuariosToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.accesosUsuariosToolStripMenuItem.Text = "Accesos usuarios";
-            this.accesosUsuariosToolStripMenuItem.Click += new System.EventHandler(this.accesosUsuariosToolStripMenuItem_Click);
             // 
             // Bienvenidos
             // 
