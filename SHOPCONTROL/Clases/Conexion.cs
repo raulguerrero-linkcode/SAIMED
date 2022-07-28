@@ -60,7 +60,7 @@ public class Conexion
         string miValor = Registro.ReadRegSHOPCONTROL("CON", "CCliente");
         string opcionserver = Registro.ReadRegSHOPCONTROL("CON", "OPCIONSERVER");
         // if (opcionserver == "0") miValor = Registro.ReadRegSHOPCONTROL("CONCUERNAVACA", "CCliente");
-        miValor = Registro.ReadRegSHOPCONTROL("CONCUERNAVACA", "CCliente");
+        miValor = Registro.ReadRegSHOPCONTROL("CON" + valoresg.SERVER_LOCATION, "CCliente");
         //if (opcionserver == "1") miValor = Registro.ReadRegSHOPCONTROL("CONMOLINA", "CCliente");
         //if (opcionserver == "2") miValor = Registro.ReadRegSHOPCONTROL("CONBELLASARTES", "CCliente");
         con.ConnectionString = miValor;

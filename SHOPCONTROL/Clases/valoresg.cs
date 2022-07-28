@@ -71,6 +71,9 @@ public class valoresg
     public static string FECHACITA { get; set; }
 
     public static string EmpEmail { get; set; }
+
+    public static string SERVER_LOCATION { get; set; }
+
     public static void Bitacora(string emitio, string realizo, string modulo)
     {
         conectorSql conecta = new conectorSql();

@@ -68,8 +68,10 @@ namespace SHOPCONTROL.RolesAndUsers
         {
 
             LoadAppRoles();
+            blockUsersDataTxt();
             LimpiarChecks();
             button3.Enabled = false;
+            button1.Enabled = false;
 
         }
 
@@ -97,11 +99,11 @@ namespace SHOPCONTROL.RolesAndUsers
 
         public void LoadAppRoles()
         {
-            blockUsersDataTxt();
+            //blockUsersDataTxt();
             // Cargar los usuarios (empleados) activos
             newRole.Visible = false;
             newRoleLabel.Visible = false;
-            IdEmployee.Enabled = false;
+            /// IdEmployee.Enabled = false;
 
             string cvcliente = "";
             Lv.Items.Clear();
@@ -345,6 +347,9 @@ namespace SHOPCONTROL.RolesAndUsers
             conecta.CierraConexion();
 
             button3.Enabled = true;
+            showUsersDataTxt();
+            IdEmployee.Enabled = false;
+            button1.Enabled = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -352,6 +357,36 @@ namespace SHOPCONTROL.RolesAndUsers
             if (IdEmployee.Text.Length <= 1)
             {
                 MessageBox.Show("Nada que guardar");
+                return;
+            }
+
+            if (EmpName.Text.Length <= 1)
+            {
+                MessageBox.Show("Falta el nombre");
+                return;
+            }
+
+            if (EmpApPat.Text.Length <= 1)
+            {
+                MessageBox.Show("Falta apellido paterno");
+                return;
+            }
+
+            if (EmpApMat.Text.Length <= 1)
+            {
+                MessageBox.Show("Falta apellido materno");
+                return;
+            }
+
+            if (EmpEmail.Text.Length <= 1)
+            {
+                MessageBox.Show("Falta correo electrónico");
+                return;
+            }
+
+            if (TipoUsuario.Text.Length <= 1)
+            {
+                MessageBox.Show("Falta el rol del usuario");
                 return;
             }
 
@@ -455,7 +490,7 @@ namespace SHOPCONTROL.RolesAndUsers
             Query = "insert into Roles (RoleName) values ('" + tipoUsuario.Trim() + "')";
             conecta.Excute(Query);
 
-            MessageBox.Show("Usuario creado y/o actualizado");
+            
 
 
 
@@ -474,8 +509,10 @@ namespace SHOPCONTROL.RolesAndUsers
             newRoleLabel.Visible = false;
             IdEmployee.Enabled = false;
             button3.Enabled = true;
-            button1.Enabled = true;
+            
+            blockUsersDataTxt();
 
+            MessageBox.Show("Usuario creado y/o actualizado");
         }
 
 
@@ -551,7 +588,7 @@ namespace SHOPCONTROL.RolesAndUsers
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (EmpName.Text=="")
+            if (IdEmployee.Text=="")
             {
                 return;
             }
@@ -576,6 +613,8 @@ namespace SHOPCONTROL.RolesAndUsers
                 TipoUsuario.Text = "";
                 LimpiarChecks();
                 IdEmployee.Enabled = true;
+                blockUsersDataTxt();
+                button1.Enabled = false;
                 MessageBox.Show("Usuario eliminado");   
             }
         }
@@ -594,6 +633,8 @@ namespace SHOPCONTROL.RolesAndUsers
             TipoUsuario.Text = "";
             LimpiarChecks();
             button3.Enabled = false;
+            button1.Enabled = true;
+
         }
 
         private long generateNumber() {

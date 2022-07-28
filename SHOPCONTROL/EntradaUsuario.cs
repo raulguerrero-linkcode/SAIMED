@@ -63,14 +63,14 @@ namespace SHOPCONTROL
                     valoresg.Area_Contra = "";
                     valoresg.Area_Cvdoctor = leer["cvdoctor"].ToString();
                     valoresg.Area_usuario = USUARIO;
-                    valoresg.USUARIOSIS = leer["Role"].ToString(); ;
+                    valoresg.USUARIOSIS = leer["Role"].ToString().Trim();
                     valoresg.UBICACION = LocationSrv;
                     valoresg.EmpEmail = leer["Email"].ToString(); ;
                     valoresg.Nombre_Completo = leer["nombre"].ToString() + ' ' + leer["FirstLastName"].ToString();
                     valoresg.IdEmployee = leer["IdEmployee"].ToString();
 
 
-                    MessageBox.Show("Se autoriza el acceso a " + NOMBRECOMPLETO, " Ingreso exitoso ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Se autoriza el acceso a " + NOMBRECOMPLETO, " Ingreso exitoso ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
                 }
                 conecta.CierraConexion();
@@ -102,7 +102,8 @@ namespace SHOPCONTROL
 
             //XDocument xdoc = XDocument.Load("./EmailConf.xml");
             LocationSrv = xdoc.Descendants("CurrentLocation").First().Value;
-            
+            valoresg.SERVER_LOCATION = LocationSrv;
+
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -144,6 +145,7 @@ namespace SHOPCONTROL
                     Modremision.USUARIO = Registro.ReadRegSHOPCONTROL("CON", "User");
                     Modremision.CONTRASEÑA = Registro.ReadRegSHOPCONTROL("CON", "Pass");
                     Modremision.BASEDATOS = Registro.ReadRegSHOPCONTROL("CON", "BD");
+                                
 
                        if (CVDOCTORAREA=="0")
                         {

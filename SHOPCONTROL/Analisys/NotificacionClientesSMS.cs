@@ -257,13 +257,14 @@ namespace SHOPCONTROL.Analisys
         }
         catch (SqlException e)
         {
-            MessageBox.Show("Ocurrió un");
-        }
+                MessageBox.Show("Ocurrió un error, favor de revisar la información (email y teléfono sean correctos)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         catch (Exception ex)
         {
-            // MessageBox.Show("Ocurrió un error al guardar y enviar la notificación al usuario seleccionado: technical error:" + ex.Message);
-            // throw new Exception("Ocurrió un error al guardar y enviar la notificación al usuario seleccionado: technical error:" + ex.Message);
-        }
+                // MessageBox.Show("Ocurrió un error al guardar y enviar la notificación al usuario seleccionado: technical error:" + ex.Message);
+                // throw new Exception("Ocurrió un error al guardar y enviar la notificación al usuario seleccionado: technical error:" + ex.Message);
+                MessageBox.Show("Ocurrió un error, favor de revisar la información (email y teléfono sean correctos)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         finally
         {
             conecta.CierraConexion();
@@ -288,6 +289,8 @@ namespace SHOPCONTROL.Analisys
             Lv.Columns.Add("IdCita", 80);
             Lv.Columns.Add("NOMBRE", 80);
             Lv.Columns.Add("EMAIL", 80);
+
+
             Lv.Columns.Add("TELEFONO", 80);
 
 

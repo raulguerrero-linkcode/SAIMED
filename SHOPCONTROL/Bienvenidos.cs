@@ -309,7 +309,7 @@ namespace SHOPCONTROL
             this.ControlBox = false;
 
             string opcionserver = Registro.ReadRegSHOPCONTROL("CON", "OPCIONSERVER");
-            if (opcionserver == "0") label7.Text = "CUERNAVACA";
+            if (opcionserver == "0") label7.Text = valoresg.SERVER_LOCATION;
             if (opcionserver == "1") label7.Text = "SUCURSAL MOLINA";
             if (opcionserver == "2") label7.Text = "SUCURSAL BELLAS ARTES";
             this.Text = this.Text + " -" + label7.Text;
@@ -1093,8 +1093,15 @@ namespace SHOPCONTROL
 
         private void pendientesDePagoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            NotificacionClientesSMS pagos = new NotificacionClientesSMS();
-            pagos.Show();
+            if (valoresg.USUARIOSIS.Equals("ROOT"))
+            {
+                NotificacionClientesSMS pagos = new NotificacionClientesSMS();
+                pagos.Show();
+            } else
+            {
+                MessageBox.Show("Acceso restringdido", "Forbidden",  MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
 
         }
 

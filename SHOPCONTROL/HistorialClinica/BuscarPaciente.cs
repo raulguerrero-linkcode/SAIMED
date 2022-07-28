@@ -26,7 +26,16 @@ namespace SHOPCONTROL.HistorialClinica
                 valor = leer["NOMBRE"].ToString() + " " + leer["APATERNO"].ToString() + " " + leer["AMATERNO"].ToString();
                 lvi.SubItems.Add(valor);
                 lvi.SubItems.Add(leer["EDAD"].ToString());
-                lvi.SubItems.Add(leer["TELEFONO"].ToString());
+
+                if (valoresg.USUARIOSIS.Equals("ROOT"))
+                {
+                    lvi.SubItems.Add(leer["TELEFONO"].ToString());
+                }
+                else
+                {
+                    lvi.SubItems.Add("Confidencial");
+                }
+                
                 lvi.SubItems.Add(status(leer["STATUS"].ToString()));
                 lvi.SubItems.Add(leer["expdental"].ToString());
                 lvi.SubItems.Add(leer["expgineco"].ToString());
@@ -97,6 +106,11 @@ namespace SHOPCONTROL.HistorialClinica
         }
 
         private void Lv_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

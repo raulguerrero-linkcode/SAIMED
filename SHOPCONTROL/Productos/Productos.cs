@@ -1179,7 +1179,7 @@ namespace SHOPCONTROL
                     query = query + "'',";
                     query = query + "'" + textBox21.Text + "',";
                     query = query + "'" + comboBox6.Text + "',";
-                    query = query + "'CUERNAVACA',";
+                    query = query + "'"+ valoresg.SERVER_LOCATION +"',";
                     query = query + "1,";
                     query = query + "1,";
                     query = query + "'" + valoresg.USUARIOSIS + "')";
