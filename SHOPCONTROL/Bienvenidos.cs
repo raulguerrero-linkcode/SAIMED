@@ -1099,7 +1099,7 @@ namespace SHOPCONTROL
                 pagos.Show();
             } else
             {
-                MessageBox.Show("Acceso restringdido", "Forbidden",  MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Acceso restringido", "Forbidden",  MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             
 
@@ -1107,8 +1107,16 @@ namespace SHOPCONTROL
 
         private void toolStripMenuItem4_Click(object sender, EventArgs e)
         {
-            Analisys.IngresosPorArea ingresos = new Analisys.IngresosPorArea();
-            ingresos.Show();
+
+            if (valoresg.USUARIOSIS.Equals("ROOT"))
+            {
+                Analisys.IngresosPorArea ingresos = new Analisys.IngresosPorArea();
+                ingresos.Show();
+            } else
+            {
+                MessageBox.Show("Acceso restringido", "Forbidden", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
         }
 
         private void listadoDePacientesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1126,8 +1134,15 @@ namespace SHOPCONTROL
 
         private void faltaDePagosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            StatusCreditos creditos = new StatusCreditos();
-            creditos.Show();
+            if (valoresg.USUARIOSIS.Equals("ROOT"))
+            {
+                StatusCreditos creditos = new StatusCreditos();
+                creditos.Show();
+            } else
+            {
+                MessageBox.Show("Acceso restringido", "Forbidden", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
         }
 
         private void linkLabel7_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -1139,13 +1154,13 @@ namespace SHOPCONTROL
 
         private void accesosUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (valoresg.IdEmployee.Equals("14141") )
+            if (valoresg.USUARIOSIS.Equals("ROOT"))
             {
                 UsersAndRoles usuarios = new UsersAndRoles();
                 usuarios.Show();
             } else
             {
-                MessageBox.Show("Acceso restringdido");
+                MessageBox.Show("Acceso restringido", "Forbidden", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             
         }
