@@ -2,6 +2,9 @@
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using SHOPCONTROL.Utilerias;
+using System.IO;
+using System.Xml.Linq;
+using System.Linq;
 
 namespace SHOPCONTROL.HistorialClinica
 {
@@ -969,9 +972,16 @@ namespace SHOPCONTROL.HistorialClinica
                     if (guardaCliente==true && guardaPaciente==true)
                     {
 
-                        MailNotifications mails = new MailNotifications();
-                        mails.SendMail(EMAIL, "Se ha creado su cuenta en la sucursal " + valoresg.UBICACION + "<br>Número Id único: " + CLAVE + "<br>Nombre: " + NOMBRE + " " + APATERNO + " " + AMATERNO + "' <br>Recuerde conservar su número de cliente para futuras promociones.<br>Gracias por su preferencia", true);
-                        // GuardarRegistroServicio();
+                        string cfnFile = @"\\SRV-DATACENTER\tmp\EmailConf.xml";
+                        bool cfnExist = File.Exists(cfnFile);
+                        XDocument xdoc = XDocument.Load(cfnExist ? @"\\SRV-DATACENTER\tmp\EmailConf.xml" : @"C:\tmp\EmailConf.xml");
+                        string EnableMail = xdoc.Descendants("EnableSendMails").First().Value;
+                        if (EnableMail.Equals("1"))
+                        {
+                            MailNotifications mails = new MailNotifications();
+                            mails.SendMail(EMAIL, "Se ha creado su cuenta en la sucursal " + valoresg.UBICACION + "<br>Número Id único: " + CLAVE + "<br>Nombre: " + NOMBRE + " " + APATERNO + " " + AMATERNO + "' <br>Recuerde conservar su número de cliente para futuras promociones.<br>Gracias por su preferencia", true);
+                        }
+                            // GuardarRegistroServicio();
                         actualizaConsecutivo();
                     if (textBox19.Text != "") actualizaConsecutivoExpedienteGine();
                     if (textBox12.Text != "") actualizaConsecutivoExpedienteDental();

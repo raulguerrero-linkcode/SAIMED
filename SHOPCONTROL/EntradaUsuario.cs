@@ -70,19 +70,26 @@ namespace SHOPCONTROL
                     valoresg.IdEmployee = leer["IdEmployee"].ToString();
 
 
-                    MessageBox.Show("Se autoriza el acceso a " + NOMBRECOMPLETO, " Ingreso exitoso ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Se autoriza el acceso a " + NOMBRECOMPLETO, " Ingreso exitoso ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
                 }
                 conecta.CierraConexion();
                 try
                 {
-                    /*
-                    * 
-                    * Send Email Notification it could be used when the user tried to log with ADMIN Account
-                    * 
-                   */
+                /*
+                * 
+                * Send Email Notification it could be used when the user tried to log with ADMIN Account
+                * 
+               */
+                string cfnFile = @"\\SRV-DATACENTER\tmp\EmailConf.xml";
+                bool cfnExist = File.Exists(cfnFile);
+                XDocument xdoc = XDocument.Load(cfnExist ? @"\\SRV-DATACENTER\tmp\EmailConf.xml" : @"C:\tmp\EmailConf.xml");
+                string EnableMail = xdoc.Descendants("EnableSendMails").First().Value;
+                if (EnableMail.Equals("1"))
+                {
                     MailNotifications mail = new MailNotifications();
                     mail.SendMail("Rol: " + valoresg.USUARIOSIS + " usuario:" + valoresg.IdEmployee, valoresg.UBICACION, valoresg.EmpEmail, NOMBRECOMPLETO, true);
+                }
                 } catch (Exception E)
                 {
                     // MessageBox.Show("Error al enviar el correo de confirmación, revise su conexión a internet");

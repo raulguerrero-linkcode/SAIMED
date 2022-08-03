@@ -2,8 +2,9 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-
-
+using System.IO;
+using System.Xml.Linq;
+using System.Linq;
 
 namespace SHOPCONTROL
 {
@@ -467,10 +468,15 @@ namespace SHOPCONTROL
             * Send Email Notification it could be used when the user tried to log with ADMIN Account
             * (string usuario, string ubicacion, string subject, string msg, int send_msg)
            */
-
-            MailNotifications mail = new MailNotifications();
-            mail.SendMail(valoresg.IdEmployee, valoresg.UBICACION, "Se reprogramó una cita con Num de recibo " + label10.Text + "en Sucursal: " + valoresg.UBICACION , "<br> Usuario que reprogramó: " + valoresg.Nombre_Completo  + " (" + valoresg.IdEmployee + ") <br>Rol de: " + valoresg.USUARIOSIS + "<br> ha realizado una reprogramación sobre el num de recibo:<br> " + label10.Text + "<br>Paciente: " + nombre + "<br>Servicio: " + cvservicio +"<br>Fecha Anterior: " +  FechaAnterior.ToString("dd/MM/yyyy")  + "<br>Fecha nueva: " + FechaProg.ToString("dd/MM/yyyy") + "<br>Hora: " + HoraInicia.ToString("HH:mm:00"), 1);
-
+            string cfnFile = @"\\SRV-DATACENTER\tmp\EmailConf.xml";
+            bool cfnExist = File.Exists(cfnFile);
+            XDocument xdoc = XDocument.Load(cfnExist ? @"\\SRV-DATACENTER\tmp\EmailConf.xml" : @"C:\tmp\EmailConf.xml");
+            string EnableMail = xdoc.Descendants("EnableSendMails").First().Value;
+            if (EnableMail.Equals("1"))
+            {
+                MailNotifications mail = new MailNotifications();
+                mail.SendMail(valoresg.IdEmployee, valoresg.UBICACION, "Se reprogramó una cita con Num de recibo " + label10.Text + "en Sucursal: " + valoresg.UBICACION, "<br> Usuario que reprogramó: " + valoresg.Nombre_Completo + " (" + valoresg.IdEmployee + ") <br>Rol de: " + valoresg.USUARIOSIS + "<br> ha realizado una reprogramación sobre el num de recibo:<br> " + label10.Text + "<br>Paciente: " + nombre + "<br>Servicio: " + cvservicio + "<br>Fecha Anterior: " + FechaAnterior.ToString("dd/MM/yyyy") + "<br>Fecha nueva: " + FechaProg.ToString("dd/MM/yyyy") + "<br>Hora: " + HoraInicia.ToString("HH:mm:00"), 1);
+            }
             MessageBox.Show("Se reprogramó la cita", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Dispose();
 

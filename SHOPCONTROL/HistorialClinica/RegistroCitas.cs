@@ -7,6 +7,9 @@ using System.Data.SqlClient;
 
 using CrystalDecisions.CrystalReports.Engine;
 using SHOPCONTROL.Utilerias;
+using System.IO;
+using System.Xml.Linq;
+using System.Linq;
 
 namespace SHOPCONTROL.HistorialClinica
 {
@@ -1413,17 +1416,23 @@ namespace SHOPCONTROL.HistorialClinica
              * Enviar correo al cliente de su cita
              * 
              * */
-            MailNotifications mails = new MailNotifications();
-            //(string cita, string email, string nombre, string fecha , string servicio)
-            // valida mail si es correcto
-            string emailPaciente = existemail(cvpaciente);
+            string cfnFile = @"\\SRV-DATACENTER\tmp\EmailConf.xml";
+            bool cfnExist = File.Exists(cfnFile);
+            XDocument xdoc = XDocument.Load(cfnExist ? @"\\SRV-DATACENTER\tmp\EmailConf.xml" : @"C:\tmp\EmailConf.xml");
+            string EnableMail = xdoc.Descendants("EnableSendMails").First().Value;
+            if (EnableMail.Equals("1"))
+            {
+                MailNotifications mails = new MailNotifications();
+                //(string cita, string email, string nombre, string fecha , string servicio)
+                // valida mail si es correcto
+                string emailPaciente = existemail(cvpaciente);
 
-            if (ValidateData.IsValidEmail(emailPaciente) == true)
-            { 
-                mails.SendMail(numticket + " su id único:" + cvpaciente, emailPaciente, nombre, "Con fecha: " + HoraInicia.ToString(), sel_nomArea, true);
-                return;
+                if (ValidateData.IsValidEmail(emailPaciente) == true)
+                {
+                    mails.SendMail(numticket + " su id único:" + cvpaciente, emailPaciente, nombre, "Con fecha: " + HoraInicia.ToString(), sel_nomArea, true);
+                    return;
+                }
             }
-
 
             MessageBox.Show("Se registro correctamente la cita ", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

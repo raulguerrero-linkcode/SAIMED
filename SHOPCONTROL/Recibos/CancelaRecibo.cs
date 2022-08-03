@@ -2,6 +2,9 @@
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Globalization;
+using System.IO;
+using System.Xml.Linq;
+using System.Linq;
 
 namespace SHOPCONTROL
 {
@@ -288,9 +291,15 @@ namespace SHOPCONTROL
             //Query = "Delete from CobroenVentana where numpedido='" + NUMREMISION + "'";
             //conecta.Excute(Query);
             // Enviar correo de cancelación
-            MailNotifications mail = new MailNotifications();
-            mail.SendMailOnlySubjectAndMSG("Se canceló el pedido del cliente: " + NUMCLIENTE, "Se ha cancelado el recibo del cliente : " + NOMBRECLIENTE + ", con fecha " + FECHA + ", emitido por " + EMITIO + "y con un importe de " + TOTALC + " (" + CANTIDADLETRA);
-
+            string cfnFile = @"\\SRV-DATACENTER\tmp\EmailConf.xml";
+            bool cfnExist = File.Exists(cfnFile);
+            XDocument xdoc = XDocument.Load(cfnExist ? @"\\SRV-DATACENTER\tmp\EmailConf.xml" : @"C:\tmp\EmailConf.xml");
+            string EnableMail = xdoc.Descendants("EnableSendMails").First().Value;
+            if (EnableMail.Equals("1"))
+            {
+                MailNotifications mail = new MailNotifications();
+                mail.SendMailOnlySubjectAndMSG("Se canceló el pedido del cliente: " + NUMCLIENTE, "Se ha cancelado el recibo del cliente : " + NOMBRECLIENTE + ", con fecha " + FECHA + ", emitido por " + EMITIO + "y con un importe de " + TOTALC + " (" + CANTIDADLETRA);
+            }
             //BuscarFactura();
             MessageBox.Show("Se cancelo correctamente el recibo", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

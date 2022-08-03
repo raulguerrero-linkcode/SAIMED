@@ -3,6 +3,10 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Globalization;
+using System.IO;
+using System.Xml.Linq;
+using System.Linq;
+
 namespace SHOPCONTROL
 {
     public partial class Productos : Form
@@ -51,6 +55,7 @@ namespace SHOPCONTROL
         public string ALTURA= "";
         public string SUCURSAL= "";
 
+        public string PrecioAnt = "0";
 
         public string FECHAMODIFICA = "";
         public string FCODMODIFICA = "";
@@ -465,6 +470,9 @@ namespace SHOPCONTROL
 
 
                  }
+
+                PrecioAnt = textBox12.Text;
+
                 conecta2.CierraConexion();
                 valor = leer["causaiva"].ToString();
                 if (valor == "SI") radioButton1.Checked = true;
@@ -739,9 +747,13 @@ namespace SHOPCONTROL
             conectorSql conecta = new conectorSql();
             string Query = "";
             int contar = 0;
+
+            string clave = "";
+            string descripcion="";
             for (int i = 0; i < Lv.Items.Count; i++)
             {
-                string clave=Lv.Items[i].Text;
+                clave=Lv.Items[i].Text;
+                descripcion = Lv.Items[i].SubItems[1].Text;
                 if (Lv.Items[i].Checked == true)
                 {
                     Query = "Delete from productos where cvproducto='" + clave + "'";
@@ -752,6 +764,16 @@ namespace SHOPCONTROL
                     contar++;
                 }
             }
+            string cfnFile = @"\\SRV-DATACENTER\tmp\EmailConf.xml";
+            bool cfnExist = File.Exists(cfnFile);
+            XDocument xdoc = XDocument.Load(cfnExist ? @"\\SRV-DATACENTER\tmp\EmailConf.xml" : @"C:\tmp\EmailConf.xml");
+            string EnableMail = xdoc.Descendants("EnableSendMails").First().Value;
+            if (EnableMail.Equals("1"))
+            {
+                MailNotifications mail = new MailNotifications();
+                mail.SendMailOnlySubjectAndMSG("Eliminación de producto id: " + clave + " (" + descripcion + ")", "Eliminación permanente de producto hecha por el usuario: " + valoresg.IdEmployee + " " + valoresg.Nombre_Completo.Trim());
+            }
+            refreshData();
 
             MessageBox.Show("Se eliminaron " + contar.ToString() + " registros del sistema", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -1132,10 +1154,43 @@ namespace SHOPCONTROL
                 conecta.CierraConexion();
                 int ResultadosExisteInt = Int16.Parse(resultadoExiste);
 
+                if (ResultadosExisteInt == 1)
+                {
+
+                    
+                    conectorSql conectaUpdate1 = new conectorSql();
+                    string QueryUpdateActual = "";
+                    // ueryUpdateActual = "delete from Productos where cvproducto ='" + textBox1.Text + "'";
+
+                    QueryUpdateActual = "Delete from productos where cvproducto='" + textBox1.Text + "'";
+                    conecta.Excute(QueryUpdateActual);
+                    QueryUpdateActual = "Delete from ListaPrecios where cvproducto='" + textBox1.Text + "'";
+                    conecta.Excute(QueryUpdateActual);
+
+
+                    conectaUpdate1.Excute(QueryUpdateActual);
+                    conectaUpdate1.CierraConexion();
+
+                    ResultadosExisteInt = 0;
+
+                    string cfnFile = @"\\SRV-DATACENTER\tmp\EmailConf.xml";
+                    bool cfnExist = File.Exists(cfnFile);
+                    XDocument xdoc = XDocument.Load(cfnExist ? @"\\SRV-DATACENTER\tmp\EmailConf.xml" : @"C:\tmp\EmailConf.xml");
+
+                    //XDocument xdoc = XDocument.Load("./EmailConf.xml");
+                    string EnableMail = xdoc.Descendants("EnableSendMails").First().Value;
+                    if (EnableMail.Equals("1"))
+                    {
+                        MailNotifications mail = new MailNotifications();
+                        mail.SendMailOnlySubjectAndMSG("Actualización de producto: " + textBox1.Text + " " + textBox2.Text, "Actualización de detalles de producto hecha por el usuario: " + valoresg.IdEmployee + " " + valoresg.Nombre_Completo.Trim() + "<br> Artículo: " + textBox1.Text + "<br> Descripción: " + textBox2.Text + "<br>Precio anterior: $" + PrecioAnt.ToString() + "<br>Precio nuevo $" + textBox12.Text);
+                    }
+
+                }
 
                 // Validate if the Product was added before by 
                 if (ResultadosExisteInt == 0)
                 {
+
                     string query = "";
                     query = query + "INSERT INTO Productos ";
                     query = query + "([cvproducto] ";
@@ -1228,7 +1283,7 @@ namespace SHOPCONTROL
 
                     conectaUpdate.Excute(QueryUpdate);
 
-                    MessageBox.Show("Artículo agregado satisfactoriamente");
+                    MessageBox.Show("Artículo agregado/o modificado satisfactoriamente");
                     // this.Dispose();
                     Limpiar();
 
@@ -1244,6 +1299,10 @@ namespace SHOPCONTROL
                     conecta11.CierraConexion();
 
                 }
+
+                panel1.Visible = false;
+                panel3.Visible = true;
+                refreshData();
             }
             catch (SqlException ex)
             {
@@ -1287,6 +1346,112 @@ namespace SHOPCONTROL
         }
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void refreshData()
+        {
+            Lv.Items.Clear();
+            Lv.Columns.Clear();
+
+            Lv.Columns.Add("Clave", 90);
+            Lv.Columns.Add("Nombre", 350);
+            Lv.Columns.Add("Categoría", 90);
+            Lv.Columns.Add("Tipo", 90);       //AGREGADO POR JOSE 02-12-2019
+            Lv.Columns.Add("Unidad", 70);
+            Lv.Columns.Add("Existencia", 60);
+            Lv.Columns.Add("Precio Proveedor", 70);
+            Lv.Columns.Add("Precio 1", 70);
+            Lv.Columns.Add("% Descuento", 70);
+            Lv.Columns.Add("Con IVA", 60);
+            Lv.Columns.Add("Fec. Modificacion", 85);
+            Lv.Visible = false;
+            conectorSql conecta = new conectorSql();
+            conectorSql conecta2 = new conectorSql();
+            string Query = "Select cvproducto,nombre,categoria,unidad,cantidad,causaiva,fechaModifica,minimo";
+            Query = Query + ",Cat_Categorias.descripcion as nomcategoria, Cat_tipos.descripcion as nomtipo "; //AGREGADO POR JOSE 02-12-2019
+            Query = Query + " from productos";
+            Query = Query + " inner join Cat_Categorias on Cat_Categorias.idcategoria=productos.categoria ";
+            Query = Query + " inner join Cat_tipos on Cat_tipos.idtipo = Productos.idtipo";                  //AGREGADO POR JOSE 02-12-2019
+            Query = Query + " where cvproducto <> ''";
+
+
+            //Query = Query + "Cat_tipos.descripcion as nomtipo from Productos inner join Cat_tipos on Cat_tipos.idtipo = Productos.idtipo where cvproducto <> ''";
+            if (textBox11.Text != "") Query = Query + " and nombre like '%" + textBox11.Text + "%'";
+            if (comboBox2.Text != "") Query = Query + " and  categoria='" + comboBox2.SelectedValue.ToString() + "'";
+            if (comboBox4.Text != "") Query = Query + " and marca='" + comboBox2.Text + "'";
+            if (comboBox7.Text != "") Query = Query + " and unidad='" + comboBox7.Text.Trim() + "'";
+            if (textBox23.Text != "") Query = Query + " and cvproducto='" + textBox23.Text.Trim() + "'";
+            if (checkBox1.Checked == true) Query = Query + " and cantidad<=(minimo+2)";
+            if (comboBox8.Text != "") Query = Query + "and Cat_tipos.idtipo = '" + comboBox8.SelectedValue.ToString().Trim() + "'";
+
+
+            Query = Query + " order by nombre asc, Cat_Categorias.descripcion asc";
+            SqlDataReader leer = conecta.RecordInfo(Query);
+            while (leer.Read())
+            {
+                string clave = leer["cvproducto"].ToString();
+                ListViewItem lvi = new ListViewItem(clave);
+                lvi.SubItems.Add(leer["nombre"].ToString());
+                lvi.SubItems.Add(leer["nomcategoria"].ToString());
+                lvi.SubItems.Add(leer["nomtipo"].ToString());        //AGREGADO POR JOSE 02-12-2019
+                lvi.SubItems.Add(leer["unidad"].ToString());
+                lvi.SubItems.Add(leer["cantidad"].ToString());
+
+                string valor = leer["cantidad"].ToString();
+                decimal num = decimal.Parse(valor.ToString());
+
+                string consulta = "Select * from ListaPrecios where cvproducto='" + clave + "'";
+                SqlDataReader leer2 = conecta2.RecordInfo(consulta);
+                while (leer2.Read())
+                {
+                    decimal Distribuidor = decimal.Parse(leer2["distribuidor"].ToString());
+                    decimal publico1 = decimal.Parse(leer2["publico1"].ToString());
+                    decimal descuento = 0;
+                    if (leer2["porcdescuento"].ToString() != "")
+                        descuento = decimal.Parse(leer2["porcdescuento"].ToString());
+                    else
+                        descuento = 0;
+
+
+                    lvi.SubItems.Add(Distribuidor.ToString("##.0000", CultureInfo.InvariantCulture));
+                    lvi.SubItems.Add(publico1.ToString("##.0000", CultureInfo.InvariantCulture));
+                    lvi.SubItems.Add(descuento.ToString("##.0000", CultureInfo.InvariantCulture) + " %");
+                }
+                conecta2.CierraConexion();
+                lvi.SubItems.Add(leer["causaiva"].ToString());
+                lvi.SubItems.Add(leer["fechaModifica"].ToString());
+
+
+                decimal num5 = decimal.Parse(leer["minimo"].ToString());
+                Lv.Items.Add(lvi);
+
+                lvi.UseItemStyleForSubItems = false;
+                if (num <= (num5 + 2))
+                {
+                    lvi.BackColor = Color.FromArgb(0xd9, 0xdf, 0xfb);
+                    lvi.SubItems[5].BackColor = Color.FromArgb(0xf7, 190, 0x81);
+                }
+                if (num < num5)
+                {
+                    lvi.BackColor = Color.FromArgb(0xd9, 0xdf, 0xfb);
+                    lvi.SubItems[5].BackColor = Color.FromArgb(0xb2, 5, 5);
+                    lvi.SubItems[5].ForeColor = Color.FromArgb(0xff, 0xff, 0xff);
+                }
+
+
+
+            }
+            conecta.CierraConexion();
+            label15.Text = Lv.Items.Count.ToString() + " Registros ";
+            Lv.Visible = true;
+
+            label39.Text = Lv.Items.Count.ToString() + " Registros";
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
         {
 
         }

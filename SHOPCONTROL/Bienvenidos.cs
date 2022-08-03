@@ -1164,5 +1164,13 @@ namespace SHOPCONTROL
             }
             
         }
+
+        private void linkLabel8_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Creditos.Creditos credito = new Creditos.Creditos();
+            
+            credito.Show();
+
+        }
     }
 }

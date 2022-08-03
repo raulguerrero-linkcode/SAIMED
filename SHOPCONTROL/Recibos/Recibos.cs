@@ -746,10 +746,16 @@ namespace SHOPCONTROL
                 if (MessageBox.Show("Usted tiene " + this.label28.Text + " productos , Desea actualizar su inventario de productos?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Hand, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
 
-                    // Notificar por correo la falta de inventario
-                    MailNotifications mail = new MailNotifications();
-                    mail.SendMailOnlySubjectAndMSG("Falta inventario para venta en sucursal " + valoresg.SERVER_LOCATION, "El producto " + clave + " ( " + NOMBREPRO + ") no tiene existencias, favor de tomar acciones inmediatas");
-
+                    string cfnFile = @"\\SRV-DATACENTER\tmp\EmailConf.xml";
+                    bool cfnExist = File.Exists(cfnFile);
+                    XDocument xdoc = XDocument.Load(cfnExist ? @"\\SRV-DATACENTER\tmp\EmailConf.xml" : @"C:\tmp\EmailConf.xml");
+                    string EnableMail = xdoc.Descendants("EnableSendMails").First().Value;
+                    if (EnableMail.Equals("1"))
+                    {
+                        // Notificar por correo la falta de inventario
+                        MailNotifications mail = new MailNotifications();
+                        mail.SendMailOnlySubjectAndMSG("Falta inventario para venta en sucursal " + valoresg.SERVER_LOCATION, "El producto " + clave + " ( " + NOMBREPRO + ") no tiene existencias, favor de tomar acciones inmediatas");
+                    }
                     valoresg.NUMPRODUCTOSURTIR = clave;
                     // Productos nproductos = new Productos();
                     // nproductos.Show();
@@ -1360,10 +1366,16 @@ namespace SHOPCONTROL
             if (decimal.Parse(this.label28.Text) < cantidad)
             {
 
-                // Notificar por correo la falta de inventario
-                MailNotifications mail = new MailNotifications();
-                mail.SendMailOnlySubjectAndMSG("Falta inventario para venta en sucursal " + valoresg.SERVER_LOCATION, "El producto " + cvproducto + " ( " + Nombre + ") no tiene existencias, favor de tomar acciones inmediatas");
-
+                string cfnFile = @"\\SRV-DATACENTER\tmp\EmailConf.xml";
+                bool cfnExist = File.Exists(cfnFile);
+                XDocument xdoc = XDocument.Load(cfnExist ? @"\\SRV-DATACENTER\tmp\EmailConf.xml" : @"C:\tmp\EmailConf.xml");
+                string EnableMail = xdoc.Descendants("EnableSendMails").First().Value;
+                if (EnableMail.Equals("1"))
+                {
+                    // Notificar por correo la falta de inventario
+                    MailNotifications mail = new MailNotifications();
+                    mail.SendMailOnlySubjectAndMSG("Falta inventario para venta en sucursal " + valoresg.SERVER_LOCATION, "El producto " + cvproducto + " ( " + Nombre + ") no tiene existencias, favor de tomar acciones inmediatas");
+                }
                 if (MessageBox.Show("Usted tiene " + this.label28.Text + " productos en existencia \nNo es posible surtir el recibo necesita " + porSurtir.ToString() + " productos , Desea actualizar su inventario de productos?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Hand, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
                     valoresg.NUMPRODUCTOSURTIR = cvproducto;
@@ -2943,11 +2955,17 @@ namespace SHOPCONTROL
                     {
                         conecta2.CierraConexion();
                     }
-
-                    MailNotifications mail = new MailNotifications();
-                    if (label47.Text == "1")
+                    string cfnFile = @"\\SRV-DATACENTER\tmp\EmailConf.xml";
+                    bool cfnExist = File.Exists(cfnFile);
+                    XDocument xdoc = XDocument.Load(cfnExist ? @"\\SRV-DATACENTER\tmp\EmailConf.xml" : @"C:\tmp\EmailConf.xml");
+                    string EnableMail = xdoc.Descendants("EnableSendMails").First().Value;
+                    if (EnableMail.Equals("1"))
                     {
-                        mail.SendMailRePrintTickets(numpedido, ayo, nombrearea);
+                        MailNotifications mail = new MailNotifications();
+                        if (label47.Text == "1")
+                        {
+                            mail.SendMailRePrintTickets(numpedido, ayo, nombrearea);
+                        }
                     }
                     MandarReporteCristal(numpedido, ayo, nombrearea, label46.Text.Trim(), msgReimpressed);
                 }

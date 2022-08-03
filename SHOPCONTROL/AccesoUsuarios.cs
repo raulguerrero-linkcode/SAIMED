@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Xml.Linq;
+using System.IO;
+using System.Linq;
+
 namespace SHOPCONTROL
 {
     public partial class AccesoUsuarios : Form
@@ -261,10 +265,17 @@ namespace SHOPCONTROL
 
             if (USUARIO == "ADMIN")
             {
-                MessageBox.Show("Se va a actualizar la información del ADMIN");
-                // Enviar notificación al correo registrado para notificarle de los cambios hechos
-                MailNotifications mail = new MailNotifications();
-                mail.SendMailChangePasswordAdmin();
+                string cfnFile = @"\\SRV-DATACENTER\tmp\EmailConf.xml";
+                bool cfnExist = File.Exists(cfnFile);
+                XDocument xdoc = XDocument.Load(cfnExist ? @"\\SRV-DATACENTER\tmp\EmailConf.xml" : @"C:\tmp\EmailConf.xml");
+                string EnableMail = xdoc.Descendants("EnableSendMails").First().Value;
+                if (EnableMail.Equals("1"))
+                {
+                    MessageBox.Show("Se va a actualizar la información del ADMIN");
+                    // Enviar notificación al correo registrado para notificarle de los cambios hechos
+                    MailNotifications mail = new MailNotifications();
+                    mail.SendMailChangePasswordAdmin();
+                }
             }
             
             conectorSql conecta = new conectorSql();
