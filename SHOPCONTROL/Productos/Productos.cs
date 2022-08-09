@@ -333,12 +333,15 @@ namespace SHOPCONTROL
 
         private void button4_Click(object sender, EventArgs e)
         {
+            textBox1.Enabled = false;
             combos.MarcasProductos(comboBox3);
             panel1.Visible = true;
             panel3.Visible = false;
             panel6.Visible = false;
             panel4.Visible = false;
             Limpiar();
+
+            /*
             conectorSql conecta = new conectorSql();
             string consulta = "Select numproducto +3 as numproducto from Consecutivos";
             SqlDataReader leer2 = conecta.RecordInfo(consulta);
@@ -349,6 +352,8 @@ namespace SHOPCONTROL
                 textBox1.Text = NumProducto.ToString();
             }
             conecta.CierraConexion();
+            */
+
             button1.Enabled = true;
 
         }
@@ -643,9 +648,28 @@ namespace SHOPCONTROL
             Query = Query + ",'" + SUCURSAL + "'";
 
             Query = Query + ",'" + MAXIMO + "')";
-            conecta.Excute(Query);   
+            conecta.Excute(Query);
 
-            Query="Insert into ListaPrecios(cvproducto";
+            /*
+             * Obtener el Id recién creado y agregarlo a la tabla lista precios
+             * 
+             */
+            Query = "Select cvproducto from Productos where nombre = '" + NOMBRE + "' and descripcion ='" + DESCRIBE + "' AND categoria ='" + CATEGORIA + "'";
+            conectorSql conecta1 = new conectorSql();
+           
+            SqlDataReader leer3 = conecta1.RecordInfo(Query);
+            int NumProducto = 0;
+            while (leer3.Read())
+            {
+                NumProducto = int.Parse(leer3["cvproducto"].ToString());
+
+                textBox1.Text = NumProducto.ToString();
+            }
+            conecta.CierraConexion();
+
+            textBox1.Text = NumProducto.ToString();
+
+            Query ="Insert into ListaPrecios(cvproducto";
             Query = Query + ",distribuidor";
             Query = Query + ",publico1";
             Query = Query + ",porciento1";
@@ -658,7 +682,7 @@ namespace SHOPCONTROL
             Query = Query + ",porcdescuento";
             Query = Query + ",ganancia3)";
             Query = Query + " values(";
-            Query = Query + "'" + CLAVE+ "'";
+            Query = Query + "" + NumProducto.ToString() + "";
             Query = Query + ",'" + DISTRIBUIDOR + "'";
             Query = Query + ",'" + PRECIO1.ToString()+ "'";
             Query = Query + ",'" + PORCENTAJE1.ToString() +"'";
@@ -1095,12 +1119,6 @@ namespace SHOPCONTROL
         {
 
             int n;
-            bool isNumeric = int.TryParse(textBox1.Text, out n);
-            if (isNumeric==false)
-            {
-                MessageBox.Show("El id del producto debe ser un número, favor de verificar");
-                return;
-            }
 
             if (textBox2.Text=="")
             {
@@ -1193,8 +1211,8 @@ namespace SHOPCONTROL
 
                     string query = "";
                     query = query + "INSERT INTO Productos ";
-                    query = query + "([cvproducto] ";
-                    query = query + ",[nombre] ";
+                    query = query + "(";
+                    query = query + "[nombre] ";
                     query = query + ",[descripcion] ";
                     query = query + ",[categoria] ";
                     query = query + ",[unidad] ";
@@ -1216,7 +1234,30 @@ namespace SHOPCONTROL
                     query = query + ",[activo] ";
                     query = query + ",[cvusuario]) ";
                     query = query + " VALUES ( ";
-                    query = query + "'" + textBox1.Text + "',";
+                    // query = query + "'" + textBox1.Text + "',";
+
+                    if (string.IsNullOrEmpty(textBox2.Text))
+                    {
+                        textBox2.Text = "0";
+                    }
+                    if (string.IsNullOrEmpty(textBox7.Text))
+                    {
+                        textBox7.Text = "0";
+                    }
+
+
+                    if (string.IsNullOrEmpty(textBox5.Text))
+                    {
+                        textBox5.Text = "0";
+                    }
+                    if (string.IsNullOrEmpty(textBox6.Text))
+                    {
+                        textBox6.Text = "0";
+                    }
+
+                 
+
+
                     query = query + "'" + textBox2.Text + "',";
                     query = query + "'" + textBox7.Text + "',";
                     query = query + "'" + CATEGORIA + "',";
@@ -1228,8 +1269,8 @@ namespace SHOPCONTROL
                     query = query + "'" + comboBox3.Text + "',";
                     query = query + "'" + UPC.Text + "',";
                     query = query + "'" + textBox20.Text + "',";
-                    query = query + "'" + FECHAMODIFICA + "',";
-                    query = query + "'" + FCODMODIFICA + "',";
+                    query = query + "'" + DateTime.Today.ToShortDateString()  + "',";
+                    query = query + "'" + DateTime.Now.ToString("yyyyMMdd") + "',";
                     query = query + "'" + valoresg.USUARIOSIS + "',";
                     query = query + "'',";
                     query = query + "'" + textBox21.Text + "',";
@@ -1244,8 +1285,27 @@ namespace SHOPCONTROL
                     bool producto = conecta.Excute(query);
 
 
+                    /*
+             * Obtener el Id recién creado y agregarlo a la tabla lista precios
+             * 
+             */
+                    string Query = "Select cvproducto from Productos where nombre = '" + textBox2.Text + "' and descripcion ='" + textBox7.Text + "' AND categoria ='" + CATEGORIA + "'";
+                    
+
+                    SqlDataReader leer3 = conecta.RecordInfo(Query);
+                    int NumProducto = 0;
+                    while (leer3.Read())
+                    {
+                        NumProducto = int.Parse(leer3["cvproducto"].ToString());
+
+                        textBox1.Text = NumProducto.ToString();
+                    }
+                    // conecta.CierraConexion();
+
+                    textBox1.Text = NumProducto.ToString();
+
                     // Lista de precios
-                    string Query = "";
+                    Query = "";
 
                     Query = "Insert into ListaPrecios(cvproducto";
                     Query = Query + ",distribuidor";
@@ -1276,17 +1336,19 @@ namespace SHOPCONTROL
 
                     conecta.CierraConexion();
 
-                   
+                   /*
                     conectorSql conectaUpdate = new conectorSql();
                     string QueryUpdate = "";
                     QueryUpdate = "update consecutivos set numproducto =" + textBox1.Text + "";
 
                     conectaUpdate.Excute(QueryUpdate);
+                    */
 
-                    MessageBox.Show("Artículo agregado/o modificado satisfactoriamente");
+
+                    MessageBox.Show("Artículo con ID: " + textBox1.Text  + "  agregado /o modificado satisfactoriamente");
                     // this.Dispose();
                     Limpiar();
-
+                    /*
                     conectorSql conecta11 = new conectorSql();
                     string consulta = "Select numproducto +3 as numproducto from Consecutivos";
                     SqlDataReader leer211 = conecta11.RecordInfo(consulta);
@@ -1297,7 +1359,7 @@ namespace SHOPCONTROL
                         textBox1.Text = NumProducto.ToString();
                     }
                     conecta11.CierraConexion();
-
+                    */
                 }
 
                 panel1.Visible = false;

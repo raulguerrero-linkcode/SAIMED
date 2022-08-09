@@ -196,7 +196,7 @@ namespace SHOPCONTROL
                 consulta = consulta + " FROM Citas";
                 consulta = consulta + " inner join doctores on Doctores.cvdoctor = citas.cvdoctor";
                 consulta = consulta + " WHERE(fechacod = '" + DateTime.Now.ToString("yyyyMMdd") + "')";
-                consulta = consulta + "  AND(estatus = 'PAGADO')  and estatusserv = 'EN CONSULTA'";
+                consulta = consulta + "  AND(estatus = 'PAGADO') ";  // and estatusserv = 'EN CONSULTA'";
                 consulta = consulta + " and Citas.cvdoctor='" + cvdoctor+"'";
                 consulta = consulta + " order by progresivo desc";
 

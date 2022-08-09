@@ -1904,6 +1904,7 @@ namespace SHOPCONTROL
 
         public void MandarReporteCristal(string numrecibo, string ayorecibo, string consultorio, string turno, string mensajeReimpresion)
         {
+
             string NOMBREEMPRESA = "";
             string ADICIONALINFO = "";
             string REGIMEN = "";
@@ -1912,34 +1913,35 @@ namespace SHOPCONTROL
             string LUGAREXPIDE = "";
 
             string RFC = "";
-            ReportDocument cryRpt = new ReportDocument();
-            string CadenaReporte = @"C:\tmp\reports\ReciboTicket.rpt";
-            // string CadenaReporte = @"\\SRV-DATACENTER\\tmp\\reports\\ReciboTicket.rpt";
-
-
-
-            conectorSql conecta = new conectorSql();
-            string Query = "Select * from ParametrosFactura where nombre<>''";
-            SqlDataReader leer = conecta.RecordInfo(Query);
-            while (leer.Read())
-            {
-                NOMBREEMPRESA = leer["nombrecomercial"].ToString();
-                ADICIONALINFO = leer["infoadicional"].ToString() + " " + mensajeReimpresion;
-                REGIMEN = leer["regimen"].ToString();
-                DIRECCION = "Calle : " + leer["calle"].ToString();
-                DIRECCION = DIRECCION + " Num. " + leer["numext"].ToString();
-                DIRECCION = DIRECCION + " ," + leer["colonia"].ToString();
-                DIRECCION = DIRECCION + " ," + leer["municipio"].ToString();
-                DIRECCION = DIRECCION + " ," + leer["estado"].ToString();
-                DIRECCION = DIRECCION + " C.P " + leer["codpostal"].ToString();
-                RFC = leer["RFC"].ToString();
-                LUGAREXPIDE = leer["LugarExpedicion"].ToString();
-                IMPRESIONDIRECTA = leer["regimen"].ToString();
-            }
-            conecta.CierraConexion();
 
             try
             {
+
+                ReportDocument cryRpt = new ReportDocument();
+                string CadenaReporte = @"C:\tmp\reports\ReciboTicket.rpt";
+                // string CadenaReporte = @"\\SRV-DATACENTER\\tmp\\reports\\ReciboTicket.rpt";
+
+                conectorSql conecta = new conectorSql();
+                string Query = "Select * from ParametrosFactura where nombre<>''";
+                SqlDataReader leer = conecta.RecordInfo(Query);
+                while (leer.Read())
+                {
+                    NOMBREEMPRESA = leer["nombrecomercial"].ToString();
+                    ADICIONALINFO = leer["infoadicional"].ToString() + " " + mensajeReimpresion;
+                    REGIMEN = leer["regimen"].ToString();
+                    DIRECCION = "Calle : " + leer["calle"].ToString();
+                    DIRECCION = DIRECCION + " Num. " + leer["numext"].ToString();
+                    DIRECCION = DIRECCION + " ," + leer["colonia"].ToString();
+                    DIRECCION = DIRECCION + " ," + leer["municipio"].ToString();
+                    DIRECCION = DIRECCION + " ," + leer["estado"].ToString();
+                    DIRECCION = DIRECCION + " C.P " + leer["codpostal"].ToString();
+                    RFC = leer["RFC"].ToString();
+                    LUGAREXPIDE = leer["LugarExpedicion"].ToString();
+                    IMPRESIONDIRECTA = leer["regimen"].ToString();
+                }
+                conecta.CierraConexion();
+
+            
                 cryRpt.Load(CadenaReporte);
                 string consulta = "SELECT cvempresa, foto FROM Logoempresa where cvempresa='0'";
                 ReciboUsuario CodigoBidimensional = GetData2(consulta, numrecibo);
@@ -1962,6 +1964,9 @@ namespace SHOPCONTROL
                 cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
 
                 cryRpt.PrintToPrinter(1, false, 0, 0);
+
+                cryRpt.Close();
+                cryRpt.Dispose();
             }
             catch (Exception)
             {
@@ -1969,8 +1974,7 @@ namespace SHOPCONTROL
                 // cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
             } finally
             {
-                cryRpt.Close();
-                cryRpt.Dispose();
+               
 
                 MessageBox.Show("Se mando a imprimir correctamente", "Impresion de Recibo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

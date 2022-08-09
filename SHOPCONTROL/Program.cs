@@ -28,7 +28,7 @@ namespace SHOPCONTROL
             // timer.Elapsed += Timer_Elapsed;
             // timer.Start();
             
-             var timer = new System.Threading.Timer(
+            var timer = new System.Threading.Timer(
                s => Application.Exit(), null, CalcMsToHour(21, 00, 00), Timeout.Infinite);
             
             int ActiveAccessTocken = ValLicencia();
@@ -42,6 +42,10 @@ namespace SHOPCONTROL
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            // Application.Run(new VISORTURNOS());
+            // Application.Run(new PASARTURNO());
+            // Application.Run(new PASARTURNOINDV());
+            
             if (ActiveAccessTocken == 1)
             {
                 Application.Run(new EntradaUsuario());
@@ -59,8 +63,6 @@ namespace SHOPCONTROL
                 }
             }
 
-           
-            // Application.Run(new VISORTURNOS());
             // Application.Run(new PASARTURNO());
             // Application.Run(new PASARTURNOINDV());
         }

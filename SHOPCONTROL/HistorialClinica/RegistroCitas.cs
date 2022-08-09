@@ -28,11 +28,11 @@ namespace SHOPCONTROL.HistorialClinica
         public string DCOMEDOR = "";
         public int tiempoCon = 0;
         public string cvdoctor= "";
-        public decimal Tminentrada = 0;
-        public decimal Tminsalida = 0;
+        public int Tminentrada = 0;
+        public int Tminsalida = 0;
 
-        public decimal tminEntraComedor = 0;
-        public decimal tminSalComedor= 0;
+        public int tminEntraComedor = 0;
+        public int tminSalComedor= 0;
         public int TiempoPred = 0;
         public string cvpaciente = "";
         public string nombrepaciente = "";
@@ -96,7 +96,7 @@ namespace SHOPCONTROL.HistorialClinica
             GenerarCitasdiarias();
 
 
-            if (valoresg.IdEmployee.Equals("14141"))
+            if (valoresg.USUARIOSIS.Equals("ROOT"))
             {
                 rootlabelingresoimporte.Visible = true;
                 rootlabelingresoporarea.Visible = true;
@@ -137,7 +137,7 @@ namespace SHOPCONTROL.HistorialClinica
         public void GenerarCitasdiarias()
         {
 
-             string Query = "Select * from citas where fechacod='" + dateTimePicker1.Value.ToString("yyyyMMdd") + "' and cvdoctor='" + comboBox1.SelectedValue.ToString()+ "'";
+            string Query = "Select * from citas where fechacod='" + dateTimePicker1.Value.ToString("yyyyMMdd") + "' and cvdoctor='" + comboBox1.SelectedValue.ToString()+ "' AND  estatus = 'LIBRE'";
             conectorSql conecta = new conectorSql();
             bool existecitas = conecta.ExisteRegistro(Query);
             conecta.CierraConexion();
@@ -147,11 +147,13 @@ namespace SHOPCONTROL.HistorialClinica
                 if (DCOMEDOR == "SI")
                 {
 
-                    decimal trecorre = Tminentrada;
+                    int trecorre = Tminentrada;
                     while (trecorre <= (tminEntraComedor - tiempoCon))
                     {
-                        decimal ConverHora = trecorre / 60;
-                        decimal ConMinutos = trecorre % 60;
+
+
+                        int ConverHora = trecorre / 60;
+                        int ConMinutos = trecorre % 60;
                         cvdoctor = comboBox1.SelectedValue.ToString();
                         string CadHora = ConverHora.ToString();
                         string cadena = CadHora;
@@ -171,7 +173,7 @@ namespace SHOPCONTROL.HistorialClinica
 
                         DateTime ReFecha = dateTimePicker1.Value;
 
-                        Query = "Delete from citas where fecha='" + ReFecha.ToString("dd/MM/yyyy") + "' and progresivo='" + contador.ToString() + "' and cvdoctor='" + cvdoctor + "'";
+                        Query = "Delete from citas where fecha='" + ReFecha.ToString("dd/MM/yyyy") + "' and progresivo='" + contador.ToString() + "' and cvdoctor='" + cvdoctor + "' AND  estatus ='LIBRE' ";
                         conecta.Excute(Query);
                         conecta.CierraConexion();
 
@@ -223,8 +225,8 @@ namespace SHOPCONTROL.HistorialClinica
                     trecorre = tminSalComedor;
                     while (trecorre <= Tminsalida)
                     {
-                        decimal ConverHora = trecorre / 60;
-                        decimal ConMinutos = trecorre % 60;
+                        int ConverHora = trecorre / 60;
+                        int ConMinutos = trecorre % 60;
                         cvdoctor = comboBox1.SelectedValue.ToString();
                         string CadHora = ConverHora.ToString();
                         string cadena = CadHora;
@@ -243,7 +245,7 @@ namespace SHOPCONTROL.HistorialClinica
                         string ReHoraEntrada = CadHora + ":" + Cadmin;
 
                         DateTime ReFecha = dateTimePicker1.Value;
-                        Query = "Delete from citas where fecha='" + ReFecha.ToString("dd/MM/yyyy") + "' and progresivo='" + contador.ToString() + "' and cvdoctor='" + cvdoctor + "'";
+                        Query = "Delete from citas where fecha='" + ReFecha.ToString("dd/MM/yyyy") + "' and progresivo='" + contador.ToString() + "' and cvdoctor='" + cvdoctor + "' AND  estatus = 'LIBRE'";
                         conecta.Excute(Query);
                         conecta.CierraConexion();
 
@@ -294,11 +296,11 @@ namespace SHOPCONTROL.HistorialClinica
                 }
                 else // cuando no tiene comedor
                 {
-                    decimal trecorre = Tminentrada;
+                    int trecorre = Tminentrada;
                     while (trecorre <= (Tminsalida- tiempoCon))
                     {
-                        decimal ConverHora = trecorre / 60;
-                        decimal ConMinutos = trecorre % 60;
+                        int ConverHora = trecorre / 60;
+                        int ConMinutos = trecorre % 60;
                         cvdoctor = comboBox1.SelectedValue.ToString();
                         string CadHora = ConverHora.ToString();
                         string cadena = CadHora;
@@ -409,18 +411,28 @@ namespace SHOPCONTROL.HistorialClinica
 
             conectorSql conecta = new conectorSql();
             int Horaminutos=(DateTime.Now.Hour*60  + DateTime.Now.Minute)-30;
-
-            string query = "Select citas.progresivo, citas.nombre, citas.ttiempo, citas.cvdoctor, citas.cvpaciente, citas.fecha, citas.horainicia, citas.estatus, citas.tipo, citas.NombreServicio, citas.emite, citas.recibopago, citas.telefono, citas.observa , citas.idturno,citas.horapago,citas.horatermina";
+            /*
+            string query = "Select distinct citas.progresivo, citas.nombre, citas.ttiempo, citas.cvdoctor, citas.cvpaciente, citas.fecha, citas.horainicia, citas.estatus, citas.tipo, citas.NombreServicio, citas.emite, citas.recibopago, citas.telefono, citas.observa , citas.idturno,citas.horapago,citas.horatermina";
             query = query + " from citas  ";
             query=query + " where fechacod='" + dateTimePicker1.Value.ToString("yyyyMMdd") +"' and citas.cvdoctor='" + comboBox1.SelectedValue.ToString() + "'";
             if (checkBox2.Checked == true) query = query + " and hmininicia>='" + Horaminutos.ToString() + "'";
             if (textBox13.Text.Trim()!="") query = query + " and citas.nombre like '%" + textBox13.Text.Trim() + "%'";
-            query = query + " order by progresivo asc";
-          
-            
+            query = query + " order by horainicia asc";
+            */
+
+            string query = "Select distinct citas.progresivo, citas.nombre, citas.ttiempo, citas.cvdoctor, citas.cvpaciente, citas.fecha, citas.horainicia, citas.estatus, citas.tipo, citas.NombreServicio, citas.emite, citas.recibopago, citas.telefono, citas.observa , citas.idturno,citas.horapago,citas.horatermina";
+            query = query + " from citas  ";
+            query = query + " where progresivo in (select max(progresivo) from citas where fechacod = '" + dateTimePicker1.Value.ToString("yyyyMMdd") + "' and cvdoctor='" + comboBox1.SelectedValue.ToString() + "' group by horainicia ) and citas.fechacod='" + dateTimePicker1.Value.ToString("yyyyMMdd") + "' and citas.cvdoctor='" + comboBox1.SelectedValue.ToString() + "' ";
+            if (checkBox2.Checked == true) query = query + " and hmininicia>='" + Horaminutos.ToString() + "'";
+            if (textBox13.Text.Trim() != "") query = query + " and citas.nombre like '%" + textBox13.Text.Trim() + "%'";
+            query = query + " order by horainicia asc";
+
+
+
             SqlDataReader leer = conecta.RecordInfo(query);
             while (leer.Read())
             {
+
                 string progresivo = leer["progresivo"].ToString();
                 string cvdoctor = leer["cvdoctor"].ToString();
                 ListViewItem lvi = new ListViewItem(progresivo);
@@ -536,6 +548,7 @@ namespace SHOPCONTROL.HistorialClinica
 
         private void RegistroCitas_Load(object sender, EventArgs e)
         {
+            panelCostoTotal.Visible = false;
             dateTimePicker1.Value = DateTime.Now;
             ConsecutivoTurnos();
             combos.ComboDoctores(comboBox1);
@@ -1198,13 +1211,13 @@ namespace SHOPCONTROL.HistorialClinica
             textBox12.Text = NUMEXPEDIENTEG.ToString();
         }
 
-        public string existeNombre(string nombre)
+        public string existeNombre(int idcliente)
         {
-            string nombrereg = nombre;
+            // string nombrereg = nombre;
             bool existeNom=false;
             string clave = "";
             conectorSql conecta = new conectorSql();
-            string consulta = "select * from pacientes where nombre='" + nombre +"'";
+            string consulta = "select * from pacientes where clave=" + idcliente +"";
             SqlDataReader leer = conecta.RecordInfo(consulta);
             while (leer.Read())
             {
@@ -1249,14 +1262,14 @@ namespace SHOPCONTROL.HistorialClinica
                 return;
             }
 
-            string claveNombreReg=existeNombre(textBox1.Text.ToUpper());
+            string claveNombreReg=existeNombre(Int32.Parse(textBox6.Text));
             if (claveNombreReg!="") 
             {
                 checkBox1.Checked = false;
                 timer1.Enabled = false;
                 textBox6.Enabled = true;
                 // MessageBox.Show("El nombre ya esta registrado la clave del paciente es "+ claveNombreReg.ToString(), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                textBox6.Text=claveNombreReg;
+                // textBox6.Text=claveNombreReg;
                 BuscarPaciente();
                 // return;
             }
@@ -1272,7 +1285,11 @@ namespace SHOPCONTROL.HistorialClinica
                 }
             }
 
-            ProcesoGuardarPaciente();
+            if (checkBox1.Checked)
+            {
+                ProcesoGuardarPaciente();
+            }
+            
             if (checkBox1.Checked == true)
             {
                 
@@ -1333,6 +1350,27 @@ namespace SHOPCONTROL.HistorialClinica
             string TURNOTICKET = ValArea + "-" + numticket;
 
             valoresg.SERVICIONOMBRE = cvservicio;
+
+            // Tabla créditos
+            // La clave del paciente es el id de crédito, se debe guardar en otra tbla para validar el saldo inicial y el abono 
+            // guardar cvproducto, cvproducto, fecha, costo inicial
+            if (checkBox8.Checked && CostoNuevoServicio.Text != "")
+            {
+
+                string queryInsert = "Insert into creditos (cvcliente, cvproducto, nombreServicio, fechaCredito, importeTotal, SaldoDia, status) values (" + cvpaciente + "," + cvservicio + ",'" + nombreservicio + "','" + DateTime.Now + "'," + CostoNuevoServicio.Text + ","  + CostoNuevoServicio.Text + "," + 1 + ")";
+                if (conecta.Excute(queryInsert))
+                {
+                    MessageBox.Show("Se ha creado un nuevo crédito para su posterior seguimiento, sugiera al cliente conservar su número de cliente (" + cvpaciente + ") para el seguimiento de sus pagos", "Aviso" ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                } else
+                {
+                    MessageBox.Show("El nuevo crédito que está intentando guardar ya existe, si esto solo es un pago mensual o anticipo, favor de desmarcar la opción 'Es pago inicial de algún servicio?' y vuelva a intentar guardar el pago", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
+                    return;
+                }
+            }
+            CostoNuevoServicio.Text = "";
+            checkBox8.Checked = false;
+            panelCostoTotal.Visible = false;
 
             string Query = "Update citas set  nombre='" + nombre + "',  cvservicio='" + cvservicio + "'";
             Query = Query + "  , observa='" + observa + "' , emite='" + valoresg.USUARIOSIS + "', Estatus='SIN PAGAR', tipo='" + tipor + "', NombreServicio='"+ nombreservicio + "'";
@@ -1415,7 +1453,8 @@ namespace SHOPCONTROL.HistorialClinica
             /*
              * Enviar correo al cliente de su cita
              * 
-             * */
+             * 
+             */
             string cfnFile = @"\\SRV-DATACENTER\tmp\EmailConf.xml";
             bool cfnExist = File.Exists(cfnFile);
             XDocument xdoc = XDocument.Load(cfnExist ? @"\\SRV-DATACENTER\tmp\EmailConf.xml" : @"C:\tmp\EmailConf.xml");
@@ -1430,7 +1469,7 @@ namespace SHOPCONTROL.HistorialClinica
                 if (ValidateData.IsValidEmail(emailPaciente) == true)
                 {
                     mails.SendMail(numticket + " su id único:" + cvpaciente, emailPaciente, nombre, "Con fecha: " + HoraInicia.ToString(), sel_nomArea, true);
-                    return;
+                    // return;
                 }
             }
 
@@ -1716,7 +1755,7 @@ namespace SHOPCONTROL.HistorialClinica
                 cryRpt.Close();
                 cryRpt.Dispose();
 
-                MessageBox.Show("Se mando a imprimir el ticket ", "Impresion de Ticket", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Se mandó a imprimir el ticket ", "Impresion de Ticket", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -2327,6 +2366,27 @@ namespace SHOPCONTROL.HistorialClinica
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void label48_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CostoNuevoServicio_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox8_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox8.Checked)
+            {
+                panelCostoTotal.Visible = true;
+            } else
+            {
+                panelCostoTotal.Visible = false;
+            }
         }
     }
 }

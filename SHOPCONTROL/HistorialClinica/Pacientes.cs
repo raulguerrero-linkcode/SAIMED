@@ -1724,6 +1724,11 @@ namespace SHOPCONTROL.HistorialClinica
         {
 
         }
+
+        private void listView3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
