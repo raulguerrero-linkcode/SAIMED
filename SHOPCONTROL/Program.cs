@@ -28,8 +28,8 @@ namespace SHOPCONTROL
             // timer.Elapsed += Timer_Elapsed;
             // timer.Start();
             
-            var timer = new System.Threading.Timer(
-               s => Application.Exit(), null, CalcMsToHour(21, 00, 00), Timeout.Infinite);
+            // var timer = new System.Threading.Timer(
+            //   s => Application.Exit(), null, CalcMsToHour(21, 00, 00), Timeout.Infinite);
             
             int ActiveAccessTocken = ValLicencia();
             
@@ -118,7 +118,7 @@ namespace SHOPCONTROL
                     int ActiveAccessTocken = ValLicencia();
 
                     DateTime begindate = Convert.ToDateTime("10/Jul/2022");
-                    DateTime enddate = Convert.ToDateTime("12/Jul/2022");
+                    DateTime enddate = Convert.ToDateTime("12/Jul/2023");
                     while (begindate < enddate)
                     {
 

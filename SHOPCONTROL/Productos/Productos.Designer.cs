@@ -450,7 +450,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1084, 655);
+            this.panel4.Size = new System.Drawing.Size(1084, 637);
             this.panel4.TabIndex = 54;
             this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
@@ -468,7 +468,7 @@
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel1.Location = new System.Drawing.Point(3, 106);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1068, 505);
+            this.panel1.Size = new System.Drawing.Size(1068, 462);
             this.panel1.TabIndex = 142;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
@@ -1046,6 +1046,7 @@
             this.button8.Text = "&Calcular ";
             this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Visible = false;
             this.button8.Click += new System.EventHandler(this.button8_Click_1);
             // 
             // button2
@@ -1071,6 +1072,7 @@
             this.textBox17.Name = "textBox17";
             this.textBox17.Size = new System.Drawing.Size(86, 23);
             this.textBox17.TabIndex = 56;
+            this.textBox17.Visible = false;
             // 
             // button1
             // 
@@ -1096,6 +1098,7 @@
             this.textBox18.Name = "textBox18";
             this.textBox18.Size = new System.Drawing.Size(81, 23);
             this.textBox18.TabIndex = 57;
+            this.textBox18.Visible = false;
             // 
             // textBox19
             // 
@@ -1107,6 +1110,7 @@
             this.textBox19.Name = "textBox19";
             this.textBox19.Size = new System.Drawing.Size(73, 23);
             this.textBox19.TabIndex = 54;
+            this.textBox19.Visible = false;
             // 
             // label20
             // 
@@ -1119,6 +1123,7 @@
             this.label20.TabIndex = 63;
             this.label20.Text = "Precio publico 3";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label20.Visible = false;
             // 
             // textBox14
             // 
@@ -1130,6 +1135,7 @@
             this.textBox14.Name = "textBox14";
             this.textBox14.Size = new System.Drawing.Size(86, 23);
             this.textBox14.TabIndex = 52;
+            this.textBox14.Visible = false;
             // 
             // textBox15
             // 
@@ -1141,6 +1147,7 @@
             this.textBox15.Name = "textBox15";
             this.textBox15.Size = new System.Drawing.Size(81, 23);
             this.textBox15.TabIndex = 53;
+            this.textBox15.Visible = false;
             // 
             // textBox16
             // 
@@ -1152,6 +1159,7 @@
             this.textBox16.Name = "textBox16";
             this.textBox16.Size = new System.Drawing.Size(73, 23);
             this.textBox16.TabIndex = 51;
+            this.textBox16.Visible = false;
             // 
             // label19
             // 
@@ -1164,6 +1172,7 @@
             this.label19.TabIndex = 62;
             this.label19.Text = "Precio publico 2";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label19.Visible = false;
             // 
             // label18
             // 
@@ -1335,7 +1344,7 @@
             this.Lv.HideSelection = false;
             this.Lv.Location = new System.Drawing.Point(3, 106);
             this.Lv.Name = "Lv";
-            this.Lv.Size = new System.Drawing.Size(1069, 520);
+            this.Lv.Size = new System.Drawing.Size(1069, 475);
             this.Lv.TabIndex = 141;
             this.Lv.UseCompatibleStateImageBehavior = false;
             this.Lv.View = System.Windows.Forms.View.Details;
@@ -1360,9 +1369,9 @@
             this.panel6.Controls.Add(this.button7);
             this.panel6.Controls.Add(this.button10);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, 655);
+            this.panel6.Location = new System.Drawing.Point(0, 637);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1084, 95);
+            this.panel6.Size = new System.Drawing.Size(1084, 116);
             this.panel6.TabIndex = 2;
             // 
             // button4
@@ -1426,7 +1435,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1084, 750);
+            this.ClientSize = new System.Drawing.Size(1084, 753);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel6);

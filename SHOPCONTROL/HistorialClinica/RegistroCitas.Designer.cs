@@ -138,6 +138,7 @@
             this.informaciónDeLaCitaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.BtnGenerarRecibo = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -149,6 +150,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.BtnGenerarRecibo);
             this.panel1.Controls.Add(this.rootlabelingresoimporte);
             this.panel1.Controls.Add(this.rootlabelingresoporarea);
             this.panel1.Controls.Add(this.label47);
@@ -329,7 +331,7 @@
             this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button13.Location = new System.Drawing.Point(874, 7);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(86, 39);
+            this.button13.Size = new System.Drawing.Size(86, 30);
             this.button13.TabIndex = 19;
             this.button13.Text = "Reporte";
             this.button13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -363,7 +365,7 @@
             this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button12.Location = new System.Drawing.Point(778, 7);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(97, 39);
+            this.button12.Size = new System.Drawing.Size(97, 30);
             this.button12.TabIndex = 16;
             this.button12.Text = "Reagendar";
             this.button12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -411,7 +413,7 @@
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button4.Location = new System.Drawing.Point(693, 6);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(86, 39);
+            this.button4.Size = new System.Drawing.Size(86, 31);
             this.button4.TabIndex = 3;
             this.button4.Text = "Cancelar";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -426,7 +428,7 @@
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.Location = new System.Drawing.Point(610, 6);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(81, 39);
+            this.button3.Size = new System.Drawing.Size(81, 31);
             this.button3.TabIndex = 2;
             this.button3.Text = "Buscar ";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1423,6 +1425,20 @@
             this.timer2.Interval = 180000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // BtnGenerarRecibo
+            // 
+            this.BtnGenerarRecibo.BackColor = System.Drawing.Color.White;
+            this.BtnGenerarRecibo.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnGenerarRecibo.Image = global::SHOPCONTROL.Properties.Resources.ball_green;
+            this.BtnGenerarRecibo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnGenerarRecibo.Location = new System.Drawing.Point(610, 43);
+            this.BtnGenerarRecibo.Name = "BtnGenerarRecibo";
+            this.BtnGenerarRecibo.Size = new System.Drawing.Size(115, 29);
+            this.BtnGenerarRecibo.TabIndex = 71;
+            this.BtnGenerarRecibo.Text = "Crear recibo";
+            this.BtnGenerarRecibo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnGenerarRecibo.UseVisualStyleBackColor = false;
+            // 
             // RegistroCitas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1567,5 +1583,6 @@
         private System.Windows.Forms.Panel panelCostoTotal;
         private System.Windows.Forms.TextBox CostoNuevoServicio;
         private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Button BtnGenerarRecibo;
     }
 }

@@ -413,7 +413,7 @@ namespace SHOPCONTROL
             textBox11.Text = "";
             textBox16.Text = "";
 
-            comboBox3.Text = "";
+            Precio.Text = "";
             comboBox4.Text = "";
 
             label32.Text = "0";
@@ -692,7 +692,8 @@ namespace SHOPCONTROL
             }
 
             SqlDataReader leer = conecta.RecordInfo(Query);
-            comboBox3.Items.Clear();
+            // comboBox3.Items.Clear();
+            Precio.Text = "";
             while (leer.Read())
             {
                 label30.Text = clave;
@@ -724,16 +725,16 @@ namespace SHOPCONTROL
                     decimal precio1 = decimal.Parse(leer2["publico1"].ToString());
                     decimal precio2 = decimal.Parse(leer2["publico2"].ToString());
                     decimal precio3 = decimal.Parse(leer2["publico3"].ToString());
-                    if (precio1 > 0 && precio1 != distribuidor) comboBox3.Items.Add(precio1.ToString());
-                    if (precio2 > 0 && precio2 != distribuidor) comboBox3.Items.Add(precio2.ToString());
-                    if (precio3 > 0 && precio3 != distribuidor) comboBox3.Items.Add(precio3.ToString());
-                    comboBox3.Text = precio1.ToString();
+                    if (precio1 > 0 && precio1 != distribuidor) Precio.Text = precio1.ToString();
+                    // if (precio2 > 0 && precio2 != distribuidor) comboBox3.Items.Add(precio2.ToString());
+                    // if (precio3 > 0 && precio3 != distribuidor) comboBox3.Items.Add(precio3.ToString());
+                    // comboBox3.Text = precio1.ToString();
                     label20.Text = distribuidor.ToString();
 
                 }
                 conecta2.CierraConexion();
-                if (HABILITAPRECIO == true) comboBox3.DropDownStyle = ComboBoxStyle.DropDown;
-                else comboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
+                // if (HABILITAPRECIO == true) comboBox3.DropDownStyle = ComboBoxStyle.DropDown;
+                // else comboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
 
                 textBox4.Focus();
 
@@ -1070,7 +1071,6 @@ namespace SHOPCONTROL
             FECHACOD = "";
 
             label67.Visible = false;
-            SqlDataReader leer3 = null;
             string Query = "Select * from recibos where numrecibo ='" + numpedido + "'";
             label17.Text = numpedido;
             SqlDataReader leer = conecta.RecordInfo(Query);
@@ -1296,7 +1296,7 @@ namespace SHOPCONTROL
 
         private void button10_Click(object sender, EventArgs e)
         {
-            PrecioProductoActualiza(textBox3.Text);
+            // PrecioProductoActualiza(textBox3.Text);
             AgregarProducto();
             LimpiarProducto();
         }
@@ -1328,14 +1328,14 @@ namespace SHOPCONTROL
         {
             ColumnasProducto();
             if (textBox3.Text == "") return;
-            if (comboBox3.Text == "") return;
+            if (Precio.Text == "") return;
 
             decimal Numero = 0;
-            bool esDecimal = decimal.TryParse(comboBox3.Text, out Numero);
+            bool esDecimal = decimal.TryParse(Precio.Text, out Numero);
             if (esDecimal == false)
             {
                 MessageBox.Show("El precio debe ser númerico, verifique", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                comboBox3.Focus();
+                Precio.Focus();
                 return;
             }
 
@@ -1390,11 +1390,7 @@ namespace SHOPCONTROL
             else
             {
 
-
-
-
-
-                decimal PrecioConIVA = decimal.Parse(comboBox3.Text);
+                decimal PrecioConIVA = decimal.Parse(Precio.Text);
                 if (CALCULOIVA == "2" && radioButton3.Checked == true) PrecioConIVA = PrecioConIVA / (1 + IVAParametro);
 
                 if (this.radioButton3.Checked)
@@ -1416,7 +1412,7 @@ namespace SHOPCONTROL
 
                 decimal precio = PrecioConIVA;
                 decimal total = precio * cantidad;
-                string NumPrecio = comboBox3.SelectedIndex.ToString();
+                string NumPrecio = Precio.ToString();
                 decimal Rdescuento = (total * Pordescuento) / 100 * -1;
 
                 decimal PreDistribuidor = decimal.Parse(label20.Text);
@@ -1459,7 +1455,7 @@ namespace SHOPCONTROL
         public void PrecioProductoActualiza(string cvproducto)
         {
             conectorSql conecta = new conectorSql();
-            string Query = "Update ListaPrecios set publico1='" + comboBox3.Text + "' where cvproducto='" + cvproducto + "'";
+            string Query = "Update ListaPrecios set publico1='" + Precio.Text + "' where cvproducto='" + cvproducto + "'";
             conecta.Excute(Query);
         }
 
@@ -1494,7 +1490,7 @@ namespace SHOPCONTROL
 
 
             string distribuidor = "1";
-            string publico1 = comboBox3.Text.Trim();
+            string publico1 = Precio.Text.Trim();
             string porciento1 = "0";
             string ganancia1 = publico1;
             string publico2 = "0";
@@ -1582,7 +1578,7 @@ namespace SHOPCONTROL
 
         private void textBox4_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) comboBox3.Focus();
+            if (e.KeyCode == Keys.Enter) Precio.Focus();
         }
 
         private void comboBox3_KeyDown(object sender, KeyEventArgs e)
@@ -1609,7 +1605,7 @@ namespace SHOPCONTROL
             comboBox4.Text = "";
             textBox4.Text = "";
             textBox8.Text = "";
-            comboBox3.Text = "";
+            Precio.Text = "";
 
         }
         decimal IVAParametro;
@@ -1626,7 +1622,7 @@ namespace SHOPCONTROL
             try
             {
                 CALCULOIVA = "1";
-                comboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
+                // comboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
                 conectorSql conecta = new conectorSql();
                 string Query = "Select * from parametros where habilitarprecio<>''";
                 SqlDataReader leer = conecta.RecordInfo(Query);
@@ -1661,7 +1657,7 @@ namespace SHOPCONTROL
                 }
                 conecta.CierraConexion();
 
-                if (HABILITAPRECIO == true) comboBox3.DropDownStyle = ComboBoxStyle.DropDown;
+               //  if (HABILITAPRECIO == true) comboBox3.DropDownStyle = ComboBoxStyle.DropDown;
             }
             catch (Exception E)
             {
@@ -2135,8 +2131,8 @@ namespace SHOPCONTROL
             Query = Query + "'" + CVCLIENTE + "'";
             Query = Query + ",'" + NUMPEDIDO + "'";
             Query = Query + ",'" + TOTAL + "'";
-            Query = Query + ",'" + FECHA.ToString() + "'";
-            Query = Query + ",'" + FECHA.ToString() + "'";
+            Query = Query + ",'" + DateTime.Now.ToString("dd/MM/yyyy") + "'";
+            Query = Query + ",'" + DateTime.Now.ToString("yyyyMMdd") + "'";
             Query = Query + ",'REGISTRO DE RECIBO - " + NUMPEDIDO + "'";
             Query = Query + ",'1'"; //pendiente por verificar el cobro ESTATUS 1
             Query = Query + ",'" + NUMPEDIDO + "'";
@@ -2818,12 +2814,26 @@ namespace SHOPCONTROL
         */
         private void button15_Click(object sender, EventArgs e)
         {
-            Modremision.CANCELANUMRECIBO = label50.Text;
-            CancelaRecibo cancela = new CancelaRecibo();
-            cancela.ShowDialog();
+            if (valoresg.USUARIOSIS.Equals("ROOT"))
+            {
+                Modremision.CANCELANUMRECIBO = label50.Text;
+                CancelaRecibo cancela = new CancelaRecibo();
+                cancela.ShowDialog();
+            }
+            else
+            {
+                string cfnFile = @"\\SRV-DATACENTER\tmp\EmailConf.xml";
+                bool cfnExist = File.Exists(cfnFile);
+                XDocument xdoc = XDocument.Load(cfnExist ? @"\\SRV-DATACENTER\tmp\EmailConf.xml" : @"C:\tmp\EmailConf.xml");
+                string EnableMail = xdoc.Descendants("EnableSendMails").First().Value;
+                if (EnableMail.Equals("1"))
+                {
+                    MailNotifications mail = new MailNotifications();
+                    mail.SendMailOnlySubjectAndMSG("Rol: " + valoresg.USUARIOSIS + "<br>usuario:" + valoresg.IdEmployee + "<br>Ubicación:" + valoresg.UBICACION + "<br>Se ha  intentado cancelar el número de recibo " + label50.Text, xdoc.Descendants("emailTo").First().Value);
+                }
+                MessageBox.Show("Acceso restringido, solo un usuario Director puede cancelar un recibo", "Forbidden", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
-
-
 
 
 
@@ -3026,8 +3036,8 @@ namespace SHOPCONTROL
             comboBox4.Text = "";
             textBox4.Text = "";
             textBox8.Text = "";
-            comboBox3.Text = "";
-            comboBox3.Items.Clear();
+            Precio.Text = "";
+            // comboBox3.Items.Clear();
             textBox3.Focus();
         }
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -3114,7 +3124,7 @@ namespace SHOPCONTROL
             textBox4.Text = Lv2.Items[index].SubItems[1].Text;
             textBox8.Text = Lv2.Items[index].SubItems[3].Text;
             comboBox4.Text = Lv2.Items[index].Text;
-            comboBox3.Text = Lv2.Items[index].SubItems[4].Text;
+            Precio.Text = Lv2.Items[index].SubItems[4].Text;
             textBox4.Focus();
         }
 
@@ -3210,9 +3220,25 @@ namespace SHOPCONTROL
 
         private void button14_Click_1(object sender, EventArgs e)
         {
-            Modremision.CANCELANUMRECIBO = label50.Text;
-            CancelaRecibo cancela = new CancelaRecibo();
-            cancela.ShowDialog();
+            if (valoresg.USUARIOSIS.Equals("ROOT"))
+            {
+                Modremision.CANCELANUMRECIBO = label50.Text;
+                CancelaRecibo cancela = new CancelaRecibo();
+                cancela.ShowDialog();
+            }
+            else
+            {
+                string cfnFile = @"\\SRV-DATACENTER\tmp\EmailConf.xml";
+                bool cfnExist = File.Exists(cfnFile);
+                XDocument xdoc = XDocument.Load(cfnExist ? @"\\SRV-DATACENTER\tmp\EmailConf.xml" : @"C:\tmp\EmailConf.xml");
+                string EnableMail = xdoc.Descendants("EnableSendMails").First().Value;
+                if (EnableMail.Equals("1"))
+                {
+                    MailNotifications mail = new MailNotifications();
+                    mail.SendMailOnlySubjectAndMSG("Rol: " + valoresg.USUARIOSIS + "<br>usuario:" + valoresg.IdEmployee + "<br>Ubicación:" + valoresg.UBICACION + "<br>Se ha  intentado cancelar el número de recibo " + label50.Text , xdoc.Descendants("emailTo").First().Value);
+                }
+                MessageBox.Show("Acceso restringido, solo un usuario Director puede cancelar un recibo", "Forbidden", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void button16_Click_1(object sender, EventArgs e)
@@ -3335,13 +3361,6 @@ namespace SHOPCONTROL
         }
 
     }
-
-
-
-
-
-
-
 
 
 }

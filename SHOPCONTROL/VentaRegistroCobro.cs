@@ -4,6 +4,9 @@ using System.Data.SqlClient;
 using System.Runtime.InteropServices;
 //using System.Collections.Generic;  //MODIFICADO POR JOSE 26-11-19
 using System.Globalization;
+using System.IO;
+using System.Xml.Linq;
+using System.Linq;
 
 namespace SHOPCONTROL
 {
@@ -23,6 +26,26 @@ namespace SHOPCONTROL
 
         private void button5_Click(object sender, EventArgs e)
         {
+            string cfnFile = @"\\SRV-DATACENTER\tmp\EmailConf.xml";
+            bool cfnExist = File.Exists(cfnFile);
+            XDocument xdoc = XDocument.Load(cfnExist ? @"\\SRV-DATACENTER\tmp\EmailConf.xml" : @"C:\tmp\EmailConf.xml");
+
+            //XDocument xdoc = XDocument.Load("./EmailConf.xml");
+            string EnableMail = xdoc.Descendants("EnableSendMails").First().Value;
+            if (EnableMail.Equals("1"))
+            {
+                MailNotifications mail = new MailNotifications();
+                mail.SendMailOnlySubjectAndMSG("Número de recibo " + textBox1.Text.Trim() + " No cobrado al cliente Id:" + label19.Text , "El usuario: " + valoresg.IdEmployee + " " + valoresg.Nombre_Completo.Trim() + "<br> No registró el cobro del recibo: " + textBox1.Text.Trim() + "<br> Importe: " + label11.Text);
+
+            }
+
+            conectorSql conecta = new conectorSql();
+            SqlDataReader leer = null;
+            // Registro de pagos 
+            string query = "insert into DetallesPagos (numrecibo, cvcliente, debito, credito, efectivo, totalRecibo, totalCambio, totalNumRecibo, STATUS) values(" + textBox1.Text.Trim() + "," + label19.Text + "," + 0 + "," + 0 + "," + 0 + "," + 0 + "," + 0 + "," + label11.Text + ",'NO COBRADO')";
+            conecta.Excute(query);
+            conecta.CierraConexion();
+
             NoexisteRecibo();
             valoresg.NUMPEDIDOREGISTRAR = "";
             this.Dispose();
@@ -163,14 +186,15 @@ namespace SHOPCONTROL
             string fechapago = DateTime.Now.ToString("dd/MM/yyyy");
             string fcodpago = DateTime.Now.ToString("yyyyMMdd") ;
             string emitiopago = valoresg.USUARIOSIS ;
+
+
             string pagocon="EFECTIVO";
             string bandera = "1";
             pagocon = "EFECTIVO";
             if (comboBox1.SelectedIndex==0) pagocon = "EFECTIVO";
             if (comboBox1.SelectedIndex == 1) pagocon = "DEBITO";
             //if (comboBox1.SelectedIndex == 2) pagocon = "CREDITO"; //MODIFICADO POR JOSE 10-12-2019
-
-
+            
             string observacion ="";
             string numremision=NUMPEDIDO;
             string ayo=DateTime.Now.Year.ToString();
@@ -181,7 +205,12 @@ namespace SHOPCONTROL
             string numpago = label17.Text;
             string recibio = textBox2.Text.ToString();
             string cambio = label9.Text.ToString();
-           
+
+            // Registro de pagos 
+            query = "insert into DetallesPagos (numrecibo, cvcliente, debito, credito, efectivo, totalRecibo, totalCambio, totalNumRecibo,STATUS) values(" + numpedido + "," + cvcliente + "," + debito.Text + "," + credito.Text + "," + efectivo.Text + "," + recibio + "," + cambio + "," + label11.Text + ",'PAGADO')";
+            conecta.Excute(query);
+
+
             query = "Delete from pagos where numpedido='" + numRecibo + "' and cantidad='0'";
             conecta.Excute(query);
 
@@ -390,6 +419,9 @@ namespace SHOPCONTROL
                 valoresg.AGENDA_FCITAPROX = "";
                 valoresg.AGENDA_RECIBO = "";
             }
+
+            CalcularPagoTotal();
+
             cargaConsecutivoPAGO();
             comboBox1.Text = "EFECTIVO";
             textBox2.Focus();
@@ -469,7 +501,8 @@ namespace SHOPCONTROL
             Lv2.Columns.Add("Total", 90).Tag = "STRING";
             Lv2.Columns.Add("Clave", 0).Tag = "STRING";
 
-            Query = "Select top(1) * from detallesrecibos  where numrecibo='" + NUMPEDIDO + "'";
+            // Query = "Select top(1) * from detallesrecibos  where numrecibo='" + NUMPEDIDO + "'";
+            Query = "Select * from detallesrecibos  where numrecibo='" + NUMPEDIDO + "'";
             leer = conecta.RecordInfo(Query);
             while (leer.Read())
             {
@@ -561,6 +594,75 @@ namespace SHOPCONTROL
             valoresg.CVPACIENTECITAR = label14.Text;
             ActivacionCitas ACTIVAR = new ActivacionCitas();
             ACTIVAR.Show();
+        }
+
+        private void debito_TextChanged(object sender, EventArgs e)
+        {
+            /*
+            this.textBox2.Text = "0";
+            decimal debitoText = decimal.Parse(this.debito.Text);
+            decimal totalText = decimal.Parse(this.textBox2.Text);
+            decimal total = debitoText + totalText;
+            textBox2.Text = total.ToString();
+            */
+            CalcularPagoTotal();
+
+        }
+
+        private void CalcularPagoTotal()
+        {
+
+            if (this.debito.Text =="")
+            {
+                this.debito.Text = "0";
+            }
+
+            if (this.credito.Text == "")
+            {
+                this.credito.Text = "0";
+            }
+
+            if (this.efectivo.Text == "")
+            {
+                this.efectivo.Text = "0";
+            }
+
+            try
+            {
+                decimal PorPagar = decimal.Parse(label11.Text);
+
+                decimal debitoText = decimal.Parse(this.debito.Text);
+                decimal creditoText = decimal.Parse(this.credito.Text);
+                decimal efectivoText = decimal.Parse(this.efectivo.Text);
+
+                decimal totalPagado = debitoText + creditoText + efectivoText;
+
+                textBox2.Text = totalPagado.ToString();
+
+                if (totalPagado < PorPagar)
+                {
+                    button20.Enabled = false;
+                } else
+                {
+                    button20.Enabled = true;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Revise los montos ingresados");
+            }
+
+            
+        }
+
+        private void credito_TextChanged(object sender, EventArgs e)
+        {
+            CalcularPagoTotal();
+        }
+
+        private void efectivo_TextChanged(object sender, EventArgs e)
+        {
+            CalcularPagoTotal();
         }
     }
 }

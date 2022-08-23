@@ -86,7 +86,6 @@
             this.label25 = new System.Windows.Forms.Label();
             this.button24 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -160,6 +159,7 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.Precio = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -783,6 +783,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel2.Controls.Add(this.Precio);
             this.panel2.Controls.Add(this.textBox14);
             this.panel2.Controls.Add(this.label281);
             this.panel2.Controls.Add(this.textBox13);
@@ -790,7 +791,6 @@
             this.panel2.Controls.Add(this.label25);
             this.panel2.Controls.Add(this.button24);
             this.panel2.Controls.Add(this.button10);
-            this.panel2.Controls.Add(this.comboBox3);
             this.panel2.Controls.Add(this.label23);
             this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel2.Location = new System.Drawing.Point(0, 204);
@@ -913,16 +913,6 @@
             this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.button10_Click);
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(117, 3);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(125, 26);
-            this.comboBox3.TabIndex = 19;
-            this.comboBox3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBox3_KeyDown);
             // 
             // label23
             // 
@@ -1841,6 +1831,16 @@
             this.timer2.Interval = 6000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // Precio
+            // 
+            this.Precio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Precio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.Precio.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Precio.Location = new System.Drawing.Point(76, 6);
+            this.Precio.Name = "Precio";
+            this.Precio.Size = new System.Drawing.Size(150, 21);
+            this.Precio.TabIndex = 202;
+            // 
             // Recibos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1987,7 +1987,6 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label54;
         private System.Windows.Forms.TextBox textBox14;
@@ -2010,5 +2009,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label47;
         public System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox Precio;
     }
 }

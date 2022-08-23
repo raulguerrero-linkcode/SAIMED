@@ -254,8 +254,7 @@ namespace SHOPCONTROL
             Query = Query + " from productos";
             Query = Query + " inner join Cat_Categorias on Cat_Categorias.idcategoria=productos.categoria ";
             Query = Query + " inner join Cat_tipos on Cat_tipos.idtipo = Productos.idtipo";                  //AGREGADO POR JOSE 02-12-2019
-            Query = Query + " where cvproducto <> ''";
-
+            Query = Query + " where cvproducto <> '' and  activo=1";
 
             //Query = Query + "Cat_tipos.descripcion as nomtipo from Productos inner join Cat_tipos on Cat_tipos.idtipo = Productos.idtipo where cvproducto <> ''";
             if (textBox11.Text != "") Query = Query + " and nombre like '%" + textBox11.Text + "%'";
@@ -391,6 +390,7 @@ namespace SHOPCONTROL
             textBox21.Text = "";
             textBox22.Text = "";
             comboBox6.Text = "";
+            comboBox6.Text = "";
 
             radioButton3.Checked = false;  //agregado por jose 02-12-2019
             radioButton4.Checked = false;  //agregado por jose 02-12-2019
@@ -433,7 +433,7 @@ namespace SHOPCONTROL
             string valor="";
             conectorSql conecta = new conectorSql();
             conectorSql conecta2 = new conectorSql();
-            string Query = "Select * from productos where cvproducto='" + clave + "'";
+            string Query = "Select * from productos where cvproducto='" + clave + "' and activo=1";
             SqlDataReader leer = conecta.RecordInfo(Query);
             while (leer.Read())
             {
@@ -780,7 +780,7 @@ namespace SHOPCONTROL
                 descripcion = Lv.Items[i].SubItems[1].Text;
                 if (Lv.Items[i].Checked == true)
                 {
-                    Query = "Delete from productos where cvproducto='" + clave + "'";
+                    Query = "update productos set activo=0, descripcion='ELIMINADO' where cvproducto='" + clave + "'";
                     conecta.Excute(Query);
                     Query = "Delete from ListaPrecios where cvproducto='" + clave + "'";
                     conecta.Excute(Query);
@@ -1140,6 +1140,26 @@ namespace SHOPCONTROL
                 return;
             }
 
+            if (textBox5.Text == "")
+            {
+                MessageBox.Show("El producto debe tener una unidad de medida, no puede estar en blanco");
+                return;
+            }
+
+
+            if (textBox3.Text == "")
+            {
+                MessageBox.Show("El producto debe tener una marca, no puede estar en blanco");
+                return;
+            }
+
+
+            if (textBox4.Text == "")
+            {
+                MessageBox.Show("El producto debe tener una cantidad existente, no puede estar en blanco");
+                return;
+            }
+
             try
             {
                 
@@ -1159,7 +1179,15 @@ namespace SHOPCONTROL
                 }
                 
 
-                string SQLexiste = "Select count(*) as conteo from Productos where nombre = '" + textBox2.Text + "'";
+                string SQLexiste = "";
+                if (textBox1.Text.Length==0)
+                {
+                    SQLexiste = "Select count(*) as conteo from Productos where cvproducto = (SELECT MAX(cvproducto)+1 from Productos) and activo = 1";
+                } else
+                {
+                    SQLexiste = "Select count(*) as conteo from Productos where cvproducto = " + textBox1.Text +" and activo = 1";
+                }
+
                 string resultadoExiste = "0";
 
                 SqlDataReader datos = conecta.RecordInfo(SQLexiste);
@@ -1174,22 +1202,22 @@ namespace SHOPCONTROL
 
                 if (ResultadosExisteInt == 1)
                 {
+                    // Si el producto existe entonces habrá que actualizar los datos
 
-                    
                     conectorSql conectaUpdate1 = new conectorSql();
                     string QueryUpdateActual = "";
                     // ueryUpdateActual = "delete from Productos where cvproducto ='" + textBox1.Text + "'";
 
-                    QueryUpdateActual = "Delete from productos where cvproducto='" + textBox1.Text + "'";
+                    QueryUpdateActual = "update productos  set cantidad = " + textBox4.Text + ", marca ='" + comboBox3.Text + "', nombre = '" + textBox2.Text +"', descripcion = '" + textBox7.Text + "', unidad ='"+ comboBox5.Text +"'  where cvproducto=" + textBox1.Text;
                     conecta.Excute(QueryUpdateActual);
-                    QueryUpdateActual = "Delete from ListaPrecios where cvproducto='" + textBox1.Text + "'";
+                    QueryUpdateActual = "update ListaPrecios set publico1 =" + textBox12.Text +", porciento1 = " + textBox9.Text + ", ganancia1= " + textBox13.Text +"   where cvproducto=" + textBox1.Text ;
                     conecta.Excute(QueryUpdateActual);
 
 
-                    conectaUpdate1.Excute(QueryUpdateActual);
-                    conectaUpdate1.CierraConexion();
+                    //conectaUpdate1.Excute(QueryUpdateActual);
+                    //conectaUpdate1.CierraConexion();
 
-                    ResultadosExisteInt = 0;
+                    //ResultadosExisteInt = 0;
 
                     string cfnFile = @"\\SRV-DATACENTER\tmp\EmailConf.xml";
                     bool cfnExist = File.Exists(cfnFile);
