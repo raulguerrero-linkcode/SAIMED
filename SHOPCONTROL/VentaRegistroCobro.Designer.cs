@@ -71,6 +71,7 @@
             this.debito = new System.Windows.Forms.TextBox();
             this.credito = new System.Windows.Forms.TextBox();
             this.efectivo = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -383,7 +384,7 @@
             this.button20.Location = new System.Drawing.Point(657, 504);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(89, 35);
-            this.button20.TabIndex = 173;
+            this.button20.TabIndex = 3;
             this.button20.Text = "&Guardar";
             this.button20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button20.UseVisualStyleBackColor = true;
@@ -454,11 +455,10 @@
             this.comboBox1.Items.AddRange(new object[] {
             "EFECTIVO",
             "TARJETA DE DEBITO"});
-            this.comboBox1.Location = new System.Drawing.Point(496, 568);
+            this.comboBox1.Location = new System.Drawing.Point(250, 410);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(198, 24);
             this.comboBox1.TabIndex = 182;
-            this.comboBox1.Visible = false;
             // 
             // label18
             // 
@@ -469,6 +469,7 @@
             this.label18.Size = new System.Drawing.Size(106, 18);
             this.label18.TabIndex = 183;
             this.label18.Text = "Tarjeta débito";
+            this.label18.Visible = false;
             // 
             // listView1
             // 
@@ -504,6 +505,7 @@
             this.label21.Size = new System.Drawing.Size(111, 18);
             this.label21.TabIndex = 192;
             this.label21.Text = "Tarjeta crédito";
+            this.label21.Visible = false;
             // 
             // label22
             // 
@@ -514,6 +516,7 @@
             this.label22.Size = new System.Drawing.Size(67, 18);
             this.label22.TabIndex = 193;
             this.label22.Text = "Efectivo";
+            this.label22.Visible = false;
             // 
             // debito
             // 
@@ -521,7 +524,10 @@
             this.debito.Location = new System.Drawing.Point(256, 389);
             this.debito.Name = "debito";
             this.debito.Size = new System.Drawing.Size(192, 29);
-            this.debito.TabIndex = 194;
+            this.debito.TabIndex = 0;
+            this.debito.Visible = false;
+            this.debito.Click += new System.EventHandler(this.debito_Click);
+            this.debito.MouseClick += new System.Windows.Forms.MouseEventHandler(this.debitoMouseClick);
             this.debito.TextChanged += new System.EventHandler(this.debito_TextChanged);
             // 
             // credito
@@ -530,7 +536,10 @@
             this.credito.Location = new System.Drawing.Point(256, 426);
             this.credito.Name = "credito";
             this.credito.Size = new System.Drawing.Size(192, 29);
-            this.credito.TabIndex = 195;
+            this.credito.TabIndex = 1;
+            this.credito.Visible = false;
+            this.credito.Click += new System.EventHandler(this.credito_Click);
+            this.credito.MouseClick += new System.Windows.Forms.MouseEventHandler(this.creditoMouseClick);
             this.credito.TextChanged += new System.EventHandler(this.credito_TextChanged);
             // 
             // efectivo
@@ -539,8 +548,21 @@
             this.efectivo.Location = new System.Drawing.Point(256, 462);
             this.efectivo.Name = "efectivo";
             this.efectivo.Size = new System.Drawing.Size(192, 29);
-            this.efectivo.TabIndex = 196;
+            this.efectivo.TabIndex = 2;
+            this.efectivo.Visible = false;
+            this.efectivo.Click += new System.EventHandler(this.efectivo_Click);
+            this.efectivo.MouseClick += new System.Windows.Forms.MouseEventHandler(this.efectivoMouseClick);
             this.efectivo.TextChanged += new System.EventHandler(this.efectivo_TextChanged);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(39, 414);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(205, 18);
+            this.label23.TabIndex = 194;
+            this.label23.Text = "Seleccione método de pago";
             // 
             // VentaRegistroCobro
             // 
@@ -549,6 +571,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(864, 620);
             this.ControlBox = false;
+            this.Controls.Add(this.label23);
             this.Controls.Add(this.efectivo);
             this.Controls.Add(this.credito);
             this.Controls.Add(this.debito);
@@ -630,5 +653,6 @@
         private System.Windows.Forms.TextBox debito;
         private System.Windows.Forms.TextBox credito;
         private System.Windows.Forms.TextBox efectivo;
+        private System.Windows.Forms.Label label23;
     }
 }

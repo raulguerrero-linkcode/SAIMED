@@ -70,7 +70,6 @@
             this.reporteDeFacturaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteDeRecibosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inventarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.faltaDePagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripDropDownButton4 = new System.Windows.Forms.ToolStripDropDownButton();
@@ -445,7 +444,6 @@
             this.reporteDeFacturaciónToolStripMenuItem,
             this.reporteDeRecibosToolStripMenuItem,
             this.inventarioToolStripMenuItem,
-            this.toolStripMenuItem4,
             this.faltaDePagosToolStripMenuItem});
             this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
             this.toolStripDropDownButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -475,13 +473,6 @@
             this.inventarioToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.inventarioToolStripMenuItem.Text = "Inventario";
             this.inventarioToolStripMenuItem.Click += new System.EventHandler(this.inventarioToolStripMenuItem_Click_1);
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(196, 22);
-            this.toolStripMenuItem4.Text = "Ingresos por área";
-            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
             // 
             // faltaDePagosToolStripMenuItem
             // 
@@ -1097,7 +1088,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ToolStripMenuItem pendientesDePagoToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.LinkLabel linkLabel6;
         private System.Windows.Forms.ToolStripMenuItem faltaDePagosToolStripMenuItem;

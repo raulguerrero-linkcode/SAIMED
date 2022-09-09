@@ -26,29 +26,39 @@ namespace SHOPCONTROL
 
         private void button5_Click(object sender, EventArgs e)
         {
+
             string cfnFile = @"\\SRV-DATACENTER\tmp\EmailConf.xml";
             bool cfnExist = File.Exists(cfnFile);
             XDocument xdoc = XDocument.Load(cfnExist ? @"\\SRV-DATACENTER\tmp\EmailConf.xml" : @"C:\tmp\EmailConf.xml");
 
-            //XDocument xdoc = XDocument.Load("./EmailConf.xml");
-            string EnableMail = xdoc.Descendants("EnableSendMails").First().Value;
-            if (EnableMail.Equals("1"))
+            DialogResult dialogResult = MessageBox.Show("Desea cancelar este cobro?", "Advertencia", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                MailNotifications mail = new MailNotifications();
-                mail.SendMailOnlySubjectAndMSG("Número de recibo " + textBox1.Text.Trim() + " No cobrado al cliente Id:" + label19.Text , "El usuario: " + valoresg.IdEmployee + " " + valoresg.Nombre_Completo.Trim() + "<br> No registró el cobro del recibo: " + textBox1.Text.Trim() + "<br> Importe: " + label11.Text);
+                //XDocument xdoc = XDocument.Load("./EmailConf.xml");
+                string EnableMail = xdoc.Descendants("EnableSendMails").First().Value;
+                if (EnableMail.Equals("1"))
+                {
+                    MailNotifications mail = new MailNotifications();
+                    mail.SendMailOnlySubjectAndMSG("Número de recibo " + textBox1.Text.Trim() + " No cobrado al cliente Id:" + label19.Text, "El usuario: " + valoresg.IdEmployee + " " + valoresg.Nombre_Completo.Trim() + "<br> No registró el cobro del recibo: " + textBox1.Text.Trim() + "<br> Importe: " + label11.Text);
+                    conectorSql conecta = new conectorSql();
+                    SqlDataReader leer = null;
+                    // Registro de pagos 
+                    string query = "insert into DetallesPagos (numrecibo, cvcliente, debito, credito, efectivo, totalRecibo, totalCambio, totalNumRecibo, STATUS) values(" + textBox1.Text.Trim() + "," + label19.Text + "," + 0 + "," + 0 + "," + 0 + "," + 0 + "," + 0 + "," + label11.Text + ",'NO COBRADO')";
+                    conecta.Excute(query);
+                    conecta.CierraConexion();
 
+                }
+                NoexisteRecibo();
+                valoresg.NUMPEDIDOREGISTRAR = "";
+                this.Dispose();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                return;
             }
 
-            conectorSql conecta = new conectorSql();
-            SqlDataReader leer = null;
-            // Registro de pagos 
-            string query = "insert into DetallesPagos (numrecibo, cvcliente, debito, credito, efectivo, totalRecibo, totalCambio, totalNumRecibo, STATUS) values(" + textBox1.Text.Trim() + "," + label19.Text + "," + 0 + "," + 0 + "," + 0 + "," + 0 + "," + 0 + "," + label11.Text + ",'NO COBRADO')";
-            conecta.Excute(query);
-            conecta.CierraConexion();
-
-            NoexisteRecibo();
-            valoresg.NUMPEDIDOREGISTRAR = "";
-            this.Dispose();
+            
+           
         }
 
         public void NoexisteRecibo()
@@ -193,6 +203,9 @@ namespace SHOPCONTROL
             pagocon = "EFECTIVO";
             if (comboBox1.SelectedIndex==0) pagocon = "EFECTIVO";
             if (comboBox1.SelectedIndex == 1) pagocon = "DEBITO";
+
+            // Seleccionar el método de pago
+
             //if (comboBox1.SelectedIndex == 2) pagocon = "CREDITO"; //MODIFICADO POR JOSE 10-12-2019
             
             string observacion ="";
@@ -596,15 +609,42 @@ namespace SHOPCONTROL
             ACTIVAR.Show();
         }
 
+        private void debito_Click(object sender, EventArgs e)
+        {
+            debito.SelectAll();
+        }
+
+        private void debitoMouseClick(Object sender, MouseEventArgs e) 
+        {
+            debito.SelectAll();
+        }
+
+        private void credito_Click(object sender, EventArgs e)
+        {
+            credito.SelectAll();
+        }
+
+        private void creditoMouseClick(Object sender, MouseEventArgs e)
+        {
+            credito.SelectAll();
+        }
+
+
+
+        private void efectivo_Click(object sender, EventArgs e)
+        {
+            efectivo.SelectAll();
+        }
+
+        private void efectivoMouseClick(Object sender, MouseEventArgs e)
+        {
+            efectivo.SelectAll();
+        }
+
+
         private void debito_TextChanged(object sender, EventArgs e)
         {
-            /*
-            this.textBox2.Text = "0";
-            decimal debitoText = decimal.Parse(this.debito.Text);
-            decimal totalText = decimal.Parse(this.textBox2.Text);
-            decimal total = debitoText + totalText;
-            textBox2.Text = total.ToString();
-            */
+
             CalcularPagoTotal();
 
         }
@@ -641,7 +681,7 @@ namespace SHOPCONTROL
 
                 if (totalPagado < PorPagar)
                 {
-                    button20.Enabled = false;
+                    button20.Enabled = true;
                 } else
                 {
                     button20.Enabled = true;

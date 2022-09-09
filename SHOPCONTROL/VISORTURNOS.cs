@@ -53,7 +53,7 @@ namespace SHOPCONTROL
 
             int indice;
 
-            double Volumen = 100;
+            double Volumen = 5;
             double Rate = double.Parse("-3");
 
             indice = 1; ///1 2
@@ -107,7 +107,7 @@ namespace SHOPCONTROL
                 consulta = consulta + " FROM Citas";
                 consulta = consulta + " inner join doctores on Doctores.cvdoctor = citas.cvdoctor";
                 consulta = consulta + " WHERE(fechacod = '" + DateTime.Now.ToString("yyyyMMdd") + "')";
-                consulta = consulta + "  AND(estatus = 'PAGADO')  and estatusserv = 'EN CONSULTA'";
+                consulta = consulta + "  AND(estatus = 'PAGADO')  and estatusserv = 'POR ATENDER'";
                 consulta = consulta + " and Citas.cvdoctor='" + cvdoctor + "'";
                 consulta = consulta + " order by idcita desc";
                 SqlDataReader leer2 = conecta2.RecordInfo(consulta);
@@ -196,7 +196,7 @@ namespace SHOPCONTROL
                 consulta = consulta + " FROM Citas";
                 consulta = consulta + " inner join doctores on Doctores.cvdoctor = citas.cvdoctor";
                 consulta = consulta + " WHERE(fechacod = '" + DateTime.Now.ToString("yyyyMMdd") + "')";
-                consulta = consulta + "  AND(estatus = 'PAGADO') ";  // and estatusserv = 'EN CONSULTA'";
+                consulta = consulta + "  AND(estatus = 'PAGADO')  and estatusserv in  ('EN CONSULTA', 'POR ATENDER')";
                 consulta = consulta + " and Citas.cvdoctor='" + cvdoctor+"'";
                 consulta = consulta + " order by progresivo desc";
 
@@ -281,9 +281,10 @@ namespace SHOPCONTROL
 
             //}
             //conecta.CierraConexion();
+            Thread.Sleep(2000); // 2 segundos
             Lv.EndUpdate();
 
-            Thread.Sleep(1000); // 2 segundos
+            
 
             for (int i = 0; i < Lv.Items.Count; i++)
             {
@@ -296,16 +297,16 @@ namespace SHOPCONTROL
                     if (consultorio.Contains("C.")) consultorio = consultorio.Replace("C.", "");
                     string idcita = Lv.Items[i].SubItems[5].Text;
 
-                    if (turno.Contains("-")) turno = turno.Replace("-", " ");
-                    Thread.Sleep(2000); // 2 segundos
+                    // if (turno.Contains("-")) turno = turno.Replace("-", " ");
+                    Thread.Sleep(3000); // 2 segundos
                     HablarTexto("TURNO " + turno);
                     HablarTexto(paciente);
-                    Thread.Sleep(1000); // 2 segundos
+                    Thread.Sleep(3000); // 2 segundos
                     HablarTexto("DOCTOR " + consultorio);
                     Lv.Items[i].SubItems[4].Text = "1";
                     string horallamada = DateTime.Now.ToString("HH:mm:00");
 
-                    string consulta = "Update citas set voz='1', horallamada='" + horallamada + "' where idcita='" + idcita + "'";
+                    string consulta = "Update citas set voz='1', horallamada='" + horallamada + "' where IDturno='" + turno + "'";
                     conecta.Excute(consulta);
                     conecta.CierraConexion();
                 }

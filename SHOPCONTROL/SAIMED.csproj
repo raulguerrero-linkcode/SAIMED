@@ -63,16 +63,16 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>81F10D86F658EC1CFB3C19FBDEB26781708CF80E</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>6DA6A5C8FE1201426DDA2265F846E8BE12C67276</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>SAIMED_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>SAIMED_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>false</SignManifests>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -1313,6 +1313,7 @@
     <None Include="ReciboUsuario.xss">
       <DependentUpon>ReciboUsuario.xsd</DependentUpon>
     </None>
+    <None Include="SAIMED_1_TemporaryKey.pfx" />
     <None Include="SAIMED_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

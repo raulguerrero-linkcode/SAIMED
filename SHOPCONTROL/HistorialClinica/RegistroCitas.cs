@@ -2363,6 +2363,111 @@ namespace SHOPCONTROL.HistorialClinica
 
         }
 
+        
+        private void SetStatusPacienteConsultaMnu(object sender, EventArgs e)
+        {
+
+            string horallamada = DateTime.Now.ToString("HH:mm:00");
+
+
+            conectorSql conecta = new conectorSql();
+
+            string condicionPago = "";
+
+            string sqlQuery = "select estatus from citas  where cvpaciente = " + CLAVEPACIENTE + " and fechacod = '" + DateTime.Now.ToString("yyyyMMdd") + "'";
+            SqlDataReader leer2 = conecta.RecordInfo(sqlQuery);
+            while (leer2.Read())
+            {
+               condicionPago = leer2["estatus"].ToString();
+                
+            }
+
+            if (condicionPago.Equals("PAGADO"))
+            {
+                string sql = "Update citas set voz='0', estatusserv='EN CONSULTA', horallamada='" + horallamada + "' where cvpaciente ='" + CLAVEPACIENTE + "' and fechacod = '" + DateTime.Now.ToString("yyyyMMdd") + "'";
+
+                conecta.Excute(sql);
+                conecta.CierraConexion();
+                MessageBox.Show("Actualizado");
+
+            } else
+            {
+                MessageBox.Show("Falta pago para actualizar el status del Paciente");
+
+            }
+
+        }
+
+        
+        private void SetStatusPacienteAtendidoMnu(object sender, EventArgs e)
+        {
+            string horallamada = DateTime.Now.ToString("HH:mm:00");
+
+
+            conectorSql conecta = new conectorSql();
+
+            string condicionPago = "";
+
+            string sqlQuery = "select estatus from citas  where cvpaciente = " + CLAVEPACIENTE + " and fechacod = '" + DateTime.Now.ToString("yyyyMMdd") + "'";
+            SqlDataReader leer2 = conecta.RecordInfo(sqlQuery);
+            while (leer2.Read())
+            {
+                condicionPago = leer2["estatus"].ToString();
+
+            }
+
+            if (condicionPago.Equals("PAGADO"))
+            {
+                string sql = "Update citas set voz='0', estatusserv='ATENDIDO', horallamada='" + horallamada + "' where cvpaciente ='" + CLAVEPACIENTE + "' and fechacod = '" + DateTime.Now.ToString("yyyyMMdd") + "'";
+
+                conecta.Excute(sql);
+                conecta.CierraConexion();
+                MessageBox.Show("Actualizado");
+
+            }
+            else
+            {
+                MessageBox.Show("Falta pago para actualizar el status del Paciente");
+
+            }
+        }
+
+
+        private void SetStatusPacientePorAtenderMnu(object sender, EventArgs e)
+        {
+            string horallamada = DateTime.Now.ToString("HH:mm:00");
+
+
+            conectorSql conecta = new conectorSql();
+
+            string condicionPago = "";
+
+            string sqlQuery = "select estatus from citas  where cvpaciente = " + CLAVEPACIENTE + " and fechacod = '" + DateTime.Now.ToString("yyyyMMdd") + "'";
+            SqlDataReader leer2 = conecta.RecordInfo(sqlQuery);
+            while (leer2.Read())
+            {
+                condicionPago = leer2["estatus"].ToString();
+
+            }
+
+            if (condicionPago.Equals("PAGADO"))
+            {
+                string sql = "Update citas set voz='0', estatusserv='POR ATENDER', horallamada='" + horallamada + "' where cvpaciente ='" + CLAVEPACIENTE + "' and fechacod = '" + DateTime.Now.ToString("yyyyMMdd") + "'";
+
+                conecta.Excute(sql);
+                conecta.CierraConexion();
+                MessageBox.Show("Actualizado");
+
+            }
+            else
+            {
+                MessageBox.Show("Falta pago para actualizar el status del Paciente");
+
+            }
+        }
+
+
+
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
 

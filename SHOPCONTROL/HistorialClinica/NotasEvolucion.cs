@@ -287,14 +287,14 @@ namespace SHOPCONTROL.HistorialClinica
 
                 //if (indiceClick> indiceSIG)
                 //{
-                //    MessageBox.Show("Existen usuarios en espera al inicio de la lista", "SAIMED", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    MessageBox.Show("Existen usuarios en espera al inicio de la lista", "SAIMED", MessageBoxButtons.OK, MessageBoxIcon.Error); DateTime.Now.ToString("yyyyMMdd")
                 //    return;
                 //}
 
                 conectorSql conecta = new conectorSql();
                 string Horallamada = DateTime.Now.ToString("HH:mm:ss");
                 label52.Text = Horallamada;
-                string consulta = "Update citas set voz='0' , estatusserv='EN CONSULTA', horallamada='" + Horallamada + "' where cvdoctor='" + cvdoctor + "' and fecha='" + dateTimePicker1.Value.ToString("dd/MM/yyyy")+"' and progresivo='" + numticket + "'";
+                string consulta = "Update citas set voz='0' , estatusserv='EN CONSULTA', horallamada='" + Horallamada + "' where cvdoctor='" + cvdoctor + "' and fechacod='" + dateTimePicker1.Value.ToString("yyyyMMdd") +"' and progresivo='" + numticket + "'";
                 conecta.Excute(consulta);
                 conecta.CierraConexion();
                 BANDERA = true;
@@ -492,6 +492,7 @@ namespace SHOPCONTROL.HistorialClinica
 
             Query = "Update citas set estatus='ATENDIDO'";
             Query = Query + " , horatermina='" + Horatermina +"'";
+            Query = Query + " , voz='1' ";
             Query = Query + " , hrealinicia='" + Horainicia + "'";
             Query = Query + " , hrealmininicia='" + tminentrada + "'";
             Query = Query + " , hmintermina='" + tminsalida+ "'";
@@ -846,6 +847,7 @@ namespace SHOPCONTROL.HistorialClinica
         {
             conectorSql conecta = new conectorSql();
             string Query = "Update citas set estatus='CANCELADO-DOCTOR', observa='" +comboBox5.Text.Trim() + "'";
+            Query = Query + " , voz='1' ";
             Query = Query + " , horatermina='0'";
             Query = Query + " , hrealinicia='0'";
             Query = Query + " , hrealmininicia='0'";

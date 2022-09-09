@@ -136,6 +136,12 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.historialDelPacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.informaciónDeLaCitaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+
+            this.SetStatusPacienteConsulta = new System.Windows.Forms.ToolStripMenuItem();
+
+            this.SetStatusPacienteAtendido = new System.Windows.Forms.ToolStripMenuItem();
+            this.SetStatusPacientePorAtender = new System.Windows.Forms.ToolStripMenuItem();
+
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.BtnGenerarRecibo = new System.Windows.Forms.Button();
@@ -1396,9 +1402,43 @@
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.historialDelPacienteToolStripMenuItem,
-            this.informaciónDeLaCitaToolStripMenuItem});
+            this.informaciónDeLaCitaToolStripMenuItem,
+            this.SetStatusPacienteConsulta,
+            this.SetStatusPacienteAtendido,
+            this.SetStatusPacientePorAtender
+
+            });
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(213, 48);
+
+            // 
+            // Actualizar paciente a "EN CONSULTA"
+            // 
+            this.SetStatusPacienteConsulta.Name = "SetStatusPacienteConsulta";
+            this.SetStatusPacienteConsulta.Size = new System.Drawing.Size(212, 22);
+            this.SetStatusPacienteConsulta.Text = "[ACTUALIZAR ASESOR] Paciente en CONSULTA!";
+            this.SetStatusPacienteConsulta.Click += new System.EventHandler(this.SetStatusPacienteConsultaMnu);
+
+
+            // 
+            // Actualizar paciente a "EN ATENDIDO"
+            // 
+            this.SetStatusPacienteAtendido.Name = "SetStatusPacienteConsulta";
+            this.SetStatusPacienteAtendido.Size = new System.Drawing.Size(212, 22);
+            this.SetStatusPacienteAtendido.Text = "[ACTUALIZAR ASESOR] Paciente ya atendido!";
+            this.SetStatusPacienteAtendido.Click += new System.EventHandler(this.SetStatusPacienteAtendidoMnu);
+
+            //SetStatusPacientePorAtenderMnu
+            // 
+            // Actualizar paciente a "POR ATENDER"
+            // 
+            this.SetStatusPacientePorAtender.Name = "SetStatusPacienteConsulta";
+            this.SetStatusPacientePorAtender.Size = new System.Drawing.Size(212, 22);
+            this.SetStatusPacientePorAtender.Text = "[ACTUALIZAR ASESOR] Paciente por atender!";
+            this.SetStatusPacientePorAtender.Click += new System.EventHandler(this.SetStatusPacientePorAtenderMnu);
+
+
+
             // 
             // historialDelPacienteToolStripMenuItem
             // 
@@ -1577,6 +1617,11 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem historialDelPacienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem informaciónDeLaCitaToolStripMenuItem;
+
+        private System.Windows.Forms.ToolStripMenuItem SetStatusPacienteConsulta;
+        private System.Windows.Forms.ToolStripMenuItem SetStatusPacienteAtendido;
+        private System.Windows.Forms.ToolStripMenuItem SetStatusPacientePorAtender;
+
         private System.Windows.Forms.Label rootlabelingresoimporte;
         private System.Windows.Forms.Label rootlabelingresoporarea;
         private System.Windows.Forms.CheckBox checkBox8;
