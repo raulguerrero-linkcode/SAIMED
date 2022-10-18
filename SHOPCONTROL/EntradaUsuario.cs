@@ -156,10 +156,22 @@ namespace SHOPCONTROL
 
                        if (CVDOCTORAREA=="0")
                         {
-                            Bienvenidos pantallainicial = new Bienvenidos();
-                            pantallainicial.Text = "Bienvenido(a) " + NOMBRECOMPLETO;
-                            pantallainicial.Show();
-                            this.Hide();
+                            // string valoresnnn = valoresg.USUARIOSIS.Substring(0, 4);
+
+                            if (valoresg.USUARIOSIS.Substring(0,4).Equals("CAJA"))
+                            {
+                                Recibos entrarecibo = new Recibos();
+                                entrarecibo.panel1.Visible = true;
+                                entrarecibo.Show();
+                                this.Hide();
+
+                            } else
+                            {
+                                Bienvenidos pantallainicial = new Bienvenidos();
+                                pantallainicial.Text = "Bienvenido(a) " + NOMBRECOMPLETO;
+                                pantallainicial.Show();
+                                this.Hide();
+                            }
                         }
                        else
                         {

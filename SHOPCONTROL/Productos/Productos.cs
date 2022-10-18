@@ -1207,8 +1207,15 @@ namespace SHOPCONTROL
                     conectorSql conectaUpdate1 = new conectorSql();
                     string QueryUpdateActual = "";
                     // ueryUpdateActual = "delete from Productos where cvproducto ='" + textBox1.Text + "'";
+                    int TypeProduct = 1;
+                    if (radioButton4.Checked == true)
+                    {
+                        TypeProduct = 2;
+                    }
 
-                    QueryUpdateActual = "update productos  set cantidad = " + textBox4.Text + ", marca ='" + comboBox3.Text + "', nombre = '" + textBox2.Text +"', descripcion = '" + textBox7.Text + "', unidad ='"+ comboBox5.Text +"'  where cvproducto=" + textBox1.Text;
+                    string fecha = DateTime.Now.ToString("dd/MM/yyyy");
+                    string fechacod = DateTime.Now.ToString("ddMMyyyy");
+                    QueryUpdateActual = "update productos  set cantidad = " + textBox4.Text + ", marca ='" + comboBox3.Text + "', nombre = '" + textBox2.Text +"', descripcion = '" + textBox7.Text + "', unidad ='"+ comboBox5.Text +"', categoria = " + CATEGORIA +", idtipo=" + TypeProduct + ", fechaModifica='" + fecha + "', fcodmodifica='" + fechacod + "' where cvproducto=" + textBox1.Text;
                     conecta.Excute(QueryUpdateActual);
                     QueryUpdateActual = "update ListaPrecios set publico1 =" + textBox12.Text +", porciento1 = " + textBox9.Text + ", ganancia1= " + textBox13.Text +"   where cvproducto=" + textBox1.Text ;
                     conecta.Excute(QueryUpdateActual);

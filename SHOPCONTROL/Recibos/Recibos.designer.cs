@@ -76,6 +76,7 @@
             this.label31 = new System.Windows.Forms.Label();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Precio = new System.Windows.Forms.TextBox();
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.label281 = new System.Windows.Forms.Label();
             this.textBox13 = new System.Windows.Forms.TextBox();
@@ -159,7 +160,6 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.Precio = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -275,13 +275,13 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.Image = global::SHOPCONTROL.Properties.Resources.cross;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.Location = new System.Drawing.Point(620, 7);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(90, 35);
             this.button2.TabIndex = 13;
-            this.button2.Text = "&Regresar";
+            this.button2.Text = "&Salir";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -797,6 +797,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(849, 33);
             this.panel2.TabIndex = 148;
+            // 
+            // Precio
+            // 
+            this.Precio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Precio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.Precio.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Precio.Location = new System.Drawing.Point(76, 6);
+            this.Precio.Name = "Precio";
+            this.Precio.Size = new System.Drawing.Size(150, 21);
+            this.Precio.TabIndex = 202;
             // 
             // textBox14
             // 
@@ -1830,16 +1840,6 @@
             // 
             this.timer2.Interval = 6000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
-            // Precio
-            // 
-            this.Precio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Precio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.Precio.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Precio.Location = new System.Drawing.Point(76, 6);
-            this.Precio.Name = "Precio";
-            this.Precio.Size = new System.Drawing.Size(150, 21);
-            this.Precio.TabIndex = 202;
             // 
             // Recibos
             // 

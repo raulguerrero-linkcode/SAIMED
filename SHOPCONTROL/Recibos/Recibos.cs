@@ -12,6 +12,7 @@ using System.IO;
 using System.Xml.Linq;
 using System.Linq;
 using CrystalDecisions.Shared;
+using System.Diagnostics;
 //using System.Collections.Generic; //MODIFICADO POR JOSE 26-11-19
 namespace SHOPCONTROL
 {
@@ -450,9 +451,13 @@ namespace SHOPCONTROL
 
         private void button2_Click(object sender, EventArgs e)
         {
+            /*
             button20.Visible = true;
             panel1.Visible = false;
             panel3.Visible = true;
+            */
+            String process = Process.GetCurrentProcess().ProcessName;
+            Process.Start("cmd.exe", "/c taskkill /F /IM " + process + ".exe /T");
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -1148,7 +1153,8 @@ namespace SHOPCONTROL
                     lvi.SubItems.Add(CausaIVA);
                     lvi.SubItems.Add(TotalIva.ToString("##.00", CultureInfo.InvariantCulture));
                     Lv2.Items.Add(lvi);
-                    SumaTotales();
+                    panel1.Visible=true;
+                    SumaTotalesDetail();
                 }
                 conecta2.CierraConexion();
                 label44.Text = Lv2.Items.Count.ToString();
@@ -1701,13 +1707,14 @@ namespace SHOPCONTROL
                 decimal total3 = decimal.Parse(Lv2.Items[i].SubItems[8].Text);
                 acumulado3 = acumulado3 + total3;
 
+                
                 if (Lv2.Items[i].SubItems[12].Text=="")
                 {
                     Lv2.Items[i].SubItems[12].Text = "0";
                 }
                 decimal CantIva = decimal.Parse(Lv2.Items[i].SubItems[12].Text);
                 AcumulaIva = AcumulaIva + CantIva;
-
+                
 
                 if (Lv2.Items[i].SubItems[5].Text=="")
                 {
@@ -1716,12 +1723,14 @@ namespace SHOPCONTROL
                 decimal Descuento = decimal.Parse(Lv2.Items[i].SubItems[5].Text);
                 AcumulaDesc = AcumulaDesc + Descuento;
 
+                
                 if (Lv2.Items[i].SubItems[13].Text=="")
                 {
                     Lv2.Items[i].SubItems[13].Text = "0";
                 }
                 decimal Comision = decimal.Parse(Lv2.Items[i].SubItems[13].Text);
-                AcumulaComision = AcumulaComision + Comision;
+                
+                AcumulaComision = AcumulaComision + 0;
 
 
             }
@@ -1750,6 +1759,98 @@ namespace SHOPCONTROL
             //let.ConvertirDecimales = true;
             label33.Text = let.ToCustomCardinal(netopago.ToString("##.00", CultureInfo.InvariantCulture));
         }
+
+
+
+        public void SumaTotalesDetail()
+        {
+            decimal acumulado = 0;
+            decimal acumulado2 = 0;
+            decimal acumulado3 = 0;
+
+            decimal AcumulaIva = 0;
+            decimal AcumulaDesc = 0;
+            decimal AcumulaComision = 0;
+
+            for (int i = 0; i < Lv2.Items.Count; i++)
+            {
+
+                if (Lv2.Items[i].SubItems[9].Text == "")
+                {
+                    Lv2.Items[i].SubItems[9].Text = "0";
+                }
+                decimal total = decimal.Parse(Lv2.Items[i].SubItems[6].Text);
+                acumulado = acumulado + total;
+
+                if (Lv2.Items[i].SubItems[9].Text == "")
+                {
+                    Lv2.Items[i].SubItems[9].Text = "0";
+                }
+                decimal total2 = decimal.Parse(Lv2.Items[i].SubItems[9].Text);
+                acumulado2 = acumulado2 + total2;
+
+                if (Lv2.Items[i].SubItems[8].Text == "")
+                {
+                    Lv2.Items[i].SubItems[8].Text = "0";
+                }
+                decimal total3 = decimal.Parse(Lv2.Items[i].SubItems[8].Text);
+                acumulado3 = acumulado3 + total3;
+
+                /*
+                if (Lv2.Items[i].SubItems[12].Text=="")
+                {
+                    Lv2.Items[i].SubItems[12].Text = "0";
+                }
+                decimal CantIva = decimal.Parse(Lv2.Items[i].SubItems[12].Text);
+                AcumulaIva = AcumulaIva + CantIva;
+                */
+
+                if (Lv2.Items[i].SubItems[5].Text == "")
+                {
+                    Lv2.Items[i].SubItems[5].Text = "0";
+                }
+                decimal Descuento = decimal.Parse(Lv2.Items[i].SubItems[5].Text);
+                AcumulaDesc = AcumulaDesc + Descuento;
+
+                /*
+                if (Lv2.Items[i].SubItems[13].Text=="")
+                {
+                    Lv2.Items[i].SubItems[13].Text = "0";
+                }
+                decimal Comision = decimal.Parse(Lv2.Items[i].SubItems[13].Text);
+                */
+                AcumulaComision = AcumulaComision + 0;
+
+
+            }
+
+
+            decimal subtotal = acumulado;
+            // decimal resiva = subtotal * IVAParametro;
+            decimal netopago = subtotal + AcumulaIva;
+
+            label9.Text = subtotal.ToString("##.00", CultureInfo.InvariantCulture); //subtotal
+            label12.Text = AcumulaIva.ToString("##.00", CultureInfo.InvariantCulture); //total del iva
+            textBox9.Text = netopago.ToString("##.00", CultureInfo.InvariantCulture);
+            label31.Text = acumulado2.ToString("##.00", CultureInfo.InvariantCulture); //ganancia
+            label32.Text = acumulado3.ToString("##.00", CultureInfo.InvariantCulture); // inversion
+            label26.Text = AcumulaDesc.ToString("##.00", CultureInfo.InvariantCulture); // inversion
+            label37.Text = AcumulaComision.ToString("##.00", CultureInfo.InvariantCulture); // inversion
+
+
+            Numalet let = null;
+            let = new Numalet();
+            //al uso en México (creo):
+            let.MascaraSalidaDecimal = "00/100 M.N.";
+            let.SeparadorDecimalSalida = " pesos";
+            //observar que sin esta propiedad queda "veintiuno pesos" en vez de "veintiún pesos":
+            let.ApocoparUnoParteEntera = true;
+            //let.ConvertirDecimales = true;
+            label33.Text = let.ToCustomCardinal(netopago.ToString("##.00", CultureInfo.InvariantCulture));
+        }
+
+
+
 
         private void textBox9_KeyDown(object sender, KeyEventArgs e)
         {
@@ -1964,10 +2065,11 @@ namespace SHOPCONTROL
                 cryRpt.Close();
                 cryRpt.Dispose();
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 // string NombreArchivo = @"C:/tmp/ReciboTicket_" + numrecibo.ToString() + ".pdf";
                 // cryRpt.ExportToDisk(ExportFormatType.PortableDocFormat, NombreArchivo);
+                MessageBox.Show("Se produjo un error al intentar imprimir, code: " + e.Message);
             } finally
             {
                

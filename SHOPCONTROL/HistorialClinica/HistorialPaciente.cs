@@ -20,22 +20,39 @@ namespace SHOPCONTROL.HistorialClinica
             string Query = "";
             string Consulta = "";
 
-            switch(tipoEstudio){
+            
+            switch (tipoEstudio){
                 case "Oftalmologico":
-                    Query = "SELECT HCCVCliente,HCFECHA,HCMConsulta,consecutivo FROM HClinicaO WHERE HCCVCliente='"+noExpediente+"'";
+                    if (noExpediente.Equals(""))
+                    {
+                        Query = "SELECT HCCVCliente,HCFECHA,HCMConsulta,consecutivo FROM HClinicaO";
+                    } else { 
+                        Query = "SELECT HCCVCliente,HCFECHA,HCMConsulta,consecutivo FROM HClinicaO WHERE HCCVCliente='"+noExpediente+"'";
+                    }
                     col2 = "Motivo de consulta";
                     break;
+
                 case "Dental":
-                    Query = "SELECT NoExpediente,FECHA, MOTIVO,consecutivo FROM EDental WHERE NoExpediente='" + noExpediente + "'";
-                    col2 = "Motivo de consulta";
+                    if (noExpediente.Equals(""))
+                    {
+                        Query = "SELECT NoExpediente,FECHA, MOTIVO,consecutivo FROM EDental";
+                    }
+                    else
+                    {
+                        Query = "SELECT NoExpediente,FECHA, MOTIVO,consecutivo FROM EDental WHERE NoExpediente='" + noExpediente + "'";
+
+                    }
+
+                        col2 = "Motivo de consulta";
                     break;
+
                 case "Prenatal":
                     Query = "SELECT NoExpediente,FECHA, OBSERVACIONES1,consecutivo FROM CPrenatal WHERE NoExpediente='" + noExpediente + "'";
                     col2 = "Observaciones";
                     break;
                 case "Colposcopico":
 
-                    Query = "SELECT  ";
+                    Query = "SELECT distinct ";
                     Query = Query + "  pacientes.nombre + ' ' + pacientes.APATERNO + ' ' + pacientes.AMATERNO as nombrepac ";
                     Query = Query + "  ,pacientes.expgineco as noexpediente";
                     Query = Query + "  ,pacientes.clave as clavepa";

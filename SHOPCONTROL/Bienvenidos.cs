@@ -6,6 +6,7 @@ using SHOPCONTROL.Analisys;
 using SHOPCONTROL.Inventarios;
 using System.Diagnostics;
 using SHOPCONTROL.RolesAndUsers;
+using SHOPCONTROL.HistorialClinica;
 
 namespace SHOPCONTROL
 {
@@ -1127,9 +1128,15 @@ namespace SHOPCONTROL
 
         private void linkLabel6_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            CapturaInventarios inventarios = new CapturaInventarios();
-            inventarios.Show();
-
+            if (valoresg.USUARIOSIS.Equals("ROOT"))
+            {
+               CapturaInventarios inventarios = new CapturaInventarios();
+                inventarios.Show();
+            }
+            else
+            {
+                MessageBox.Show("Acceso restringido", "Forbidden", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void faltaDePagosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1147,9 +1154,16 @@ namespace SHOPCONTROL
 
         private void linkLabel7_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Recibos entrarecibo = new Recibos();
-            entrarecibo.panel1.Visible = false;
+            if (valoresg.USUARIOSIS.Equals("ROOT"))
+            {
+                Recibos entrarecibo = new Recibos();
+            entrarecibo.panel1.Visible = true;
             entrarecibo.Show();
+            }
+            else
+            {
+                MessageBox.Show("Acceso restringido", "Forbidden", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void accesosUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1167,10 +1181,47 @@ namespace SHOPCONTROL
 
         private void linkLabel8_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Creditos.Creditos credito = new Creditos.Creditos();
+            if (valoresg.USUARIOSIS.Equals("ROOT"))
+            {
+                Creditos.Creditos credito = new Creditos.Creditos();
             
             credito.Show();
+            }
+            else
+            {
+                
+                MessageBox.Show("Acceso restringido", "Forbidden", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
+        private void buscarRecibosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (valoresg.USUARIOSIS.Equals("ROOT"))
+            {
+                Recibos entrarecibo = new Recibos();
+                entrarecibo.panel1.Visible = false;
+                entrarecibo.Show();
+            }
+            else
+            {
+                MessageBox.Show("Acceso restringido", "Forbidden", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void historialClínicoPacientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // 
+            if (valoresg.USUARIOSIS.Equals("ROOT"))
+            {
+                HistorialClinica.HistorialPaciente myHistorial = new HistorialPaciente();
+                myHistorial.tipoEstudio = "Colposcopico";
+                // myHistorial.noExpediente = textBox1.Text.Trim();
+                myHistorial.Show();
+            }
+            else
+            {
+                MessageBox.Show("Acceso restringido", "Forbidden", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

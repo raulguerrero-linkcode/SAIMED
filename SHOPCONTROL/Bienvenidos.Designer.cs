@@ -70,7 +70,6 @@
             this.reporteDeFacturaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteDeRecibosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inventarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.faltaDePagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripDropDownButton4 = new System.Windows.Forms.ToolStripDropDownButton();
             this.cosecutivosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -116,6 +115,8 @@
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.linkLabel8 = new System.Windows.Forms.LinkLabel();
+            this.buscarRecibosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.historialClínicoPacientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -444,7 +445,8 @@
             this.reporteDeFacturaciónToolStripMenuItem,
             this.reporteDeRecibosToolStripMenuItem,
             this.inventarioToolStripMenuItem,
-            this.faltaDePagosToolStripMenuItem});
+            this.buscarRecibosToolStripMenuItem,
+            this.historialClínicoPacientesToolStripMenuItem});
             this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
             this.toolStripDropDownButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -473,13 +475,6 @@
             this.inventarioToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.inventarioToolStripMenuItem.Text = "Inventario";
             this.inventarioToolStripMenuItem.Click += new System.EventHandler(this.inventarioToolStripMenuItem_Click_1);
-            // 
-            // faltaDePagosToolStripMenuItem
-            // 
-            this.faltaDePagosToolStripMenuItem.Name = "faltaDePagosToolStripMenuItem";
-            this.faltaDePagosToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.faltaDePagosToolStripMenuItem.Text = "Falta de pagos";
-            this.faltaDePagosToolStripMenuItem.Click += new System.EventHandler(this.faltaDePagosToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
@@ -947,6 +942,20 @@
             this.linkLabel8.Text = " 6.- Créditos";
             this.linkLabel8.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel8_LinkClicked);
             // 
+            // buscarRecibosToolStripMenuItem
+            // 
+            this.buscarRecibosToolStripMenuItem.Name = "buscarRecibosToolStripMenuItem";
+            this.buscarRecibosToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.buscarRecibosToolStripMenuItem.Text = "Buscar recibos";
+            this.buscarRecibosToolStripMenuItem.Click += new System.EventHandler(this.buscarRecibosToolStripMenuItem_Click);
+            // 
+            // historialClínicoPacientesToolStripMenuItem
+            // 
+            this.historialClínicoPacientesToolStripMenuItem.Name = "historialClínicoPacientesToolStripMenuItem";
+            this.historialClínicoPacientesToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.historialClínicoPacientesToolStripMenuItem.Text = "Historial Clínico pacientes";
+            this.historialClínicoPacientesToolStripMenuItem.Click += new System.EventHandler(this.historialClínicoPacientesToolStripMenuItem_Click);
+            // 
             // Bienvenidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1090,12 +1099,13 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.LinkLabel linkLabel6;
-        private System.Windows.Forms.ToolStripMenuItem faltaDePagosToolStripMenuItem;
         private System.Windows.Forms.LinkLabel linkLabel7;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.ToolStripMenuItem accesosUsuariosToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.LinkLabel linkLabel8;
+        private System.Windows.Forms.ToolStripMenuItem buscarRecibosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem historialClínicoPacientesToolStripMenuItem;
     }
 }
 
